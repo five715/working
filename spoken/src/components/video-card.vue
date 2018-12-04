@@ -7,7 +7,9 @@
     <div class="btn_record">
       <btnRecord/>
     </div>
-    <img src="/static/ioc_original.png" class="original" alt="">
+    <div class="original">
+      <btnAudio :init-src="src" :init-type="3"/>
+    </div>
   </div>
 </template>
 

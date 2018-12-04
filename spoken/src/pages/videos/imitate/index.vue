@@ -4,7 +4,9 @@
       <div class="lomo_hint">本次得分</div>
       <div class="score_text score">{{score}}</div>
       <div class="line"></div>
-      <img class="play" src="/static/ioc_original.png" alt="">
+      <div class="play">
+        <btnAudio :init-src="src" :init-type="3"/>
+      </div>
       <ul class="score_li">
         <li v-for="(li,i) in lis" :key="i">{{i+1}}. {{li}}</li>
       </ul>
@@ -26,6 +28,7 @@
 </template>
 
 <script>
+import btnAudio from '@/components/btn-audio'
 import liRanking from '@/components/li-ranking'
 import lineDegree from '@/components/line-degree'
 import highLight from '@/components/high-light'
@@ -33,11 +36,13 @@ export default {
   components: {
     liRanking,
     lineDegree,
-    highLight
+    highLight,
+    btnAudio
   },
   data () {
     return {
       score: 98,
+      src: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_3.mp3',
       lis: [
         'The outside world is scary, but dad will always be there to protect you.',
         "Dad, I won't go out again.",

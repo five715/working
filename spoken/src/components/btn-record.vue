@@ -1,9 +1,9 @@
 <template>
   <div class="btn-record">
     <img src="/static/ioc_record.png" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd" class="record" alt="">
-    <img v-if="isPop == 1" class="toast" src="/static/record_mic.png" alt="">
-    <img v-else-if="isPop == 2" class="toast" src="/static/record_close.png" alt="">
-    <img v-else-if="isPop == 3" class="toast" src="/static/record_time.png" alt="">
+    <img v-show="isPop == 1" class="toast" src="/static/record_mic.png" alt="">
+    <img v-show="isPop == 2" class="toast" src="/static/record_close.png" alt="">
+    <img v-show="isPop == 3" class="toast" src="/static/record_time.png" alt="">
   </div>
 </template>
 <script>
@@ -26,26 +26,27 @@ export default {
       y: 0,
       dis: 100,
       isPop: 0
-
     }
   },
   created () {
+    var that = this
     recorderManager.onStop((res) => {
       if (res.duration < 3000) {
-        this.isPop = 3
+        console.log(that)
+        that.isPop = 3
       } else {
-        this.isPop = 0
+        that.isPop = 0
         InnerAudioContext.src = res.tempFilePath
         InnerAudioContext.play()
       }
-      console.log('recorder stop', res, res.duration)
     })
     recorderManager.onStart(() => {
-      this.isPop = 1
+      that.isPop = 1
     })
   },
   methods: {
     onTouchStart (e) {
+      var that = this
       this.startX = e.pageX
       this.startY = e.pageY
       wx.authorize({
@@ -53,6 +54,7 @@ export default {
         success () {
           console.log('录音授权成功')
           recorderManager.start(options)// 使用新版录音接口，可以获取录音文件
+          that.isPop = 1
         },
         fail (res) {
           wx.showModal({
@@ -104,6 +106,11 @@ export default {
       }
     },
     onTouchEnd (e) {
+      var that = this
+      setTimeout(function () {
+        that.isPop = 0
+        recorderManager.stop()
+      }, 200)
       this.isPop = 0
       recorderManager.stop()
       var dis = this.startY - this.y

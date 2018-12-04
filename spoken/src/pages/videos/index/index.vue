@@ -29,19 +29,19 @@ export default {
           audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_1.mp3'
         },
         {
-          text: 'The outside world is scary',
+          text: 'The outside world is scary.',
           audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_2.mp3'
         }
       ]
     }
   },
+  onLoad () {
+    this.isStart = false
+  },
   methods: {
     btnBegan () {
       this.isStart = true
     }
-  },
-  onLoad () {
-    console.log('onLoad')
   },
   onShow () {
     console.log('onShow')
