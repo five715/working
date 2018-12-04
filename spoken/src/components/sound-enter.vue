@@ -1,6 +1,6 @@
 <template>
   <div class="sound-enter">
-    <img src="/static/ioc_audition.png" class="audition" alt="">
+    <btnAudio :init-src="src"/>
     <div class="btn_record">
       <btnRecord/>
     </div>
@@ -9,14 +9,22 @@
 </template>
 
 <script>
+import btnAudio from '@/components/btn-audio'
 import btnRecord from '@/components/btn-record'
 export default {
   components: {
-    btnRecord
+    btnRecord,
+    btnAudio
+  },
+  props: {
+    initSrc: {
+      type: String,
+      default: ''
+    }
   },
   data () {
     return {
-
+      src: this.initSrc
     }
   }
 }
@@ -24,7 +32,6 @@ export default {
 <style>
 .sound-enter{position:absolute;top: 905rpx;left: 40rpx;width: 509rpx; height: 129rpx;}
 .sound-enter .btn_record{position:absolute; top: 0rpx; left: 137rpx;}
-.sound-enter .audition{position:absolute; top: 5rpx; left: 0rpx; width: 80rpx; height: 124rpx;}
 .sound-enter .look{position:absolute; top: 5rpx; left: auto; right: 0rpx; width: 80rpx; height: 124rpx;}
 </style>
 

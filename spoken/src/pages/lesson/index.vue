@@ -1,48 +1,60 @@
 <template>
   <div class="container" >
-    <div class="box">
-      <img class="pic" src="/static/lesson_pic.jpg" alt="">
-      <span class="text">{{text}}<br/><span class="writer">{{writer}}</span></span>
-      <sound-enter/>
-    </div>
-    <page-number/>
+    <swiper class="swiper" previous-margin="60rpx" next-margin="60rpx" @change="onBindChange">
+      <block v-for="(card,c) in cards" :key="c">
+        <swiper-item>
+          <lesson-card  :init-pics="card.pics" :init-text="card.text" :init-writer="card.writer" :init-audition="card.audition"/>
+        </swiper-item>
+      </block>
+    </swiper>
+    <page-number :init-now="now" :init-sum="cards.length" ref="pageNumber" />
   </div>
 </template>
 
 <script>
-import soundEnter from '@/components/sound-enter'
 import pageNumber from '@/components/page-number'
+import lessonCard from '@/components/lesson-card'
 export default {
   components: {
-    soundEnter,
-    pageNumber
+    pageNumber,
+    lessonCard
   },
   data () {
     return {
-      text: '车窗外面是茫茫的大戈壁，没有山，没有水，也没有人烟。天和地的界限并不是那么清晰，都是混黄一体。',
-      writer: '选自《白杨》'
+      now: 1,
+      cards: [
+        {
+          pics: '/static/lesson_pic.jpg',
+          text: '车窗外面是茫茫的大戈壁，没有山，没有水，也没有人烟。天和地的界限并不是那么清晰，都是混黄一体。',
+          writer: '选自《白杨》',
+          audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_1.mp3'
+        },
+        {
+          pics: '/static/lesson_pic.jpg',
+          text: '车窗外面是茫茫的大戈壁，没有山，没有水，也没有人烟。天和地的界限并不是那么清晰，都是混黄一体。',
+          writer: '选自《白杨》',
+          audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_2.mp3'
+        },
+        {
+          pics: '/static/lesson_pic.jpg',
+          text: '车窗外面是茫茫的大戈壁，没有山，没有水，也没有人烟。天和地的界限并不是那么清晰，都是混黄一体。',
+          writer: '选自《白杨》',
+          audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_3.mp3'
+        }
+      ]
     }
   },
-  onLoad () {
-    console.log('onLoad')
-  },
-  onShow () {
-    console.log('onShow')
-  },
-  mounted () {
-    console.log('mounted')
+  methods: {
+    onBindChange (e) {
+      this.$refs.pageNumber.now = this.now = e.mp.detail.current + 1
+    }
   }
 }
 </script>
 
 <style>
-.box{position: absolute;top: 41rpx;left:80rpx; width: 590rpx;height: 1065rpx; box-shadow:0rpx 0rpx 50rpx 15rpx #eee;
-border-radius: 10rpx; border:1px solid #d3d3d3;
-}
-.box .pic{position: absolute; top: 40rpx; left: 41rpx; width: 508rpx;height: 420rpx;}
-.box span{line-height: 60rpx;}
-.box .text{position: absolute;  top: 500rpx; left: 43rpx; width: 507rpx; height: 211rpx; font-size: 34rpx;}
-.box .writer{color: #888888;float: right;}
+.swiper{position: fixed;width: 100%;height: 1334rpx;top: 0;left: 0;}
+.swiper swiper-item{}
 
 
 

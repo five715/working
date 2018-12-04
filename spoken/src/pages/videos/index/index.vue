@@ -6,7 +6,7 @@
     <div v-if="!isStart" class="player_text">{{text}}</div>
     <img v-if="!isStart" class="btn_began" @click="btnBegan" src="/static/btn_began_imitate.png" alt="">
     <div v-show="isStart" class="card">
-      <video-card v-for="(card ,index) in cards" :key="index" :init-now="index+1" :init-sum="cards.length" :init-text="card.text"/>
+      <video-card v-for="(card ,index) in cards" :key="index" :init-now="index+1" :init-sum="cards.length" :init-text="card.text" :init-audition="card.audition"/>
       <div class="hint">读完所有句子计算评分</div>
       <a href="/pages/videos/imitate/main"><img src="/static/btn_count.png" alt="" class="btn_count"></a>
     </div>
@@ -25,10 +25,12 @@ export default {
       isStart: false,
       cards: [
         {
-          text: 'but dad will always be there to protect you.'
+          text: 'but dad will always be there to protect you.',
+          audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_1.mp3'
         },
         {
-          text: 'The outside world is scary'
+          text: 'The outside world is scary',
+          audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_2.mp3'
         }
       ]
     }

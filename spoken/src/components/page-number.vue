@@ -17,7 +17,7 @@ export default {
     },
     initTop: {
       type: Number,
-      default: 1143
+      default: 1140
     },
     initLeft: {
       type: Number,
