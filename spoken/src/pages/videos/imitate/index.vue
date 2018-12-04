@@ -8,7 +8,9 @@
         <btnAudio :init-src="src" :init-type="3"/>
       </div>
       <ul class="score_li">
-        <li v-for="(li,i) in lis" :key="i">{{i+1}}. {{li}}</li>
+        <li v-for="(li,i) in lis" :key="i">
+          {{i+1}}. <span v-for="(span,s) in li" :key="s" :style="s%2==0?'':'color:red'">{{span}}</span>
+        </li>
       </ul>
     </div>
     <div class="lomo">
@@ -44,9 +46,9 @@ export default {
       score: 98,
       src: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_3.mp3',
       lis: [
-        'The outside world is scary, but dad will always be there to protect you.',
-        "Dad, I won't go out again.",
-        "It's daddy's sweetheart."
+        ['The outside world is ', 'scary', ', but dad will always be there to protect you.'],
+        ["Dad, I won't go out again."],
+        ["It's daddy's ", 'sweetheart', '.']
       ],
       ranking: [
         {

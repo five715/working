@@ -40,46 +40,6 @@ export default {
           head: '/static/ioc_ranking_head_3.png',
           name: '可可妈',
           score: 96
-        },
-        {
-          head: '/static/ioc_ranking_head_3.png',
-          name: '可可妈',
-          score: 96
-        },
-        {
-          head: '/static/ioc_ranking_head_3.png',
-          name: '可可妈',
-          score: 96
-        },
-        {
-          head: '/static/ioc_ranking_head_3.png',
-          name: '可可妈',
-          score: 96
-        },
-        {
-          head: '/static/ioc_ranking_head_3.png',
-          name: '可可妈',
-          score: 96
-        },
-        {
-          head: '/static/ioc_ranking_head_3.png',
-          name: '可可妈',
-          score: 96
-        },
-        {
-          head: '/static/ioc_ranking_head_3.png',
-          name: '可可妈',
-          score: 96
-        },
-        {
-          head: '/static/ioc_ranking_head_3.png',
-          name: '可可妈',
-          score: 96
-        },
-        {
-          head: '/static/ioc_ranking_head_3.png',
-          name: '可可妈',
-          score: 96
         }
       ]
     }

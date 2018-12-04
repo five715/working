@@ -13,20 +13,31 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
-  },
+  },  
   "tabBar":{
+    "color": "#888888",
+    "selectedColor": "#338bff",
+    "backgroundColor": "",
+    "position": "bottom",
+    "borderStyle": "black",
     "list":[
       {
         "pagePath":"pages/english/main",
-        "text":"英文"
+        "text":"英文测评",
+        "iconPath": "/static/ioc_english_no.png",
+        "selectedIconPath": "/static/ioc_english_yes.png"
       },
       {
         "pagePath":"pages/chinese/main",
-        "text":"中文"
+        "text":"中文测评",
+        "iconPath": "/static/ioc_chinese_no.png",
+        "selectedIconPath": "/static/ioc_chinese_yes.png"
       },
       {
         "pagePath":"pages/correct/main",
-        "text":"作业批改"
+        "text":"作业批改",
+        "iconPath": "/static/ioc_correct_no.png",
+        "selectedIconPath": "/static/ioc_correct_yes.png"
       }
     ]
   }

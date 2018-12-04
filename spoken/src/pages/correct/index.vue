@@ -1,7 +1,8 @@
 <template>
   <div class="container" >
-    <div class="message">{{ msg }}</div>
-    
+    <!-- <a href="">数学作业批改</a>
+    <a href="">英语作业批改</a> -->
+    <a href="">敬请期待</a>
   </div>
 </template>
 
@@ -9,25 +10,11 @@
 export default {
   data () {
     return {
-      msg: 'Hello world'
     }
-  },
-  onLoad () {
-    console.log('onLoad')
-  },
-  onShow () {
-    console.log('onShow')
-  },
-  mounted () {
-    console.log('mounted')
   }
 }
 </script>
 <style>
-.message {
-  color: red;
-  padding: 10px;
-  text-align: center;
-}
+
 </style>
 

@@ -35,6 +35,7 @@ export default {
       } else {
         color = '#ff7656'
       }
+      // color = `rgb(${parseInt(255 * per / 100)},118,${255 - parseInt(255 * per / 100)})`
       return `${width}background:${color}`
     }
   }
