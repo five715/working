@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/english/main",
+    "pages/chinese/main",
+    "pages/correct/main",
+    "pages/lesson/main",
+    "pages/videos/index/main",
+    "pages/videos/ranking/main",
+    "pages/videos/imitate/main" 
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar":{
+    "list":[
+      {
+        "pagePath":"pages/english/main",
+        "text":"英文"
+      },
+      {
+        "pagePath":"pages/chinese/main",
+        "text":"中文"
+      },
+      {
+        "pagePath":"pages/correct/main",
+        "text":"作业批改"
+      }
+    ]
+  }
+}

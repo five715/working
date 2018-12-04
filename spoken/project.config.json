@@ -1,0 +1,60 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": false,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"miniprogramRoot": "dist/wx/",
+	"compileType": "miniprogram",
+	"appid": "touristappid",
+	"projectname": "project",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 3,
+			"list": [
+				{
+					"id": -1,
+					"name": "课文片段",
+					"pathName": "pages/lesson/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "视频模仿",
+					"pathName": "pages/videos/index/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "评测排行榜",
+					"pathName": "pages/videos/ranking/main",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "评测总",
+					"pathName": "pages/videos/imitate/main"
+				}
+			]
+		}
+	}
+}
