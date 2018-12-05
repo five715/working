@@ -31,6 +31,12 @@ export default {
       InnerAudioContext.src = this.src
       InnerAudioContext.play()
     }
+  },
+  onHide () {
+    InnerAudioContext.stop()
+  },
+  onUnload () {
+    InnerAudioContext.stop()
   }
 }
 </script>

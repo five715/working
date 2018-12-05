@@ -40,6 +40,36 @@ export default {
           head: '/static/ioc_ranking_head_3.png',
           name: '可可妈',
           score: 96
+        },
+        {
+          head: '/static/ioc_ranking_head_1.png',
+          name: '小鱼',
+          score: 98
+        },
+        {
+          head: '/static/ioc_ranking_head_2.png',
+          name: '在哪跌倒就在哪躺下',
+          score: 97
+        },
+        {
+          head: '/static/ioc_ranking_head_3.png',
+          name: '可可妈',
+          score: 96
+        },
+        {
+          head: '/static/ioc_ranking_head_1.png',
+          name: '小鱼',
+          score: 98
+        },
+        {
+          head: '/static/ioc_ranking_head_2.png',
+          name: '在哪跌倒就在哪躺下',
+          score: 97
+        },
+        {
+          head: '/static/ioc_ranking_head_3.png',
+          name: '可可妈',
+          score: 96
         }
       ]
     }

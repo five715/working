@@ -25,19 +25,26 @@ export default {
       x: 0,
       y: 0,
       dis: 100,
-      isPop: 0
+      isPop: 0,
+      isSend: true
     }
   },
   created () {
     var that = this
     recorderManager.onStop((res) => {
-      if (res.duration < 3000) {
-        console.log(that)
-        that.isPop = 3
+      if (that.isSend) {
+        if (res.duration < 3000) {
+          that.isPop = 3
+          console.log('时间过短')
+        } else {
+          console.log('发送成功,播放', res)
+          that.isPop = 0
+          InnerAudioContext.src = res.tempFilePath
+          InnerAudioContext.play()
+        }
       } else {
         that.isPop = 0
-        InnerAudioContext.src = res.tempFilePath
-        InnerAudioContext.play()
+        console.log('取消发送')
       }
     })
     recorderManager.onStart(() => {
@@ -107,18 +114,18 @@ export default {
     },
     onTouchEnd (e) {
       var that = this
+      var dis = that.startY - that.y
+      if (dis > that.dis) {
+        that.isSend = false
+      } else {
+        that.isSend = true
+      }
       setTimeout(function () {
         that.isPop = 0
         recorderManager.stop()
       }, 200)
-      this.isPop = 0
+      that.isPop = 0
       recorderManager.stop()
-      var dis = this.startY - this.y
-      if (dis > this.dis) {
-        console.log('取消发送')
-      } else {
-        console.log('发送成功')
-      }
     }
   }
 }

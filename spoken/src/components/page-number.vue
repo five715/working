@@ -1,6 +1,6 @@
 <template>
   <div class="page-number" :style="initStyle">
-      <div class="sum"><span class="now">{{now}}</span> / {{sum}}</div>
+      <div class="sum"><span class="now">{{now}}</span> {{partition}} {{sum}}</div>
   </div>
 </template>
 
@@ -28,6 +28,7 @@ export default {
     return {
       now: this.initNow,
       sum: this.initSum,
+      partition: '/',
       top: this.initTop,
       left: this.initLeft
     }
