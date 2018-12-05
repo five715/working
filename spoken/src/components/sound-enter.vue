@@ -4,7 +4,7 @@
     <div class="btn_record">
       <btnRecord/>
     </div>
-    <img src="/static/ioc_look.png" class="look" alt="">
+    <a :href="href"><img src="/static/ioc_look.png" class="look" alt=""></a>
   </div>
 </template>
 
@@ -20,11 +20,16 @@ export default {
     initSrc: {
       type: String,
       default: ''
+    },
+    initHref: {
+      type: String,
+      default: ''
     }
   },
   data () {
     return {
-      src: this.initSrc
+      src: this.initSrc,
+      href: this.initHref
     }
   }
 }

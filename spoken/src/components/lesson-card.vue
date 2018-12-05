@@ -18,7 +18,7 @@
     <div class="play">
       <btnAudio :init-type="3" :init-src="audition" @clickBtnAutio="onClickBtnAutio"/>
     </div>
-    <sound-enter :init-src="audition"/>
+    <sound-enter :init-src="audition" :init-href="evaluation"/>
   </div>
 </template>
 
@@ -50,6 +50,10 @@ export default {
     initType: {
       type: Number,
       default: 1
+    },
+    initEvaluation: {
+      type: String,
+      default: ''
     }
   },
   data () {
@@ -58,7 +62,8 @@ export default {
       text: this.initText,
       writer: this.initWriter,
       audition: this.initAudition,
-      type: this.initType
+      type: this.initType,
+      evaluation: this.initEvaluation
     }
   },
   methods: {

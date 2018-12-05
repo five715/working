@@ -3,7 +3,7 @@
     <swiper class="swiper" previous-margin="60rpx" next-margin="60rpx" @change="onBindChange">
       <block v-for="(card,c) in cards" :key="c">
         <swiper-item>
-          <lesson-card :init-type="2" :init-pics="card.pics" :init-text="card.text" :init-writer="card.writer" :init-audition="card.audition"/>
+          <lesson-card :init-type="2" :init-pics="card.pics" :init-text="card.text" :init-writer="card.writer" :init-audition="card.audition" :init-evaluation="evaluation"/>
         </swiper-item>
       </block>
     </swiper>
@@ -22,6 +22,7 @@ export default {
   data () {
     return {
       now: 1,
+      evaluation: '/pages/follow/lists/main',
       cards: [
         {
           pics: '/static/follow_pic.jpg',
