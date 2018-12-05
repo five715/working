@@ -6,7 +6,9 @@
     "pages/lesson/main",
     "pages/videos/index/main",
     "pages/videos/ranking/main",
-    "pages/videos/imitate/main" 
+    "pages/videos/imitate/main",
+    "pages/follow/index/main",
+    "pages/follow/lists/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

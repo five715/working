@@ -28,8 +28,17 @@ export default {
   methods: {
     onAudition (e) {
       console.log(this.src)
-      InnerAudioContext.src = this.src
-      InnerAudioContext.play()
+      if (InnerAudioContext.paused) {
+        InnerAudioContext.src = this.src
+        InnerAudioContext.play()
+        this.notiftNum()
+      } else {
+        InnerAudioContext.pause()
+        wx.hideToast()
+      }
+    },
+    notiftNum () {
+      this.$emit('clickBtnAutio', {})
     }
   },
   onHide () {
