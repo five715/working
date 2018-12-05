@@ -17,7 +17,7 @@
       <div class="lomo_hint">排行榜</div>
       <li-ranking v-for="(rank,index) in ranking" :key="index" :init-number="index+1" :init-head="rank.head" :init-name="rank.name" :init-score="rank.score"/>
       <div class="line" style="margin: 50rpx 0.5rpx;"></div>
-      <a class="more" href="/pages/videos/ranking/main">查看更多</a>
+      <a hover-class="none" class="more" href="/pages/videos/ranking/main">查看更多</a>
     </div>
     <div class="lomo" v-for="(degree,d) in degrees" :key="d">
       <line-degree :init-hint="degree.hint" :init-per="degree.per"/>

@@ -1,29 +1,57 @@
 <template>
   <div class="container" >
-    <a v-for="(nav,n) in navs" :key="n" :href="nav.href">{{nav.text}}</a>
-    <!-- <boxes v-for="(nav,n) in navs" :key="n" :init-text="nav.text" :init-href="nav.href" :init-src="nav.src"/> -->
+    <img class="index_pic" src="/static/correct_pic.jpg" alt="">
+    <boxes v-for="(nav,n) in navs" :key="n" :init-text="nav.text" :init-href="nav.href" :init-src="nav.src"/>
+    <contactUs/>
   </div>
 </template>
 
 <script>
+import contactUs from '@/components/contact-us'
 import boxes from '@/components/index-boxes'
 export default {
   components: {
-    boxes
+    boxes,
+    contactUs
   },
   data () {
     return {
       navs: [
         {
-          src: '/static/ioc_boxes_video.png',
-          href: '/pages/lesson/main',
-          text: '课文片段'
+          src: '/static/ioc_boxes_english_follow.png',
+          href: '/pages/follow/main',
+          text: '绘本跟读'
         },
         {
-          src: '/static/ioc_boxes_video.png',
+          src: '/static/ioc_boxes_english_exam.png',
+          href: '',
+          text: '口语考试'
+        },
+        {
+          src: '/static/ioc_boxes_english_video.png',
           href: '/pages/videos/index/main',
           text: '视频模仿'
-        }
+        },
+        {
+          src: '/static/ioc_boxes_english_job.png',
+          href: '',
+          text: '口语作业'
+        },
+        {
+          src: '/static/ioc_boxes_english_appraisal.png',
+          href: '',
+          text: '自定义测评'
+        },
+        {
+          src: '/static/ioc_boxes_english_words.png',
+          href: '',
+          text: '背单词'
+        },
+        {
+          src: '/static/ioc_boxes_expect.png',
+          href: '',
+          text: '敬请期待'
+        }, {}, {}
       ]
     }
   }
