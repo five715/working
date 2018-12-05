@@ -54,4 +54,5 @@ export default {
 
 <style>
 .swiper{position: fixed;width: 100%;height: 1334rpx;top: 0;left: 0;}
+
 </style>

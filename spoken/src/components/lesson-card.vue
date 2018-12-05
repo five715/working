@@ -37,15 +37,6 @@ export default {
       writer: this.initWriter,
       audition: this.initAudition
     }
-  },
-  onLoad () {
-    console.log('onLoad')
-  },
-  onShow () {
-    console.log('onShow')
-  },
-  mounted () {
-    console.log('mounted')
   }
 }
 </script>
