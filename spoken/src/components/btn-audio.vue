@@ -2,7 +2,7 @@
     <div class="btn-audio">
         <img v-if="type==1" src="/static/ioc_audition.png" class="audition" alt="" @click="onAudition">
         <img v-else-if="type ==2" src="/static/ioc_accept.png" class="accept" alt="" @click="onAudition">
-        <img v-else-if="type ==3" :src="'/static/ioc_' + (pause==''?'original':pause) + '.png'" class="original" alt="" @click="onAudition">
+        <img v-else-if="type ==3" :src="'/static/ioc_' + (pause==''?'original':pause) + '.png'" class="original" alt="" @click="onAuditionTypeThree">
     </div>
 </template>
 
@@ -28,6 +28,12 @@ export default {
   },
   methods: {
     onAudition (e) {
+      console.log(this.src)
+      InnerAudioContext.src = this.src
+      InnerAudioContext.play()
+      this.notiftNum()
+    },
+    onAuditionTypeThree (e) {
       console.log(this.src)
       if (InnerAudioContext.paused) {
         InnerAudioContext.src = this.src

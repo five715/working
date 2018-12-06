@@ -44,7 +44,7 @@ export default {
         },
         {
           src: '/static/ioc_boxes_english_words.png',
-          href: '',
+          href: '/pages/words/main',
           text: '背单词'
         },
         {

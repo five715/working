@@ -4,7 +4,7 @@
     <div class="btn_record">
       <btnRecord/>
     </div>
-    <a :href="href"><img src="/static/ioc_look.png" class="look" alt=""></a>
+    <a v-if="look" :href="href"><img src="/static/ioc_look.png" class="look" alt=""></a>
   </div>
 </template>
 
@@ -24,12 +24,17 @@ export default {
     initHref: {
       type: String,
       default: ''
+    },
+    initLook: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
     return {
       src: this.initSrc,
-      href: this.initHref
+      href: this.initHref,
+      look: this.initLook
     }
   }
 }
