@@ -1,6 +1,6 @@
 <template>
   <div class="container" >
-    <swiper class="swiper" previous-margin="60rpx" next-margin="60rpx" @change="onBindChange">
+    <swiper class="swiper_card" previous-margin="60rpx" next-margin="60rpx" @change="onBindChange">
       <block v-for="(card,c) in cards" :key="c">
         <swiper-item>
           <lesson-card  :init-pics="card.pics" :init-text="card.text" :init-writer="card.writer" :init-audition="card.audition"/>
@@ -53,6 +53,4 @@ export default {
 </script>
 
 <style>
-.swiper{position: fixed;width: 100%;height: 1334rpx;top: 0;left: 0;}
-
 </style>

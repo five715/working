@@ -1,14 +1,17 @@
 <template>
   <div class="container" >
     <div class="player">
-      <img src="/static/video_index_v_pic.jpg" alt="">
+      <video class="player_video"></video>
+      <img class="player_pic" src="/static/video_index_v_pic.jpg" alt="">
     </div>
-    <div v-if="!isStart" class="player_text">{{text}}</div>
-    <img v-if="!isStart" class="btn_began" @click="btnBegan" src="/static/btn_began_imitate.png" alt="">
-    <div v-show="isStart" class="card">
-      <video-card v-for="(card ,index) in cards" :key="index" :init-now="index+1" :init-sum="cards.length" :init-text="card.text" :init-audition="card.audition"/>
-      <div class="hint">读完所有句子计算评分</div>
-      <a href="/pages/videos/imitate/main"><img src="/static/btn_count.png" alt="" class="btn_count"></a>
+    <div class="overflow" :style="styleScreenHeight">
+      <div v-if="!isStart" class="player_text">{{text}}</div>
+      <img v-if="!isStart" class="btn_began" @click="btnBegan" src="/static/btn_began_imitate.png" alt="">
+      <div v-show="isStart" class="card">
+        <video-card v-for="(card ,index) in cards" :key="index" :init-now="index+1" :init-sum="cards.length" :init-text="card.text" :init-audition="card.audition"/>
+        <div class="hint">读完所有句子计算评分</div>
+        <a href="/pages/videos/imitate/main"><img src="/static/btn_count.png" alt="" class="btn_count"></a>
+      </div>
     </div>
   </div>
 </template>
@@ -27,34 +30,47 @@ export default {
         {
           text: 'The outside world is scary, but dad will always be there to protect you.',
           audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_1.mp3'
+        },
+        {
+          text: 'The outside world is scary, but dad will always be there to protect you.',
+          audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_1.mp3'
         }
-      ]
+      ],
+      screenHeight: ''
     }
   },
-  onLoad () {
-    this.isStart = false
+  computed: {
+    styleScreenHeight () {
+      return `height:${this.screenHeight - 422}rpx;`
+    }
   },
   methods: {
     btnBegan () {
       this.isStart = true
     }
   },
-  onShow () {
-    console.log('onShow')
-  },
-  mounted () {
-    console.log('mounted')
+  onLoad () {
+    this.isStart = false
+    var that = this
+    wx.getSystemInfo({
+      success: (result) => {
+        that.screenHeight = result.windowHeight * (750 / result.windowWidth)
+      }
+    })
   }
 }
 </script>
 
 <style>
-.player{position: relative;width: 750rpx;height: 420rpx;}
-.player_text{margin: 40rpx;font-size: 34rpx;line-height: 60rpx;}
-.btn_began{position:absolute;top: 1066rpx;left: 40rpx;width: 670rpx; height: 90rpx;}
-.card{margin-bottom: 36rpx;}
-.hint{width: 100%; text-align: center; margin: 42rpx 0 41rpx 0;font-size: 26rpx; color: #888888;}
+.player{position: absolute;width: 750rpx;height: 420rpx; top: 0;}
+.player_video{position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
+.player_pic{position:absolute;}
+.overflow{position: absolute;top: 420rpx; height: 780rpx;overflow: auto}
+.overflow .hint{width: 100%; text-align: center; margin: 42rpx 0 41rpx 0;font-size: 26rpx; color: #888888;}
+.overflow .btn_began{position:absolute;left: 40rpx;width: 670rpx; height: 90rpx;}
 .btn_count{ margin: 0rpx 40rpx;width: 670rpx; height: 90rpx;}
+.player_text{margin: 40rpx;font-size: 34rpx;line-height: 60rpx;}
+.card{margin-bottom: 36rpx;}
 
 
 </style>
