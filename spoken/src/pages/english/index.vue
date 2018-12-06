@@ -39,7 +39,7 @@ export default {
         },
         {
           src: '/static/ioc_boxes_english_appraisal.png',
-          href: '',
+          href: '/pages/defined/main',
           text: '自定义测评'
         },
         {

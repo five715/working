@@ -9,7 +9,8 @@
     "pages/videos/imitate/main",
     "pages/follow/index/main",
     "pages/follow/lists/main",
-    "pages/words/main"
+    "pages/words/main",
+    "pages/defined/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
