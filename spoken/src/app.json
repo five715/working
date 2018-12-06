@@ -8,7 +8,8 @@
     "pages/videos/ranking/main",
     "pages/videos/imitate/main",
     "pages/follow/index/main",
-    "pages/follow/lists/main"
+    "pages/follow/lists/main",
+    "pages/words/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

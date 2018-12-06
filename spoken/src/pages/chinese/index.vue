@@ -34,7 +34,7 @@ export default {
         },
         {
           src: '/static/ioc_boxes_chinese_lesson.png',
-          href: '',
+          href: '/pages/lesson/main',
           text: '课文片段'
         },
         {
