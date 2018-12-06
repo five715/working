@@ -1,5 +1,5 @@
 <template>
-  <div class="container" >
+  <div class="container" style="background:#ffffff;" >
     <followList v-for="(list, l) in lists" :key="l" :init-title="list.title" :init-pic="list.pic" :init-grade="list.grade"/>
   </div>  
 </template>
@@ -14,9 +14,34 @@ export default {
     return {
       lists: [
         {
-          title: '标题标题标题标题标题',
+          title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
+          pic: '/static/follow_list_pic_1.jpg',
+          grade: 5
+        },
+        {
+          title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
+          pic: '/static/follow_list_pic_1.jpg',
+          grade: 4
+        },
+        {
+          title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
           pic: '/static/follow_list_pic_1.jpg',
           grade: 3
+        },
+        {
+          title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
+          pic: '/static/follow_list_pic_1.jpg',
+          grade: 2
+        },
+        {
+          title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
+          pic: '/static/follow_list_pic_1.jpg',
+          grade: 1
+        },
+        {
+          title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
+          pic: '/static/follow_list_pic_1.jpg',
+          grade: 0
         }
       ]
     }
