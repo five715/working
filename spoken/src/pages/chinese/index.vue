@@ -24,7 +24,7 @@ export default {
         },
         {
           src: '/static/ioc_boxes_chinese_shizi.png',
-          href: '',
+          href: '/pages/shizi/main',
           text: '识字'
         },
         {

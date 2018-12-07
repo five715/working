@@ -27,7 +27,8 @@ export default {
       dis: 100,
       isPop: 0,
       isSend: true,
-      isDown: true
+      isDown: true,
+      isExecute: true
     }
   },
   onUnload () {
@@ -37,29 +38,32 @@ export default {
     onTouchStart (e) {
       var that = this
       that.isDown = true
-      recorderManager.onStop((res) => {
-        console.log(that, that.isSend)
-        if (that.isSend) {
-          if (res.duration < 3000) {
-            that.isPop = 3
-            console.log('时间过短')
-            setTimeout(function () {
+      if (that.isExecute) {
+        that.isDown = false
+        recorderManager.onStop((res) => {
+          console.log(that, that.isSend)
+          if (that.isSend) {
+            if (res.duration < 3000) {
+              that.isPop = 3
+              console.log('时间过短')
+              setTimeout(function () {
+                that.isPop = 0
+              }, 2000)
+            } else {
+              console.log('发送成功,播放', res)
               that.isPop = 0
-            }, 2000)
+              InnerAudioContext.src = res.tempFilePath
+              InnerAudioContext.play()
+            }
           } else {
-            console.log('发送成功,播放', res)
             that.isPop = 0
-            InnerAudioContext.src = res.tempFilePath
-            InnerAudioContext.play()
+            console.log('取消发送')
           }
-        } else {
-          that.isPop = 0
-          console.log('取消发送')
-        }
-      })
-      recorderManager.onStart(() => {
-        that.isPop = 1
-      })
+        })
+        recorderManager.onStart(() => {
+          that.isPop = 1
+        })
+      }
       that.startX = e.pageX
       that.startY = e.pageY
       wx.authorize({

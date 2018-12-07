@@ -10,7 +10,8 @@
     "pages/follow/index/main",
     "pages/follow/lists/main",
     "pages/words/main",
-    "pages/defined/main"
+    "pages/defined/main",
+    "pages/shizi/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

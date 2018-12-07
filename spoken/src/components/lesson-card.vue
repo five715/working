@@ -37,6 +37,13 @@
     <div class="lesson_card_type_master">{{writer[1]}}</div>
     <sound-enter :init-src="audition" :init-href="evaluation" :init-look="false"/>
   </div>
+  <div v-else-if="type==4" class="lesson-card .lesson-card-type-4">    
+    <div class="lesson_card_type_line"></div>
+    <div class="lesson_card_type_score_hint">本次得分</div>
+    <div class="lesson_card_type_score">{{pics}}</div>
+    <div class="lesson_card_type_master">{{writer[1]}}</div>
+    <sound-enter :init-src="audition" :init-href="evaluation" :init-look="false"/>
+  </div>
 </template>
 
 <script>
@@ -61,7 +68,7 @@ export default {
       text: this.initText,
       writer: this.initWriter,
       audition: this.initAudition,
-      type: this.initType,
+      type: this.initType, // 1:课文片段;2:绘本跟读;3:背单词;4:识字
       evaluation: this.initEvaluation
     }
   },
@@ -86,16 +93,16 @@ export default {
 .lesson-card-type-2 .play{position:absolute;top: 550rpx;left: 253rpx;width: 80rpx;height: 80rpx;}
 
 .lesson-card-type-3 .play{position:absolute;top: 485rpx;left: 253rpx;width: 80rpx;height: 80rpx;}
-.lesson-card-type-3 .lesson_card_type_line{position: absolute;top: 524rpx;left: 41rpx;width: 509rpx;height: 2rpx;background: #dbdbdb;}
 .lesson-card-type-3 .pinyin{position: absolute;top: 40rpx;left: 40rpx; width: 509rpx;height: 67rpx;}
 .lesson-card-type-3 .pinyin_text{position: absolute;width: 100%;top: 0;left: 0; line-height: 50rpx;text-align: center;font-size: 60rpx;}
 .lesson-card-type-3 .lesson_card_text{position: absolute;top:162rpx;left: 40rpx;width: 520rpx; font-size: 26rpx}
 .lesson-card-type-3 .lesson_card_text_t{position: relative; line-height: 40rpx;margin-top: 5rpx;}
 .lesson-card-type-3 .lesson_card_text .front{color: #888888; position: absolute;top: 0rpx;}
 .lesson-card-type-3 .lesson_card_text .back{margin-left: 80rpx;}
-.lesson-card-type-3 .lesson_card_type_score_hint{position:absolute;font-size: 26rpx;left: 41rpx;top: 563rpx; color: #888888;}
-.lesson-card-type-3 .lesson_card_type_score{position:absolute;font-size: 100rpx;top: 636rpx; text-align: center;width: 100%; color: #338bff;line-height: 1;}
-.lesson-card-type-3 .lesson_card_type_master{position:absolute;font-size: 26rpx;top: 748rpx; text-align: center;width: 100%;}
+.lesson_card_type_line{position: absolute;top: 524rpx;left: 41rpx;width: 509rpx;height: 2rpx;background: #dbdbdb;}
+.lesson_card_type_score_hint{position:absolute;font-size: 26rpx;left: 41rpx;top: 563rpx; color: #888888;}
+.lesson_card_type_score{position:absolute;font-size: 100rpx;top: 636rpx; text-align: center;width: 100%; color: #338bff;line-height: 1;}
+.lesson_card_type_master{position:absolute;font-size: 26rpx;top: 748rpx; text-align: center;width: 100%;}
 
 
 </style>
