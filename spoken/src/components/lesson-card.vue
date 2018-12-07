@@ -53,6 +53,14 @@
     <div class="lesson_card_type_master">{{writer[1]}}</div>
     <sound-enter :init-src="audition" :init-href="evaluation" :init-look="false"/>
   </div>
+  <div v-else-if="type==5" class="lesson-card .lesson-card-type-5">
+    <div class="lesson_card_title">{{writer[0]}}</div>
+    <div class="lesson_card_writer">{{writer[1]}}</div>
+    <div class="lesson_card_text">
+      <p v-for="(tex,t) in text" :key="t">{{tex}}</p>
+    </div>
+    <sound-enter :init-src="audition" :init-href="evaluation"/>
+  </div>
 </template>
 
 <script>
@@ -77,7 +85,7 @@ export default {
       text: this.initText,
       writer: this.initWriter,
       audition: this.initAudition,
-      type: this.initType, // 1:课文片段;2:绘本跟读;3:背单词;4:识字
+      type: this.initType, // 1:课文片段;2:绘本跟读;3:背单词;4:识字;5:唐诗背诵
       evaluation: this.initEvaluation
     }
   },
@@ -120,6 +128,10 @@ export default {
 .lesson-card-type-4 .lesson_card_text .front{position: absolute;top: 0rpx;}
 .lesson-card-type-4 .lesson_card_text .back{margin-left: 40rpx;}
 .lesson-card-type-4 .lesson_card_more{display: inline;color: #338bff}
+
+.lesson-card-type-5 .lesson_card_title{margin-top: 130rpx;width: 100%;text-align: center;font-size: 48rpx;}
+.lesson-card-type-5 .lesson_card_writer{margin-top: 25rpx;width: 100%;text-align: center;font-size: 36rpx; color: #888;}
+.lesson-card-type-5 .lesson_card_text{margin-top: 60rpx;width: 100%;text-align: center;font-size: 36rpx;margin-left: 20rpx;letter-spacing: 5rpx;line-height: 60rpx;}
 
 
 </style>

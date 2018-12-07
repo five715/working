@@ -19,7 +19,7 @@ export default {
       navs: [
         {
           src: '/static/ioc_boxes_chinese_recite.png',
-          href: '',
+          href: '/pages/recite/main',
           text: '唐诗背诵'
         },
         {

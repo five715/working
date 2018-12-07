@@ -11,7 +11,8 @@
     "pages/follow/lists/main",
     "pages/words/main",
     "pages/defined/main",
-    "pages/shizi/main"
+    "pages/shizi/main",
+    "pages/recite/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
