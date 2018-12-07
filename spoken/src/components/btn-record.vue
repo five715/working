@@ -8,7 +8,7 @@
 </template>
 <script>
 const recorderManager = wx.getRecorderManager()
-const InnerAudioContext = wx.createInnerAudioContext()
+// const InnerAudioContext = wx.createInnerAudioContext()
 const options = {
   duration: 10000,
   sampleRate: 44100,
@@ -35,11 +35,15 @@ export default {
     console.log(this.isPop)
   },
   methods: {
+    notiftNum (src) {
+      this.$emit('setSrc', {
+        'src': src
+      })
+    },
     onTouchStart (e) {
       var that = this
       that.isDown = true
       if (that.isExecute) {
-        that.isDown = false
         recorderManager.onStop((res) => {
           console.log(that, that.isSend)
           if (that.isSend) {
@@ -52,8 +56,9 @@ export default {
             } else {
               console.log('发送成功,播放', res)
               that.isPop = 0
-              InnerAudioContext.src = res.tempFilePath
-              InnerAudioContext.play()
+              that.notiftNum(res.tempFilePath)
+              // InnerAudioContext.src = res.tempFilePath
+              // InnerAudioContext.play()
             }
           } else {
             that.isPop = 0

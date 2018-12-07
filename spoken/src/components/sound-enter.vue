@@ -1,8 +1,8 @@
 <template>
   <div class="sound-enter">
-    <btnAudio :init-src="src"/>
+    <btnAudio ref="btnAudio"/>
     <div class="btn_record">
-      <btnRecord/>
+      <btnRecord  @setSrc="bindSetSrc"/>
     </div>
     <a v-if="look" :href="href"><img src="/static/ioc_look.png" class="look" alt=""></a>
   </div>
@@ -35,6 +35,11 @@ export default {
       src: this.initSrc,
       href: this.initHref,
       look: this.initLook
+    }
+  },
+  methods: {
+    bindSetSrc (e) {
+      this.$refs.btnAudio.src = e.src
     }
   }
 }
