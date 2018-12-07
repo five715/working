@@ -24,16 +24,16 @@ export default {
       now: 1,
       cards: [
         {
-          writer: ['do', '因素掌握:[du]'],
+          writer: ['多', '因素掌握：duō'],
           audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_1.mp3',
           pics: 98,
-          text: {'aux.': '构成疑问句和否定句；代替动词；用于加强语气。', 'vt.': '做；干；进行；从事', 'vi.': '表现；进展；引起；行过', 'n.': '社交聚会；社交活动；宴会'}
+          text: ['数量大（跟“少、寡”相对）。', '超出原有或应有的数目；比原来的数目有所增加（跟“少”相对）。', '过分的；不必要的。']
         },
         {
-          writer: ['do', '因素掌握:[du]'],
-          audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_2.mp3',
+          writer: ['多', '因素掌握：duō'],
+          audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_1.mp3',
           pics: 98,
-          text: {'aux.': '构成疑问句和否定句；代替动词；用于加强语气。', 'vt.': '做；干；进行；从事', 'vi.': '表现；进展；引起；行过', 'n.': '社交聚会；社交活动；宴会'}
+          text: ['数量大（跟“少、寡”相对）。', '超出原有或应有的数目；比原来的数目有所增加（跟“少”相对）。', '过分的；不必要的。']
         }
       ]
     }

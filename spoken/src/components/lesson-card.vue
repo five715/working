@@ -37,7 +37,16 @@
     <div class="lesson_card_type_master">{{writer[1]}}</div>
     <sound-enter :init-src="audition" :init-href="evaluation" :init-look="false"/>
   </div>
-  <div v-else-if="type==4" class="lesson-card .lesson-card-type-4">    
+  <div v-else-if="type==4" class="lesson-card .lesson-card-type-4">   
+    <div class="hanzi">
+      <img src="/static/shizi_hanzi_box.png" class="hanzi_box" />
+      <span class="hanzi_text">{{writer[0]}}</span>
+    </div>
+    <div class="lesson_card_text">
+      <div class="lesson_card_text_t" v-for="(exp,e) in text" :key="e">
+        <p class="front">{{e+1}}、</p><p class="back">{{exp}}<a hover-class="none" class="lesson_card_more" v-if="e==text.length-1" href="#">查看更多</a></p>
+      </div>
+    </div> 
     <div class="lesson_card_type_line"></div>
     <div class="lesson_card_type_score_hint">本次得分</div>
     <div class="lesson_card_type_score">{{pics}}</div>
@@ -103,6 +112,14 @@ export default {
 .lesson_card_type_score_hint{position:absolute;font-size: 26rpx;left: 41rpx;top: 563rpx; color: #888888;}
 .lesson_card_type_score{position:absolute;font-size: 100rpx;top: 636rpx; text-align: center;width: 100%; color: #338bff;line-height: 1;}
 .lesson_card_type_master{position:absolute;font-size: 26rpx;top: 748rpx; text-align: center;width: 100%;}
+
+.lesson-card-type-4 .hanzi{position: absolute;top: 40rpx;left: 195rpx;width: 200rpx;height: 200rpx;}
+.lesson-card-type-4 .hanzi_text{position: absolute;top: 0;left: 0; font-size: 180rpx;width: 100%; text-align: center;line-height: 200rpx;}
+.lesson-card-type-4 .lesson_card_text{position:absolute; top: 290rpx; left: 40rpx; width: 508rpx; color: #888888; font-size: 26rpx;}
+.lesson-card-type-4 .lesson_card_text_t{position: relative; line-height: 40rpx;margin-top: 5rpx;}
+.lesson-card-type-4 .lesson_card_text .front{position: absolute;top: 0rpx;}
+.lesson-card-type-4 .lesson_card_text .back{margin-left: 40rpx;}
+.lesson-card-type-4 .lesson_card_more{display: inline;color: #338bff}
 
 
 </style>
