@@ -11,5 +11,6 @@ export default {
   .index_pic{width: 750rpx;height: 420rpx;position: relative;display: block}
   .swiper_card{position: fixed;width: 100%;height: 1334rpx;top: 0;left: 0;}
   .swiper_card swiper-item{overflow:unset;}
+  .lomo{background: #ffffff;}
 </style>
 

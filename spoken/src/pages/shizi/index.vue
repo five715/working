@@ -3,7 +3,7 @@
     <swiper class="swiper_card" previous-margin="60rpx" next-margin="60rpx" @change="onBindChange">
       <block v-for="(card,c) in cards" :key="c">
         <swiper-item>
-          <lesson-card :init-type="4" :init-pics="card.pics" :init-text="card.text" :init-writer="card.writer" :init-audition="card.audition"/>
+          <lesson-card ref="lessonCard" :init-type="4" :init-pics="card.pics" :init-text="card.text" :init-writer="card.writer" :init-audition="card.audition"/>
         </swiper-item>
       </block>
     </swiper>
@@ -41,6 +41,7 @@ export default {
   methods: {
     onBindChange (e) {
       this.$refs.pageNumber.now = this.now = e.mp.detail.current + 1
+      this.$refs.lessonCard[this.now - 1].onSwiperChange()
     }
   }
 }

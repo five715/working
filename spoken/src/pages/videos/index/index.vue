@@ -33,7 +33,7 @@ export default {
         },
         {
           text: 'The outside world is scary, but dad will always be there to protect you.',
-          audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_1.mp3'
+          audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_2.mp3'
         }
       ],
       screenHeight: ''

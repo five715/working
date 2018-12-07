@@ -42,6 +42,7 @@ export default {
     },
     onTouchStart (e) {
       var that = this
+      that.$emit('clickStart', {})
       that.isDown = true
       if (that.isExecute) {
         recorderManager.onStop((res) => {

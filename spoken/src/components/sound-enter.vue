@@ -2,9 +2,9 @@
   <div class="sound-enter">
     <btnAudio ref="btnAudio"/>
     <div class="btn_record">
-      <btnRecord  @setSrc="bindSetSrc"/>
+      <btnRecord  @setSrc="bindSetSrc" @clickStart="bindClickStart"/>
     </div>
-    <a v-if="look" :href="href"><img src="/static/ioc_look.png" class="look" alt=""></a>
+    <a hover-class="none" v-if="look" :href="href"><img src="/static/ioc_look.png" class="look" alt=""></a>
   </div>
 </template>
 
@@ -40,6 +40,12 @@ export default {
   methods: {
     bindSetSrc (e) {
       this.$refs.btnAudio.src = e.src
+    },
+    onAudioPause (e) {
+      this.$refs.btnAudio.AudioStop()
+    },
+    bindClickStart () {
+      this.$emit('clickStart', {})
     }
   }
 }

@@ -26,6 +26,12 @@ export default {
       pause: ''
     }
   },
+  created () {
+    InnerAudioContext.onPause((res) => {
+      this.pause = ''
+      wx.hideToast()
+    })
+  },
   methods: {
     onAudition (e) {
       console.log(this.src)
@@ -34,29 +40,40 @@ export default {
       this.notiftNum()
     },
     onAuditionTypeThree (e) {
-      console.log(this.src)
-      if (InnerAudioContext.paused) {
-        InnerAudioContext.src = this.src
-        InnerAudioContext.play()
-        if (this.type === 3) {
-          this.pause = 'pause'
+      var that = this
+      if (that.pause === '') InnerAudioContext.pause()
+      console.log(that.src, InnerAudioContext.paused)
+      setTimeout(function () {
+        if (InnerAudioContext.paused && that.pause === '') {
+          InnerAudioContext.src = ''
+          InnerAudioContext.src = that.src
+          InnerAudioContext.play()
+          if (that.type === 3) {
+            that.pause = 'pause'
+          }
+          that.notiftNum()
+        } else {
+          that.AudioStop()
         }
-        this.notiftNum()
-      } else {
-        InnerAudioContext.pause()
-        this.pause = ''
-        wx.hideToast()
-      }
+      }, 100)
     },
     notiftNum () {
       this.$emit('clickBtnAutio', {})
+    },
+    AudioStop () {
+      console.log(this)
+      InnerAudioContext.pause()
+      this.pause = ''
+      wx.hideToast()
     }
   },
   onHide () {
     InnerAudioContext.stop()
+    this.pause = ''
   },
   onUnload () {
     InnerAudioContext.stop()
+    this.pause = ''
   }
 }
 </script>

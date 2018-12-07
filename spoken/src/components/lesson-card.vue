@@ -6,7 +6,7 @@
       <br>
       <span class="writer">{{writer}}</span>
     </span>
-    <sound-enter :init-src="audition"/>
+    <sound-enter ref="soundEnter" :init-src="audition"/>
   </div>
   <div v-else-if="type==2" class="lesson-card .lesson-card-type-2">
     <img class="pic" :src="pics" alt>
@@ -16,9 +16,9 @@
       <span class="writer">{{writer}}</span>
     </span>
     <div class="play">
-      <btnAudio :init-type="3" :init-src="audition" @clickBtnAutio="onClickBtnAutio"/>
+      <btnAudio :init-type="3" :init-src="audition"  @clickBtnAutio="onClickBtnAutio"/>
     </div>
-    <sound-enter :init-src="audition" :init-href="evaluation"/>
+    <sound-enter ref="soundEnter" :init-src="audition" :init-href="evaluation" @clickStart="onSwiperChange" />
   </div>
   <div v-else-if="type==3" class="lesson-card .lesson-card-type-3">
     <div class="pinyin">
@@ -35,7 +35,7 @@
     <div class="lesson_card_type_score_hint">本次得分</div>
     <div class="lesson_card_type_score">{{pics}}</div>
     <div class="lesson_card_type_master">{{writer[1]}}</div>
-    <sound-enter :init-src="audition" :init-href="evaluation" :init-look="false"/>
+    <sound-enter ref="soundEnter" :init-src="audition" :init-href="evaluation" :init-look="false" @clickStart="onSwiperChange" />
   </div>
   <div v-else-if="type==4" class="lesson-card .lesson-card-type-4">   
     <div class="hanzi">
@@ -51,7 +51,7 @@
     <div class="lesson_card_type_score_hint">本次得分</div>
     <div class="lesson_card_type_score">{{pics}}</div>
     <div class="lesson_card_type_master">{{writer[1]}}</div>
-    <sound-enter :init-src="audition" :init-href="evaluation" :init-look="false"/>
+    <sound-enter ref="soundEnter" :init-src="audition" :init-href="evaluation" :init-look="false"/>
   </div>
   <div v-else-if="type==5" class="lesson-card .lesson-card-type-5">
     <div class="lesson_card_title">{{writer[0]}}</div>
@@ -59,7 +59,7 @@
     <div class="lesson_card_text">
       <p v-for="(tex,t) in text" :key="t">{{tex}}</p>
     </div>
-    <sound-enter :init-src="audition" :init-href="evaluation"/>
+    <sound-enter ref="soundEnter" :init-src="audition" :init-href="evaluation"/>
   </div>
 </template>
 
@@ -92,6 +92,9 @@ export default {
   methods: {
     onClickBtnAutio (data) {
       wx.showToast({icon: 'none', title: '播放原声'})
+    },
+    onSwiperChange (e) {
+      this.$refs.soundEnter.onAudioPause()
     }
   }
 }
