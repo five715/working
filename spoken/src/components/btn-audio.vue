@@ -34,9 +34,10 @@ export default {
   },
   methods: {
     onAudition (e) {
-      console.log(this.src)
-      InnerAudioContext.src = this.src
-      InnerAudioContext.play()
+      if (this.src) {
+        InnerAudioContext.src = this.src
+        InnerAudioContext.play()
+      }
       this.notiftNum()
     },
     onAuditionTypeThree (e) {

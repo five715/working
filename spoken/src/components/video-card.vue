@@ -3,9 +3,9 @@
     <div class="line"></div>
     <pageNumber :init-top="40" :init-left="30" :init-now="now" :init-sum="sum"/>
     <div class="text">{{text}}</div>
-    <btnAudio :init-src="src" :init-type="2"/>
+    <btnAudio ref="btnAudio" :init-type="2"/>
     <div class="btn_record">
-      <btnRecord/>
+      <btnRecord  @setSrc="bindSetSrc" />
     </div>
     <div class="original">
       <btnAudio :init-src="src" :init-type="3"/>
@@ -47,6 +47,11 @@ export default {
       now: this.initNow,
       sum: this.initSum,
       src: this.initAudition
+    }
+  },
+  methods: {
+    bindSetSrc (e) {
+      this.$refs.btnAudio.src = e.src
     }
   }
 }
