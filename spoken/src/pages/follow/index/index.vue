@@ -8,16 +8,19 @@
       </block>
     </swiper>
     <page-number :init-now="now" :init-sum="cards.length" ref="pageNumber" />
+    <popupToast/>
   </div>
 </template>
 
 <script>
 import pageNumber from '@/components/page-number'
 import lessonCard from '@/components/lesson-card'
+import popupToast from '@/components/popup-toast'
 export default {
   components: {
     pageNumber,
-    lessonCard
+    lessonCard,
+    popupToast
   },
   data () {
     return {

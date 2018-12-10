@@ -10,14 +10,17 @@
     </div>
     <div class="defined_hint">输入测评内容后，选择评判标准，按住下方录音即可开始评测。</div>
     <div class="defined_record"><btnRecord/></div>
+    <popupToast/>
   </div>
 </template>
 
 <script>
 import btnRecord from '@/components/btn-record'
+import popupToast from '@/components/popup-toast'
 export default {
   components: {
-    btnRecord
+    btnRecord,
+    popupToast
   },
   data () {
     return {
@@ -45,7 +48,6 @@ export default {
       return newArr
     }
   }
-
 }
 </script>
 

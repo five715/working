@@ -13,14 +13,17 @@
         <a href="/pages/videos/imitate/main"><img src="/static/btn_count.png" alt="" class="btn_count"></a>
       </div>
     </div>
+    <popupToast/>
   </div>
 </template>
 
 <script>
 import videoCard from '@/components/video-card'
+import popupToast from '@/components/popup-toast'
 export default {
   components: {
-    videoCard
+    videoCard,
+    popupToast
   },
   data () {
     return {

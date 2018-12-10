@@ -78,6 +78,7 @@ export default {
 </script>
 
 <style>
+.container{position: relative;}
 .lomo{border: 1px solid #d3d3d3; width: 670rpx;box-sizing: border-box; margin: 40rpx; padding: 40rpx;position: relative;
   border-radius: 10rpx;}
 .lomo_hint{font-size: 34rpx;color: #888888;}
