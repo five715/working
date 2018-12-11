@@ -16,21 +16,16 @@ export default {
     },
     initSrc: {
       type: String,
-      default: ''
+      default: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_2.mp3'
     }
   },
   data () {
     return {
       type: this.initType,
       src: this.initSrc,
-      pause: ''
+      pause: '',
+      isExecute: true
     }
-  },
-  created () {
-    InnerAudioContext.onPause((res) => {
-      this.pause = ''
-      wx.hideToast()
-    })
   },
   methods: {
     onAudition (e) {
@@ -42,11 +37,18 @@ export default {
     },
     onAuditionTypeThree (e) {
       var that = this
+      if (that.isExecute) {
+        that.isExecute = false
+        InnerAudioContext.onPause((res) => {
+          console.log(that.pause, '播放结束')
+          that.pause = ''
+          wx.hideToast()
+        })
+      }
       if (that.pause === '') InnerAudioContext.pause()
       console.log(that.src, InnerAudioContext.paused)
       setTimeout(function () {
-        if (InnerAudioContext.paused && that.pause === '') {
-          InnerAudioContext.src = ''
+        if (InnerAudioContext.paused && that.pause === '' && that.src) {
           InnerAudioContext.src = that.src
           InnerAudioContext.play()
           if (that.type === 3) {
@@ -66,15 +68,18 @@ export default {
       InnerAudioContext.pause()
       this.pause = ''
       wx.hideToast()
+    },
+    onStop () {
+      console.log('音频停止')
+      InnerAudioContext.stop()
+      this.pause = ''
     }
   },
   onHide () {
-    InnerAudioContext.stop()
-    this.pause = ''
+    this.onStop()
   },
   onUnload () {
-    InnerAudioContext.stop()
-    this.pause = ''
+    this.onStop()
   }
 }
 </script>

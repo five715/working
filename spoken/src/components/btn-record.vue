@@ -1,6 +1,7 @@
 <template>
   <div class="btn-record">
-    <img src="/static/ioc_record.png" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd" class="record" alt="">
+    <img v-if="type == 1" src="/static/ioc_record.png" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd" class="record" alt="">
+    <img v-else-if="type == 2" src="/static/ioc_record.png" @click="onBindClick" class="record" alt="">
   </div>
 </template>
 <script>
@@ -14,6 +15,16 @@ const options = {
   frameSize: 50
 }
 export default {
+  props: {
+    initType: {
+      type: Number,
+      default: 1
+    },
+    initDuration: {
+      type: Number,
+      default: 0
+    }
+  },
   data () {
     return {
       startX: 0,
@@ -24,66 +35,56 @@ export default {
       isPop: 0,
       isSend: true,
       isDown: true,
-      isExecute: true
+      isExecute: true,
+      type: this.initType,
+      duration: this.initDuration * 1000,
+      nowDuration: 0,
+      interval: 10
     }
   },
   onUnload () {
     console.log(this.isPop)
   },
   methods: {
-    notiftNum (src) {
+    notiftNum (src, duration, bol) {
       this.$emit('setSrc', {
-        'src': src
+        'src': src,
+        'duration': duration,
+        'isPlay': bol
       })
     },
-    onTouchStart (e) {
+    onBindClick () {
+      if (!this.isDown) return false
       var that = this
-      console.log(that.Global)
-      that.$emit('clickStart', {})
-      that.isDown = true
       if (that.isExecute) {
-        recorderManager.onStop((res) => {
-          console.log(that, that.isSend)
-          if (that.isSend) {
-            if (res.duration < 3000) {
-              that.Global.isPop(3)
-              console.log('时间过短')
-              setTimeout(function () {
-                that.Global.isPop(0)
-              }, 2000)
-            } else {
-              console.log('发送成功,播放', res)
-              that.Global.isPop(0)
-              that.notiftNum(res.tempFilePath)
-              // InnerAudioContext.src = res.tempFilePath
-              // InnerAudioContext.play()
-            }
-          } else {
-            that.Global.isPop(0)
-            console.log('取消发送')
-          }
-        })
+        that.isExecute = false
         recorderManager.onStart(() => {
-          that.Global.isPop(1)
+          that.isDown = false
+          console.log('录音开始')
+          var timer = setInterval(() => {
+            that.nowDuration += that.interval
+            if (that.nowDuration >= that.duration) {
+              recorderManager.stop()
+              clearInterval(timer)
+            }
+          }, that.interval)
+        })
+        recorderManager.onStop((res) => {
+          console.log(res)
+          that.isDown = true
+          console.log('录音结束')
+          that.notiftNum(res.tempFilePath, res.duration, true)
         })
       }
-      that.startX = e.pageX
-      that.startY = e.pageY
+      that.onAuthorize(function () {
+        recorderManager.start(options)
+      })
+    },
+    onAuthorize (callback) {
       wx.authorize({
         scope: 'scope.record',
         success () {
-          if (that.isDown) {
-            console.log('录音授权成功')
-            recorderManager.start(options)// 使用新版录音接口，可以获取录音文件
-            that.Global.isPop(1)
-            that.isSend = true
-          } else {
-            that.Global.isPop(3)
-            console.log('时间过短')
-            setTimeout(function () {
-              that.Global.isPop(0)
-            }, 2000)
-          }
+          callback()
         },
         fail (res) {
           wx.showModal({
@@ -124,6 +125,55 @@ export default {
         }
       })
     },
+    onTouchStart (e) {
+      var that = this
+      console.log(that.Global)
+      that.$emit('clickStart', {})
+      that.isDown = true
+      if (that.isExecute) {
+        that.isExecute = false
+        recorderManager.onStop((res) => {
+          console.log(that, that.isSend)
+          if (that.isSend) {
+            if (res.duration < 3000) {
+              that.Global.isPop(3)
+              console.log('时间过短')
+              setTimeout(function () {
+                that.Global.isPop(0)
+              }, 2000)
+            } else {
+              console.log('发送成功,播放', res)
+              that.Global.isPop(0)
+              that.notiftNum(res.tempFilePath)
+              // InnerAudioContext.src = res.tempFilePath
+              // InnerAudioContext.play()
+            }
+          } else {
+            that.Global.isPop(0)
+            console.log('取消发送')
+          }
+        })
+        recorderManager.onStart(() => {
+          that.Global.isPop(1)
+        })
+      }
+      that.startX = e.pageX
+      that.startY = e.pageY
+      that.onAuthorize(function () {
+        if (that.isDown) {
+          console.log('录音授权成功')
+          recorderManager.start(options)// 使用新版录音接口，可以获取录音文件
+          that.Global.isPop(1)
+          that.isSend = true
+        } else {
+          that.Global.isPop(3)
+          console.log('时间过短')
+          setTimeout(function () {
+            that.Global.isPop(0)
+          }, 2000)
+        }
+      })
+    },
     onTouchMove (e) {
       var that = this
       that.x = e.pageX
@@ -139,7 +189,13 @@ export default {
     },
     onTouchEnd (e) {
       this.isDown = false
-      recorderManager.stop()
+      wx.getSetting({
+        success: (res) => {
+          if (res.authSetting['scope.record'] !== undefined) {
+            recorderManager.stop()
+          }
+        }
+      })
     }
   }
 }

@@ -7,10 +7,18 @@
     <div class="overflow" :style="styleScreenHeight">
       <div v-if="!isStart" class="player_text">{{text}}</div>
       <img v-if="!isStart" class="btn_began" @click="btnBegan" src="/static/btn_began_imitate.png" alt="">
-      <div v-show="isStart" class="card">
-        <video-card v-for="(card ,index) in cards" :key="index" :init-now="index+1" :init-sum="cards.length" :init-text="card.text" :init-audition="card.audition"/>
-        <div class="hint">读完所有句子计算评分</div>
-        <a href="/pages/videos/imitate/main"><img src="/static/btn_count.png" alt="" class="btn_count"></a>
+      <div v-show="isStart" class="card" :style="styleScreenHeight">
+        <swiper class="video_card" next-margin="600rpx" vertical="true" @change="onBindChange">
+          <block v-for="(card ,index) in cards" :key="index">
+            <swiper-item>
+              <video-card :init-now="index+1" :init-sum="cards.length" :init-text="card.text" :init-duration="card.duration"/>
+            </swiper-item>
+          </block>
+          <swiper-item>
+            <div class="hint">读完所有句子计算评分</div>
+            <a hover-class="none" href="/pages/videos/imitate/main"><img src="/static/btn_count.png" alt="" class="btn_count"></a>
+          </swiper-item>
+        </swiper>
       </div>
     </div>
     <popupToast/>
@@ -32,11 +40,23 @@ export default {
       cards: [
         {
           text: 'The outside world is scary, but dad will always be there to protect you.',
-          audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_1.mp3'
+          timePoint: 1,
+          duration: 5
         },
         {
           text: 'The outside world is scary, but dad will always be there to protect you.',
-          audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_2.mp3'
+          timePoint: 5,
+          duration: 3
+        },
+        {
+          text: 'The outside world is scary, but dad will always be there to protect you.',
+          timePoint: 10,
+          duration: 4
+        },
+        {
+          text: 'The outside world is scary, but dad will always be there to protect you.',
+          timePoint: 15,
+          duration: 6
         }
       ],
       screenHeight: ''
@@ -45,11 +65,20 @@ export default {
   computed: {
     styleScreenHeight () {
       return `height:${this.screenHeight - 422}rpx;`
+    },
+    nextMarginScreenHeight () {
+      return `360rpx;`
     }
   },
   methods: {
     btnBegan () {
       this.isStart = true
+    },
+    onBindChange (e) {
+      var current = e.mp.detail.current
+      if (this.cards[current]) {
+        console.log(`卡片编号:${current}`, `时间点:${this.cards[current].timePoint}`)
+      }
     }
   },
   onLoad () {
@@ -68,12 +97,14 @@ export default {
 .player{position: absolute;width: 750rpx;height: 420rpx; top: 0;}
 .player_video{position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
 .player_pic{position:absolute;}
-.overflow{position: absolute;top: 420rpx; height: 780rpx;overflow: auto}
+.overflow{position: absolute;top: 420rpx; width: 100%;overflow: auto}
 .overflow .hint{width: 100%; text-align: center; margin: 42rpx 0 41rpx 0;font-size: 26rpx; color: #888888;}
 .overflow .btn_began{position:absolute;left: 40rpx;width: 670rpx; height: 90rpx;}
 .btn_count{ margin: 0rpx 40rpx;width: 670rpx; height: 90rpx;}
 .player_text{margin: 40rpx;font-size: 34rpx;line-height: 60rpx;}
-.card{margin-bottom: 36rpx;}
 
+.overflow .card{overflow: hidden;}
+.video_card{width: 100%; height: 1043rpx;}
+/* .video_card swiper-item{height: 436rpx !important;} */
 
 </style>
