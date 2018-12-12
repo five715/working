@@ -37,13 +37,10 @@ export default {
     },
     onAuditionTypeThree (e) {
       var that = this
+      console.log(that.isExecute)
       if (that.isExecute) {
         that.isExecute = false
-        InnerAudioContext.onPause((res) => {
-          console.log(that.pause, '播放结束')
-          that.pause = ''
-          wx.hideToast()
-        })
+        InnerAudioContext.onPause(that.AudioStop)
       }
       if (that.pause === '') InnerAudioContext.pause()
       console.log(that.src, InnerAudioContext.paused)
@@ -51,6 +48,7 @@ export default {
         if (InnerAudioContext.paused && that.pause === '' && that.src) {
           InnerAudioContext.src = that.src
           InnerAudioContext.play()
+          that.$emit('audioStart', {InnerAudioContext: InnerAudioContext})
           if (that.type === 3) {
             that.pause = 'pause'
           }
@@ -63,8 +61,8 @@ export default {
     notiftNum () {
       this.$emit('clickBtnAutio', {})
     },
-    AudioStop () {
-      console.log(this)
+    AudioStop (res) {
+      console.log(this.pause, '播放结束')
       InnerAudioContext.pause()
       this.pause = ''
       wx.hideToast()

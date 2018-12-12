@@ -1,17 +1,20 @@
 <template>
   <div class="container" >
     <div class="player">
-      <video class="player_video" id="myVideo" :src="videSrc" @timeupdate="onBindTimeUpDate"></video>
+      <video class="player_video" id="myVideo" :muted="isMuted"
+      src='http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400' 
+      @timeupdate="onBindTimeUpDate" ></video>
       <img v-if="!isStart" class="player_pic" src="/static/video_index_v_pic.jpg" alt="">
     </div>
+    <div class="videos_mask" v-if="isMask" :style="styleScreenHeight"></div>
     <div class="overflow" :style="styleScreenHeight">
       <div v-if="!isStart" class="player_text">{{text}}</div>
       <img v-if="!isStart" class="btn_began" @click="btnBegan" src="/static/btn_began_imitate.png" alt="">
       <div v-show="isStart" class="card" :style="styleScreenHeight">
-        <swiper class="video_card" next-margin="600rpx" vertical="true" @change="onBindChange">
+        <swiper class="video_card" next-margin="600rpx" vertical="true" @change="onBindChange" :current="current">
           <block v-for="(card ,index) in cards" :key="index">
             <swiper-item>
-              <video-card :init-now="index+1" :init-sum="cards.length" :init-text="card.text" :init-duration="card.duration"/>
+              <video-card ref="videoCard" :init-now="index+1" :init-sum="cards.length" :init-text="card.text" :init-duration="card.duration" :init-timepoint="card.timePoint"/>
             </swiper-item>
           </block>
           <swiper-item>
@@ -35,7 +38,6 @@ export default {
   },
   data () {
     return {
-      videSrc: 'http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400',
       text: '在阴森恐怖令人谈之色变的幽灵森林深处，耸立着一幢巍峨庄严的古堡。这里的主人正是声名显赫的吸血鬼德古拉（亚当·桑德勒Adam Sandler 配音）。与传说中不同，德古拉是一个无比温柔的好爸爸，他独自抚养爱女梅菲丝（赛琳娜·戈麦斯 Selena Gomez配音），为了保护女儿免遭人类的戕害，而特意修建了这座名为尖叫旅社的城堡，普通人类绝对无法接近这里。',
       isStart: false,
       cards: [
@@ -62,7 +64,9 @@ export default {
       ],
       screenHeight: '',
       videoContext: null,
-      current: 0
+      current: 0,
+      isMask: false,
+      isMuted: false
     }
   },
   computed: {
@@ -83,9 +87,15 @@ export default {
       var cards = that.cards
       var current = that.current = e.mp.detail.current
       var card = cards[current]
+      var videoCard = that.$refs.videoCard
       if (card) {
-        this.videoContext.seek(card.timePoint)
-        console.log(`卡片编号:${current + 1}`, `时间点:${card.timePoint}`)
+        that.videoContext.seek(card.timePoint)
+        that.videoContext.play()
+        console.log(`卡片编号:${current + 1}`, `时间点:${card.timePoint}`, videoCard[current].onAudioStop())
+      }
+      for (var i = 0; i < videoCard.length; i++) {
+        if (i === current) videoCard[i].isMask = false
+        else videoCard[i].isMask = true
       }
     },
     onBindTimeUpDate (e) {
@@ -123,8 +133,9 @@ export default {
 .btn_count{ margin: 0rpx 40rpx;width: 670rpx; height: 90rpx;}
 .player_text{margin: 40rpx;font-size: 34rpx;line-height: 60rpx;}
 
+.videos_mask{position: absolute;top: 420rpx; width: 100%;z-index: 1;}
+
 .overflow .card{overflow: hidden;}
 .video_card{width: 100%; height: 1043rpx;}
-/* .video_card swiper-item{height: 436rpx !important;} */
 
 </style>

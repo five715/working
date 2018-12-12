@@ -1,7 +1,7 @@
 <template>
   <div class="btn-record">
     <img v-if="type == 1" src="/static/ioc_record.png" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd" class="record" alt="">
-    <img v-else-if="type == 2" src="/static/ioc_record.png" @click="onBindClick" class="record" alt="">
+    <img v-else-if="type == 2" src="/static/ioc_record2.png" @click="onBindClick" class="record2" alt="">
   </div>
 </template>
 <script>
@@ -56,6 +56,8 @@ export default {
     onBindClick () {
       if (!this.isDown) return false
       var that = this
+      that.$emit('recordStart', {})
+      that.nowDuration = 0
       if (that.isExecute) {
         that.isExecute = false
         recorderManager.onStart(() => {
@@ -63,6 +65,7 @@ export default {
           console.log('录音开始')
           var timer = setInterval(() => {
             that.nowDuration += that.interval
+            that.$emit('setRate', {nowDuration: that.nowDuration})
             if (that.nowDuration >= that.duration) {
               recorderManager.stop()
               clearInterval(timer)
@@ -76,6 +79,17 @@ export default {
           that.notiftNum(res.tempFilePath, res.duration, true)
         })
       }
+
+      var timer = setInterval(() => {
+        that.nowDuration += that.interval
+        that.$emit('setRate', {nowDuration: that.nowDuration})
+        if (that.nowDuration >= that.duration) {
+          recorderManager.stop()
+          clearInterval(timer)
+          that.notiftNum('http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_3.mp3', 5000, true)
+        }
+      }, that.interval)
+
       that.onAuthorize(function () {
         recorderManager.start(options)
       })
@@ -203,4 +217,5 @@ export default {
 
 <style>
 .btn-record .record{width: 230rpx; height: 90rpx;}
+.btn-record .record2{width: 80rpx; height: 80rpx;}
 </style>
