@@ -16,7 +16,7 @@ export default {
     },
     initSrc: {
       type: String,
-      default: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_2.mp3'
+      default: ''
     }
   },
   data () {
