@@ -1,7 +1,7 @@
 <template>
   <a class="index-boxes" hover-class="none" :href="href">
     <img class="boxes_ioc" :src="src" alt="">
-    <text class="boxes_text">{{text}}</text>
+    <text class="boxes_text" :style="bindStyleColor">{{text}}</text>
   </a>
 </template>
 
@@ -26,6 +26,11 @@ export default {
       src: this.initSrc,
       href: this.initHref,
       text: this.initText
+    }
+  },
+  computed: {
+    bindStyleColor () {
+      return `color:${this.href ? '' : '#ccc'}`
     }
   }
 }

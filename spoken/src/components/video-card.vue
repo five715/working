@@ -102,9 +102,12 @@ export default {
       that.$refs.btnAudio.onStop()
     },
     bindAudioStart (e) {
+      var that = this
       console.log('播放音频')
       e.InnerAudioContext.seek(0)
-      var that = this
+      setTimeout(function () {
+        that.$refs.btnAudio.onStop()
+      }, that.duration * 1000)
       that.$parent.videoContext.pause()
     }
   }

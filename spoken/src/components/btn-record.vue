@@ -80,15 +80,15 @@ export default {
         })
       }
 
-      var timer = setInterval(() => {
-        that.nowDuration += that.interval
-        that.$emit('setRate', {nowDuration: that.nowDuration})
-        if (that.nowDuration >= that.duration) {
-          recorderManager.stop()
-          clearInterval(timer)
-          that.notiftNum('http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_3.mp3', 5000, true)
-        }
-      }, that.interval)
+      // var timer = setInterval(() => {
+      //   that.nowDuration += that.interval
+      //   that.$emit('setRate', {nowDuration: that.nowDuration})
+      //   if (that.nowDuration >= that.duration) {
+      //     recorderManager.stop()
+      //     clearInterval(timer)
+      //     that.notiftNum('http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_3.mp3', 5000, true)
+      //   }
+      // }, that.interval)
 
       that.onAuthorize(function () {
         recorderManager.start(options)
