@@ -110,6 +110,8 @@ export default {
   },
   onLoad () {
     this.isStart = false
+    this.isMask = false
+    this.isMuted = false
     var that = this
     wx.getSystemInfo({
       success: (result) => {

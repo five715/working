@@ -46,10 +46,12 @@ export default {
       var per = this.per
       var width = `width:${this.per}%;`
       var color = ''
-      if (per > 60) {
-        color = '#338bff'
-      } else {
-        color = '#ff7656'
+      if (this.type === 1) {
+        if (per > 60) {
+          color = '#338bff'
+        } else {
+          color = '#ff7656'
+        }
       }
       // color = `rgb(${parseInt(255 * per / 100)},118,${255 - parseInt(255 * per / 100)})`
       return `${width}background:${color}`
