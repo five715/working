@@ -149,7 +149,7 @@ export default {
         recorderManager.onStop((res) => {
           console.log(that, that.isSend)
           if (that.isSend) {
-            if (res.duration < 3000) {
+            if (res.duration < 0) {
               that.Global.isPop(3)
               that.$emit('breakOff', {})
               console.log('时间过短')

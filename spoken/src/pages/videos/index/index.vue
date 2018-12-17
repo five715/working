@@ -4,6 +4,9 @@
       <video class="player_video" id="myVideo" :muted="isMuted"
       src='http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400' 
       @timeupdate="onBindTimeUpDate" >
+      <cover-image v-show="isPop == 3" class="toast" src="/static/record_time.png" alt/>
+      <cover-image v-show="isPop == 1" class="toast" src="/static/record_mic.png" alt/>
+      <cover-image v-show="isPop == 2" class="toast" src="/static/record_close.png" alt/>
       </video>
       <img v-if="!isStart" class="player_pic" src="/static/video_index_v_pic.jpg" alt="">
     </div>
@@ -26,7 +29,6 @@
         <div class="maskRecord" @touchstart="bindTouchStart" @touchmove="bindTouchMove" @touchend="bindTouchEnd"></div>
       </div>
     </div>
-    <popupToast/>
   </div>
 </template>
 
@@ -72,7 +74,8 @@ export default {
       videoContext: null,
       current: 0,
       isMask: false,
-      isMuted: false
+      isMuted: false,
+      isPop: 0
     }
   },
   computed: {
@@ -139,9 +142,16 @@ export default {
         that.screenHeight = result.windowHeight * (750 / result.windowWidth)
       }
     })
+    console.log(this.isPop)
   },
   onReady () {
     this.videoContext = wx.createVideoContext('myVideo')
+  },
+  created () {
+    var that = this
+    that.Global.isPop = function (n) {
+      that.isPop = n
+    }
   }
 }
 </script>
@@ -161,5 +171,14 @@ export default {
 .overflow .card{overflow: hidden;}
 .overflow .maskRecord{position: absolute; top: 272rpx; left: 260rpx; width: 230rpx;height: 90rpx;}
 .video_card{width: 100%; height: 1043rpx;}
+
+
+.player_video .toast {
+  width: 260rpx;
+  height: 260rpx;
+  position: fixed;
+  top: 108rpx;
+  left: 245rpx;
+}
 
 </style>

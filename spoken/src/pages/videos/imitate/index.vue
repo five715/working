@@ -19,12 +19,23 @@
       <div class="line" style="margin: 50rpx 0.5rpx;"></div>
       <a hover-class="none" class="more" href="/pages/videos/ranking/main">查看更多</a>
     </div>
-    <div class="lomo" v-for="(degree,d) in degrees" :key="d">
+    <div v-if="isDegrees">
+      <div class="lomo"  v-for="(degree,d) in degrees" :key="d">
       <line-degree :init-hint="degree.hint" :init-per="degree.per"/>
       <high-light v-for="(high,h) in degree.highLight" :key="h" :init-hint="high.hint" :init-words="high.words"/>
       <div class="susmmary" v-if="degree.susmmary">
         平均语速<span>{{degree.susmmary[0]}}</span>，停顿时间过长次数<span>{{degree.susmmary[1]}}</span>次
       </div>
+      </div>
+    </div>
+    <div class="lomo" v-else >
+      <block v-for="(degree,g) in degreesList" :key="g">
+        <line-degree :init-hint="degree.hint" :init-per="degree.per"/>
+        <high-light v-for="(high,h) in degree.highLight" :key="h" :init-hint="high.hint" :init-words="high.words"/>
+        <div class="susmmary" v-if="degree.susmmary">
+          平均语速<span>{{degree.susmmary[0]}}</span>，停顿时间过长次数<span>{{degree.susmmary[1]}}</span>次
+        </div>
+      </block>
     </div>
   </div>
 </template>
@@ -44,6 +55,7 @@ export default {
   data () {
     return {
       score: 98,
+      isDegrees: true,
       src: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_3.mp3',
       lis: [
         ['The outside world is ', 'scary', ', but dad will always be there to protect you.'],
@@ -97,11 +109,26 @@ export default {
           per: 60,
           susmmary: ['慢', 1]
         }
+      ],
+      degreesList: [
+        {
+          hint: '准确度',
+          per: 98
+        },
+        {
+          hint: '完整度',
+          per: 100
+        },
+        {
+          hint: '流利度',
+          per: 60,
+          susmmary: ['慢', 1]
+        }
       ]
     }
   },
-  onLoad () {
-    console.log('onLoad')
+  onLoad (e) {
+    this.isDegrees = !e.degrees
   },
   onShow () {
     console.log('onShow')

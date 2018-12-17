@@ -10,6 +10,7 @@
     </div>
     <div class="defined_hint">输入测评内容后，选择评判标准，按住下方录音即可开始评测。</div>
     <div class="defined_record"><btnRecord/></div>
+    <a hover-class="none" v-if="look" :href="href"><img src="/static/ioc_look.png" class="look" alt=""></a>
     <popupToast/>
   </div>
 </template>
@@ -25,7 +26,8 @@ export default {
   data () {
     return {
       options: ['成人'],
-      selects: ['成人', '儿童']
+      selects: ['成人', '儿童'],
+      look: false
     }
   },
   methods: {
@@ -61,5 +63,6 @@ export default {
 .defined_boxes .select_arrow{position: absolute;top: 42rpx;right: 34rpx;width: 26rpx;height: 14rpx;}
 .defined_record{position: absolute;top: 1007rpx; left: 258rpx;width: 230rpx; height: 90rpx;}
 .defined_hint{width: 100%;padding: 0 40rpx; font-size: 26rpx; color: #888888; box-sizing: border-box;}
+.container .look{position:absolute; top: 1000rpx; left: auto; right: 80rpx; width: 80rpx; height: 124rpx;}
 
 </style>
