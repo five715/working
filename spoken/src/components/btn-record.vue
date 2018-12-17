@@ -183,12 +183,12 @@ export default {
           that.Global.isPop(1)
           that.isSend = true
         } else {
-          that.Global.isPop(3)
-          that.$emit('breakOff', {})
-          console.log('时间过短')
-          setTimeout(function () {
-            that.Global.isPop(0)
-          }, 2000)
+          // that.Global.isPop(3)
+          // that.$emit('breakOff', {})
+          // console.log('时间过短')
+          // setTimeout(function () {
+          //   that.Global.isPop(0)
+          // }, 2000)
         }
       })
     },

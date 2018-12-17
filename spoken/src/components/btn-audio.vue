@@ -60,6 +60,10 @@ export default {
       }, 100)
     },
     notiftNum () {
+      var that = this
+      InnerAudioContext.onEnded((res) => {
+        that.AudioStop(res)
+      })
       this.$emit('clickBtnAutio', {})
     },
     AudioStop (res) {

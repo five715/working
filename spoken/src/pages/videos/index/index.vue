@@ -15,7 +15,7 @@
       <div v-if="!isStart" class="player_text">{{text}}</div>
       <img v-if="!isStart" class="btn_began" @click="btnBegan" src="/static/btn_began_imitate.png" alt="">
       <div v-show="isStart" class="card" :style="styleScreenHeight">
-        <swiper class="video_card" next-margin="600rpx" vertical="true" @change="onBindChange" :current="current">
+        <swiper class="video_card" next-margin="600rpx" vertical="true" @change="onBindChange" :current="current" @animationfinish="bindAnimationFinish">
           <block v-for="(card ,index) in cards" :key="index">
             <swiper-item>
               <video-card ref="videoCard" :init-now="index+1" :init-audition="card.audition" :init-sum="cards.length" :init-text="card.text" :init-duration="card.duration" :init-timepoint="card.timePoint"/>
@@ -96,6 +96,7 @@ export default {
       e.this.onTouchMove(e)
     },
     bindTouchEnd (e) {
+      this.isMask = false
       e.this = this.$refs.videoCard[this.current].$refs.btnRecord
       e.this.onTouchEnd(e)
     },
@@ -107,7 +108,9 @@ export default {
       this.videoContext.play()
     },
     onBindChange (e) {
+      console.log(this)
       var that = this
+      that.isMask = true
       var cards = that.cards
       var current = that.current = e.mp.detail.current
       var card = cards[current]
@@ -121,6 +124,12 @@ export default {
         if (i === current) videoCard[i].isMask = false
         else videoCard[i].isMask = true
       }
+    },
+    bindAnimationFinish () {
+      var that = this
+      setTimeout(function () {
+        that.isMask = false
+      }, 100)
     },
     onBindTimeUpDate (e) {
       var that = this
@@ -157,7 +166,7 @@ export default {
 </script>
 
 <style>
-.player{position: absolute;width: 750rpx;height: 420rpx; top: 0;}
+.player{position: absolute;width: 750rpx;height: 426rpx; top: 0;}
 .player_video{position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
 .player_pic{position:absolute;}
 .overflow{position: absolute;top: 420rpx; width: 100%;overflow: auto}

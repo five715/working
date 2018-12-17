@@ -2,6 +2,16 @@
   <div class="container" >
     <div class="lomo">
       <div class="lomo_hint">本次得分</div>
+      <div class="hintDot">
+        <div class="pink dots">
+          <img class="dot" src="/static/ioc_dot_pink.png">
+          <div class="text">发音错误</div>
+        </div>
+        <div class="orange dots">
+          <img class="dot" src="/static/ioc_dot_orange.png">
+          <div class="text">发音漏读</div>
+        </div>
+      </div>
       <div class="score_text score">{{score}}</div>
       <div class="line"></div>
       <div class="play">
@@ -16,7 +26,7 @@
     <div class="lomo">
       <div class="lomo_hint">排行榜</div>
       <li-ranking v-for="(rank,index) in ranking" :key="index" :init-number="index+1" :init-head="rank.head" :init-name="rank.name" :init-score="rank.score"/>
-      <div class="line" style="margin: 50rpx 0.5rpx;"></div>
+      <div class="line" style="margin: 50rpx 0.5rpx 35rpx 0.5rpx;"></div>
       <a hover-class="none" class="more" href="/pages/videos/ranking/main">查看更多</a>
     </div>
     <div v-if="isDegrees">
@@ -144,12 +154,17 @@ export default {
 .lomo{border: 1px solid #d3d3d3; width: 670rpx;box-sizing: border-box; margin: 40rpx; padding: 40rpx;position: relative;
   border-radius: 10rpx}
 .lomo_hint{font-size: 34rpx;color: #888888;}
-.score_text{text-align: center;width: 100%;font-size: 100rpx;line-height: 1;}
+.score_text{text-align: center;width: 100%;font-size: 100rpx;line-height: 1;margin-top: 50rpx;}
 .score{color: #338bff;}
 .line{width: 589rpx; height: 2rpx; background: #dbdbdb; margin: 81rpx 0.5rpx;}
-.play{width: 80rpx;height: 80rpx;position: absolute;top: 227rpx; left: 295rpx;}
+.play{width: 80rpx;height: 80rpx;position: absolute;top: 276rpx; left: 295rpx;}
 .score_li li{font-size: 34rpx;}
-.more{text-align: center; color: #338bff;}
+.more{text-align: center; color: #338bff;font-size: 26rpx;}
 .susmmary{font-size: 34rpx; color: #888888;margin:30rpx 0; }
 .susmmary span{color: #000000;margin: 0 0.3em;}
+
+.lomo .hintDot{position: absolute;top: 36rpx; left: 460rpx;width: 180rpx;}
+.lomo .hintDot .dots{position: relative; height: 30rpx; margin: 10rpx;}
+.lomo .hintDot .dots .dot{width:30rpx;height: 30rpx; position: absolute;top: 0;left:0}
+.lomo .hintDot .dots .text{font-size:26rpx;top: 0;left:40rpx;position: absolute;line-height: 1;}
 </style>

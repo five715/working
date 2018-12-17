@@ -127,7 +127,7 @@ export default {
 </script>
 <style>
 .video-card{position: relative; margin: 36rpx 40rpx 0 40rpx;width: 670rpx;height:363rpx;
-  border: 1px #d3d3d3 solid; border-radius:10rpx; box-shadow:0rpx 0rpx 50rpx 15rpx #eee; overflow: hidden; }
+  border: 1px #d3d3d3 solid; border-radius:10rpx; box-shadow:0rpx 0rpx 50rpx 15rpx #eee; overflow: hidden;border-left:none;}
 .video-card .line{position: absolute;top: 0;left: 0; width: 11rpx;height: 100%;background: #338bff;}
 .video-card .text{position: absolute;top: 112rpx; left: 41rpx;width: 600rpx;margin: 0;line-height: 50rpx;font-size: 34rpx}
 .original{position: absolute;top: 237rpx; left: 490rpx;width: 80rpx;height: 80rpx;}
