@@ -101,7 +101,7 @@ export default {
 </script>
 
 <style>
-.lesson-card {position: absolute;top: 41rpx;left: 20rpx;width: 590rpx;height: 1065rpx;box-shadow: 0rpx 0rpx 50rpx 15rpx #cdcdcd;border-radius: 10rpx;border: 1px solid #d3d3d3;}
+.lesson-card {position: absolute;top: 41rpx;left: 20rpx;width: 590rpx;height: 1065rpx;box-shadow: 0rpx 0rpx 50rpx 15rpx #ddd;border-radius: 10rpx;border: 1px solid #d3d3d3;}
 .lesson-card .pic {position: absolute;top: 40rpx;left: 41rpx;width: 508rpx;height: 420rpx;}
 .lesson-card span {line-height: 60rpx;}
 .lesson-card .text {position: absolute;top: 500rpx;left: 43rpx;width: 507rpx;height: 211rpx;font-size: 34rpx;}
