@@ -140,8 +140,8 @@ export default {
       })
     },
     onTouchStart (e) {
-      var that = this
-      console.log(that.Global)
+      var that = e.this || this
+      console.log(that.Global, e)
       that.$emit('clickStart', {})
       that.isDown = true
       if (that.isExecute) {
@@ -151,6 +151,7 @@ export default {
           if (that.isSend) {
             if (res.duration < 3000) {
               that.Global.isPop(3)
+              that.$emit('breakOff', {})
               console.log('时间过短')
               setTimeout(function () {
                 that.Global.isPop(0)
@@ -158,17 +159,19 @@ export default {
             } else {
               console.log('发送成功,播放', res)
               that.Global.isPop(0)
-              that.notiftNum(res.tempFilePath)
+              that.notiftNum(res.tempFilePath, res.duration)
               // InnerAudioContext.src = res.tempFilePath
               // InnerAudioContext.play()
             }
           } else {
             that.Global.isPop(0)
             console.log('取消发送')
+            that.$emit('breakOff', {})
           }
         })
         recorderManager.onStart(() => {
           that.Global.isPop(1)
+          that.$emit('recordStart', {})
         })
       }
       that.startX = e.pageX
@@ -181,6 +184,7 @@ export default {
           that.isSend = true
         } else {
           that.Global.isPop(3)
+          that.$emit('breakOff', {})
           console.log('时间过短')
           setTimeout(function () {
             that.Global.isPop(0)
@@ -189,7 +193,7 @@ export default {
       })
     },
     onTouchMove (e) {
-      var that = this
+      var that = e.this || this
       that.x = e.pageX
       that.y = e.pageY
       var dis = that.startY - that.y
@@ -202,7 +206,8 @@ export default {
       }
     },
     onTouchEnd (e) {
-      this.isDown = false
+      var that = e.this || this
+      that.isDown = false
       wx.getSetting({
         success: (res) => {
           if (res.authSetting['scope.record'] !== undefined) {

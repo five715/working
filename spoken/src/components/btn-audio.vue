@@ -29,6 +29,7 @@ export default {
   },
   methods: {
     onAudition (e) {
+      console.log(this.src)
       if (this.src) {
         InnerAudioContext.src = this.src
         InnerAudioContext.play()

@@ -27,10 +27,10 @@ export default {
   position: relative;
 }
 .popup-toast .toast {
-  width: 300rpx;
-  height: 300rpx;
+  width: 260rpx;
+  height: 260rpx;
   position: fixed;
-  top: 388rpx;
-  left: 225rpx;
+  top: 428rpx;
+  left: 245rpx;
 }
 </style>

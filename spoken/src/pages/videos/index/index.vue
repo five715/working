@@ -3,7 +3,8 @@
     <div class="player">
       <video class="player_video" id="myVideo" :muted="isMuted"
       src='http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400' 
-      @timeupdate="onBindTimeUpDate" ></video>
+      @timeupdate="onBindTimeUpDate" >
+      </video>
       <img v-if="!isStart" class="player_pic" src="/static/video_index_v_pic.jpg" alt="">
     </div>
     <div class="videos_mask" v-if="isMask" :style="styleScreenHeight"></div>
@@ -14,7 +15,7 @@
         <swiper class="video_card" next-margin="600rpx" vertical="true" @change="onBindChange" :current="current">
           <block v-for="(card ,index) in cards" :key="index">
             <swiper-item>
-              <video-card ref="videoCard" :init-now="index+1" :init-sum="cards.length" :init-text="card.text" :init-duration="card.duration" :init-timepoint="card.timePoint"/>
+              <video-card ref="videoCard" :init-now="index+1" :init-audition="card.audition" :init-sum="cards.length" :init-text="card.text" :init-duration="card.duration" :init-timepoint="card.timePoint"/>
             </swiper-item>
           </block>
           <swiper-item>
@@ -22,6 +23,7 @@
             <a hover-class="none" href="/pages/videos/imitate/main"><img src="/static/btn_count.png" alt="" class="btn_count"></a>
           </swiper-item>
         </swiper>
+        <div class="maskRecord" @touchstart="bindTouchStart" @touchmove="bindTouchMove" @touchend="bindTouchEnd"></div>
       </div>
     </div>
     <popupToast/>
@@ -43,21 +45,25 @@ export default {
       cards: [
         {
           text: 'The outside world is scary, but dad will always be there to protect you.',
+          audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_1.mp3',
           timePoint: 0,
           duration: 5
         },
         {
           text: 'The outside world is scary, but dad will always be there to protect you.',
+          audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_2.mp3',
           timePoint: 5,
           duration: 3
         },
         {
           text: 'The outside world is scary, but dad will always be there to protect you.',
+          audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_3.mp3',
           timePoint: 10,
           duration: 4
         },
         {
           text: 'The outside world is scary, but dad will always be there to protect you.',
+          audition: 'http://qq.vogso.com/yili/qiaolezi2018/wap/sounds/sound_4.mp3',
           timePoint: 15,
           duration: 6
         }
@@ -78,6 +84,21 @@ export default {
     }
   },
   methods: {
+    bindTouchStart (e) {
+      e.this = this.$refs.videoCard[this.current].$refs.btnRecord
+      e.this.onTouchStart(e)
+    },
+    bindTouchMove (e) {
+      e.this = this.$refs.videoCard[this.current].$refs.btnRecord
+      e.this.onTouchMove(e)
+    },
+    bindTouchEnd (e) {
+      e.this = this.$refs.videoCard[this.current].$refs.btnRecord
+      e.this.onTouchEnd(e)
+    },
+    stopTouchMove () {
+      return false
+    },
     btnBegan () {
       this.isStart = true
       this.videoContext.play()
@@ -138,6 +159,7 @@ export default {
 .videos_mask{position: absolute;top: 420rpx; width: 100%;z-index: 1;}
 
 .overflow .card{overflow: hidden;}
+.overflow .maskRecord{position: absolute; top: 272rpx; left: 260rpx; width: 230rpx;height: 90rpx;}
 .video_card{width: 100%; height: 1043rpx;}
 
 </style>

@@ -1,3 +1,4 @@
 {
-    "navigationBarTitleText": "视频模仿"
+    "navigationBarTitleText": "视频模仿",
+    "disableScroll":true
 }
