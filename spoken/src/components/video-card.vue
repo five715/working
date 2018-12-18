@@ -1,15 +1,17 @@
 <template>
-  <div class="video-card">
-    <div class="line"></div>
+  <div class="video-card" :style="!isAudition?'':'border-left:none'">
+    <div class="line" v-if="isAudition"></div>
     <pageNumber :init-top="40" :init-left="30" :init-now="now" :init-sum="sum"/>
     <div class="text">{{text}}</div>
     <div class="original">
       <btnAudio ref="btnAudio" :init-type="3" :init-src="audition" @audioStart="bindAudioStart"/>
     </div>
-    <btnAudio ref="btnAudio" :init-type="2"/>
+    <div class="audition" v-show="isAudition">
+      <btnAudio ref="btnAudio" :init-type="2"/>
+    </div>
     <div class="btn_record">
       <!-- <btnRecord :init-type="2" :init-duration="duration"  @setSrc="bindSetSrc" @setRate="bindSetRate" @recordStart="bindRecordStart"/> -->
-      <btnRecord ref="btnRecord" @breakOff="bindTimeBreakOff" :init-duration="duration"  @setSrc="bindSetSrc" @clickStart="bindClickStart" @recordStart="bindRecordStart"/>
+      <btnRecord ref="btnRecord" :init-gray="now==1?false:true" @breakOff="bindTimeBreakOff" :init-duration="duration"  @setSrc="bindSetSrc" @clickStart="bindClickStart" @recordStart="bindRecordStart"/>
     </div>
     <div class="video_card_mask" v-if="isMask" @click="onVideoCardMask"></div>
   </div>
@@ -62,7 +64,8 @@ export default {
       timePoint: this.initTimepoint,
       audition: this.initAudition,
       isPlay: false,
-      isMask: true
+      isMask: true,
+      isAudition: false
     }
   },
   onLoad () {
@@ -87,6 +90,7 @@ export default {
       that.$parent.videoContext.pause()
       that.$parent.isMuted = false
       console.log(e)
+      that.isAudition = true
       that.$refs.btnAudio.src = e.src
       // that.$refs.btnAudio.onAuditionTypeThree()
       // that.$refs.btnAudio.onAudition()
@@ -127,7 +131,7 @@ export default {
 </script>
 <style>
 .video-card{position: relative; margin: 36rpx 40rpx 0 40rpx;width: 670rpx;height:363rpx;
-  border: 1px #d3d3d3 solid; border-radius:10rpx; box-shadow:0rpx 0rpx 50rpx 15rpx #eee; overflow: hidden;border-left:none;}
+  border: 1px #d3d3d3 solid; border-radius:10rpx; box-shadow:0rpx 0rpx 50rpx 15rpx #eee; overflow: hidden;}
 .video-card .line{position: absolute;top: 0;left: 0; width: 11rpx;height: 100%;background: #338bff;}
 .video-card .text{position: absolute;top: 112rpx; left: 41rpx;width: 600rpx;margin: 0;line-height: 50rpx;font-size: 34rpx}
 .original{position: absolute;top: 237rpx; left: 490rpx;width: 80rpx;height: 80rpx;}

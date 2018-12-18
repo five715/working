@@ -25,7 +25,7 @@ export default {
   data () {
     return {
       now: 1,
-      evaluation: '/pages/follow/lists/main',
+      evaluation: '/pages/videos/imitate/main?degrees=true',
       cards: [
         {
           pics: '/static/follow_pic.jpg',

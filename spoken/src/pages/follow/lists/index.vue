@@ -1,6 +1,6 @@
 <template>
   <div class="container" style="background:#ffffff;" >
-    <a hover-class="none" href="/pages/videos/imitate/main?degrees=true" v-for="(list, l) in lists" :key="l" >
+    <a hover-class="none" href="/pages/follow/index/main" v-for="(list, l) in lists" :key="l" >
       <followList :init-title="list.title" :init-pic="list.pic" :init-grade="list.grade"/>
     </a>
   </div>  

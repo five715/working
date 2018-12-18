@@ -1,6 +1,9 @@
 <template>
   <div class="btn-record">
-    <img v-if="type == 1" src="/static/ioc_record.png" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd" class="record" alt="">
+    <div class="record" v-if="type == 1">  
+      <img v-show="!isGray" src="/static/ioc_record.png" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd" class="record" alt="">
+      <img v-show="isGray" src="/static/ioc_record_gray.png" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd" class="record" alt="">
+    </div>
     <img v-else-if="type == 2" src="/static/ioc_record2.png" @click="onBindClick" class="record2" alt="">
   </div>
 </template>
@@ -23,6 +26,10 @@ export default {
     initDuration: {
       type: Number,
       default: 0
+    },
+    initGray: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -39,7 +46,8 @@ export default {
       type: this.initType,
       duration: this.initDuration * 1000,
       nowDuration: 0,
-      interval: 10
+      interval: 10,
+      isGray: this.initGray
     }
   },
   onUnload () {

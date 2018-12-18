@@ -123,10 +123,7 @@ export default {
         that.videoContext.play()
         console.log(`卡片编号:${current + 1}`, `时间点:${card.timePoint}`, videoCard[current].onAudioStop())
       }
-      for (var i = 0; i < videoCard.length; i++) {
-        if (i === current) videoCard[i].isMask = false
-        else videoCard[i].isMask = true
-      }
+      for (var i = 0; i < videoCard.length; i++) videoCard[i].isMask = videoCard[i].$refs.btnRecord.isGray = !(i === current)
     },
     bindAnimationFinish () {
       var that = this
@@ -169,10 +166,10 @@ export default {
 </script>
 
 <style>
-.player{position: absolute;width: 750rpx;height: 426rpx; top: 0;}
+.player{position: absolute;width: 750rpx;height: 425rpx; top: 0;}
 .player_video{position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
 .player_pic{position:absolute;}
-.overflow{position: absolute;top: 426rpx; width: 100%;overflow: auto}
+.overflow{position: absolute;top: 425rpx; width: 100%;overflow: auto}
 .overflow .hint{width: 100%; text-align: center; margin: 42rpx 0 41rpx 0;font-size: 26rpx; color: #888888;}
 .overflow .btn_began{position:absolute;left: 40rpx;width: 670rpx; height: 90rpx;}
 .btn_count{ margin: 0rpx 40rpx;width: 670rpx; height: 90rpx;}

@@ -150,7 +150,7 @@ export default {
 </script>
 
 <style>
-.container{position: relative;}
+.container{position: relative; height: auto;padding-bottom: 1rpx;}
 .lomo{border: 1px solid #d3d3d3; width: 670rpx;box-sizing: border-box; margin: 40rpx; padding: 40rpx;position: relative;
   border-radius: 10rpx}
 .lomo_hint{font-size: 34rpx;color: #888888;}
@@ -163,7 +163,7 @@ export default {
 .susmmary{font-size: 34rpx; color: #888888;margin:30rpx 0; }
 .susmmary span{color: #000000;margin: 0 0.3em;}
 
-.lomo .hintDot{position: absolute;top: 36rpx; left: 460rpx;width: 180rpx;}
+.lomo .hintDot{position: absolute;top: 36rpx; left: 460rpx;width: 180rpx;color:#888888;}
 .lomo .hintDot .dots{position: relative; height: 30rpx; margin: 10rpx;}
 .lomo .hintDot .dots .dot{width:30rpx;height: 30rpx; position: absolute;top: 0;left:0}
 .lomo .hintDot .dots .text{font-size:26rpx;top: 0;left:40rpx;position: absolute;line-height: 1;}

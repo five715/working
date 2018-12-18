@@ -19,7 +19,7 @@ export default {
       navs: [
         {
           src: '/static/ioc_boxes_english_follow.png',
-          href: '/pages/follow/index/main',
+          href: '/pages/follow/lists/main',
           text: '绘本跟读'
         },
         {
