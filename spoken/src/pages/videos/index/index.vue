@@ -10,12 +10,12 @@
       </video>
       <img v-if="!isStart" class="player_pic" src="/static/video_index_v_pic.jpg" alt="">
     </div>
-    <div class="videos_mask" v-if="isMask" :style="styleScreenHeight"></div>
+    <div class="videos_mask" v-show="isMask" :style="styleScreenHeight"></div>
     <div class="overflow" :style="styleScreenHeight">
       <div v-if="!isStart" class="player_text">{{text}}</div>
       <img v-if="!isStart" class="btn_began" @click="btnBegan" src="/static/btn_began_imitate.png" alt="">
       <div v-show="isStart" class="card" :style="styleScreenHeight">
-        <swiper class="video_card" next-margin="600rpx" vertical="true" @change="onBindChange" :current="current" @animationfinish="bindAnimationFinish">
+        <swiper class="video_card" next-margin="600rpx" vertical="true" :current="current" @change="onBindChange" @animationfinish="bindAnimationFinish" @touchend="bindSwiperTouchEnd">
           <block v-for="(card ,index) in cards" :key="index">
             <swiper-item>
               <video-card ref="videoCard" :init-now="index+1" :init-audition="card.audition" :init-sum="cards.length" :init-text="card.text" :init-duration="card.duration" :init-timepoint="card.timePoint"/>
@@ -87,6 +87,9 @@ export default {
     }
   },
   methods: {
+    bindSwiperTouchEnd (e) {
+      this.isMask = false
+    },
     bindTouchStart (e) {
       e.this = this.$refs.videoCard[this.current].$refs.btnRecord
       e.this.onTouchStart(e)
@@ -108,11 +111,11 @@ export default {
       this.videoContext.play()
     },
     onBindChange (e) {
-      console.log(this)
       var that = this
       that.isMask = true
       var cards = that.cards
       var current = that.current = e.mp.detail.current
+      console.log(that.current)
       var card = cards[current]
       var videoCard = that.$refs.videoCard
       if (card) {
@@ -169,7 +172,7 @@ export default {
 .player{position: absolute;width: 750rpx;height: 426rpx; top: 0;}
 .player_video{position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
 .player_pic{position:absolute;}
-.overflow{position: absolute;top: 420rpx; width: 100%;overflow: auto}
+.overflow{position: absolute;top: 426rpx; width: 100%;overflow: auto}
 .overflow .hint{width: 100%; text-align: center; margin: 42rpx 0 41rpx 0;font-size: 26rpx; color: #888888;}
 .overflow .btn_began{position:absolute;left: 40rpx;width: 670rpx; height: 90rpx;}
 .btn_count{ margin: 0rpx 40rpx;width: 670rpx; height: 90rpx;}
