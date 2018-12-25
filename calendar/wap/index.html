@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>我的年度表情</title>
+<link rel="stylesheet" href="css/VogsoStyle-1.0.0.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/libs/jquery-3.2.1.min.js"></script>
+<script src="js/libs/easeljs.js"></script>
+<script src="js/libs/preloadjs.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/common.js"></script>
+<script src="js/Poster.class.js"></script>
+<script src="js/libs/Vogsojs-1.0.0.js"></script>
+</head>
+<body>
+<div class="box">
+	<!--弹窗-->
+	<div class="popup">
+		
+	</div>
+	<!--loading-->
+	<div class="loading">
+		<img src="images/loading_bg.jpg"/>
+		<div class="ioc">
+			<img src="images/loading_ioc.png"/>
+		</div>
+		<div class="plan">
+			<div class="overflow">
+				<div class="hidden">
+					<img src="images/loading_plan.png" />
+				</div>
+			</div>
+			<div class="plan_box">
+				<img src="images/loading_plan_bg.png" />
+			</div>
+		</div>
+		<div class="per">50%</div>
+	</div>
+	<!--首页-->
+	<div class="index">
+		<img src="images/index_bg.jpg"/>
+		<div class="boxes">
+			<img src="images/index_box_bg.png"/>
+		</div>
+		<div class="btn">
+			<img src="images/index_btn.png"/>
+		</div>
+		<div class="logo">
+			<img src="images/logo.png"/>
+		</div>
+	</div>
+	<!--答题-->
+	<div class="answer">
+		<img src="images/loading_bg.jpg"/>
+		<div class="plan">
+			<div class="overflow">
+				<div class="hidden">
+					<img src="images/loading_plan.png" />
+				</div>
+			</div>
+			<div class="plan_box">
+				<img src="images/loading_plan_bg.png" />
+			</div>
+		</div>
+		<div class="per">5s</div>
+		<div class="issue">
+			<p>下列人设识别中，你属于</p>
+		</div>
+		<div class="ans">
+			<div class="gif_bg">
+				<img src="images/iusse_gif_bg_6.png"/>
+			</div>
+			<div class="gif"></div>
+			<div class="choices">
+				<div class="choice choice_1" data-n="1"><img src="images/choice_1_1.jpg" alt="" /></div>
+				<div class="choice choice_2" data-n="2"><img src="images/choice_1_2.jpg" alt="" /></div>
+				<div class="choice choice_3" data-n="3"><img src="images/choice_1_3.jpg" alt="" /></div>
+				<div class="choice choice_4" data-n="4"><img src="images/choice_1_4.jpg" alt="" /></div>
+				<div class="choice choice_5" data-n="5"><img src="images/choice_1_5.jpg" alt="" /></div>
+				<div class="choice choice_6" data-n="6"><img src="images/choice_1_6.jpg" alt="" /></div>
+			</div>
+		</div>
+	</div>
+	<!--结果-->
+	<div class="result">
+		<img src="images/index_bg.jpg"/>
+		<canvas id="poster" width="579" height="882"></canvas>
+	</div>
+</div>
+</body>
+</html>
