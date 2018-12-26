@@ -31,7 +31,12 @@ Poster.Preload = {
 		{id:"iusse_gif_3",src:"iusse_gif_3.png"},
 		{id:"iusse_gif_4",src:"iusse_gif_4.png"},
 		{id:"iusse_gif_5",src:"iusse_gif_5.png"},
-		{id:"iusse_gif_7",src:"iusse_gif_7.png"}
+		{id:"iusse_gif_7",src:"iusse_gif_7.png"},
+		{id:"iusse_gif_bg_3",src:"iusse_gif_bg_3.png"},
+		{id:"iusse_gif_bg_4",src:"iusse_gif_bg_4.png"},
+		{id:"iusse_gif_bg_5",src:"iusse_gif_bg_5.png"},
+		{id:"iusse_gif_bg_6",src:"iusse_gif_bg_6.png"},
+		{id:"iusse_gif_bg_7",src:"iusse_gif_bg_7.png"}
 	],
 	/**
 	 *	初始化
