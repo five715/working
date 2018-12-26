@@ -1,4 +1,5 @@
-var _game = null;
+var _game = null,
+	_timer = null;
 $(function(){
 	$(window).bind("resize load", function(){
 		w = $(".box").width();
@@ -20,7 +21,23 @@ $(function(){
 		$(this).append(tick)
 		$(this).siblings().find('.tick').remove()
 	})
-
+/**---------------------结果------------------------**/
+	$(".result .btn_not_me").on("click",function(){
+		var n = parseInt(Math.random()*10+1)
+		$(".result .emoji img").attr("src","images/result_emoji_"+n+".jpg")
+		_game.setData(n)
+	})
+	$(".result .btn_friend").on("click",function(){
+		popup(1)
+		_game.getImageData() 
+	})
+/**---------------------弹窗------------------------**/
+	
+	$(".popup").on("click",popup)
+	$(".pop").on("click",function(){
+		return false
+	})
+	$(".loading .plan .hidden").width($(".loading .plan .plan_box").eq(0).width())
 	Poster.Preload.load(progress,complete)
 })
 function nextIusse() {
@@ -37,6 +54,7 @@ function nextIusse() {
 	if(!answer){
 		onShowHide($(".result"),$(".answer"))
 		console.log("没题了")
+		if(_timer)clearTimeout(_timer);
 		return false;
 	}
 	console.log(answer,_now)
@@ -53,12 +71,16 @@ function nextIusse() {
 	$(".ans .choices").html(choices.join(''));
 	$(".ans").addClass("answer_" + answer.pos)
 	$(".ans .choice").on("click",nextIusse)
+	fakeLoading($(".answer .plan"),100,5000,function(){
+		console.log('时间到')
+	})
 	_now++
 }
 /*
  * 进度条
  */
 function fakeLoading(obj,reso,speed,callback){
+	if(_timer)clearTimeout(_timer);
 	obj.find(".hidden").width(obj.find(".plan_box").eq(0).width())
 	var per = 0
 	_timer = setInterval(function(){
@@ -93,14 +115,15 @@ function complete(e){
  */
 function onGameStart(){
 //	onShowHide($(".index"),$(".loading"))
-	onShowHide($(".result"),$(".loading"))
+	onShowHide($(".index"),$(".loading"))
 	_game = new Poster.main($("#poster")[0])
+	_game.on(Poster.Event.CREATE,onGameOver)
 }
 /**
  * 游戏结束
  */
-function onGameOver(){
-	
+function onGameOver(e){
+	$(".popup .poster img").attr("src",e.data)
 }
 /**
  * 切换页面
@@ -121,7 +144,7 @@ function popup(n){
 	$(".popup,.pop").hide();
 	switch(n){
 		case 1:
-			$(".popup,.popup_testDrive").show();
+			$(".popup,.popup_poster").show();
 			break;
 	}
 }

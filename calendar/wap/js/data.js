@@ -57,5 +57,6 @@ var _standOfFall = [
 	["蹦迪", "躺平"],
 	["skr skr", "supreme"]
 ]
+var _emoji = []
 var _now = 0,
 	_selected = []

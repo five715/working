@@ -21,10 +21,17 @@ Poster.Preload = {
 		{id:"emoji_7",src:"emoji_7.jpg"},
 		{id:"emoji_8",src:"emoji_8.jpg"},
 		{id:"emoji_9",src:"emoji_9.jpg"},
-		{id:"emoji_10",src:"emoji_10.jpg"}
+		{id:"emoji_10",src:"emoji_10.jpg"},
+		{id:"title",src:"title.png"},
+		{id:"line",src:"line.png"},
+		{id:"logo",src:"logo.png"},
+		{id:"seal",src:"seal.png"},
 	],
-	_sounds : [
-	
+	_src:[
+		{id:"iusse_gif_3",src:"iusse_gif_3.png"},
+		{id:"iusse_gif_4",src:"iusse_gif_4.png"},
+		{id:"iusse_gif_5",src:"iusse_gif_5.png"},
+		{id:"iusse_gif_7",src:"iusse_gif_7.png"}
 	],
 	/**
 	 *	初始化
@@ -32,6 +39,7 @@ Poster.Preload = {
 	init : function(number){
 		this._queue = new createjs.LoadQueue(false);
 		this._queue.loadManifest(this._images, false, "res/");
+		this._queue.loadManifest(this._src, false, "images/");
 //		this._queue.loadManifest(this._sounds, false, "sounds/");
 //		createjs.Sound.registerSounds(this._sounds);
 	},
@@ -69,14 +77,26 @@ Poster.main = function(canvas){
 	var __game = null;
 	var __pic = null,	//头像
 		__name = null,	//姓名
-		__title = null,	//标题
 		__emoji = null,	//表情
 		__seal = null,	//印章
-		__boxes = null,	//表情框,
-		__qrCode = null,	//二维码
-		__codeText = null,	//二维码文字
-		__logo	= null;	//logo
-	var _bg = {id:"bg"}
+		__qrCode = null;	//二维码
+	var _bg = {id:"bg"},
+		_pic = {id:'emoji_1',x:64,y:54},
+		_title = {id:'title',x:159,y:68},
+		_boxes = {id:'title',x:159,y:68},
+		_line = [
+			{id:'line',x:33,y:67},
+			{id:'line',x:33,y:67+520-3},
+			{id:'line',x:30+520,y:67+520-3}
+		],
+		_emoji = {id:'emoji_10',x:33,y:3},
+		_code = {id:'qrCode',x:1,y:1},
+		_logo = {id:'logo',x:431,y:821},
+		_seal = {id:'seal',x:306,y:153}
+	var TEXT = {
+		font : "16px Arial",
+		color: "#191919"
+	}
 	_this.init = function(canvas){
 		_this.Stage_constructor(canvas);//继承stage
 		createjs.Ticker.setFPS = FPS;	//帧频
@@ -86,7 +106,81 @@ Poster.main = function(canvas){
 		_this.addChild(__game)
 		
 		var bg = Poster.common.addBitmap(_bg)
-		__game.addChild(bg)
+		var logo = Poster.common.addBitmap(_logo)
+		__game.addChild(bg,logo)
+		_this.addTitle()
+		_this.addBoxes()
+		_this.addQRCode();
+		__seal = Poster.common.addBitmap(_seal)
+		__game.addChild(__seal)
+	}
+	_this.setData = function(emoji,pic,name){
+		if(pic) __pic.image = Poster.Preload.getResult("emoji_"+pic)
+		if(name) __name.text = name
+		if(emoji) __emoji.image = Poster.Preload.getResult("emoji_"+emoji)
+	}
+	_this.addTitle = function(){
+		__pic = Poster.common.addBitmap(_pic)
+		var obj = __pic.getBounds()
+		var scale = obj.width < obj.height ? 74/obj.width : 74/obj.height
+		__pic.scaleX = __pic.scaleY = scale
+		var mask = new createjs.Shape()
+		mask.graphics.f('#bfbfbf').drawCircle(101,91,74/2)
+		__pic.mask = mask
+		
+		__name = new createjs.Text("大企鹅",TEXT.font,TEXT.color)
+		__name.textAlign = "center"
+		__name.x = 79+25;
+		__name.y = 140;
+		var title = Poster.common.addBitmap(_title)
+		__game.addChild(__pic,__name,title)
+	}
+	_this.addBoxes = function(){
+		__boxes = new createjs.Container()
+		__boxes.y = 190
+		__game.addChild(__boxes)
+		for(var i = 0;i<_line.length;i++){
+			var line = Poster.common.addBitmap(_line[i])
+			line.regX = line.regY = 67
+			__boxes.addChild(line)
+		}
+		var boxes = new createjs.Shape()
+		boxes.graphics.f('#2d2727').dr(30,0,525,520)
+		__emoji = Poster.common.addBitmap(_emoji)
+		_this.setMask(3,"#2d2727",30,0,525,520,__boxes,__emoji)
+	}
+	_this.addQRCode = function(){
+		__qrCode = new createjs.Container();
+		__qrCode.x = 20;
+		__qrCode.y = 756;
+		__game.addChild(__qrCode)
+		
+		var code = Poster.common.addBitmap(_code) 
+		_this.setMask(1,"#2d2727",0,0,99,99,__qrCode,code)
+		
+		var text = ['扫描二维码','破解你的年度freestyle表情']
+		
+		for(var i = 0; i < text.length; i ++){
+			var codeText = new createjs.Text(text[i],"16px Arial","#343434")
+			codeText.y = 45+i*25
+			codeText.x = 114
+			__qrCode.addChild(codeText)
+		}
+	}
+	_this.setScale = function(o,width){
+		var obj = o.getBounds()
+		var scale = obj.width < obj.height ? width/obj.width : width/obj.height
+		o.scaleX = o.scaleY = scale
+	}
+	_this.setMask = function(ss,s,sx,sy,ex,ex,obj,o){
+		var box = new createjs.Shape();
+		box.graphics.f(s).dr(sx,sy,ex,ex)
+		var mask = new createjs.Shape();
+		mask.graphics.dr(sx+ss,sy+ss,ex-ss*2,ex-ss*2)
+		o.mask = mask 
+		_this.setScale(o,ex-ss*2)
+		obj.addChild(box,o)
+		return mask
 	}
 	/*
 	 * 获得图片base64编码
@@ -94,12 +188,12 @@ Poster.main = function(canvas){
 	_this.getImageData = function(){
 		__game.cache(0,0,WIDTH,HEIGHT);
 		var data = __game.getCacheDataURL();
-		var img = new Image();
-		img.src = data;
-		img.onload = function(e){
-			compress(img,WIDTH,HEIGHT)
-		}
-		__game.uncache();			
+//		var img = new Image();
+//		img.src = data;
+//		img.onload = function(e){
+//			compress(img,WIDTH,HEIGHT)
+//		}
+		isCreate(data);
 		return data;
 	}
 	function compress (source, width, height){
@@ -167,56 +261,7 @@ Poster.Sound = createjs.promote(Poster.Sound, "Container");
  * 公用
  */
 Poster.common = {
-	SCALE : 1,
-	FEAMERATE : 8,
-	INTERVAL : 1000,
 	_sound : null,
-	/**
-	 * 雪碧图控制 
-	 */
-	startSpritSheet : function(obj){
-		obj.play();
-		obj.visible = true;
-	},
-	endSpritSheet : function(obj,boolean){
-		obj.stop();
-		if(!boolean) obj.visible = false;
-	},
-	/**
-	 * 动画帧
-	 */
-	objTween : function(obj,objTo,func,boolean){
-		Cartoon.common.startSpritSheet(obj);
-		createjs.Tween.get(obj)
-			.to({x : objTo.x, y : objTo.y},objTo.i ? Cartoon.common.INTERVAL * objTo.i : Cartoon.common.INTERVAL)
-			.call(function(){
-				func();
-				Cartoon.common.endSpritSheet(obj,boolean);
-			})
-	},
-	/**
-	 * 添加雪碧图
-	 */
-	addSprite : function(id, obj){
-		if(!obj.s) obj.s = Cartoon.common.SCALE;
-		if(!obj.f) obj.f = Cartoon.common.FEAMERATE;
-		var data = {
-			images : [Cartoon.Preload.getResult(id)],
-			frames : { width : obj.w, height : obj.h},
-			framerate : obj.f
-		};
-		var spriteSheet = new createjs.SpriteSheet(data);
-		var sheet = new createjs.Sprite(spriteSheet);
-		sheet.scaleX = sheet.scaleY = obj.s;
-		sheet.visible = false;
-		if(obj.p){
-			sheet.visible = true;
-			sheet.play();
-		}
-		sheet.x = obj.x;
-		sheet.y = obj.y;
-		return sheet;
-	},
 	/**
 	 * 添加图片
 	 */
@@ -269,7 +314,7 @@ Poster.common = {
 		}
 		//加载视频
 		function loadVideo() {
-			Poster.common._sound = document.getElementById("bell");
+			Poster.common._sound = document.getElementById("bgm");
 			if(!Poster.common._sound) loadVideo();
 		    Poster.common._sound.play();
 //		    alert(Poster.common._sound)

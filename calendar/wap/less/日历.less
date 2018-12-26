@@ -6,6 +6,20 @@
 //@import "H:\无双\GIT\five\less\style/wap_less_init"; 
 
 .reset();
+
+.popup{
+    .popup(0.75);
+    .dn();
+    &_poster{
+        .poster{
+            .mainContent(111,579)
+        }
+        .hint{
+            .mainContent(1020,153)
+        }
+    }
+}
+
 .plan{
     .mainContent(670,510);
     &_box{
@@ -35,7 +49,29 @@
     .dn();
     .pr();
     .boxes{
-        .main(31,44,661);
+        .main(31,44,661);        
+    }
+    .boxes{
+        @W : 661;
+        @H : 976;
+        .title{
+            .mainContent(108,453,@W,@H)
+        }
+        .pic{
+            .main(262,40,575,@W,@H)
+        }
+        .left{
+            .main(759,28,38,@W,@H)
+        }
+        .right{
+            .mainRight(759,28,38,@W,@H)
+        }
+        .yi{
+            .main(746,246,267,@W,@H)
+        }
+        .ji{
+            .main(882,234,284,@W,@H)
+        }
     }
     .btn{
         .mainContent(1080,447);
@@ -145,7 +181,7 @@
         }
         &_4{
             .gif_bg{
-                .width(443)
+                .width(750)
             }
             .gif{
                 .width(750);
@@ -202,6 +238,34 @@
     .dn();
     .pr();
     #poster{
+        .dn();
         .main(0,0,@W);
-    }    
+    }
+    .title{
+        .mainContent(118,643);
+    }
+    .emoji{
+        .mainContent(249,688);
+        border: 3px solid #2c2626;
+        border-radius: 3px;
+        box-sizing: border-box;
+    }
+    .seal{
+        .main(214,422,315);
+    }
+    .text{
+        .mainContent(933,688);
+        p{
+            .mainConP(40,688,688,130);
+            font-size: 4rem;
+        }
+    }
+    .btn{
+        &_not_me{
+            .main(1108,43,303);
+        }
+        &_friend{
+            .main(1108,378,329);
+        }
+    }
 }
