@@ -9,7 +9,15 @@ $(function(){
 		}
 	})
 //	fakeLoading($(".loading .plan"),100,100,complete)
-/**--------------------------------------------------------**/
+/**-----------------------首页---------------------------------**/
+	var n = parseInt(Math.random()*6)
+	var date = new Date()
+	var year = date.getFullYear(),
+		month = date.getMonth()+1,
+		day = date.getDate();
+	
+	console.log(_standOfFall[n],year,month,day,_calendar[month][day])
+	
 	$(".index .btn").on("click",function(){
 		onShowHide($(".answer"),$(".index"))
 		fakeLoading($(".answer .plan"),100,5000)
@@ -43,12 +51,14 @@ $(function(){
 function nextIusse() {
 	var n = $(this).attr("data-n")
 	if(n){
+		if($(this).parent().find('.tick').length) return false
+		if(_timer) clearTimeout(_timer);
 		var tick = '<img src="images/ioc_tick.png" class="tick"/>'
 		$(this).append(tick)
 		$(this).siblings().find('.tick').remove()
 		_selected.push(n)
-//		setTimeout(nextIusse,1000)
-//		return false;
+		setTimeout(nextIusse,500)
+		return false;
 	}
 	var answer = _issues[_now]
 	if(!answer){
@@ -70,9 +80,12 @@ function nextIusse() {
 	}
 	$(".ans .choices").html(choices.join(''));
 	$(".ans").addClass("answer_" + answer.pos)
-	$(".ans .choice").on("click",nextIusse)
+	setTimeout(function(){
+		$(".ans .choice").on("click",nextIusse)
+	},200)
 	fakeLoading($(".answer .plan"),100,5000,function(){
-		console.log('时间到')
+		_selected.push("")
+		nextIusse()
 	})
 	_now++
 }

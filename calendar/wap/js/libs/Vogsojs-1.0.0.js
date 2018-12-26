@@ -46,7 +46,7 @@ Vogsojs.init = function(){
     var h = $(window).height();
 
     //console.log(w,h);
-    $("body").css("height",h);
+//  $("body").css("height",h);
     $("body").append("<div class='maskAlert'></div>");
     $(".maskAlert").append("<div class='alertText'>敬请期待</div>");
     $(".maskAlert").append("<div class='alertLine'></div>");

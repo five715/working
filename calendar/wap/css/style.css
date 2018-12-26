@@ -210,9 +210,10 @@ canvas {
 }
 .answer .plan {
   position: absolute;
-  top: 7.34632684%;
+  top: 7.49625187%;
   left: 9.06666667%;
   width: 73.86666667%;
+  transform: scaleY(1.3);
 }
 .answer .per {
   position: absolute;
@@ -402,7 +403,7 @@ canvas {
 }
 .result .emoji {
   position: absolute;
-  top: 18.66566717%;
+  top: 17.91604198%;
   left: 4.13333333%;
   width: 91.73333333%;
   border: 3px solid #2c2626;
