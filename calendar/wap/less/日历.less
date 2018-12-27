@@ -53,35 +53,44 @@
     .dn();
     .pr();
     .boxes{
-        .main(31,44,661);        
+        .main(95,38,677);        
     }
     .boxes{
-        @W : 661;
-        @H : 976;
-        .title{
-            .mainContent(108,453,@W,@H)
+        @W : 677;
+        @H : 893;
+        .tit{
+            .main(0,19,655,@W,@H)
         }
         .pic{
-            .main(262,40,575,@W,@H)
+            .main(143,58,578,@W,@H)
         }
         .left{
-            .main(759,28,38,@W,@H)
+            .main(608,19,90,@W,@H)
         }
         .right{
-            .mainRight(759,28,38,@W,@H)
+            .mainRight(608,3,91,@W,@H)
         }
         .yi{
-            .main(746,246,267,@W,@H)
+            .main(608,243,337,@W,@H)
         }
         .ji{
-            .main(882,234,284,@W,@H)
+            .main(740,243,337,@W,@H)
         }
     }
     .btn{
-        .mainContent(1080,447);
+        .mainContent(1044,445);
     }
     .logo{
-        .mainContent(1235,304);
+        .mainContent(1220,304);
+    }
+    .video{
+        .dn();
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        top: 0;
+        left: 0;
     }
 }
 
@@ -100,6 +109,10 @@
         .main(203,77,581);
         font-size: 3.6rem;
         font-weight: bold;
+    }
+    .play{
+        .mainContent(592,190);
+        .dn();
     }
     .choices{
         .main(318,87,570);
@@ -181,7 +194,7 @@
                 background: url('../images/iusse_gif_3.png') no-repeat;
                 .height(760);
                 background-size:1300%;
-                -webkit-animation: demo 1.5s steps(12) infinite;
+//              -webkit-animation: demo 1.5s steps(12) infinite;
             }
         }
         &_4{
@@ -203,7 +216,7 @@
             }
             .gif{
                 left: 0;
-                .width(503);
+                .width(750);
                 background: url('../images/iusse_gif_5.png') no-repeat;
                 .height(735);
                 background-size:1000%;
@@ -228,12 +241,12 @@
             }
             .gif{
                 left: 0;
-                .left(18);
-                .width(640);
+                .left(173);
+                .width(560);
                 background: url('../images/iusse_gif_7.png') no-repeat;
-                .height(713);
-                background-size:1300%;
-                -webkit-animation: demo 1.5s steps(12) infinite;
+                .height(884);
+                background-size:1100%;
+                -webkit-animation: demo 1.5s steps(10) infinite;
             }
         }
     }
@@ -247,30 +260,38 @@
         .main(0,0,@W);
     }
     .title{
-        .mainContent(118,643);
+        .mainContent(118-26,643);
     }
     .emoji{
-        .mainContent(249-10,688);
+        .mainContent(249-10-30,688);
         border: 3px solid #2c2626;
         border-radius: 3px;
         box-sizing: border-box;
     }
     .seal{
-        .main(214,422,315);
+        .main(214-30,422,315);
     }
     .text{
-        .mainContent(933,688);
+        .mainContent(933-30,688);
+        border: 3px solid #1e1e1e;
+        background: #ed6e6e;
+        box-sizing: border-box;
         p{
-            .mainConP(40,688,688,130);
-            font-size: 4rem;
+            box-sizing: border-box;
+            border: 3px solid #1e1e1e;
+            background: #FFFFFF;
+            margin: 4%;
+            padding: 2%;
+//          .mainConP(40,688,688,130);
+            font-size: 3.7rem;
         }
     }
     .btn{
         &_not_me{
-            .main(1108,43,303);
+            .main(1108+24,43,303);
         }
         &_friend{
-            .main(1108,378,329);
+            .main(1108+24,378,329);
         }
     }
 }

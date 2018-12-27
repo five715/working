@@ -120,15 +120,26 @@ Poster.main = function(canvas){
 		__game.addChild(__seal)
 	}
 	_this.setData = function(emoji,pic,name){
-		if(pic) __pic.image = Poster.Preload.getResult("emoji_"+pic)
+		if(pic) {
+			if(!isNaN(pic)){
+				__pic.image = Poster.Preload.getResult("emoji_"+pic)
+			}else {
+				var img = new Image()
+				img.onload = function(e){
+					var path = e.path?e.path[0] :img;
+					__pic.image = path
+					_this.setScale(__pic,74)
+				}
+				img.src = pic
+			}
+		}
 		if(name) __name.text = name
 		if(emoji) __emoji.image = Poster.Preload.getResult("emoji_"+emoji)
+		_this.setScale(__pic,74)
 	}
 	_this.addTitle = function(){
 		__pic = Poster.common.addBitmap(_pic)
-		var obj = __pic.getBounds()
-		var scale = obj.width < obj.height ? 74/obj.width : 74/obj.height
-		__pic.scaleX = __pic.scaleY = scale
+		_this.setScale(__pic,74)
 		var mask = new createjs.Shape()
 		mask.graphics.f('#bfbfbf').drawCircle(101,91,74/2)
 		__pic.mask = mask

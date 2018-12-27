@@ -156,57 +156,66 @@ canvas {
 }
 .index .boxes {
   position: absolute;
-  top: 2.32383808%;
-  left: 5.86666667%;
-  width: 88.13333333%;
+  top: 7.12143928%;
+  left: 5.06666667%;
+  width: 90.26666667%;
 }
-.index .boxes .title {
+.index .boxes .tit {
   position: absolute;
-  top: 11.06557377%;
-  left: 15.73373676%;
-  width: 68.53252648%;
+  top: 0%;
+  left: 2.80649926%;
+  width: 96.75036928%;
 }
 .index .boxes .pic {
   position: absolute;
-  top: 26.8442623%;
-  left: 6.05143722%;
-  width: 86.98940998%;
+  top: 16.01343785%;
+  left: 8.56720827%;
+  width: 85.37666174%;
 }
 .index .boxes .left {
   position: absolute;
-  top: 77.76639344%;
-  left: 4.23600605%;
-  width: 5.74886536%;
+  top: 68.08510638%;
+  left: 2.80649926%;
+  width: 13.29394387%;
 }
 .index .boxes .right {
   position: absolute;
-  top: 77.76639344%;
-  right: 4.23600605%;
-  width: 5.74886536%;
+  top: 68.08510638%;
+  right: 0.44313146%;
+  width: 13.44165436%;
 }
 .index .boxes .yi {
   position: absolute;
-  top: 76.43442623%;
-  left: 37.21633888%;
-  width: 40.39334342%;
+  top: 68.08510638%;
+  left: 35.89364845%;
+  width: 49.77843427%;
 }
 .index .boxes .ji {
   position: absolute;
-  top: 90.36885246%;
-  left: 35.40090772%;
-  width: 42.96520424%;
+  top: 82.86674132%;
+  left: 35.89364845%;
+  width: 49.77843427%;
 }
 .index .btn {
   position: absolute;
-  top: 80.95952024%;
-  left: 20.2%;
-  width: 59.6%;
+  top: 78.26086957%;
+  left: 20.33333333%;
+  width: 59.33333333%;
 }
 .index .logo {
   position: absolute;
-  top: 92.57871064%;
+  top: 91.45427286%;
   left: 29.73333333%;
   width: 40.53333333%;
+}
+.index .video {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  top: 0;
+  left: 0;
 }
 .answer {
   display: none;
@@ -233,6 +242,13 @@ canvas {
   width: 77.46666667%;
   font-size: 3.6rem;
   font-weight: bold;
+}
+.answer .play {
+  position: absolute;
+  top: 44.37781109%;
+  left: 37.33333333%;
+  width: 25.33333333%;
+  display: none;
 }
 .answer .choices {
   position: absolute;
@@ -339,7 +355,6 @@ canvas {
   background: url('../images/iusse_gif_3.png') no-repeat;
   height: 56.97151424%;
   background-size: 1300%;
-  -webkit-animation: demo 1.5s steps(12) infinite;
 }
 .answer .gif_4 .gif_bg {
   width: 100%;
@@ -357,7 +372,7 @@ canvas {
 }
 .answer .gif_5 .gif {
   left: 0;
-  width: 67.06666667%;
+  width: 100%;
   background: url('../images/iusse_gif_5.png') no-repeat;
   height: 55.09745127%;
   background-size: 1000%;
@@ -381,12 +396,12 @@ canvas {
 }
 .answer .gif_7 .gif {
   left: 0;
-  left: 2.4%;
-  width: 85.33333333%;
+  left: 23.06666667%;
+  width: 74.66666667%;
   background: url('../images/iusse_gif_7.png') no-repeat;
-  height: 53.44827586%;
-  background-size: 1300%;
-  -webkit-animation: demo 1.5s steps(12) infinite;
+  height: 66.26686657%;
+  background-size: 1100%;
+  -webkit-animation: demo 1.5s steps(10) infinite;
 }
 .result {
   display: none;
@@ -401,13 +416,13 @@ canvas {
 }
 .result .title {
   position: absolute;
-  top: 8.84557721%;
+  top: 6.89655172%;
   left: 7.13333333%;
   width: 85.73333333%;
 }
 .result .emoji {
   position: absolute;
-  top: 17.91604198%;
+  top: 15.66716642%;
   left: 4.13333333%;
   width: 91.73333333%;
   border: 3px solid #2c2626;
@@ -416,33 +431,36 @@ canvas {
 }
 .result .seal {
   position: absolute;
-  top: 16.04197901%;
+  top: 13.79310345%;
   left: 56.26666667%;
   width: 42%;
 }
 .result .text {
   position: absolute;
-  top: 69.94002999%;
+  top: 67.69115442%;
   left: 4.13333333%;
   width: 91.73333333%;
+  border: 3px solid #1e1e1e;
+  background: #ed6e6e;
+  box-sizing: border-box;
 }
 .result .text p {
-  position: absolute;
-  top: 30.76923077%;
-  width: 100%;
-  left: 0%;
-  text-align: center;
-  font-size: 4rem;
+  box-sizing: border-box;
+  border: 3px solid #1e1e1e;
+  background: #FFFFFF;
+  margin: 4%;
+  padding: 2%;
+  font-size: 3.7rem;
 }
 .result .btn_not_me {
   position: absolute;
-  top: 83.05847076%;
+  top: 84.85757121%;
   left: 5.73333333%;
   width: 40.4%;
 }
 .result .btn_friend {
   position: absolute;
-  top: 83.05847076%;
+  top: 84.85757121%;
   left: 50.4%;
   width: 43.86666667%;
 }

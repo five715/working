@@ -10,18 +10,32 @@ $(function(){
 	})
 //	fakeLoading($(".loading .plan"),100,100,complete)
 /**-----------------------首页---------------------------------**/
-	var n = parseInt(Math.random()*6)
 	var date = new Date()
 	var year = date.getFullYear(),
 		month = date.getMonth()+1,
 		day = date.getDate();
+//	month = 1
+//	day = 3
+	if(day>27 || day<4){
+		var n = parseInt(Math.random()*6+1)
+		console.log(_standOfFall[n-1],year,month,day,_calendar[month][day])
+		$(".index .boxes .alter").each(function(){
+			var cls = $(this).parent().attr("class")
+			if(cls == "yi" || cls == "ji"){
+				$(this).attr("src","images/calendar/index_boxes_"+cls+"_"+n+".png")
+			}else{
+				$(this).attr("src","images/calendar/index_boxes_"+cls+"_"+day+".png")
+			}
+		})
+	}
 	
-	console.log(_standOfFall[n],year,month,day,_calendar[month][day])
-	
+		
 	$(".index .btn").on("click",function(){
-		onShowHide($(".answer"),$(".index"))
-		fakeLoading($(".answer .plan"),100,5000)
-		nextIusse();
+		$(".video").show()[0].play()
+		$(".video").on("ended",function(){
+			onShowHide($(".answer"),$(".index"))
+			nextIusse();
+		})
 	})
 /**---------------------答题------------------------**/
 	$(".choices .choice").on('click',function(){
@@ -29,11 +43,20 @@ $(function(){
 		$(this).append(tick)
 		$(this).siblings().find('.tick').remove()
 	})
+	$(".answer .play").on("click",function(){
+		$(this).hide()
+		$(".gif_3 .gif").css("-webkit-animation","demo 1.5s steps(12) infinite")
+		console.log("循环播放音频")
+	})
 /**---------------------结果------------------------**/
 	$(".result .btn_not_me").on("click",function(){
 		var n = parseInt(Math.random()*10+1)
 		$(".result .emoji img").attr("src","images/result_emoji_"+n+".jpg")
 		_game.setData(n)
+		console.log()
+		var t = _resultTexts[n-1]
+		if(Array.isArray(t)) t = t[parseInt(Math.random()*t.length)]
+		$(".result .text p").text(t)
 	})
 	$(".result .btn_friend").on("click",function(){
 		popup(1)
@@ -83,10 +106,17 @@ function nextIusse() {
 	setTimeout(function(){
 		$(".ans .choice").on("click",nextIusse)
 	},200)
-	fakeLoading($(".answer .plan"),100,5000,function(){
+	fakeLoading($(".answer .plan"),100,10000,function(){
 		_selected.push("")
 		nextIusse()
 	})
+	if(_now == 2){
+		$(".answer .play").show()
+	}else{
+		$(".answer .play").hide()
+		$(".ans .gif").css("-webkit-animation","")
+		console.log("停止音频")
+	}
 	_now++
 }
 /*
@@ -127,8 +157,8 @@ function complete(e){
  * 游戏开始
  */
 function onGameStart(){
-//	onShowHide($(".index"),$(".loading"))
 	onShowHide($(".index"),$(".loading"))
+//	onShowHide($(".result"),$(".loading"))
 	_game = new Poster.main($("#poster")[0])
 	_game.on(Poster.Event.CREATE,onGameOver)
 }
@@ -137,6 +167,14 @@ function onGameStart(){
  */
 function onGameOver(e){
 	$(".popup .poster img").attr("src",e.data)
+}
+/**
+ * 设置图片头像昵称
+ * pic:头像
+ * name:昵称
+ */
+function setData(pic,name){
+	_game.setData(null,pic,name)
 }
 /**
  * 切换页面
