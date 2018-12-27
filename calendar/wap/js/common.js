@@ -166,6 +166,7 @@ function onGameStart(){
 	_game = new Poster.main($("#poster")[0])
 	_game.on(Poster.Event.CREATE,onGameOver)
 	setData(headimgurl,nickname)
+	$(".result .btn_not_me").click()
 }
 /**
  * 游戏结束
