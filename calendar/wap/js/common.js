@@ -165,6 +165,7 @@ function onGameStart(){
 //	onShowHide($(".result"),$(".loading"))
 	_game = new Poster.main($("#poster")[0])
 	_game.on(Poster.Event.CREATE,onGameOver)
+	headimgurl = headimgurl.replace("http://","https://")
 	setData(headimgurl,nickname)
 	$(".result .btn_not_me").click()
 }
