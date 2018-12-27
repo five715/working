@@ -102,6 +102,15 @@ canvas {
   margin-left: 39.8%;
   margin-top: 5%;
 }
+.popup_hint p {
+  position: absolute;
+  top: 44.97751124%;
+  width: 100%;
+  left: 0%;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 3rem;
+}
 .plan {
   position: absolute;
   top: 50.22488756%;

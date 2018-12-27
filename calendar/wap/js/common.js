@@ -60,8 +60,8 @@ $(function(){
 		$(".result .text p").text(t)
 	})
 	$(".result .btn_friend").on("click",function(){
-//		popup(1)
-		setData(headimgurl,nickname)
+		popup(2)
+		_game.getImageData()
 	})
 /**---------------------弹窗------------------------**/
 	
@@ -159,17 +159,18 @@ function complete(e){
  * 游戏开始
  */
 function onGameStart(){
-	onShowHide($(".index"),$(".loading"))
-//	onShowHide($(".result"),$(".loading"))
+//	onShowHide($(".index"),$(".loading"))
+	onShowHide($(".result"),$(".loading"))
 	_game = new Poster.main($("#poster")[0])
 	_game.on(Poster.Event.CREATE,onGameOver)
+	setData(headimgurl,nickname)
 }
 /**
  * 游戏结束
  */
 function onGameOver(e){
-	$(".popup .poster img").attr("src",e.data)
 	popup(1)
+	$(".popup .poster img").attr("src",e.data)
 }
 /**
  * 设置图片头像昵称
@@ -199,6 +200,9 @@ function popup(n){
 	switch(n){
 		case 1:
 			$(".popup,.popup_poster").show();
+			break;
+		case 2:
+			$(".popup,.popup_hint").show();
 			break;
 	}
 }

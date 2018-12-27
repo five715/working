@@ -1,5 +1,5 @@
 var Poster = {};
-Poster.VER = "1.0.0";
+Poster.VER = "1.0.1";
 Poster.Event = {
 	CREATE:"create"
 
@@ -12,6 +12,7 @@ Poster.Preload = {
 	_images : [
 		{id:"bg",src:"poster_bg.jpg"},
 		{id:"qrCode",src:"qrCode.png"},
+		{id:"pic",src:"head.png"},
 		{id:"emoji_1",src:"emoji_1.jpg"},
 		{id:"emoji_2",src:"emoji_2.jpg"},
 		{id:"emoji_3",src:"emoji_3.jpg"},
@@ -38,9 +39,6 @@ Poster.Preload = {
 		{id:"iusse_gif_bg_6",src:"iusse_gif_bg_6.png"},
 		{id:"iusse_gif_bg_7",src:"iusse_gif_bg_7.png"}
 	],
-	_a:[
-		{id:"emoji_11",src:"http://thirdqq.qlogo.cn/g?b=sdk&k=AdBLuhBAgoaiah0cvcxec7A&s=40&t=1529145770"}
-	],
 	/**
 	 *	初始化
 	 */
@@ -48,7 +46,6 @@ Poster.Preload = {
 		this._queue = new createjs.LoadQueue(false);
 		this._queue.loadManifest(this._images, false, "res/");
 		this._queue.loadManifest(this._src, false, "images/");
-		this._queue.loadManifest(this._a, false, "");
 //		this._queue.loadManifest(this._sounds, false, "sounds/");
 //		createjs.Sound.registerSounds(this._sounds);
 	},
@@ -90,7 +87,7 @@ Poster.main = function(canvas){
 		__seal = null,	//印章
 		__qrCode = null;	//二维码
 	var _bg = {id:"bg"},
-		_pic = {id:'emoji_1',x:64,y:54},
+		_pic = {id:'pic',x:64,y:54},
 		_title = {id:'title',x:159,y:68},
 		_boxes = {id:'title',x:159,y:68},
 		_line = [
@@ -129,15 +126,16 @@ Poster.main = function(canvas){
 				__pic.image = Poster.Preload.getResult("emoji_"+pic)
 			}else {
 				var img = new Image()
-//				img.crossOrigin = "Anonymous";
+				img.crossOrigin = 'anonymous';
+				img.src = pic+"?timeStamp="+new Date();
+//				img.setAttribute("crossOrigin",'Anonymous')
+//      		img.crossOrigin = "*";
 				img.onload = function(e){
 					var path = e.path?e.path[0] :img;
 					console.log(e,path)
 					__pic.image = path
 					_this.setScale(__pic,74)
-					_this.getImageData()
 				}
-				img.src = pic
 			}
 		}
 		if(name) __name.text = name
@@ -210,7 +208,7 @@ Poster.main = function(canvas){
 	 */
 	_this.getImageData = function(){
 		__game.cache(0,0,WIDTH,HEIGHT);
-		var data = __game.getCacheDataURL();
+		var data = $("#poster")[0].toDataURL("image/jpeg");
 //		var img = new Image();
 //		img.src = data;
 //		img.onload = function(e){

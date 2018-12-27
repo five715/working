@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-<meta http-equiv="Access-Control-Allow-Origin" content="thirdqq.qlogo.cn">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
 <title>我的年度表情</title>
 <link rel="stylesheet" href="css/VogsoStyle-1.0.0.css">
 <link rel="stylesheet" href="css/style.css">
@@ -27,6 +27,9 @@
 			<div class="hint">
 				<img src="images/popup_poster_hint.png"/>
 			</div>
+		</div>
+		<div class="popup_hint pop">
+			<p>图片加载中...</p>
 		</div>
 	</div>
 	<!--loading-->
@@ -138,136 +141,129 @@
 </div>
 </body>
 <script type="text/javascript" charset="utf-8" src="//mat1.gtimg.com/news/yuanwt/jquery-1.11.3.min.js"></script>
-<script type="text/javascript">
-	var UA = function() {
- 	var a = navigator.userAgent.toLowerCase();
- 	return {
- 		ipad: /ipad/.test(a),
- 		iphone: /iphone/.test(a),
- 		android: /android/.test(a),
- 		qqnews: /qqnews/.test(a),
- 		weixin: /micromessenger/.test(a),
- 		qqnews_version: a.match(/qqnews/i) == "qqnews" ? a.split('qqnews/')[1] : ''
- 	}
- };
+<script>var UA = function() {
+	var a = navigator.userAgent.toLowerCase();
+	return {
+		ipad: /ipad/.test(a),
+		iphone: /iphone/.test(a),
+		android: /android/.test(a),
+		qqnews: /qqnews/.test(a),
+		weixin: /micromessenger/.test(a),
+		qqnews_version: a.match(/qqnews/i) == "qqnews" ? a.split('qqnews/')[1] : ''
+	}
+};
 
- function shareQQNews() {
- 	var a = UA();
- 	switch(true) {
- 		case a.qqnews:
- 			if(window.TencentNews && window.TencentNews.setShareArticleInfo) {
- 				window.TencentNews.setShareArticleInfo(shareData.title, shareData.desc, shareData.desc, shareData.link, shareData.img)
- 			}
- 			if(window.TencentNews && window.TencentNews.showShareMenu) {
- 				window.TencentNews.showShareMenu(shareData.link, shareData.title, shareData.desc, shareData.img, "news_news_wc")
- 			} else {
- 				window.TencentNews.shareFromWebView(shareData.title, shareData.desc, shareData.img)
- 			}
- 			break;
- 		case a.weixin:
- 			var b = document.querySelector(".weixin_layout");
- 			b.style.display = "block";
- 			b.addEventListener("click", function() {
- 				b.style.display = "none"
- 			});
- 			break;
- 		default:
- 			window.location = "http://share.v.t.qq.com/index.php?c=share&a=index&appkey=801378464&url=" + shareData.link + "&title=" + shareData.desc + "&pic=" + shareData.img + "&des=" + shareData.title;
- 			break
- 	}
- };
+function shareQQNews() {
+	var a = UA();
+	switch(true) {
+		case a.qqnews:
+			if(window.TencentNews && window.TencentNews.setShareArticleInfo) {
+				window.TencentNews.setShareArticleInfo(shareData.title, shareData.desc, shareData.desc, shareData.link, shareData.img)
+			}
+			if(window.TencentNews && window.TencentNews.showShareMenu) {
+				window.TencentNews.showShareMenu(shareData.link, shareData.title, shareData.desc, shareData.img, "news_news_wc")
+			} else {
+				window.TencentNews.shareFromWebView(shareData.title, shareData.desc, shareData.img)
+			}
+			break;
+		case a.weixin:
+			var b = document.querySelector(".weixin_layout");
+			b.style.display = "block";
+			b.addEventListener("click", function() {
+				b.style.display = "none"
+			});
+			break;
+		default:
+			window.location = "http://share.v.t.qq.com/index.php?c=share&a=index&appkey=801378464&url=" + shareData.link + "&title=" + shareData.desc + "&pic=" + shareData.img + "&des=" + shareData.title;
+			break
+	}
+};
 
- function onBridgeReady() {
- 	WeixinJSBridge.on("menu:share:timeline", function(e) {
- 		var b = {
- 			img_width: "120",
- 			img_height: "120",
- 			img_url: shareData.img,
- 			link: shareData.link,
- 			desc: shareData.desc,
- 			title: shareData.title
- 		};
- 		WeixinJSBridge.invoke("shareTimeline", b, function(a) {
- 			WeixinJSBridge.log(a.err_msg)
- 		})
- 	});
- 	WeixinJSBridge.on("menu:share:weibo", function() {
- 		WeixinJSBridge.invoke("shareWeibo", {
- 			"content": shareData.desc,
- 			"url": shareData.link
- 		}, function(a) {
- 			WeixinJSBridge.log(a.err_msg)
- 		})
- 	});
- 	WeixinJSBridge.on('menu:share:appmessage', function(b) {
- 		WeixinJSBridge.invoke("sendAppMessage", {
- 			img_width: "120",
- 			img_height: "120",
- 			img_url: shareData.img,
- 			link: shareData.link,
- 			desc: shareData.desc,
- 			title: shareData.title
- 		}, function(a) {
- 			WeixinJSBridge.log(a.err_msg)
- 		})
- 	})
- };
- document.addEventListener('WeixinJSBridgeReady', function() {
- 	onBridgeReady()
- });
+function onBridgeReady() {
+	WeixinJSBridge.on("menu:share:timeline", function(e) {
+		var b = {
+			img_width: "120",
+			img_height: "120",
+			img_url: shareData.img,
+			link: shareData.link,
+			desc: shareData.desc,
+			title: shareData.title
+		};
+		WeixinJSBridge.invoke("shareTimeline", b, function(a) {
+			WeixinJSBridge.log(a.err_msg)
+		})
+	});
+	WeixinJSBridge.on("menu:share:weibo", function() {
+		WeixinJSBridge.invoke("shareWeibo", {
+			"content": shareData.desc,
+			"url": shareData.link
+		}, function(a) {
+			WeixinJSBridge.log(a.err_msg)
+		})
+	});
+	WeixinJSBridge.on('menu:share:appmessage', function(b) {
+		WeixinJSBridge.invoke("sendAppMessage", {
+			img_width: "120",
+			img_height: "120",
+			img_url: shareData.img,
+			link: shareData.link,
+			desc: shareData.desc,
+			title: shareData.title
+		}, function(a) {
+			WeixinJSBridge.log(a.err_msg)
+		})
+	})
+};
+document.addEventListener('WeixinJSBridgeReady', function() {
+	onBridgeReady()
+});
 
- function androidQQNewsShare() {
- 	var a = document.getElementsByTagName('body')[0];
- 	var b = document.createElement('script');
- 	b.type = 'text/javascript';
- 	b.src = '//mat1.gtimg.com/www/js/newsapp/jsapi/news.js?_tsid=1';
- 	a.appendChild(b)
- }
-   androidQQNewsShare();
- var nickname = '我的';
- var headimgurl = '//news.qq.com/zt2018/jjhjh5/photo.jpg';
- if(UA().weixin) {
- 	function getUserInfo() {
- 		$.ajax({
- 			url: 'https://yc.static.qq.com/?service=App.Getinfo_Getinfo.getindex',
- 			dataType: 'jsonp',
- 			jsonp: "callback",
- 			jsonpCallback: "infocallback",
- 			success: function(data) {
- 				infocallback(data)
- 			}
- 		})
- 	}
+var nickname = '我的';
+var headimgurl = '//news.qq.com/zt2018/jjhjh5/photo.jpg';
+if(UA().weixin) {
+	function getUserInfo() {
+		$.ajax({
+			url: 'https://yc.static.qq.com/?service=App.Getinfo_Getinfo.getindex',
+			dataType: 'jsonp',
+			jsonp: "callback",
+			jsonpCallback: "infocallback",
+			success: function(data) {
+				infocallback(data)
+			}
+		})
+	}
 
- 	function getwxUsrInfo() {
- 		var g_appid = "wxca92e8bcb9f28c93";
- 		var authserver = "https://yc.static.qq.com/?service=App.Getinfo_Getinfo.Getuserinfo&original_uri=" + encodeURIComponent(location.href);
- 		var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + g_appid + '&redirect_uri=' + encodeURIComponent(authserver) + '&response_type=code&scope=snsapi_userinfo&state=' + encodeURIComponent(location.href) + '#wechat_redirect';
- 		document.location.href = url
- 	}
+	function getwxUsrInfo() {
+		var g_appid = "wxca92e8bcb9f28c93";
+		var authserver = "https://yc.static.qq.com/?service=App.Getinfo_Getinfo.Getuserinfo&original_uri=" + encodeURIComponent(location.href);
+		var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + g_appid + '&redirect_uri=' + encodeURIComponent(authserver) + '&response_type=code&scope=snsapi_userinfo&state=' + encodeURIComponent(location.href) + '#wechat_redirect';
+		document.location.href = url
+	}
 
- 	function infocallback(e) {
- 		if(e.data.openid == null) {
- 			getwxUsrInfo()
- 		} else {
- 			nickname = e.data.nickname;
- 			headimgurl = e.data.headimgurl
- 		}
- 	}
- 	getUserInfo()
- } else {
- 	$.get('//imgcache.qq.com/tencentvideo_v1/tvp/js/module/tvp.login.js', function() {
- 		txvLogin.isQQLogin(function(isqqlogin) {
- 			if(isqqlogin) {
- 				txvLogin.requestQQInfo(function(user_data) {
- 					nickname = user_data.nick;
- 					headimgurl = user_data.qqface
- 				})
- 			} else {
- 				txvLogin.openQQLogin()
- 			}
- 		})
- 	})
- };
+	function infocallback(e) {
+		console.log(e)
+		if(e.data.openid == null) {
+			getwxUsrInfo()
+		} else {
+			nickname = e.data.nickname;
+			headimgurl = e.data.headimgurl
+		}
+	}
+	getUserInfo()
+} else {
+	$.get('//imgcache.qq.com/tencentvideo_v1/tvp/js/module/tvp.login.js', function() {
+		txvLogin.isQQLogin(function(isqqlogin) {
+			if(isqqlogin) {
+				txvLogin.requestQQInfo(function(user_data) {
+					console.log(user_data)
+					nickname = user_data.nick;
+					headimgurl = user_data.qqface
+				})
+			} else {
+				txvLogin.openQQLogin()
+			}
+		})
+	})
+}
 </script>
 </html>
