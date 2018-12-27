@@ -7,6 +7,7 @@ $(function(){
 			size = w / 75;
 			$("html").css("font-size",size+"px");
 		}
+		$(".answer").css("height",window.innerHeight)
 	})
 //	fakeLoading($(".loading .plan"),100,100,complete)
 /**-----------------------首页---------------------------------**/
@@ -131,6 +132,7 @@ function fakeLoading(obj,reso,speed,callback){
 	_timer = setInterval(function(){
 		per+= (100 / reso);
 		obj.find(".overflow").width(per+"%")
+		$(".answer .per").text(10-parseInt(per/10)+"s")
 		if(per >= 100){	
 			clearTimeout(_timer);
 			obj.find(".overflow").width("100%")
@@ -159,8 +161,8 @@ function complete(e){
  * 游戏开始
  */
 function onGameStart(){
-//	onShowHide($(".index"),$(".loading"))
-	onShowHide($(".result"),$(".loading"))
+	onShowHide($(".index"),$(".loading"))
+//	onShowHide($(".result"),$(".loading"))
 	_game = new Poster.main($("#poster")[0])
 	_game.on(Poster.Event.CREATE,onGameOver)
 	setData(headimgurl,nickname)

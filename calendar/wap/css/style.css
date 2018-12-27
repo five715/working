@@ -83,6 +83,9 @@ canvas {
   width: 100%;
   display: block;
 }
+.box {
+  position: fixed;
+}
 .popup {
   position: fixed;
   top: 0;
@@ -205,13 +208,13 @@ canvas {
 }
 .index .btn {
   position: absolute;
-  top: 78.26086957%;
+  top: 75.26236882%;
   left: 20.33333333%;
   width: 59.33333333%;
 }
 .index .logo {
   position: absolute;
-  top: 91.45427286%;
+  top: 84.70764618%;
   left: 29.73333333%;
   width: 40.53333333%;
 }
@@ -230,21 +233,21 @@ canvas {
 }
 .answer .plan {
   position: absolute;
-  top: 7.49625187%;
+  top: 5.24737631%;
   left: 9.06666667%;
   width: 73.86666667%;
   transform: scaleY(1.3);
 }
 .answer .per {
   position: absolute;
-  top: 7.34632684%;
+  top: 5.09745127%;
   left: 85.2%;
   width: 9.33333333%;
   font-size: 2.8rem;
 }
 .answer .issue {
   position: absolute;
-  top: 15.2173913%;
+  top: 9.97001499%;
   left: 10.26666667%;
   width: 77.46666667%;
   font-size: 3.6rem;
@@ -259,7 +262,7 @@ canvas {
 }
 .answer .choices {
   position: absolute;
-  top: 23.83808096%;
+  top: 22.33883058%;
   left: 11.6%;
   width: 76%;
 }
@@ -269,7 +272,7 @@ canvas {
   border: 3px solid #2c2626;
   border-radius: 3px;
   float: left;
-  margin-bottom: 10%;
+  margin-bottom: 6%;
 }
 .answer .choices .choice:nth-child(2n+0) {
   float: right;
@@ -423,13 +426,13 @@ canvas {
 }
 .result .title {
   position: absolute;
-  top: 6.89655172%;
+  top: 0.89955022%;
   left: 7.13333333%;
   width: 85.73333333%;
 }
 .result .emoji {
   position: absolute;
-  top: 15.66716642%;
+  top: 9.67016492%;
   left: 4.13333333%;
   width: 91.73333333%;
   border: 3px solid #2c2626;
@@ -438,13 +441,13 @@ canvas {
 }
 .result .seal {
   position: absolute;
-  top: 13.79310345%;
+  top: 7.79610195%;
   left: 56.26666667%;
   width: 42%;
 }
 .result .text {
   position: absolute;
-  top: 67.69115442%;
+  top: 61.69415292%;
   left: 4.13333333%;
   width: 91.73333333%;
   border: 3px solid #1e1e1e;
@@ -461,13 +464,13 @@ canvas {
 }
 .result .btn_not_me {
   position: absolute;
-  top: 84.85757121%;
+  top: 78.86056972%;
   left: 5.73333333%;
   width: 40.4%;
 }
 .result .btn_friend {
   position: absolute;
-  top: 84.85757121%;
+  top: 78.86056972%;
   left: 50.4%;
   width: 43.86666667%;
 }
