@@ -46,7 +46,6 @@ $(function(){
 	$(".answer .play").on("click",function(){
 		$(this).hide()
 		$(".gif_3 .gif").css("-webkit-animation","demo 1.5s steps(12) infinite")
-		console.log("循环播放音频")
 		$(".sound3")[0].play()
 		
 	})
@@ -61,8 +60,8 @@ $(function(){
 		$(".result .text p").text(t)
 	})
 	$(".result .btn_friend").on("click",function(){
-		popup(1)
-		_game.getImageData() 
+//		popup(1)
+		setData(headimgurl,nickname)
 	})
 /**---------------------弹窗------------------------**/
 	
@@ -160,8 +159,8 @@ function complete(e){
  * 游戏开始
  */
 function onGameStart(){
-	onShowHide($(".index"),$(".loading"))
-//	onShowHide($(".result"),$(".loading"))
+//	onShowHide($(".index"),$(".loading"))
+	onShowHide($(".result"),$(".loading"))
 	_game = new Poster.main($("#poster")[0])
 	_game.on(Poster.Event.CREATE,onGameOver)
 }
@@ -170,6 +169,7 @@ function onGameStart(){
  */
 function onGameOver(e){
 	$(".popup .poster img").attr("src",e.data)
+	popup(1)
 }
 /**
  * 设置图片头像昵称

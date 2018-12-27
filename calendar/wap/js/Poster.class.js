@@ -39,7 +39,7 @@ Poster.Preload = {
 		{id:"iusse_gif_bg_7",src:"iusse_gif_bg_7.png"}
 	],
 	_a:[
-		{id:"emoji_11",src:"http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL3xC3su7xUBRaoUK80Vz60mVPG24Jd6Qa4X6Hlyd4gcBNJxgQBBib02VWThRN2BfTibQwXgzxrCicwg/132"}
+		{id:"emoji_11",src:"http://thirdqq.qlogo.cn/g?b=sdk&k=AdBLuhBAgoaiah0cvcxec7A&s=40&t=1529145770"}
 	],
 	/**
 	 *	初始化
@@ -135,6 +135,7 @@ Poster.main = function(canvas){
 					console.log(e,path)
 					__pic.image = path
 					_this.setScale(__pic,74)
+					_this.getImageData()
 				}
 				img.src = pic
 			}
