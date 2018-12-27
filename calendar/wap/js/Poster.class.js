@@ -38,6 +38,9 @@ Poster.Preload = {
 		{id:"iusse_gif_bg_6",src:"iusse_gif_bg_6.png"},
 		{id:"iusse_gif_bg_7",src:"iusse_gif_bg_7.png"}
 	],
+	_a:[
+		{id:"emoji_11",src:"http://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL3xC3su7xUBRaoUK80Vz60mVPG24Jd6Qa4X6Hlyd4gcBNJxgQBBib02VWThRN2BfTibQwXgzxrCicwg/132"}
+	],
 	/**
 	 *	初始化
 	 */
@@ -45,6 +48,7 @@ Poster.Preload = {
 		this._queue = new createjs.LoadQueue(false);
 		this._queue.loadManifest(this._images, false, "res/");
 		this._queue.loadManifest(this._src, false, "images/");
+		this._queue.loadManifest(this._a, false, "");
 //		this._queue.loadManifest(this._sounds, false, "sounds/");
 //		createjs.Sound.registerSounds(this._sounds);
 	},
@@ -125,8 +129,10 @@ Poster.main = function(canvas){
 				__pic.image = Poster.Preload.getResult("emoji_"+pic)
 			}else {
 				var img = new Image()
+//				img.crossOrigin = "Anonymous";
 				img.onload = function(e){
 					var path = e.path?e.path[0] :img;
+					console.log(e,path)
 					__pic.image = path
 					_this.setScale(__pic,74)
 				}
@@ -209,6 +215,7 @@ Poster.main = function(canvas){
 //		img.onload = function(e){
 //			compress(img,WIDTH,HEIGHT)
 //		}
+		__game.uncache();			
 		isCreate(data);
 		return data;
 	}

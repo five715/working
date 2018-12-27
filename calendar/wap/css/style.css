@@ -93,16 +93,14 @@ canvas {
   display: none;
 }
 .popup_poster .poster {
-  position: absolute;
-  top: 8.32083958%;
-  left: 11.4%;
   width: 77.2%;
+  margin-top: 8.32083958%;
+  margin-left: 11.4%;
 }
 .popup_poster .hint {
-  position: absolute;
-  top: 76.46176912%;
-  left: 39.8%;
   width: 20.4%;
+  margin-left: 39.8%;
+  margin-top: 5%;
 }
 .plan {
   position: absolute;
@@ -126,7 +124,7 @@ canvas {
   position: absolute;
   top: 0%;
   left: 0%;
-  width: 100%;
+  width: 0%;
   overflow: hidden;
 }
 .loading {

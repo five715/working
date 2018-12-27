@@ -47,6 +47,8 @@ $(function(){
 		$(this).hide()
 		$(".gif_3 .gif").css("-webkit-animation","demo 1.5s steps(12) infinite")
 		console.log("循环播放音频")
+		$(".sound3")[0].play()
+		
 	})
 /**---------------------结果------------------------**/
 	$(".result .btn_not_me").on("click",function(){
@@ -115,7 +117,7 @@ function nextIusse() {
 	}else{
 		$(".answer .play").hide()
 		$(".ans .gif").css("-webkit-animation","")
-		console.log("停止音频")
+		$(".sound3")[0].pause()
 	}
 	_now++
 }
@@ -125,6 +127,7 @@ function nextIusse() {
 function fakeLoading(obj,reso,speed,callback){
 	if(_timer)clearTimeout(_timer);
 	obj.find(".hidden").width(obj.find(".plan_box").eq(0).width())
+	obj.find(".overflow").width("0%")
 	var per = 0
 	_timer = setInterval(function(){
 		per+= (100 / reso);
