@@ -159,8 +159,8 @@ function complete(e){
  * 游戏开始
  */
 function onGameStart(){
-//	onShowHide($(".index"),$(".loading"))
-	onShowHide($(".result"),$(".loading"))
+	onShowHide($(".index"),$(".loading"))
+//	onShowHide($(".result"),$(".loading"))
 	_game = new Poster.main($("#poster")[0])
 	_game.on(Poster.Event.CREATE,onGameOver)
 }
