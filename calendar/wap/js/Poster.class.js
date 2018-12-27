@@ -1,5 +1,5 @@
 var Poster = {};
-Poster.VER = "1.0.1";
+Poster.VER = "1.0.2";
 Poster.Event = {
 	CREATE:"create"
 
