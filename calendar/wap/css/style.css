@@ -135,8 +135,12 @@ canvas {
 .loading .ioc {
   position: absolute;
   top: 37.85607196%;
-  left: 44.86666667%;
-  width: 10.26666667%;
+  left: 37.2%;
+  width: 25.6%;
+  background: url('../images/loading_ioc.png') no-repeat;
+  height: 11.09445277%;
+  background-size: 1000%;
+  -webkit-animation: demo 1s steps(9) infinite;
 }
 .loading .per {
   position: absolute;
