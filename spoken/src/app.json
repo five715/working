@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/english/main",
+    "pages/chinese/main",
+    "pages/correct/main",
+    "pages/lesson/main",
+    "pages/videos/index/main",
+    "pages/videos/ranking/main",
+    "pages/videos/imitate/main",
+    "pages/follow/index/main",
+    "pages/follow/lists/main",
+    "pages/words/main",
+    "pages/defined/main",
+    "pages/shizi/main",
+    "pages/recite/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },  
+  "tabBar":{
+    "color": "#888888",
+    "selectedColor": "#338bff",
+    "backgroundColor": "#ffffff",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list":[
+      {
+        "pagePath":"pages/english/main",
+        "text":"英文测评",
+        "iconPath": "/static/ioc_english_no.png",
+        "selectedIconPath": "/static/ioc_english_yes.png"
+      },
+      {
+        "pagePath":"pages/chinese/main",
+        "text":"中文测评",
+        "iconPath": "/static/ioc_chinese_no.png",
+        "selectedIconPath": "/static/ioc_chinese_yes.png"
+      },
+      {
+        "pagePath":"pages/correct/main",
+        "text":"作业批改",
+        "iconPath": "/static/ioc_correct_no.png",
+        "selectedIconPath": "/static/ioc_correct_yes.png"
+      }
+    ]
+  }
+}
