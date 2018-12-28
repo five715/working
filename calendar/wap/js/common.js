@@ -8,6 +8,7 @@ $(function(){
 			$("html").css("font-size",size+"px");
 		}
 		$(".answer,.index").css("height",window.innerHeight)
+		$(".index .con").css("top",window.innerHeight/2 - $(".index .con").height()/2-25)
 	})
 //	fakeLoading($(".loading .plan"),100,100,complete)
 /**-----------------------首页---------------------------------**/
@@ -48,14 +49,16 @@ $(function(){
 		$(this).hide()
 		$(".gif_3 .gif").css("-webkit-animation","demo 1.5s steps(12) infinite")
 		$(".sound3")[0].play()
-		
+		fakeLoading($(".answer .plan"),100,10000,function(){
+			_selected.push("")
+			nextIusse()
+		})
 	})
 /**---------------------结果------------------------**/
 	$(".result .btn_not_me").on("click",function(){
 		var n = parseInt(Math.random()*10+1)
 		$(".result .emoji img").attr("src","images/result_emoji_"+n+".jpg")
 		_game.setData(n)
-		console.log()
 		var t = _resultTexts[n-1]
 		if(Array.isArray(t)) t = t[parseInt(Math.random()*t.length)]
 		$(".result .text p").text(t)
@@ -103,21 +106,27 @@ function nextIusse() {
 		$(".ans").addClass("gif_" + now)
 		for(var choices = [], i = 1; i <= answer.choice.length; i++) choices.push('<div class="choice choice_' + i + '" data-n="' + i + '"><img src="images/choice_select_box.png" alt="" /><p>' + answer.choice[i - 1] + '</p></div>')
 	}
+	
+	if(_gifs[_now] !== 0){
+		$(".answer .gif").height(_gifs[_now] / (750/window.innerWidth*$(".answer").height())*100+"%")
+	}
+	
 	$(".ans .choices").html(choices.join(''));
 	$(".ans").addClass("answer_" + answer.pos)
 	setTimeout(function(){
 		$(".ans .choice").on("click",nextIusse)
 	},200)
-	fakeLoading($(".answer .plan"),100,10000,function(){
-		_selected.push("")
-		nextIusse()
-	})
 	if(_now == 2){
 		$(".answer .play").show()
+		$(".answer .plan .overflow").css("width","0%")
 	}else{
 		$(".answer .play").hide()
 		$(".ans .gif").css("-webkit-animation","")
 		$(".sound3")[0].pause()
+		fakeLoading($(".answer .plan"),100,10000,function(){
+			_selected.push("")
+			nextIusse()
+		})
 	}
 	_now++
 }
@@ -163,6 +172,7 @@ function complete(e){
 function onGameStart(){
 	onShowHide($(".index"),$(".loading"))
 //	onShowHide($(".result"),$(".loading"))
+//	$(".index").hide();
 	_game = new Poster.main($("#poster")[0])
 	_game.on(Poster.Event.CREATE,onGameOver)
 	headimgurl = headimgurl.replace("http://","https://")

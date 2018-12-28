@@ -140,7 +140,11 @@ canvas {
   overflow: hidden;
 }
 .loading {
-  position: relative;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 5;
 }
 .loading .ioc {
   position: absolute;
@@ -157,16 +161,23 @@ canvas {
   font-size: 3.3rem;
 }
 .index {
-  display: none;
   position: relative;
 }
-.index .boxes {
+.index .con {
   position: absolute;
   top: 7.12143928%;
-  left: 5.06666667%;
+  left: 0%;
+  width: 100%;
+}
+.index .boxes {
+  position: relative;
   width: 90.26666667%;
-  top: auto;
-  bottom: 20%;
+  margin-left: 5.0665%;
+}
+.index .btn {
+  width: 59.33333333%;
+  margin-left: 20.3334%;
+  margin-top: 8%;
 }
 .index .boxes .tit {
   position: absolute;
@@ -204,34 +215,28 @@ canvas {
   left: 35.89364845%;
   width: 49.77843427%;
 }
-.index .btn {
-  position: absolute;
-  top: 75.26236882%;
-  left: 20.33333333%;
-  width: 59.33333333%;
-  top: auto;
-  bottom: 7%;
-}
 .index .logo {
   position: absolute;
   top: 84.70764618%;
   left: 29.73333333%;
   width: 40.53333333%;
   top: auto;
-  bottom: 1%;
+  bottom: 5%;
 }
 .index .video {
   display: none;
   position: absolute;
   width: 100%;
-  height: 100%;
   z-index: 5;
   top: 0;
   left: 0;
 }
 .answer {
   display: none;
-  position: relative;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #fff;
 }
 .answer .plan {
   position: absolute;
@@ -418,6 +423,12 @@ canvas {
 .result {
   display: none;
   position: relative;
+}
+.result .con {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
 }
 .result #poster {
   display: none;

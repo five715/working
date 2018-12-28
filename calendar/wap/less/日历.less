@@ -50,8 +50,12 @@
     }
 }
 
-.loading{
-    .pr();
+.loading{    
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 5;
     .ioc{
         .mainContent(505-50,264);
 //      background: url('../images/loading_ioc.png') no-repeat;
@@ -66,13 +70,25 @@
 }
 
 .index{
-    .dn();
     .pr();
+    .con{
+        .main(95,0,750);
+    }
     .boxes{
-        .main(95,38,677);   
-        
-        top: auto;
-        bottom: 20%;     
+        .pr();
+        .width(677);
+        margin-left: 5.0665%;
+//      .main(95,38,677);   
+//      top: auto;
+//      bottom: 22%;     
+    }
+    .btn{
+        .width(445);
+        margin-left: 20.3334%;
+        margin-top: 8%;
+//      .mainContent(1044-40,445);
+//      top: auto;
+//      bottom: 10%;
     }
     .boxes{
         @W : 677;
@@ -96,21 +112,16 @@
             .main(740,243,337,@W,@H)
         }
     }
-    .btn{
-        .mainContent(1044-40,445);
-        top: auto;
-        bottom: 7%;
-    }
     .logo{
         .mainContent(1220-90,304);
         top: auto;
-        bottom: 1%;
+        bottom: 5%;
     }
     .video{
         .dn();
         position: absolute;
         width: 100%;
-        height: 100%;
+//      height: 100%;
         z-index: 5;
         top: 0;
         left: 0;
@@ -119,7 +130,10 @@
 
 .answer{
     .dn();
-    .pr();
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff;
     .plan{
         .main(98+2-30,68,554);
         transform: scaleY(1.3);
@@ -278,6 +292,9 @@
 .result{
     .dn();
     .pr();
+    .con{
+        .main(0,0,750)
+    }
     #poster{
         .dn();
         .main(0,0,@W);
