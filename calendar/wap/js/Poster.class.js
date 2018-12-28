@@ -1,5 +1,5 @@
 var Poster = {};
-Poster.VER = "1.1.2";
+Poster.VER = "1.2.2";
 Poster.Event = {
 	CREATE:"create"
 
@@ -43,7 +43,7 @@ Poster.Preload = {
 	 *	初始化
 	 */
 	init : function(number){
-		this._queue = new createjs.LoadQueue(false);
+		this._queue = new createjs.LoadQueue(true);
 		this._queue.loadManifest(this._images, false, "res/");
 		this._queue.loadManifest(this._src, false, "images/");
 //		this._queue.loadManifest(this._sounds, false, "sounds/");
@@ -206,7 +206,7 @@ Poster.main = function(canvas){
 	 */
 	_this.getImageData = function(){
 		__game.cache(0,0,WIDTH,HEIGHT);
-		var data = $("#poster")[0].toDataURL("image/jpeg");
+		var data = __game.getCacheDataURL();
 //		var img = new Image();
 //		img.src = data;
 //		img.onload = function(e){
