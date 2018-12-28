@@ -166,7 +166,9 @@ function onGameStart(){
 	_game = new Poster.main($("#poster")[0])
 	_game.on(Poster.Event.CREATE,onGameOver)
 	headimgurl = headimgurl.replace("http://","https://")
-	setData(headimgurl,nickname)
+	getCroppedBase64(headimgurl,function(res){
+		setData(res,nickname)
+	})
 	$(".result .btn_not_me").click()
 }
 /**
@@ -221,3 +223,24 @@ function alert(text){
 		$(window).one("click",function(){$(".maskAlert .alertSure").click()})
 	},100)
 }
+
+function getCroppedBase64(e,callback) {
+    $.ajax({
+        url: 'https://yc.static.qq.com/?service=App.UploadBase64Img.Go',
+        type: 'POST',
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        data: {
+            "url": e
+        },
+        success: function(res) {
+            if (res.ret = 200) {
+            	callback(res.data.data)
+//              $(".result-img").attr("src", res.data.data);
+            }
+        }
+    })
+};	
+
+	

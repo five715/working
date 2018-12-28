@@ -1,5 +1,5 @@
 var Poster = {};
-Poster.VER = "1.0.2";
+Poster.VER = "1.1.2";
 Poster.Event = {
 	CREATE:"create"
 
@@ -126,10 +126,8 @@ Poster.main = function(canvas){
 				__pic.image = Poster.Preload.getResult("emoji_"+pic)
 			}else {
 				var img = new Image()
-				img.crossOrigin = 'anonymous';
-				img.src = pic+"?timeStamp="+new Date();
-//				img.setAttribute("crossOrigin",'Anonymous')
-//      		img.crossOrigin = "*";
+//				img.crossOrigin = 'anonymous';
+				img.src = pic//+"?timeStamp="+new Date();
 				img.onload = function(e){
 					var path = e.path?e.path[0] :img;
 					console.log(e,path)
