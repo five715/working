@@ -7,7 +7,7 @@ $(function(){
 			size = w / 75;
 			$("html").css("font-size",size+"px");
 		}
-		$(".answer").css("height",window.innerHeight)
+		$(".answer,.index").css("height",window.innerHeight)
 	})
 //	fakeLoading($(".loading .plan"),100,100,complete)
 /**-----------------------首页---------------------------------**/

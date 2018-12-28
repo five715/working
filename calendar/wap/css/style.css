@@ -169,6 +169,8 @@ canvas {
   top: 7.12143928%;
   left: 5.06666667%;
   width: 90.26666667%;
+  top: auto;
+  bottom: 20%;
 }
 .index .boxes .tit {
   position: absolute;
@@ -211,12 +213,16 @@ canvas {
   top: 75.26236882%;
   left: 20.33333333%;
   width: 59.33333333%;
+  top: auto;
+  bottom: 7%;
 }
 .index .logo {
   position: absolute;
   top: 84.70764618%;
   left: 29.73333333%;
   width: 40.53333333%;
+  top: auto;
+  bottom: 1%;
 }
 .index .video {
   display: none;
