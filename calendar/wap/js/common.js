@@ -18,7 +18,7 @@ $(function(){
 //	month = 1
 //	day = 3
 	if(day>27 || day<4){
-		var n = parseInt(Math.random()*6+1)
+		var n = parseInt(Math.random()*7+1)
 		console.log(_standOfFall[n-1],year,month,day,_calendar[month][day])
 		$(".index .boxes .alter").each(function(){
 			var cls = $(this).parent().attr("class")
