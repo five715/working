@@ -7,8 +7,13 @@ $(function(){
 			size = w / 75;
 			$("html").css("font-size",size+"px");
 		}
-		$(".answer,.index").css("height",window.innerHeight)
+		$(".answer,.index,.result").css("height",window.innerHeight)
 		$(".index .con").css("top",window.innerHeight/2 - $(".index .con").height()/2-25)
+		if($(".result").height()>$(".result .con").height()){
+			$(".btn_not_me,.btn_friend").css("top","85%")
+		}else{
+			$(".btn_not_me,.btn_friend").css("top","")
+		}
 	})
 //	fakeLoading($(".loading .plan"),100,100,complete)
 /**-----------------------首页---------------------------------**/
@@ -119,6 +124,7 @@ function nextIusse() {
 	if(_now == 2){
 		$(".answer .play").show()
 		$(".answer .plan .overflow").css("width","0%")
+		$(".answer .per").text("10s")
 	}else{
 		$(".answer .play").hide()
 		$(".ans .gif").css("-webkit-animation","")
@@ -171,7 +177,6 @@ function complete(e){
  */
 function onGameStart(){
 	onShowHide($(".index"),$(".loading"))
-//	onShowHide($(".result"),$(".loading"))
 //	$(".index").hide();
 	_game = new Poster.main($("#poster")[0])
 	_game.on(Poster.Event.CREATE,onGameOver)
