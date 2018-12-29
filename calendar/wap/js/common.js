@@ -54,7 +54,7 @@ $(function(){
 		$(this).hide()
 		$(".gif_3 .gif").css("-webkit-animation","demo 1.5s steps(12) infinite")
 		$(".sound3")[0].play()
-		fakeLoading($(".answer .plan"),100,10000,function(){
+		fakeLoading($(".answer .plan"),_countDown*10,_countDown*1000,function(){
 			_selected.push("")
 			nextIusse()
 		})
@@ -124,12 +124,12 @@ function nextIusse() {
 	if(_now == 2){
 		$(".answer .play").show()
 		$(".answer .plan .overflow").css("width","0%")
-		$(".answer .per").text("10s")
+		$(".answer .per").text(_countDown+"s")
 	}else{
 		$(".answer .play").hide()
 		$(".ans .gif").css("-webkit-animation","")
 		$(".sound3")[0].pause()
-		fakeLoading($(".answer .plan"),100,10000,function(){
+		fakeLoading($(".answer .plan"),_countDown*10,_countDown*1000,function(){
 			_selected.push("")
 			nextIusse()
 		})
@@ -147,7 +147,7 @@ function fakeLoading(obj,reso,speed,callback){
 	_timer = setInterval(function(){
 		per+= (100 / reso);
 		obj.find(".overflow").width(per+"%")
-		$(".answer .per").text(10-parseInt(per/10)+"s")
+		$(".answer .per").text(_countDown-parseInt(_countDown*per/100)+"s")
 		if(per >= 100){	
 			clearTimeout(_timer);
 			obj.find(".overflow").width("100%")

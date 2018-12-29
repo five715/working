@@ -73,4 +73,5 @@ var _resultTexts = [
 var _emoji = []
 var _now = 0,
 	_selected = [],
+	_countDown = 18,
 	_gifs = [0,0,760,686,735,0,884]
