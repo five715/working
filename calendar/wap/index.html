@@ -14,6 +14,16 @@
 <script src="js/common.js"></script>
 <script src="js/Poster.class.js"></script>
 <script src="js/libs/Vogsojs-1.0.0.js"></script>
+<script src="//mat1.gtimg.com/news/js/static/libs/ppo.1.3.19.min.js"></script>
+<script type="text/javascript">
+    var shareData = {
+        title: "18秒破解年度表情",
+        desc: "2018历史情绪读取中，18秒拿走你的年度freestyle表情",
+        img: "https://img1.gtimg.com/news/pics/hv1/230/216/2301/149677835.jpg", //分享图
+        url: 'https://news.qq.com/zt2018/app/yearface.htm',
+        link: 'https://news.qq.com/zt2018/app/yearface.htm'
+    };
+</script>
 </head>
 <body>
 <audio src="sounds/sound_1.mp3" loop preload class="sound3"></audio>
@@ -185,45 +195,71 @@ function shareQQNews() {
 			break
 	}
 };
-
-function onBridgeReady() {
-	WeixinJSBridge.on("menu:share:timeline", function(e) {
-		var b = {
-			img_width: "120",
-			img_height: "120",
-			img_url: shareData.img,
-			link: shareData.link,
-			desc: shareData.desc,
-			title: shareData.title
-		};
-		WeixinJSBridge.invoke("shareTimeline", b, function(a) {
-			WeixinJSBridge.log(a.err_msg)
-		})
-	});
-	WeixinJSBridge.on("menu:share:weibo", function() {
-		WeixinJSBridge.invoke("shareWeibo", {
-			"content": shareData.desc,
-			"url": shareData.link
-		}, function(a) {
-			WeixinJSBridge.log(a.err_msg)
-		})
-	});
-	WeixinJSBridge.on('menu:share:appmessage', function(b) {
-		WeixinJSBridge.invoke("sendAppMessage", {
-			img_width: "120",
-			img_height: "120",
-			img_url: shareData.img,
-			link: shareData.link,
-			desc: shareData.desc,
-			title: shareData.title
-		}, function(a) {
-			WeixinJSBridge.log(a.err_msg)
-		})
-	})
+var MShare = {
+    WeiXin: function() {
+        WeixinJSBridge.on("menu:share:timeline", function(e) {
+            var data = {
+				img_width: "120",
+				img_height: "120",
+				img_url: shareData.img,
+				link: shareData.link,
+				desc: shareData.desc,
+				title: shareData.title
+            };
+            WeixinJSBridge.invoke("shareTimeline", data, function(res) {
+                WeixinJSBridge.log(res.err_msg)
+            })
+        });
+        WeixinJSBridge.on("menu:share:weibo", function() {
+            WeixinJSBridge.invoke("shareWeibo", {
+                "content": shareData.desc,
+                "url": shareData.link
+            }, function(res) {
+                WeixinJSBridge.log(res.err_msg)
+            })
+        });
+        WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+            WeixinJSBridge.invoke("sendAppMessage", {
+				img_width: "120",
+				img_height: "120",
+				img_url: shareData.img,
+				link: shareData.link,
+				desc: shareData.desc,
+				title: shareData.title
+            }, function(res) {
+                WeixinJSBridge.log(res.err_msg)
+            })
+        })
+    },
+    qqNews: function() {
+        try {
+            window.TencentNews.shareFromWebView(shareData.title, shareData.desc, shareData.img);
+        } catch (e) {}
+    },
+    mqq: function() {
+        // 自定义手Q分享内容
+        ppo.loadjs('//pub.idqqimg.com/qqmobile/qqapi.js?_bid=152', function() {
+            try {
+                window.mqq.data.setShareInfo({
+                    share_url: shareData.link,
+                    title: shareData.title,
+                    desc: shareData.desc,
+                    image_url: shareData.img
+                });
+            } catch (e) {}
+        });
+    },
+    init: function() {
+        var _this = this;
+        _this.mqq();
+        // qqnews
+        _this.qqNews();
+        document.addEventListener('WeixinJSBridgeReady', function() {
+            _this.WeiXin()
+        })
+    }
 };
-document.addEventListener('WeixinJSBridgeReady', function() {
-	onBridgeReady()
-});
+MShare.init();
 
 var nickname = '我的';
 var headimgurl = '//news.qq.com/zt2018/jjhjh5/photo.jpg';

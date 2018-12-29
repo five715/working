@@ -67,6 +67,9 @@ $(function(){
 		var t = _resultTexts[n-1]
 		if(Array.isArray(t)) t = t[parseInt(Math.random()*t.length)]
 		$(".result .text p").text(t)
+		
+		shareData.desc = _shareText[n-1];
+		MShare.init();
 	})
 	$(".result .btn_friend").on("click",function(){
 		popup(2)
@@ -95,6 +98,7 @@ function nextIusse() {
 	}
 	var answer = _issues[_now]
 	if(!answer){
+		$(".result .btn_not_me").click()
 		onShowHide($(".result"),$(".answer"))
 		console.log("没题了")
 		if(_timer)clearTimeout(_timer);
@@ -184,7 +188,6 @@ function onGameStart(){
 	getCroppedBase64(headimgurl,function(res){
 		setData(res,nickname)
 	})
-	$(".result .btn_not_me").click()
 }
 /**
  * 游戏结束
