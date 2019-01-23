@@ -1,0 +1,10 @@
+<view class='foreshow'>
+  <image class='foreshow_bg' src="/images/foreshow_bg.jpg"></image>
+  <view class='foreshow_con'>
+    <image class='foreshow_logo' src='/images/foreshow_logo.png'></image>
+    <image class='foreshow_slogan' src='/images/foreshow_slogan.png'></image>
+    <image class='foreshow_line' src='/images/foreshow_line.png'></image>
+    <image class='foreshow_timer' src='/images/foreshow_timer.png'></image>
+    <image class='foreshow_hint' src='/images/foreshow_hint.png'></image>
+  </view>
+</view>

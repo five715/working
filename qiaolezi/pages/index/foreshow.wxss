@@ -1,0 +1,9 @@
+.foreshow{width: 100%;height: 100%;background: #f6c1c3;position: fixed; top: 0}
+
+.foreshow_bg{width: 750rpx;height: 1500rpx;}
+.foreshow_con{position: absolute;top: -100rpx;left: 0}
+.foreshow_logo{position: absolute; top: 314rpx;left: 152rpx;width: 427rpx;height: 279rpx;}
+.foreshow_slogan{position: absolute; top: 699rpx;left: 64rpx;width: 624rpx;height: 129rpx;}
+.foreshow_line{position: absolute; top: 856rpx; left: 90rpx; width: 569rpx; height: 3rpx;}
+.foreshow_timer{position: absolute; top: 898rpx;left: 137rpx;width: 497rpx; height: 58rpx;}
+.foreshow_hint{position: absolute; top: 978rpx; left: 174rpx;width: 373rpx;height: 39rpx;}
