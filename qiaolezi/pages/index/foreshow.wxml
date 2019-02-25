@@ -8,3 +8,22 @@
     <image class='foreshow_hint' src='/images/foreshow_hint.png'></image>
   </view>
 </view>
+<view class='popup {{isPopCdkey||isPopHint ? "block" : "none"}}'>
+  <view wx:if="{{isPopCdkey}}" class='popup_cdkey pop'>
+    <image class='boxes' src='/images/popup_boxes.png'></image>
+    <image class='title' src='/images/popup_title.png'></image>
+    <text class='text'>巧乐兹“喜欢就给他点颜色”活动时间为4月22日-8月11日,您的二维码对应兑奖编码为:{{code}}
+    活动上线后由下方二维码进入小程序,输入编码即可100%中现金红包哦~</text>
+    <image class='qrcode' src='/images/qrcode.png'></image>
+    <image class='hint' src='/images/popup_cdkey_hint.png' ></image>
+    <image class='close' bindtap='onClose' src='/images/popup_close.png'></image>
+  </view>
+  <view wx:elif="{{isPopHint}}" class='popup_hint pop'>
+    <image class='boxes' src='/images/popup_boxes.png'></image>
+    <image class='title' src='/images/popup_title.png'></image>
+    <text class='text'>活动将于4月22号开始,请您拍照保存棒签上的13位串码,于活动开始后再来参与!</text>
+    <image class='qrcode_bg' src='/images/popup_hint_qrcode_bg.png'></image>
+    <image class='qrcode' src='/images/qrcode.png'></image>
+    <image class='close' bindtap='onClose' src='/images/popup_close.png'></image>
+  </view>
+</view>

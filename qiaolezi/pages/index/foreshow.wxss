@@ -7,3 +7,12 @@
 .foreshow_line{position: absolute; top: 856rpx; left: 90rpx; width: 569rpx; height: 3rpx;}
 .foreshow_timer{position: absolute; top: 898rpx;left: 137rpx;width: 497rpx; height: 58rpx;}
 .foreshow_hint{position: absolute; top: 978rpx; left: 174rpx;width: 373rpx;height: 39rpx;}
+
+.popup .title{position: absolute; top: 50rpx;left: 199rpx; width: 317rpx; height: 101rpx;}
+.popup_cdkey .text{position: absolute; top: 186rpx; left: 83rpx; width: 531rpx; color: #742e1c;font-size: 28rpx;letter-spacing: 2rpx;}
+.popup_cdkey .qrcode{position: absolute; top: 523rpx; left: 49rpx; width: 175rpx;height: 174rpx;}
+.popup_cdkey .hint{position: absolute; top: 589rpx; left: 249rpx; width: 389rpx; height: 105rpx;}
+
+.popup_hint .text{position: absolute; top: 195rpx;left: 83rpx; width: 513rpx;font-size: 30rpx; letter-spacing: 2rpx; color: #742e1c; text-indent: 2.5em;}
+.popup_hint .qrcode_bg{position: absolute; top: 388rpx; left: 161rpx; width: 355rpx; height: 352rpx;}
+.popup_hint .qrcode{position: absolute; top: 400rpx;left: 194rpx; width: 288rpx;height: 284rpx;}
