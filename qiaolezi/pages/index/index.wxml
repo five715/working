@@ -1,0 +1,20 @@
+<view class='index'>
+  <image class='index_bg' src='/images/index_bg.jpg'></image>
+  <image class='index_logo' src='/images/logo.png'></image>
+  <image class='index_title' src='/images/index_title_bg.png'></image>
+  <image class='index_title_like' src='/images/index_title_like.png'></image>
+  <view class='index_play'>
+    <image class='image' src='/images/sprite_play.png'></image> 
+  </view>
+  <view class='info'>
+    <image src='/images/index_input_bg.png'></image>
+    <view class='info_text'>
+      <image wx:if="{{!isEnd}}" src='/images/index_input_text.png' class='start'></image>
+      <image wx:else src='/images/index_input_text_end.png' class='end'></image>
+    </view>
+    <input type='text'></input>
+  </view>
+  <image class='index_btn_info' src='/images/index_btn_input.png'></image>
+  <image class='index_btn_rule' src='/images/index_btn_rule.png'></image>
+  <image class='index_product' src='/images/product.png'></image>
+</view>

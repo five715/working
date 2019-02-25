@@ -1,0 +1,22 @@
+.index{position: relative}
+.index_bg{width: 750rpx; height: 1500rpx;}
+.index_logo{position: absolute; top: 25rpx; left: 27rpx; width: 161rpx; height: 104rpx;}
+.index_title{position: absolute; top: 51rpx; left: 56rpx; width:633rpx; height: 557rpx;}
+.index_title_like{position: absolute; top: 177rpx; left: 178rpx; width:386rpx; height: 130rpx;}
+
+.index_play{position: absolute;top: 330rpx;left: 188rpx;width: 374rpx;height: 455rpx;overflow: hidden;}
+.index_play .image{top: 0;left: 0;width: 4862rpx;height: 455rpx;animation: sprite 2s steps(13) infinite; z-index: 5;}  
+@keyframes sprite {
+  0% {margin-left: 0%}
+  100% {margin-left: -4862rpx}
+}
+
+.index .info{position: absolute; top: 839rpx;left: 15rpx;width: 450rpx;height: 58rpx;}
+.index .info_text{position: absolute;top: 20rpx; left: 26rpx; width: 405rpx;height: 23rpx;}
+.index .info_text image{display: block;position: absolute;}
+.index .info_text .end{width: 406rpx; height: 19rpx;}
+.index .info input{position: absolute;top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box;padding:0 26rpx; font-size: 22rpx; color: #511b10;}
+
+.index_btn_info{position: absolute; top: 822rpx; left: 485rpx; width: 262rpx; height: 86rpx;}
+.index_btn_rule{position: absolute; top: 1030rpx; left: 613rpx; width: 118rpx; height: 26rpx;}
+.index_product{position: absolute; top: 912rpx; left: 150rpx; width: 440rpx; height: 215rpx;}
