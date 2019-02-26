@@ -8,6 +8,7 @@
 .foreshow_timer{position: absolute; top: 898rpx;left: 137rpx;width: 497rpx; height: 58rpx;}
 .foreshow_hint{position: absolute; top: 978rpx; left: 174rpx;width: 373rpx;height: 39rpx;}
 
+.popup .pop{top: 200rpx;left: 37rpx;width: 676rpx; height: 761rpx;}
 .popup .title{position: absolute; top: 50rpx;left: 199rpx; width: 317rpx; height: 101rpx;}
 .popup_cdkey .text{position: absolute; top: 186rpx; left: 83rpx; width: 531rpx; color: #742e1c;font-size: 28rpx;letter-spacing: 2rpx;}
 .popup_cdkey .qrcode{position: absolute; top: 523rpx; left: 49rpx; width: 175rpx;height: 174rpx;}

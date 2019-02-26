@@ -1,4 +1,4 @@
-.index{position: relative}
+.index{position: fixed; top: 0}
 .index_bg{width: 750rpx; height: 1500rpx;}
 .index_logo{position: absolute; top: 25rpx; left: 27rpx; width: 161rpx; height: 104rpx;}
 .index_title{position: absolute; top: 51rpx; left: 56rpx; width:633rpx; height: 557rpx;}
@@ -20,3 +20,9 @@
 .index_btn_info{position: absolute; top: 822rpx; left: 485rpx; width: 262rpx; height: 86rpx;}
 .index_btn_rule{position: absolute; top: 1030rpx; left: 613rpx; width: 118rpx; height: 26rpx;}
 .index_product{position: absolute; top: 912rpx; left: 150rpx; width: 440rpx; height: 215rpx;}
+
+
+/* 弹窗 */
+.popup_red{width: 471rpx; height: 610rpx; top: 174rpx;left: 127rpx;}
+.popup_red .red{position: absolute; top: 149rpx; left: 97rpx; width: 307rpx; height: 179rpx;}
+.popup_red .close{top: 661rpx; left: 208rpx; width: 80rpx; height: 80rpx;}

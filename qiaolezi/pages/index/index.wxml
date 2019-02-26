@@ -3,18 +3,25 @@
   <image class='index_logo' src='/images/logo.png'></image>
   <image class='index_title' src='/images/index_title_bg.png'></image>
   <image class='index_title_like' src='/images/index_title_like.png'></image>
-  <view class='index_play'>
-    <image class='image' src='/images/sprite_play.png'></image> 
+  <view class='index_play' bindtap='onPlay'>
+    <image class='image' src='/images/sprite_play.png'></image>
   </view>
   <view class='info'>
     <image src='/images/index_input_bg.png'></image>
-    <view class='info_text'>
+    <view class='info_text' wx:if="{{!isInput}}">
       <image wx:if="{{!isEnd}}" src='/images/index_input_text.png' class='start'></image>
       <image wx:else src='/images/index_input_text_end.png' class='end'></image>
     </view>
-    <input type='text'></input>
+    <input type='text' bindfocus="bindFocus" bindblur="bindBlur"></input>
   </view>
-  <image class='index_btn_info' src='/images/index_btn_input.png'></image>
-  <image class='index_btn_rule' src='/images/index_btn_rule.png'></image>
+  <image class='index_btn_info' bindtap='onBtnInfo' src='/images/index_btn_input.png'></image>
+  <image class='index_btn_rule' bindtap='onBtnRule' src='/images/index_btn_rule.png'></image>
   <image class='index_product' src='/images/product.png'></image>
+</view>
+<view class='popup {{red ? "block" : "none"}}'>
+  <view wx:if="{{red}}" class='popup_red pop'>
+    <image class='boxes' src='/images/popup_red_boxes.png'></image>
+    <image class='close' bindtap='onClose' src='/images/popup_red_close.png'></image>
+    <image class='red' src='/images/popup_red_{{red}}.png'></image>
+  </view>
 </view>
