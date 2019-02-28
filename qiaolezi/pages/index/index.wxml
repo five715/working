@@ -17,11 +17,54 @@
   <image class='index_btn_info' bindtap='onBtnInfo' src='/images/index_btn_input.png'></image>
   <image class='index_btn_rule' bindtap='onBtnRule' src='/images/index_btn_rule.png'></image>
   <image class='index_product' src='/images/product.png'></image>
+  <image class='index_balloon_1 balloon' src='/images/balloon_1.png'></image>
+  <image class='index_balloon_2 balloon' src='/images/balloon_2.png'></image>
 </view>
 <view class='popup {{red ? "block" : "none"}}'>
   <view wx:if="{{red}}" class='popup_red pop'>
     <image class='boxes' src='/images/popup_red_boxes.png'></image>
     <image class='close' bindtap='onClose' src='/images/popup_red_close.png'></image>
     <image class='red' src='/images/popup_red_{{red}}.png'></image>
+    <image class='btn' bindtap='onRedBtn' src='/images/index_red_btn.png'></image>
   </view>
+  <view class='popup_info pop'>
+    <image class='boxes' src='/images/popup_info_con.png'></image>
+
+  </view>
+  
+  <div class="popup_info pop">
+    <img src="images/popup_info_con.png"/>
+    <div class="describe">
+      <img src="images/popup_info_describe.png"/>
+    </div>
+    <div class="submit">
+      <img src="images/popup_info_submit.png"/>
+    </div>
+    <div class="info">
+      <img src="images/popup_info_input_bg.png"/>
+      <div class="name">
+        <input type="text" name="name" id="name" value="" />
+      </div>
+      <div class="phone">
+        <input type="tel" name="tel" id="tel" maxlength="11" value="" />
+      </div>
+      <div class="email">
+        <input type="email" name="email" id="email" value="" />
+      </div>
+    </div>
+    <div class="upfiles">
+      <img src="images/popup_info_upfiles.png"/>
+      <div class="front">					
+        <input type="file" accept="image/*" name="" id="" value="" />
+        <div class="show"></div>
+      </div>
+      <div class="rear">					
+        <input type="file" accept="image/*" name="" id="" value="" />
+        <div class="show"></div>
+      </div>
+    </div>
+    <div class="guide">
+      <img src="images/popup_info_guide.png"/>
+    </div>
+  </div>
 </view>
