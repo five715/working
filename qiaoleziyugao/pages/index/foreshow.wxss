@@ -1,0 +1,24 @@
+.foreshow{width: 100%;height: 100%;background: #f6c1c3;position: fixed; top: 0}
+
+.foreshow_bg{width: 750rpx;height: 1500rpx;}
+.foreshow_con{position: absolute;top: 0rpx;left: 0}
+.logo{position: absolute; top: 24rpx;left: 57rpx;width: 119rpx;height: 76rpx;}
+.foreshow_slogan{position: absolute; top: 202rpx;left: 39rpx;width: 672rpx;height: 138rpx;}
+.foreshow_timer{position: absolute; top: 374rpx;left: 261rpx;width: 227rpx; height: 119rpx;}
+.foreshow_timer_hint{position: absolute; top: 539rpx;left: 101rpx;width: 564rpx; height: 71rpx;}
+
+.popup .pop{top: 0rpx; left: 0rpx; width: 750rpx; height: 1500rpx;}
+.popup .slogan{position: absolute; left: 40rpx; width: 675rpx; height: 139rpx;}
+.popup .text{position: absolute; left: 0rpx; width: 750rpx; font-size: 30rpx;color: #ffffff;  text-align: center}
+.popup .text text{font-size: 35rpx;line-height: 100rpx;}
+
+.popup_cdkey .slogan{top: 475rpx;}
+.popup_cdkey .text{top: 585rpx;}
+.popup_cdkey .code{top: 865rpx;font-size: 30.54rpx;}
+.popup_cdkey .qrcode{position: absolute; top: 933rpx; left: 277rpx; width: 189rpx; height: 187rpx;}
+.popup_cdkey .hint{position: absolute; top: 1149rpx; left: 159rpx; width: 468rpx; height: 52rpx;}
+
+.popup_hint .text{ top: 284rpx;line-height: 47.84rpx;}
+.popup_hint .slogan{top: 109rpx;}
+.popup_hint .qrcode_bg{position: absolute; top:952rpx; left: 258rpx; width: 234rpx; height: 233rpx;}
+.popup_hint .qrcode{position: absolute; top: 1016rpx;left: 274rpx; width: 182rpx;height: 181rpx;}

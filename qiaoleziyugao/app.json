@@ -1,0 +1,11 @@
+{
+  "pages":[
+    "pages/index/foreshow"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "巧乐兹",
+    "navigationBarTextStyle":"black"
+  }
+}
