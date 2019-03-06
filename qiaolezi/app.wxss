@@ -6,3 +6,5 @@ image,page{width: 100%;height: 100%;display: block}
 .popup .close{position: absolute; top: -60rpx; right: 5rpx; width: 67rpx; height: 67rpx;}
 .block{display: block}
 .none{display: none}
+
+.btn{padding: 0;border: none;}

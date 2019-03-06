@@ -1,29 +1,43 @@
 <view class='foreshow'>
   <image class='foreshow_bg' src="/images/foreshow_bg.jpg"></image>
   <view class='foreshow_con'>
-    <image class='foreshow_logo' src='/images/foreshow_logo.png'></image>
+    <image class='logo' src='/images/logo.png'></image>
     <image class='foreshow_slogan' src='/images/foreshow_slogan.png'></image>
-    <image class='foreshow_line' src='/images/foreshow_line.png'></image>
     <image class='foreshow_timer' src='/images/foreshow_timer.png'></image>
-    <image class='foreshow_hint' src='/images/foreshow_hint.png'></image>
+    <image class='foreshow_timer_hint' src='/images/foreshow_timer_hint.png'></image>
   </view>
 </view>
 <view class='popup {{isPopCdkey||isPopHint ? "block" : "none"}}'>
   <view wx:if="{{isPopCdkey}}" class='popup_cdkey pop'>
-    <image class='boxes' src='/images/popup_boxes.png'></image>
-    <image class='title' src='/images/popup_title.png'></image>
-    <text class='text'>巧乐兹“喜欢就给他点颜色”活动时间为4月22日-8月11日,您的二维码对应兑奖编码为:{{code}}
-    活动上线后由下方二维码进入小程序,输入编码即可100%中现金红包哦~</text>
+    <image class='boxes' src='/images/popup_boxes_cdkey.jpg'></image>
+    <image class='logo' src='/images/logo.png'></image>
+    <image class='slogan' src='/images/foreshow_slogan.png'></image>
+    <text class='text'><text>活动时间：4月22日-8月11日</text>
+    哎呀~你来早啦~ 
+    请于活动上线后，由下放二维码
+    进入小程序，输入编码即可100%
+    中现金红包哦！
+    </text>
+    <text class='text code'>您的兑奖编码为：{{code}}</text>
     <image class='qrcode' src='/images/qrcode.png'></image>
     <image class='hint' src='/images/popup_cdkey_hint.png' ></image>
     <image class='close' bindtap='onClose' src='/images/popup_close.png'></image>
   </view>
   <view wx:elif="{{isPopHint}}" class='popup_hint pop'>
-    <image class='boxes' src='/images/popup_boxes.png'></image>
-    <image class='title' src='/images/popup_title.png'></image>
-    <text class='text'>活动将于4月22号开始,请您拍照保存棒签上的13位串码,于活动开始后再来参与!</text>
-    <image class='qrcode_bg' src='/images/popup_hint_qrcode_bg.png'></image>
+    <image class='boxes' src='/images/popup_boxes_hint.jpg'></image>
+    <image class='logo' src='/images/logo.png'></image>
+    <image class='slogan' src='/images/foreshow_slogan.png'></image>
+    <text class='text'><text>活动时间：4月22日-8月11日</text>
+    哎呀~你来早啦~
+    请您拍照保存棒签上13位编码，活动上线后，
+    通过下方二维码进入小程序，
+    输入编码即可100%中现金红包哦！ ！
+    </text>
     <image class='qrcode' src='/images/qrcode.png'></image>
-    <image class='close' bindtap='onClose' src='/images/popup_close.png'></image>
   </view>
+</view>
+<view style='position:fixed; top:0; z-index:99; opacity: 0.5;'>
+  <button bindtap='onBtn'>https://qiaolezi.act.qq.com/e/c/code/5</button>
+  <button bindtap='onBtn'>https://qiaolezi.act.qq.com/e/c/code/8888888888888</button>
+  <button bindtap='onBtn'>https://qiaolezi.act.qq.com/e/c/code/</button>
 </view>

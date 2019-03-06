@@ -1,0 +1,28 @@
+<view class='oneself'>
+
+</view>
+<!-- 兑奖区 -->
+<view class='redeem'>
+  <view class='bag' bindtap='onReddem' id="100">100积分</view>
+  <view class='bag' bindtap='onReddem' id="150">150积分</view>
+  <view class='bag' bindtap='onReddem' id="200">200积分</view>
+  <view class='bag' bindtap='onReddem' id="300">300积分</view>
+  <view class='bag' bindtap='onReddem' id="600">600积分</view>
+  <view class='bag' bindtap='onReddem' id="1000">1000积分</view>
+</view>
+<!-- 抽奖区 -->
+<view class='luckZone'>
+  <view class='play' bindtap='onBtnLuck'>启动抽奖</view>
+</view>
+<include  src="/template/nav.wxml"/>
+<!-- 弹窗 -->
+<view class='popup {{isPop ? "block" : none}}'>
+  <view wx:if="{{isLuck}}" class='popup_luckYes pop'>
+    恭喜获得XXX奖品,请到<navigator url="/pages/store/oneself">个人中心</navigator>查看
+    <view bindtap='onClose'>关闭</view>
+  </view>
+  <view wx:else class='popup_luckNo pop'>
+    积分不足,请参考<navigator url="/pages/store/oneself">这里</navigator>获得更多积分
+    <view bindtap='onClose'>关闭</view>
+  </view>
+</view>

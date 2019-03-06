@@ -4,8 +4,8 @@ const app = getApp()
 Page({
   data: {
     code:8888888888888,
-    isPopCdkey:false,
-    isPopHint:false
+    isPopCdkey:0,
+    isPopHint:1
   },
   onClose(e){
     this.setData({
@@ -39,5 +39,9 @@ Page({
         isPopHint:true
       })
     } 
+  },
+  onBtn(e){
+    this.onClose();
+    this.onIf(e._relatedInfo.anchorTargetText);
   }
 })

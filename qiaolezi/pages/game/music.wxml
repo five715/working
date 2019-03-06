@@ -1,0 +1,13 @@
+<!--index.wxml-->
+<view class="made" wx:if="{{!isAdvance}}">
+  <view class="audio" bindtap='onAudio' style="color:{{item.color}}" wx:for="{{sounds}}" wx:key="" wx:for-index="i" id="beats{{i}}" data-i="{{i}}" data-src="/sounds/{{item.src}}.mp3" data-bt="{{item.bt}}" >{{item.src}}</view>
+  <view wx:if="{{!isStart}}" bindtap='onStart'>播放音乐加上Beats定制炫彩情歌</view>
+  <view wx:else bindtap='onEnd'>结束(点击结束制作)</view>
+  <text>{{time}}</text>
+</view>
+<view class="advance" wx:elif="{{isAdvance}}">
+  <view bindtap='onPlay'>定制成功点击播放</view>
+  <text>{{t}}</text>
+  <view bindtap='onAnew'>重新定制</view>
+  <view bindtap="onCreate">生成音乐</view>
+</view>

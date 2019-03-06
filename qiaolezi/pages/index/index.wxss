@@ -19,6 +19,9 @@
 
 .index_btn_info{position: absolute; top: 822rpx; left: 485rpx; width: 262rpx; height: 86rpx;}
 .index_btn_rule{position: absolute; top: 1030rpx; left: 613rpx; width: 118rpx; height: 26rpx;}
+
+.index_btn_store{position: absolute; top: 1030rpx; left: 0rpx;}/*商城*/
+
 .index_product{position: absolute; top: 912rpx; left: 150rpx; width: 440rpx; height: 215rpx;}
 
 .index_balloon_1{position: absolute; top:102rpx;left: 583rpx; width: 98rpx; height: 133rpx;}

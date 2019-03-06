@@ -28,13 +28,46 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 3,
+			"list": [
+				{
+					"id": -1,
+					"name": "积分商城",
+					"pathName": "pages/store/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "游戏",
+					"pathName": "pages/game/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "制作",
+					"pathName": "pages/game/music",
+					"query": "select=1&music=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "制作",
+					"pathName": "pages/game/create",
+					"query": "fid=1",
+					"scene": null
+				}
+			]
 		}
 	}
 }

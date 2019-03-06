@@ -1,0 +1,4 @@
+.popup{color: #ffffff;}
+.popup_luckYes{position: absolute;}
+.popup_luckNo{position: absolute;}
+.pop navigator{color: red;}

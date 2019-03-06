@@ -1,6 +1,11 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/store/index",
+    "pages/store/oneself",
+    "pages/game/index",
+    "pages/game/music",
+    "pages/game/create",
     "pages/index/foreshow"
   ],
   "window":{
