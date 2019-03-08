@@ -181,6 +181,8 @@ Page({
     _this.data.audios["bg"] = wx.createInnerAudioContext()
     _this.data.audios.bg.src = `/sounds/bgMusic_${e.select}_${e.music}.mp3`
     console.log(_this.data.audios,_this.data.audios.bg.src)
+
+    _this.data.audios.bg.play()
   },
   onAnew() {
     this.funcStop();

@@ -11,7 +11,10 @@ const SERVICE = {
   UNLOCK: "/default/unlock", //解锁beats
   SAVEFILE: "/default/savefile", //提交作品信息
   GETFILE: "/default/getfile", //拉取作品信息
-  GETUSERINFO: "/default/getuserinfo" //拉取个人中心数据
+  GETUSERINFO: "/default/getuserinfo", //拉取个人中心数据
+  LOTTERY: "/default/lottery", //抽奖
+  // SAVEUSER: "/default/saveuser", //完善个人信息
+  EXSCORE: "/default/exscore" //积分兑换
 }
 
 function getStorage() {
@@ -63,6 +66,21 @@ function login(callback, userInfo) {
     }
   })
 }
+
+/**
+ * 是否中99红包
+ */
+function getinfo(callback){
+  var paramater = getStorage();
+
+  console.log(paramater)
+
+  var res = { "code": 0, "message": "suc", "status": "1", "flag": "1", "nick": "1", "head": "xxx", "score": "1" }
+  // 失败的例子
+  // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+  callback(res)
+}
+
 
 /**
  * 棒签兑换
@@ -188,11 +206,52 @@ function getUserInfo(callback){
 /**
  * 启动抽奖
  */
-function play(callback) {
-  callback({
-    luck: true
-  })
+function lottery(callback,score) {
+  var paramater = getStorage();
+  paramater.score = score
+
+  console.log(paramater)
+  
+  var res = { "code":0, "message":"suc","score": 113, "award_code": "xxx","award_name": "xxx", "award_id":11 }
+  // 失败的例子
+  // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+  callback(res)
 }
+
+/**
+ * 完善个人信息
+ */
+function saveUser(callback,award_id,name,tel,addr){
+  var paramater = getStorage();
+  paramater.award_id = award_id;
+  paramater.name = name;
+  paramater.tel = tel;
+  paramater.addr = addr;
+
+  console.log(paramater)
+
+  var res = { "code":0, "message":"suc"}
+  // 失败的例子
+  // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+  callback(res)
+}
+
+/**
+ * 积分兑换
+ */
+function exscore(callback,score,type){
+  var paramater = getStorage();
+  paramater.score = score
+  paramater.type = type
+
+  console.log(paramater)
+
+  var res = { "code":0, "message":"suc","score": 123}
+  // 失败的例子
+  // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+  callback(res)
+}
+
 /**
  * 初始化
  */
@@ -203,6 +262,7 @@ function init() {
 module.exports = {
   init: init,
   login: login,
+  getinfo: getinfo,
   excode: excode,
   savetel: savetel,
   getStatus: getStatus,
@@ -210,5 +270,7 @@ module.exports = {
   saveFile:saveFile,
   getFile:getFile,
   getUserInfo: getUserInfo,
-  requestPlay: play
+  lottery: lottery,
+  saveUser:saveUser,
+  exscore: exscore
 }

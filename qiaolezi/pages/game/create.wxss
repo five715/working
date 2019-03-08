@@ -1,1 +1,3 @@
-.phone{border: 1rpx solid #000;width: 750rpx; height: 750rpx; box-sizing: border-box;}
+.picture {width: 750rpx; height: 350rpx; margin-bottom: 5rpx;}
+.createPic{width: 750rpx; height: 350rpx;}
+.myQrcode{position: absolute; top: 0; left: 750rpx;}

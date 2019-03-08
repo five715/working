@@ -2,3 +2,4 @@
 .popup_luckYes{position: absolute;}
 .popup_luckNo{position: absolute;}
 .pop navigator{color: red;}
+.head{width:80rpx; height: 80rpx;}
