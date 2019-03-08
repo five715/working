@@ -36,8 +36,8 @@
     <image class='qrcode' src='/images/qrcode.png'></image>
   </view>
 </view>
-<view style='position:fixed; top:0; z-index:99; opacity: 0.5;'>
+<!-- <view style='position:fixed; top:0; z-index:99; opacity: 0.5;'>
   <button bindtap='onBtn'>https://qiaolezi.act.qq.com/e/c/code/5</button>
   <button bindtap='onBtn'>https://qiaolezi.act.qq.com/e/c/code/8888888888888</button>
   <button bindtap='onBtn'>https://qiaolezi.act.qq.com/e/c/code/</button>
-</view>
+</view> -->

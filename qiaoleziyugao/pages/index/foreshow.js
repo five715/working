@@ -1,11 +1,12 @@
 //index.js
 //获取应用实例
 const app = getApp()
+var mta = require("../../utils/mta_analysis.js")
 Page({
   data: {
     code:8888888888888,
     isPopCdkey:0,
-    isPopHint:1
+    isPopHint:0
   },
   onClose(e){
     this.setData({
@@ -14,6 +15,7 @@ Page({
     })
   },
   onLoad:function(query) {
+    mta.Page.init()
     const scene = decodeURIComponent(query.q)
     // const scene = "https://qiaolezi.act.qq.com/e/c/code/5";
     // const scene = "https://qiaolezi.act.qq.com/e/c/code/XXXXXXXYYYYYY";
@@ -33,6 +35,8 @@ Page({
       })
     }else if(code<=5 && code >0){
       //指定五个地址
+      console.log(`0${code}`)
+      mta.Event.stat(`0${code}`,{})
     }else{
       //hint
       _this.setData({
