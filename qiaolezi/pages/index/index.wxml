@@ -1,28 +1,30 @@
-<view class='index'>
-  <image class='index_bg' src='/images/index_bg.jpg'></image>
-  <image class='index_logo' src='/images/logo.png'></image>
-  <image class='index_title' src='/images/index_title_bg.png'></image>
-  <image class='index_title_like' src='/images/index_title_like.png'></image>
-  <view class='index_play' bindtap='onPlay'>
-    <image class='image' src='/images/sprite_play.png'></image>
-  </view>
-  <view class='info'>
-    <image src='/images/index_input_bg.png'></image>
-    <view class='info_text' wx:if="{{!isInput}}">
-      <image wx:if="{{!isEnd}}" src='/images/index_input_text.png' class='start'></image>
-      <image wx:else src='/images/index_input_text_end.png' class='end'></image>
+<video autoplay id="indexVideo" class='indexVideo' muted controls='' show-center-play-btn='' src='http://qq.vogso.com/taipingyang/interaction/wap/media/index.mp4' bindprogress='bindprogress' bindended='bindended'></video>
+<view class="home">
+  <view class='boxes' wx:if="{{!isVideo}}">
+    <image class='boxes' src='/images/home_bg.jpg'></image>
+    <view class='btn_play bg' bindtap='onPlay'></view>
+    <view class='btn_rule bg' bindtap='onBtnRule'></view>
+    <view class='btn_store bg' bindtap='onBtnStore'></view>
+    <input class='input' type='text' bindinput='bindInput' bindfocus="bindFocus" bindblur="bindBlur"></input>
+    <image wx:if="{{!isInput}}" src='/images/home_input_text.png' class='input_hint'></image>
+    <button class='btn_info btn bg' open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+    <image class='note' src='/images/home_note.png'></image>
+    <view class='iocs'>
+      <image class='ioc ioc_1' src='/images/home_ioc_1.png'></image>
+      <image class='ioc ioc_2' src='/images/home_ioc_2.png'></image>
+      <image class='ioc ioc_3' src='/images/home_ioc_3.png'></image>
+      <image class='ioc ioc_4' src='/images/home_ioc_4.png'></image>
     </view>
-    <input type='text' bindinput='bindInput' bindfocus="bindFocus" bindblur="bindBlur"></input>
   </view>
-  <button class='index_btn_info btn' plain='true' open-type="getUserInfo" bindgetuserinfo="getUserInfo">
-    <image class='boxes' src='/images/index_btn_input.png'></image>
-  </button>
-  <image class='index_btn_rule' bindtap='onBtnRule' src='/images/index_btn_rule.png'></image>
-  <text class='index_btn_store' bindtap='onBtnStore'>积分商城</text>
-  <image class='index_product' src='/images/product.png'></image>
-  <image class='index_balloon_1 balloon' src='/images/balloon_1.png'></image>
-  <image class='index_balloon_2 balloon' src='/images/balloon_2.png'></image>
+  <view wx:if="{{!isVideo || per != -1}}">
+    <text class='per' wx:if="{{per != -1}}">{{per}}%</text>
+    <image class='musicBox' src='/images/index_music_box.png'></image>
+  </view>
 </view>
+
+
+
+
 <view class='popup {{red || isInfo || isGuide ? "block" : "none"}}'>
   <view wx:if="{{red}}" class='popup_red pop'>
     <image class='boxes' src='/images/popup_red_boxes.png'></image>

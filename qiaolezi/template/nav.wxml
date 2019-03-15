@@ -1,6 +1,6 @@
 <!-- 导航 -->
 <view class="navs">
-  <navigator url="/pages/index/index">首页</navigator>
+  <view bindtap='onBtnHome'>首页</view>
   <view bindtap='onBtnRule'>活动规则</view>
   <navigator url="/pages/store/oneself">个人中心</navigator>
 </view>

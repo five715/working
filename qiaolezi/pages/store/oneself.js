@@ -9,6 +9,7 @@ Page({
     score: 200 //积分
   },
   onBtnRule: nav.onBtnRule,
+  onBtnHome: nav.onBtnHome,
   onLoad(e){
     var _this = this;
     app.api.getUserInfo(function(data){

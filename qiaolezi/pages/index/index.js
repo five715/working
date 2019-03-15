@@ -9,7 +9,9 @@ Page({
     isInfo: false,
     isGuide: false,
     idCard: ["", ""],
-    excode: "" //棒签兑换码
+    excode: "", //棒签兑换码
+    per:0,
+    isVideo:true
   },
   onBtnRule: nav.onBtnRule,
   onPlay() {
@@ -51,10 +53,55 @@ Page({
       excode: e.detail.value
     })
   },
+  onReady(e){
+    this.videoContext = wx.createVideoContext('indexVideo')
+  },
   onLoad(e) {
+    var _this = this;
     // mta.Page.init();
     // mta.Event.stat("01",{})
     // this.getUserInfo();
+    // sendBizRedPacket
+    wx.sendBizRedPacket({
+      timeStamp: "demo",
+      nonceStr: "demo",
+      package: "demo",
+      signType: "MD5",
+      paySign: "70f47031c8e8d4bb78e741f8d0ee45beef65cfcd",
+      success: function (res) {
+        console.log('红包success',res)
+      },
+      fail: function (res) {
+        console.log('红包fail',res)
+      },
+      complete: function (res) {
+        console.log('红包complete',res)
+        // wx.showModal({
+        //   title: '红包complete',
+        //   content: '红包complete',
+        // })
+      }
+    })
+  },
+  bindended(e){
+    this.setData({
+      isVideo: false,
+      per: -1
+    })
+  },
+  bindprogress(e){
+    var per = e.detail.buffered
+    var _this = this;
+    _this.setData({
+      per: per
+    },function(){
+      if (per >= 100) {
+        _this.videoContext.play();
+        _this.setData({
+          per: -1
+        })
+      }
+    })
   },
   getUserInfo(e) {
     var _this = this;
@@ -70,8 +117,7 @@ Page({
   },
   onLogin(userInfo) {
     var _this = this;
-    var api = app.api
-    api.login(function(data) {
+    app.api.login(function(data) {
       console.log(data)
       if (data.code == 0) {
         _this.onExcode();
@@ -80,15 +126,14 @@ Page({
   },
   onExcode() {
     var _this = this;
-    var api = app.api
-    var excode = _this.data.excode
-    api.excode(function(data) {
+    var code = _this.data.excode
+    app.api.excode(function(data) {
       console.log(data)
       app.globalData["lid"] = data.lid
       _this.setData({
         red: data.ret
       })
-    }, excode, 1)
+    }, code, 1)
   },
   onRedBtn(e) {
     this.setData({
@@ -143,4 +188,6 @@ Page({
       console.log(data)
     },e.detail.encryptedData, e.detail.iv, app.globalData["lid"])
   }
+
+
 })

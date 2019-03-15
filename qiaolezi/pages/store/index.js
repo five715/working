@@ -8,6 +8,7 @@ Page({
     userInfo:""
   },
   onBtnRule: nav.onBtnRule,
+  onBtnHome: nav.onBtnHome,
   // 兑换包
   onReddem(e){
     console.log(e.target.id)

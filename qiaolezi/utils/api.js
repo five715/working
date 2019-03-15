@@ -59,8 +59,8 @@ function login(callback, userInfo) {
           code: code,
           nickName: userInfo.nickName,
           avatarUrl: userInfo.avatarUrl
-        }, function(res) {
-          console.log(res)
+        }, function (res) {
+          callback(res)
         })
       }
     }
@@ -85,9 +85,9 @@ function getinfo(callback){
 /**
  * 棒签兑换
  */
-function excode(callback, excode, type) {
+function excode(callback, code, type) {
   var paramater = getStorage();
-  paramater.excode = excode;
+  paramater.code = code;
   paramater.type = type;
 
   console.log(paramater)
@@ -95,7 +95,7 @@ function excode(callback, excode, type) {
   var res = {
     "code": 0,
     "message": "suc",
-    "ret": 99,
+    "ret": 0.33,
     "package": "xxx",
     "lid": 123
   }
