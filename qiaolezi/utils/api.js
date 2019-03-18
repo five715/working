@@ -1,7 +1,8 @@
 const STORAGE = {
   PARAMATER: "paramater"
 }
-const URL = "https://qiaolezi.act.qq.com";
+// const URL = "https://qiaolezi.act.qq.com";
+const URL = "https://s1-test.act.qq.com"
 const SERVICE = {
   LOGIN: "/default/login", //登录注册
   //GETINFO: "/default/getinfo",  //是否中99红包
@@ -16,6 +17,8 @@ const SERVICE = {
   // SAVEUSER: "/default/saveuser", //完善个人信息
   EXSCORE: "/default/exscore" //积分兑换
 }
+
+const isAPi= false;     //是否使用模拟数据
 
 function getStorage() {
   var paramater = wx.getStorageSync(STORAGE.PARAMATER);
@@ -44,17 +47,12 @@ function login(callback, userInfo) {
       var code = res.code
       console.log(code)
       if (code) {
-
-        var res = {
-          "code": 0,
-          "message": "suc",
-          "data": "xxx"
+        if(isAPi){
+          var res = {"code": 0, "message": "suc", "data": "xxx"}
+          wx.setStorageSync(STORAGE.PARAMATER, { "openid": res.data });
+          callback(res)
+          return false;
         }
-        wx.setStorageSync(STORAGE.PARAMATER, {
-          "openid": res.data
-        });
-        callback(res)
-        return false;
         request(URL + SERVICE.LOGIN, {
           code: code,
           nickName: userInfo.nickName,
@@ -74,11 +72,17 @@ function getinfo(callback){
   var paramater = getStorage();
 
   console.log(paramater)
+  if (isAPi) {
+    var res = { "code": 0, "message": "suc", "status": "1", "flag": "1", "nick": "1", "head": "xxx", "score": "1" }
+    // 失败的例子
+    // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+    callback(res)
+    return false;
+  }
+  request(URL + SERVICE.GETINFO, paramater, function (res) {
+    callback(res)
+  })
 
-  var res = { "code": 0, "message": "suc", "status": "1", "flag": "1", "nick": "1", "head": "xxx", "score": "1" }
-  // 失败的例子
-  // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
-  callback(res)
 }
 
 
@@ -92,17 +96,24 @@ function excode(callback, code, type) {
 
   console.log(paramater)
 
-  var res = {
-    "code": 0,
-    "message": "suc",
-    "ret": 0.33,
-    "package": "xxx",
-    "lid": 123
-  }
+  if (isAPi) {
+    var res = {
+      "code": 0,
+      "message": "suc",
+      "ret": 0.33,
+      "package": "xxx",
+      "lid": 123
+    }
 
-  // 失败的例子
-  // var res = { "code":-1, "message": "\u975e\u6cd5\u8bf7\u6c42"}
-  callback(res)
+    // 失败的例子
+    // var res = { "code":-1, "message": "\u975e\u6cd5\u8bf7\u6c42"}
+    callback(res)
+    return false
+  }
+  request(URL + SERVICE.EXCODE, paramater, function (res) {
+    callback(res)
+  })
+
 }
 
 /**
@@ -115,11 +126,16 @@ function savetel(callback, encryptedData, iv, lid) {
   paramater.lid = lid;
 
   console.log(paramater)
-
-  var res = { "code":0, "message":"suc" }
-  // 失败的例子
-  // { "code":-1, "message": "\u975e\u6cd5\u8bf7\u6c42"
-  callback(res)
+  if(isAPi){
+    var res = { "code":0, "message":"suc" }
+    // 失败的例子
+    // { "code":-1, "message": "\u975e\u6cd5\u8bf7\u6c42"
+    callback(res)
+    return false
+  }
+  request(URL + SERVICE.SAVETEL, paramater, function (res) {
+    callback(res)
+  })
 }
 
 /**
@@ -129,12 +145,17 @@ function getStatus(callback){
   var paramater = getStorage();
 
   console.log(paramater)
+  if(isAPi){
+    var res = {"code": 0, "message": "suc", "bt1": 0, "bt2": 0}
+    // 失败的例子
+    // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
 
-  var res = {"code": 0, "message": "suc", "bt1": 0, "bt2": 0}
-  // 失败的例子
-  // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
-
-  callback(res)
+    callback(res)
+    return false
+  }
+  request(URL + SERVICE.GETSTATUS, paramater, function (res) {
+    callback(res)
+  })
 }
 
 /**
@@ -144,12 +165,17 @@ function unlock(callback,type){
   var paramater = getStorage();
   paramater.type = type
   console.log(paramater)
+  if(isAPi){
+    var res = { "code":0, "message":"suc" }
+    // 失败的例子
+    // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
 
-  var res = { "code":0, "message":"suc" }
-  // 失败的例子
-  // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
-
-  callback(res)
+    callback(res)
+    return false
+  }
+  request(URL + SERVICE.UNLOCK, paramater, function (res) {
+    callback(res)
+  })
 }
 
 /**
@@ -160,11 +186,17 @@ function saveFile(callback, content) {
   paramater.content = content
 
   console.log(paramater)
+  if(isAPi){
+    var res = { "code": 0, "message": "suc", "fid": 1 }
+    // 失败的例子
+    // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+    callback(res)
 
-  var res = { "code": 0, "message": "suc", "fid": 1 }
-  // 失败的例子
-  // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
-  callback(res)
+    return false
+  }
+  request(URL + SERVICE.SAVEFILE, paramater, function (res) {
+    callback(res)
+  })
 }
 
 /**
@@ -175,11 +207,16 @@ function getFile(callback, fid) {
   paramater.fid = fid
 
   console.log(paramater)
-
-  var res = { "code": 0, "message": "suc", "content":"[{'id':'beats0','t':4519,'s':false},{'id':'beats1','t':8005,'s':false}]"}
-  // 失败的例子
-  // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
-  callback(res)
+  if(isAPi){
+    var res = { "code": 0, "message": "suc", "content":"[{'id':'beats0','t':4519,'s':false},{'id':'beats1','t':8005,'s':false}]"}
+    // 失败的例子
+    // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+    callback(res)
+    return false
+  }
+  request(URL + SERVICE.GETFILE, paramater, function (res) {
+    callback(res)
+  })
 }
 
 /**
@@ -189,18 +226,23 @@ function getUserInfo(callback){
   var paramater = getStorage();
   
   console.log(paramater)
-
-  var res = {
-    "code": 0, "message": "suc", "score": 123, "head": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKl06gDibQ7aOxHd47M5C35QS9YK5TDK5L5LdRQZgqACTJIrugp7PcGiazrT0urPkcK80CGJCw1r7SA/132" , "nick": "five",
-    "data": [
-      {"award_id":"xx", "award_code": "xxxxx", "award_name":"xx1", "award_time":"xx"},
-      {"award_id":"xx", "award_code": "xxxxx", "award_name":"xx2", "award_time":"xx"}, 
-      {"award_id":"xx", "award_code": "xxxxx", "award_name":"xx3", "award_time":"xx"}
-    ]
+  if(isAPi){
+    var res = {
+      "code": 0, "message": "suc", "score": 123, "head": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKl06gDibQ7aOxHd47M5C35QS9YK5TDK5L5LdRQZgqACTJIrugp7PcGiazrT0urPkcK80CGJCw1r7SA/132" , "nick": "five",
+      "data": [
+        {"award_id":"xx", "award_code": "xxxxx", "award_name":"xx1", "award_time":"xx"},
+        {"award_id":"xx", "award_code": "xxxxx", "award_name":"xx2", "award_time":"xx"}, 
+        {"award_id":"xx", "award_code": "xxxxx", "award_name":"xx3", "award_time":"xx"}
+      ]
+    }
+    // 失败的例子
+    // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+    callback(res)
+    return false
   }
-  // 失败的例子
-  // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
-  callback(res)
+  request(URL + SERVICE.GETUSERINFO, paramater, function (res) {
+    callback(res)
+  })
 }
 
 /**
@@ -211,11 +253,16 @@ function lottery(callback,score) {
   paramater.score = score
 
   console.log(paramater)
-  
-  var res = { "code":0, "message":"suc","score": 113, "award_code": "xxx","award_name": "xxx", "award_id":11 }
-  // 失败的例子
-  // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
-  callback(res)
+  if(isAPi){
+    var res = { "code":0, "message":"suc","score": 113, "award_code": "xxx","award_name": "xxx", "award_id":11 }
+    // 失败的例子
+    // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+    callback(res)
+    return false
+  }
+  request(URL + SERVICE.LOTTERY, paramater, function (res) {
+    callback(res)
+  })
 }
 
 /**
@@ -229,11 +276,16 @@ function saveUser(callback,award_id,name,tel,addr){
   paramater.addr = addr;
 
   console.log(paramater)
-
-  var res = { "code":0, "message":"suc"}
-  // 失败的例子
-  // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
-  callback(res)
+  if(isAPi){
+    var res = { "code":0, "message":"suc"}
+    // 失败的例子
+    // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+    callback(res)
+    return false
+  }
+  request(URL + SERVICE.SAVEUSER, paramater, function (res) {
+    callback(res)
+  })
 }
 
 /**
@@ -245,11 +297,16 @@ function exscore(callback,score,type){
   paramater.type = type
 
   console.log(paramater)
-
-  var res = { "code":0, "message":"suc","score": 123}
-  // 失败的例子
-  // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
-  callback(res)
+  if(isAPi){
+    var res = { "code":0, "message":"suc","score": 123}
+    // 失败的例子
+    // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+    callback(res)
+    return false
+  }
+  request(URL + SERVICE.EXSCORE, paramater, function (res) {
+    callback(res)
+  })
 }
 
 /**
