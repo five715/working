@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -57,14 +57,28 @@
 					"id": 2,
 					"name": "制作",
 					"pathName": "pages/game/music",
-					"query": "select=1&music=1",
+					"query": "select=1&style=1",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "合成",
+					"pathName": "pages/game/create",
+					"query": "fid=1",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "制作",
-					"pathName": "pages/game/create",
-					"query": "fid=1",
+					"name": "个人中心",
+					"pathName": "pages/store/oneself",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "style",
+					"pathName": "pages/game/style",
+					"query": "",
 					"scene": null
 				}
 			]

@@ -21,5 +21,8 @@ Page({
         nick:data.nick
       })
     })
+  },
+  saveuser(e){
+    console.log("完善个人信息")
   }
 })

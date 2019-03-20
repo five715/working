@@ -1,15 +1,8 @@
-<view class="selects" wx:if="{{select == -1}}">
-  <view class='select' bindtap='onBtnSelect' id="1">我不但可爱,还可爱你了</view>
-  <view class='select' bindtap='onBtnSelect' id="2">我咬你的时候,你也要对我笑</view>
-  <view class='select' bindtap='onBtnSelect' id="3">我跟你除了恋爱真没什么好谈的</view>
-  <view class='select' bindtap='onBtnSelect' id="4">爱我是真心话,凶我是大冒险</view>
-  <view class='select' bindtap='onBtnSelect' id="5">你的牙印,一定是爱我的小标记~</view>
-  <view class='select' bindtap='onBtnSelect' id="6">不许动手,只许动心</view>
-</view>
-<view class='style' wx:elif="{{music == -1}}">
-  <text>选择喜欢的音乐风格</text>
-  <view class='music' bindtap='onBtnMusic' id="1">民谣</view>
-  <view class='music' bindtap='onBtnMusic' id="2">嘻哈</view>
-  <view class='music' bindtap='onBtnMusic' id="3">摇滚</view>
-  <view class='music' bindtap='onBtnMusic' id="4">爵士</view>
+<view class="selects pageBg">
+  <image class='boxes' src='/images/selects_bg.jpg'></image>
+  <image class='slogan' src='/images/game_slogan.png'></image>
+  <view class='sle'>
+    <image wx:for="{{[1,2,3,4,5,6]}}" wx:key="" class='select_{{item}}' src='/images/selects_select_{{item}}.png' id="{{item}}" bindtap='onBtnSelect'></image>
+  </view>
+  <image class='game_btn_right' bindtap='onBtnRight' src='/images/game_btn_right.png'></image>
 </view>

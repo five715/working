@@ -1,0 +1,11 @@
+.selects .slogan{position: absolute; top: 64rpx; left: 83rpx; width: 621rpx; height: 248rpx;}
+
+.selects .sle{position: absolute; top: 420rpx; left: 119rpx; width: 502rpx; height: 479rpx;}
+.selects .sle .select_1{position: absolute; top: 0; left: 0; width: 501rpx; height: 100rpx;}
+.selects .sle .select_2{position: absolute; top: 106rpx; left: 5rpx; width: 491rpx; height: 63rpx;}
+.selects .sle .select_3{position: absolute; top: 169rpx; left: 0; width: 502rpx; height: 84rpx;}
+.selects .sle .select_4{position: absolute; top: 251rpx; left: 0; width: 501rpx; height: 71rpx;}
+.selects .sle .select_5{position: absolute; top: 325rpx; left: 0; width: 502rpx; height: 77rpx;}
+.selects .sle .select_6{position: absolute; top: 414rpx; left: 1rpx; width: 500rpx; height: 65rpx;}
+
+.selects .game_btn_right{position: absolute; top: 920rpx; left: 225rpx; width: 300rpx; height: 99rpx;}

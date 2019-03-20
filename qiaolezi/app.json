@@ -4,6 +4,7 @@
     "pages/store/index",
     "pages/store/oneself",
     "pages/game/index",
+    "pages/game/style",
     "pages/game/music",
     "pages/game/create",
     "pages/index/foreshow"

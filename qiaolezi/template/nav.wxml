@@ -1,6 +1,6 @@
 <!-- 导航 -->
 <view class="navs">
-  <view bindtap='onBtnHome'>首页</view>
-  <view bindtap='onBtnRule'>活动规则</view>
-  <navigator url="/pages/store/oneself">个人中心</navigator>
+  <image bindtap='onBtnHome' class='home nav' src='/images/navs_home.png'></image>
+  <image bindtap='onBtnRule' class='rule nav' src='/images/navs_rule.png'></image>
+  <navigator class='oneself nav' url="/pages/store/oneself"><image class='boxes' src='/images/navs_oneself.png' ></image></navigator>
 </view>

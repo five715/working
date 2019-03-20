@@ -18,21 +18,23 @@ const SERVICE = {
   EXSCORE: "/default/exscore" //积分兑换
 }
 
-const isAPi= false;     //是否使用模拟数据
+const isAPi= 0;     //是否使用模拟数据
 
 function getStorage() {
-  var paramater = wx.getStorageSync(STORAGE.PARAMATER);
+  var paramater = wx.getStorageSync(STORAGE.PARAMATER) || { "loginData": "xxxaaa" };
   return paramater;
 }
 
 function request(url, data, success, fail) {
+  console.log("请求内容:" ,data)
   var requestTask = wx.request({
     url: url,
-    method: "post",
+    method: "POST",
     data: data,
     header: {
-      'content-type': 'application/json'
+      'Content-Type': 'application/x-www-form-urlencoded'
     },
+    dataType:"json",
     success: success,
     fail: fail
   })
@@ -49,7 +51,7 @@ function login(callback, userInfo) {
       if (code) {
         if(isAPi){
           var res = {"code": 0, "message": "suc", "data": "xxx"}
-          wx.setStorageSync(STORAGE.PARAMATER, { "openid": res.data });
+          wx.setStorageSync(STORAGE.PARAMATER, { "loginData": res.data });
           callback(res)
           return false;
         }
@@ -58,7 +60,10 @@ function login(callback, userInfo) {
           nickName: userInfo.nickName,
           avatarUrl: userInfo.avatarUrl
         }, function (res) {
-          callback(res)
+          if(res.code == 0){
+            wx.setStorageSync(STORAGE.PARAMATER, { "loginData": res.data });
+            callback(res)
+          }
         })
       }
     }
@@ -80,7 +85,9 @@ function getinfo(callback){
     return false;
   }
   request(URL + SERVICE.GETINFO, paramater, function (res) {
-    callback(res)
+    if (res.code == 0) {
+      callback(res)
+    }
   })
 
 }
@@ -89,9 +96,9 @@ function getinfo(callback){
 /**
  * 棒签兑换
  */
-function excode(callback, code, type) {
+function excode(callback, excode, type) {
   var paramater = getStorage();
-  paramater.code = code;
+  paramater.excode = excode;
   paramater.type = type;
 
   console.log(paramater)
@@ -111,7 +118,9 @@ function excode(callback, code, type) {
     return false
   }
   request(URL + SERVICE.EXCODE, paramater, function (res) {
-    callback(res)
+    if (res.code == 0) {
+      callback(res)
+    }
   })
 
 }
@@ -134,7 +143,9 @@ function savetel(callback, encryptedData, iv, lid) {
     return false
   }
   request(URL + SERVICE.SAVETEL, paramater, function (res) {
-    callback(res)
+    if (res.code == 0) {
+      callback(res)
+    }
   })
 }
 
@@ -154,7 +165,9 @@ function getStatus(callback){
     return false
   }
   request(URL + SERVICE.GETSTATUS, paramater, function (res) {
-    callback(res)
+    if (res.code == 0) {
+      callback(res)
+    }
   })
 }
 
@@ -174,7 +187,9 @@ function unlock(callback,type){
     return false
   }
   request(URL + SERVICE.UNLOCK, paramater, function (res) {
-    callback(res)
+    if (res.code == 0) {
+      callback(res)
+    }
   })
 }
 
@@ -195,7 +210,9 @@ function saveFile(callback, content) {
     return false
   }
   request(URL + SERVICE.SAVEFILE, paramater, function (res) {
-    callback(res)
+    if (res.code == 0) {
+      callback(res)
+    }
   })
 }
 
@@ -215,7 +232,9 @@ function getFile(callback, fid) {
     return false
   }
   request(URL + SERVICE.GETFILE, paramater, function (res) {
-    callback(res)
+    if (res.code == 0) {
+      callback(res)
+    }
   })
 }
 
@@ -230,9 +249,11 @@ function getUserInfo(callback){
     var res = {
       "code": 0, "message": "suc", "score": 123, "head": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKl06gDibQ7aOxHd47M5C35QS9YK5TDK5L5LdRQZgqACTJIrugp7PcGiazrT0urPkcK80CGJCw1r7SA/132" , "nick": "five",
       "data": [
-        {"award_id":"xx", "award_code": "xxxxx", "award_name":"xx1", "award_time":"xx"},
-        {"award_id":"xx", "award_code": "xxxxx", "award_name":"xx2", "award_time":"xx"}, 
-        {"award_id":"xx", "award_code": "xxxxx", "award_name":"xx3", "award_time":"xx"}
+        { "award_id": "xx", "award_code": "xxxxx111111", "award_name": "爱奇艺VIP", "award_time":"20190223"},
+        { "award_id": "xx", "award_code": "", "award_name": "oppo手机一部", "award_time":"20190223"}, 
+        { "award_id": "xx", "award_code": "222222xxxxx", "award_name": "爱奇艺VIP", "award_time": "20190223" },
+        { "award_id": "xx", "award_code": "333333xxxxx", "award_name": "爱奇艺VIP", "award_time": "20190223" },
+        { "award_id": "xx", "award_code": "444444xxxxx", "award_name": "爱奇艺VIP", "award_time": "20190223" }
       ]
     }
     // 失败的例子
@@ -241,7 +262,9 @@ function getUserInfo(callback){
     return false
   }
   request(URL + SERVICE.GETUSERINFO, paramater, function (res) {
-    callback(res)
+    if (res.code == 0) {
+      callback(res)
+    }
   })
 }
 
@@ -261,7 +284,9 @@ function lottery(callback,score) {
     return false
   }
   request(URL + SERVICE.LOTTERY, paramater, function (res) {
-    callback(res)
+    if (res.code == 0) {
+      callback(res)
+    }
   })
 }
 
@@ -284,7 +309,9 @@ function saveUser(callback,award_id,name,tel,addr){
     return false
   }
   request(URL + SERVICE.SAVEUSER, paramater, function (res) {
-    callback(res)
+    if (res.code == 0) {
+      callback(res)
+    }
   })
 }
 
@@ -305,7 +332,9 @@ function exscore(callback,score,type){
     return false
   }
   request(URL + SERVICE.EXSCORE, paramater, function (res) {
-    callback(res)
+    if (res.code == 0) {
+      callback(res)
+    }
   })
 }
 

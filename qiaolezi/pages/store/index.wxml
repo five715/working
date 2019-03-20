@@ -1,21 +1,37 @@
-<!-- 个人资料 -->
-<view class='oneself'>
-  <image class='head' src='{{userInfo.head}}'></image>
-  {{userInfo.nick}}
-  {{userInfo.score}}
-</view> 
-<!-- 兑奖区 -->
-<view class='redeem'>
-  <view class='bag' bindtap='onReddem' id="1">100积分</view>
-  <view class='bag' bindtap='onReddem' id="2">150积分</view>
-  <view class='bag' bindtap='onReddem' id="3">200积分</view>
-  <view class='bag' bindtap='onReddem' id="4">300积分</view>
-  <view class='bag' bindtap='onReddem' id="5">600积分</view>
-  <view class='bag' bindtap='onReddem' id="6">1000积分</view>
-</view>
-<!-- 抽奖区 -->
-<view class='luckZone'>
-  <view class='play' bindtap='onBtnLuck'>启动抽奖</view>
+<view class='store pageBg'>
+  <image class='boxes' src='/images/store_bg.jpg'></image>
+  <!-- 个人资料 -->
+  <view class='oneself'>
+    <image class='boxes' src='/images/store_oneself_bg.png'></image>
+    <image class='head' src='{{userInfo.head}}'></image>
+    <text class='nick'>{{userInfo.nick}}</text>
+    <text class='score'>{{userInfo.score}}积分</text>
+  </view> 
+  <!-- 兑奖区 -->
+  <view class='redeem'>
+    <image class='boxes' src='/images/store_redeem_bg.png'></image>
+    <scroll-view scroll-y>
+      <image class='bag bag_1' src='/images/store_redeem_bag_1.png' bindtap='onReddem' id="1">100积分</image>
+      <image class='bag bag_2' src='/images/store_redeem_bag_2.png' bindtap='onReddem' id="2">150积分</image>
+      <image class='bag bag_3' src='/images/store_redeem_bag_3.png' bindtap='onReddem' id="3">200积分</image>
+      <image class='bag bag_4' src='/images/store_redeem_bag_4.png' bindtap='onReddem' id="4">300积分</image>
+      <image class='bag bag_5' src='/images/store_redeem_bag_5.png' bindtap='onReddem' id="5">600积分</image>
+      <image class='bag bag_6' src='/images/store_redeem_bag_6.png' bindtap='onReddem' id="6">1000积分</image>
+    </scroll-view>
+  </view>
+  <!-- 抽奖区 -->
+  <view class='luckZone'>
+    <image class='boxes' src='/images/store_luckZone_bg.png'></image>
+    <image class='prize prize_1' src='/images/store_luckZone_no.png'></image>
+    <image class='prize prize_2' src='/images/store_luckZone_red.png'></image>
+    <image class='prize prize_3' src='/images/store_luckZone_vip.png'></image>
+    <image class='prize prize_4' src='/images/store_luckZone_red.png'></image>
+    <image class='prize prize_5' src='/images/store_luckZone_no.png'></image>
+    <image class='prize prize_6' src='/images/store_luckZone_vip.png'></image>
+    <image class='prize prize_7' src='/images/store_luckZone_no.png'></image>
+    <image class='prize prize_8' src='/images/store_luckZone_oppo.png'></image>
+    <image class='prize' bindtap='onBtnLuck' src='/images/store_luckZone_play.png'></image>
+  </view>
 </view>
 <include  src="/template/nav.wxml"/>
 <!-- 弹窗 -->
