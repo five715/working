@@ -5,7 +5,8 @@ var qrcode;
 Page({
   data:{
     qrcode:"",
-    pic:""
+    pic:"",
+    locolurl:"",
   },
   onLoad(e){
     var _this =this;
@@ -17,8 +18,22 @@ Page({
     wx.showLoading({
       title: '图片生成中'
     })
+    var _this =this
 
-    this.onCreateQrcode(e.fid)
+    wx.downloadFile({
+      url: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKl06gDibQ7aOxHd47M5C35QS9YK5TDK5L5LdRQZgqACTJIrugp7PcGiazrT0urPkcK80CGJCw1r7SA/132",
+      success: res => {
+        // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+        if (res.statusCode === 200) {
+          this.setData({
+            locolurl: res.tempFilePath//将下载下来的地址给data中的变量变量
+          });
+          _this.onCreateQrcode(e.fid)
+        }
+      }, fail: res => {
+        console.log(res);
+      }
+    })
   },
   onPicture(){
     var _this = this
@@ -27,6 +42,9 @@ Page({
     ctx.draw(true)
 
     ctx.drawImage(_this.data.qrcode, 0, 0, 50, 50)
+    ctx.draw(true)
+
+    ctx.drawImage(_this.data.locolurl, 50, 50, 50, 50)
     ctx.draw(true)
 
 
