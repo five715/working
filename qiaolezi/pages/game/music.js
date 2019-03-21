@@ -2,10 +2,18 @@ const app = getApp();
 Page({
   data: {
     sounds: [
-      {src: "beats1", color: "red", bt: 0},
-      {src: "beats2", color: "red", bt: 0}
+      { src: "beats1", color: "red", bt: 1, name: "风铃" },
+      { src: "beats2", color: "red", bt: 1, name: "海豚" },
+      { src: "beats3", color: "red", bt: 1, name: "心跳" },
+      { src: "beats4", color: "red", bt: 1, name: "画眉鸟" },
+      { src: "beats5", color: "red", bt: 1, name: "“波”" },
+      { src: "beats6", color: "red", bt: 1, name: "小猫叫" },
+      { src: "beats7", color: "red", bt: 1, name: "爱你" },
+      { src: "beats8", color: "red", bt: 1, name: "踢踏舞" }
     ],
     audios: {},
+    style:null,
+    text:"",
     bgTimer: 30000,
     isStart: false, //是否开始记录
     isAdvance: false, //是否预创作
@@ -166,13 +174,7 @@ Page({
     var sounds = _this.data.sounds;
     app.api.getStatus(function(data) {
       console.log(data, sounds)
-      for (var bt in data) {
-        if (bt.indexOf("bt") !== -1) {
-          if (data[bt] == 1) {
-            sounds[bt.substr(2, 1) - 1].bt = 1
-          }
-        }
-      }
+      for (var bt in data) if (bt.indexOf("bt") !== -1) sounds[bt.substr(2, 1) - 1].bt = data[bt]
       _this.setData({
         sounds: sounds
       })
@@ -183,6 +185,11 @@ Page({
     console.log(_this.data.audios,_this.data.audios.bg.src)
 
     _this.data.audios.bg.play()
+
+    _this.setData({
+      style:e.style,
+      text:e.text
+    })
   },
   onAnew() {
     this.funcStop();

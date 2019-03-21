@@ -18,7 +18,7 @@ const SERVICE = {
   EXSCORE: "/default/exscore" //积分兑换
 }
 
-const isAPi= 0;     //是否使用模拟数据
+const isAPi= 1;     //是否使用模拟数据
 
 function getStorage() {
   var paramater = wx.getStorageSync(STORAGE.PARAMATER) || { "loginData": "xxxaaa" };
@@ -60,8 +60,8 @@ function login(callback, userInfo) {
           nickName: userInfo.nickName,
           avatarUrl: userInfo.avatarUrl
         }, function (res) {
-          if(res.code == 0){
-            wx.setStorageSync(STORAGE.PARAMATER, { "loginData": res.data });
+          if(res.data.code == 0){
+            wx.setStorageSync(STORAGE.PARAMATER, { "loginData": res.data.data });
             callback(res)
           }
         })
@@ -165,8 +165,8 @@ function getStatus(callback){
     return false
   }
   request(URL + SERVICE.GETSTATUS, paramater, function (res) {
-    if (res.code == 0) {
-      callback(res)
+    if (res.data.code == 0) {
+      callback(res.data)
     }
   })
 }
@@ -277,7 +277,7 @@ function lottery(callback,score) {
 
   console.log(paramater)
   if(isAPi){
-    var res = { "code":0, "message":"suc","score": 113, "award_code": "xxx","award_name": "xxx", "award_id":11 }
+    var res = { "code":0, "message":"suc","score": 113, "award_code": "xxx","award_name": "xxx", "award_id":1 }
     // 失败的例子
     // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
     callback(res)

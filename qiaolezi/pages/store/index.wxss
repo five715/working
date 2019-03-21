@@ -19,6 +19,9 @@
 .store .luckZone .prize_6{top:315rpx; left: 228rpx;}
 .store .luckZone .prize_7{top:315rpx; left: 56rpx;}
 .store .luckZone .prize_8{top:199rpx; left: 56rpx;}
+.store .luckZone .yes{border: 5rpx #000 solid; box-sizing: border-box;}
+
+
 
 .popup{color: #ffffff;}
 .popup_luckYes{position: absolute;}

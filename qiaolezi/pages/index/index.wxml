@@ -1,4 +1,4 @@
-<video autoplay id="indexVideo" class='indexVideo' muted controls='' show-center-play-btn='' src='http://qq.vogso.com/taipingyang/interaction/wap/media/index.mp4' bindprogress='bindprogress' bindended='bindended'></video>
+<video autoplay="{{isVideo}}" id="indexVideo" class='indexVideo' muted controls='' show-center-play-btn='' src='http://qq.vogso.com/taipingyang/interaction/wap/media/index.mp4' bindprogress='bindprogress' bindended='bindended'></video>
 <view class="home">
   <view class='boxes' wx:if="{{!isVideo}}">
     <image class='boxes' src='/images/home_bg.jpg'></image>
@@ -17,7 +17,7 @@
     </view>
   </view>
   <view wx:if="{{!isVideo || per != -1}}">
-    <text class='per' wx:if="{{per != -1}}">{{per}}%</text>
+    <text class='per' wx:if="{{isVideo && per != -1}}">{{per}}%</text>
     <image class='musicBox' src='/images/index_music_box.png'></image>
   </view>
 </view>

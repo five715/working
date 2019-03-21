@@ -1,0 +1,19 @@
+.music .title{position: absolute; top: 11rpx; left: 87rpx; width: 579rpx; height: 111rpx;}
+.music .audio{position: absolute; top: 129rpx; left: 83rpx; width: 195rpx; height: 305rpx;}
+.music .beats2{top: 129rpx; left: 279rpx;}
+.music .beats3{top: 129rpx; left: 474rpx;}
+.music .beats4{top: 435rpx; left: 83rpx;}
+.music .beats5{top: 435rpx; left: 474rpx;}
+.music .beats6{top: 741rpx; left: 83rpx;}
+.music .beats7{top: 741rpx; left: 279rpx;}
+.music .beats8{top: 741rpx; left: 474rpx;}
+.music .timer{top: 435rpx; left: 279rpx;}
+.music .timer text{position: absolute; top: 132rpx; width: 100%; text-align: center; font-size: 68rpx; color: #fff;}
+.music .music_btn_right{position: absolute; top: 1044rpx; left: 84rpx; width: 585rpx; height: 150rpx;}
+
+
+.advance .play{position: absolute; top: 51rpx; left: 0rpx; width:675rpx; height: 576rpx;}
+.advance .sign{position: absolute; top: 668rpx; left: 79rpx; width: 593rpx; height: 72rpx;}
+.advance .sign text{position: absolute; top: 0; left: 30rpx; width: 446rpx; font-size: 30rpx; line-height: 62rpx; color: #7f3b2e;}
+.advance .anew{position: absolute; top: 767rpx; left: 169rpx; width: 411rpx; height: 118rpx;}
+.advance .create{position: absolute; top: 922rpx; left: 169rpx; width: 411rpx; height: 118rpx;}

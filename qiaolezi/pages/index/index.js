@@ -58,6 +58,7 @@ Page({
   },
   onLoad(e) {
     var _this = this;
+    if (e.isSkip) _this.bindended()
     // mta.Page.init();
     // mta.Event.stat("01",{})
     // this.getUserInfo();
@@ -84,14 +85,16 @@ Page({
     })
   },
   bindended(e){
+    console.log(123)
     this.setData({
       isVideo: false,
       per: -1
     })
   },
   bindprogress(e){
-    var per = e.detail.buffered
     var _this = this;
+    if(!_this.data.isVideo) return false;
+    var per = e.detail.buffered
     _this.setData({
       per: per
     },function(){

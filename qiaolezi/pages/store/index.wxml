@@ -22,14 +22,7 @@
   <!-- 抽奖区 -->
   <view class='luckZone'>
     <image class='boxes' src='/images/store_luckZone_bg.png'></image>
-    <image class='prize prize_1' src='/images/store_luckZone_no.png'></image>
-    <image class='prize prize_2' src='/images/store_luckZone_red.png'></image>
-    <image class='prize prize_3' src='/images/store_luckZone_vip.png'></image>
-    <image class='prize prize_4' src='/images/store_luckZone_red.png'></image>
-    <image class='prize prize_5' src='/images/store_luckZone_no.png'></image>
-    <image class='prize prize_6' src='/images/store_luckZone_vip.png'></image>
-    <image class='prize prize_7' src='/images/store_luckZone_no.png'></image>
-    <image class='prize prize_8' src='/images/store_luckZone_oppo.png'></image>
+    <image wx:for='{{prizes}}' wx:key='' wx:for-index='i' class='prize prize_{{i+1}} {{item.state}}' src='/images/store_luckZone_{{item.prize}}.png'></image>
     <image class='prize' bindtap='onBtnLuck' src='/images/store_luckZone_play.png'></image>
   </view>
 </view>
