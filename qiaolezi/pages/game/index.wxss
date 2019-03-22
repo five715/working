@@ -9,3 +9,5 @@
 .selects .sle .select_6{position: absolute; top: 414rpx; left: 1rpx; width: 500rpx; height: 65rpx;}
 
 .selects .game_btn_right{position: absolute; top: 920rpx; left: 225rpx; width: 300rpx; height: 99rpx;}
+
+.selects .yes{border: 5rpx #000 solid; box-sizing: border-box;}

@@ -11,6 +11,7 @@
 .music .timer text{position: absolute; top: 132rpx; width: 100%; text-align: center; font-size: 68rpx; color: #fff;}
 .music .music_btn_right{position: absolute; top: 1044rpx; left: 84rpx; width: 585rpx; height: 150rpx;}
 
+.music .lock{border: 5rpx #000 solid; box-sizing: border-box;}
 
 .advance .play{position: absolute; top: 51rpx; left: 0rpx; width:675rpx; height: 576rpx;}
 .advance .sign{position: absolute; top: 668rpx; left: 79rpx; width: 593rpx; height: 72rpx;}

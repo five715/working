@@ -109,12 +109,20 @@ Page({
   getUserInfo(e) {
     var _this = this;
     console.log(e)
+    if (!e.detail.userInfo){
+      //拒绝授权
+      console.log("拒绝授权")
+      return false
+    }
     wx.checkSession({
       success: (res) => {
         _this.onExcode();
       },
       fail: (res) => {
         _this.onLogin(e.detail.userInfo)
+      },
+      complete:(res)=>{
+        console.log(res)
       }
     })
   },

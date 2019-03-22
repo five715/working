@@ -2,10 +2,10 @@
   <image class='boxes' src='/images/music_bg.jpg'></image>
   <image class='title' src='/images/music_title.png'></image>
   <view class='audio timer'>
-    <text>{{(bgTimer-time)/1000}}</text>
+    <text>{{bgTimer/1000-time}}</text>
     <image class='boxes' src='/images/music_beats_timer.png'></image>
   </view>
-  <image src="/images/music_{{item.src}}.png" class="audio {{item.src}}" bindtap='onAudio' style="color:{{item.color}}" wx:for="{{sounds}}" wx:key="" wx:for-index="i" id="beats{{i}}" data-i="{{i}}" data-src="/sounds/{{item.src}}.mp3" data-bt="{{item.bt}}">{{item.name}}</image>
+  <image src="/images/music_{{item.src}}.png" class="audio {{item.src}} {{item.bt==1?'':'lock'}} {{item.color}}" bindtap='onAudio' style="color:{{item.color}}" wx:for="{{sounds}}" wx:key="" wx:for-index="i" id="beats{{i}}" data-i="{{i}}" data-src="/sounds/{{item.src}}.mp3" data-bt="{{item.bt}}">{{item.name}}</image>
   <image class='music_btn_right' bindtap='onEnd' src='/images/music_btn_right.png'></image>
 </view>
 

@@ -20,7 +20,8 @@ Page({
     time: 0, //时间
     t: 0, //播放时间
     timer: null, //定时器
-    arr: [] //记录数据
+    arr: [], //记录数据
+    bgSrc:""
   },
   onReady() {
     var _this = this;
@@ -100,7 +101,7 @@ Page({
         var t = new Date().getTime() - _this.timeDate
         _this.onForAudio(t, _this.data.arr)
         _this.setData({
-          time: t
+          time: parseInt(t/1000)
         })
       }, 100)
     })
@@ -132,6 +133,9 @@ Page({
   onPlay() {
     var _this = this;
     var arr = _this.data.arr
+    arr.forEach((arr) => {
+      arr.s = false
+    })
     var obj = _this.data.sounds
     _this.timeDate = new Date().getTime();
     _this.data.timer = setInterval(function() {
@@ -188,26 +192,31 @@ Page({
 
     _this.setData({
       style:e.style,
-      text:e.text
+      text:e.text,
+      bgSrc:_this.data.audios.bg.src
     })
+    _this.onStart();
   },
   onAnew() {
-    this.funcStop();
-    this.setData({
+    var _this = this;
+    _this.funcStop();
+    _this.onStart();
+    _this.setData({
       isAdvance: false,
       time: 0,
       t: 0
     })
   },
   onCreate() {
-    this.funcStop();
-    var arr = this.data.arr;
+    var _this = this;
+    _this.funcStop();
+    var arr = _this.data.arr;
     // console.log(JSON.parse(JSON.stringify(arr)), JSON.stringify(arr).replace(/"/g,"'"))
     app.api.saveFile(function(data){
       console.log(data)
       wx.navigateTo({
         url: `create?fid=${data.fid}`
       })
-    }, JSON.stringify(arr).replace(/"/g, "'"))
+    }, `${JSON.stringify(arr).replace(/"/g, "'")}&${_this.data.bgSrc}`)
   }
 })

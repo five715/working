@@ -2,7 +2,7 @@
   <image class='boxes' src='/images/selects_bg.jpg'></image>
   <image class='slogan' src='/images/game_slogan.png'></image>
   <view class='sle'>
-    <image wx:for="{{[1,2,3,4,5,6]}}" wx:key="" class='select_{{item}}' src='/images/selects_select_{{item}}.png' id="{{item}}" bindtap='onBtnSelect'></image>
+    <image wx:for="{{selects}}" wx:key="" class='select_{{item.index}} {{item.sel?"yes":""}}' src='/images/selects_select_{{item.index}}.png' id="{{item.index}}" bindtap='onBtnSelect'></image>
   </view>
   <image class='game_btn_right' bindtap='onBtnRight' src='/images/game_btn_right.png'></image>
 </view>

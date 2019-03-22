@@ -85,7 +85,7 @@ function getinfo(callback){
     return false;
   }
   request(URL + SERVICE.GETINFO, paramater, function (res) {
-    if (res.code == 0) {
+    if (res.data.code == 0) {
       callback(res)
     }
   })
@@ -118,8 +118,12 @@ function excode(callback, excode, type) {
     return false
   }
   request(URL + SERVICE.EXCODE, paramater, function (res) {
-    if (res.code == 0) {
-      callback(res)
+    if (res.data.code == 0) {
+      callback(res.data)
+    }else if(res.data.code == -1){
+      wx.showToast({
+        title: res.data.message
+      })
     }
   })
 
@@ -143,7 +147,7 @@ function savetel(callback, encryptedData, iv, lid) {
     return false
   }
   request(URL + SERVICE.SAVETEL, paramater, function (res) {
-    if (res.code == 0) {
+    if (res.data.code == 0) {
       callback(res)
     }
   })
@@ -187,7 +191,7 @@ function unlock(callback,type){
     return false
   }
   request(URL + SERVICE.UNLOCK, paramater, function (res) {
-    if (res.code == 0) {
+    if (res.data.code == 0) {
       callback(res)
     }
   })
@@ -210,8 +214,9 @@ function saveFile(callback, content) {
     return false
   }
   request(URL + SERVICE.SAVEFILE, paramater, function (res) {
-    if (res.code == 0) {
-      callback(res)
+    console.log(res)
+    if (res.data.code == 0) {
+      callback(res.data)
     }
   })
 }
@@ -225,14 +230,14 @@ function getFile(callback, fid) {
 
   console.log(paramater)
   if(isAPi){
-    var res = { "code": 0, "message": "suc", "content":"[{'id':'beats0','t':4519,'s':false},{'id':'beats1','t':8005,'s':false}]"}
+    var res = { "code": 0, "message": "suc", "content":"[{'id':'beats0','t':4519,'s':false},{'id':'beats1','t':8005,'s':false}]&/sounds/bgMusic_1_1.mp3"}
     // 失败的例子
     // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
     callback(res)
     return false
   }
   request(URL + SERVICE.GETFILE, paramater, function (res) {
-    if (res.code == 0) {
+    if (res.data.code == 0) {
       callback(res)
     }
   })
@@ -262,7 +267,7 @@ function getUserInfo(callback){
     return false
   }
   request(URL + SERVICE.GETUSERINFO, paramater, function (res) {
-    if (res.code == 0) {
+    if (res.data.code == 0) {
       callback(res)
     }
   })
@@ -284,7 +289,7 @@ function lottery(callback,score) {
     return false
   }
   request(URL + SERVICE.LOTTERY, paramater, function (res) {
-    if (res.code == 0) {
+    if (res.data.code == 0) {
       callback(res)
     }
   })
@@ -309,7 +314,7 @@ function saveUser(callback,award_id,name,tel,addr){
     return false
   }
   request(URL + SERVICE.SAVEUSER, paramater, function (res) {
-    if (res.code == 0) {
+    if (res.data.code == 0) {
       callback(res)
     }
   })
@@ -332,7 +337,7 @@ function exscore(callback,score,type){
     return false
   }
   request(URL + SERVICE.EXSCORE, paramater, function (res) {
-    if (res.code == 0) {
+    if (res.data.code == 0) {
       callback(res)
     }
   })

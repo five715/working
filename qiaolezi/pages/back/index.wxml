@@ -1,0 +1,4 @@
+<view class='back pageBg'>
+  <button class='btn_play' open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击播放</button>
+  {{time}}
+</view>
