@@ -18,7 +18,7 @@ const SERVICE = {
   EXSCORE: "/default/exscore" //积分兑换
 }
 
-const isAPi= 1;     //是否使用模拟数据
+const isAPi= 0;     //是否使用模拟数据
 
 function getStorage() {
   var paramater = wx.getStorageSync(STORAGE.PARAMATER) || { "loginData": "xxxaaa" };

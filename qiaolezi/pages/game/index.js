@@ -25,7 +25,8 @@ Page({
       selects: selects
     })
     app.globalData.select = id
-    app.globalData.text = selects[id].text
+    app.globalData.text = selects[id-1].text
+    console.log(selects[id-1].text,selects[id-1],id)
   },
   onBtnRight(e) {
     wx.navigateTo({

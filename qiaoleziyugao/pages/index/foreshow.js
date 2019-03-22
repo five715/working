@@ -4,9 +4,9 @@ const app = getApp()
 var mta = require("../../utils/mta_analysis.js")
 Page({
   data: {
-    code:8888888888888,
+    code:0,
     isPopCdkey:0,
-    isPopHint:0
+    isPopHint:0,
   },
   onClose(e){
     this.setData({
@@ -17,9 +17,9 @@ Page({
   onLoad:function(query) {
     mta.Page.init()
     const scene = decodeURIComponent(query.q)
-    // const scene = "https://qiaolezi.act.qq.com/e/c/code/5";
-    // const scene = "https://qiaolezi.act.qq.com/e/c/code/XXXXXXXYYYYYY";
-    // const scene = "https://qiaolezi.act.qq.com/e/c/code/"
+    // const scene = "https://qiaolezi.act.qq.com/e/c/code/4";      //线下
+    // const scene = "https://qiaolezi.act.qq.com/e/c/code/XXXXXXXYYYYYY";    //脆筒
+    // const scene = "https://qiaolezi.act.qq.com/e/c/code/"    //棒签
     if (!scene || scene == 'undefined') return false
     this.onIf(scene)
   },
@@ -28,21 +28,27 @@ Page({
     var arr = scene.split("/");
     var code = arr[arr.length - 1]
     console.log(code)
-    if(code.length == 13){
+    _this.setData({
+      code: code
+    })
+    if (code.length == 13) {
+      console.log("06")
+      mta.Event.stat(`06`, {})
       _this.setData({
-        code:code,
         isPopCdkey:true
       })
     }else if(code<=5 && code >0){
       //指定五个地址
       console.log(`0${code}`)
       mta.Event.stat(`0${code}`,{})
-    }else{
+    } else {
+      console.log("07")
+      mta.Event.stat(`07`, {})
       //hint
       _this.setData({
         isPopHint:true
       })
-    } 
+    }
   },
   onBtn(e){
     this.onClose();
