@@ -20,7 +20,12 @@ Page({
     // const scene = "https://qiaolezi.act.qq.com/e/c/code/4";      //线下
     // const scene = "https://qiaolezi.act.qq.com/e/c/code/XXXXXXXYYYYYY";    //脆筒
     // const scene = "https://qiaolezi.act.qq.com/e/c/code/"    //棒签
-    if (!scene || scene == 'undefined') return false
+    if (!scene || scene == 'undefined') {
+      //小程序码进入
+      console.log("直接进入07")
+      mta.Event.stat(`07`, {})
+      return false
+    }
     this.onIf(scene)
   },
   onIf(scene){
@@ -32,6 +37,7 @@ Page({
       code: code
     })
     if (code.length == 13) {
+      //带兑换码进入
       console.log("06")
       mta.Event.stat(`06`, {})
       _this.setData({
@@ -42,6 +48,7 @@ Page({
       console.log(`0${code}`)
       mta.Event.stat(`0${code}`,{})
     } else {
+      //小程序码进入
       console.log("07")
       mta.Event.stat(`07`, {})
       //hint
