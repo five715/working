@@ -3,10 +3,20 @@
 .store .oneself .nick{position: absolute; top: 33rpx;left: 175rpx; font-size: 30rpx; color: #fff;}
 .store .oneself .score{position: absolute; top: 75rpx;left: 175rpx; font-size: 30rpx; color: #fff;}
 
-.store .redeem{position: absolute; top: 172rpx; left: 64rpx; width: 623rpx; height: 494rpx;}
-.store .redeem scroll-view{position: absolute; top: 73.5rpx; left: 31rpx; width: 528rpx; height:392rpx;}
-.store .redeem scroll-view::-webkit-scrollbar-track{}
-.store .redeem .bag{width: 160rpx; height: 183rpx; display: inline-block; margin:6.5rpx 8rpx;}
+.store .redeem{position: absolute; top: 172rpx; left: 64rpx; width: 623rpx; height: 494rpx; overflow: hidden;}
+.store .redeem scroll-view{position: absolute; top: 82.5rpx; left: 31rpx; width: 628rpx; height:392rpx;}
+.store .redeem #redeem::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+.store .redeem .bag{width: 160rpx; height: 183rpx; display: inline-block; margin:0 9rpx 5rpx;}
+.store .redeem .bag:nth-last-child(1),
+.store .redeem .bag:nth-last-child(2),
+.store .redeem .bag:nth-last-child(3){margin-bottom: 0}
+
+.store .redeem .scroll{position: absolute; top: 47rpx; left: 557.5rpx; width: 31rpx;  height: 381rpx;}
+.store .redeem .scroll .duan{position: absolute; width: 31rpx; height: 56rpx; left: 0; top: 0;}
 
 
 .store .luckZone{position: absolute; top: 661rpx; height: 465rpx; left: 64rpx; width: 623rpx;}

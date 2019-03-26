@@ -10,7 +10,7 @@
   <!-- 兑奖区 -->
   <view class='redeem'>
     <image class='boxes' src='/images/store_redeem_bg.png'></image>
-    <scroll-view scroll-y>
+    <scroll-view id="redeem" scroll-y bindscroll="bindscroll">
       <image class='bag bag_1' src='/images/store_redeem_bag_1.png' bindtap='onReddem' id="1">100积分</image>
       <image class='bag bag_2' src='/images/store_redeem_bag_2.png' bindtap='onReddem' id="2">150积分</image>
       <image class='bag bag_3' src='/images/store_redeem_bag_3.png' bindtap='onReddem' id="3">200积分</image>
@@ -18,6 +18,10 @@
       <image class='bag bag_5' src='/images/store_redeem_bag_5.png' bindtap='onReddem' id="5">600积分</image>
       <image class='bag bag_6' src='/images/store_redeem_bag_6.png' bindtap='onReddem' id="6">1000积分</image>
     </scroll-view>
+    <view class='scroll'>
+      <image class='duan' style='top:{{per}}%' src='/images/store_duan.png'></image>
+    </view>
+    
   </view>
   <!-- 抽奖区 -->
   <view class='luckZone'>

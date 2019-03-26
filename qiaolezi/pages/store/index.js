@@ -15,10 +15,23 @@ Page({
       { prize: "vip", state: "no" },
       { prize: "no", state: "no" },
       { prize: "oppo", state: "no" }
-    ]
+    ],
+    scrollHeight:200,
+    per :0
   },
   onBtnRule: nav.onBtnRule,
   onBtnHome: nav.onBtnHome,
+  bindscroll(e) {
+    var _this = this
+    var scrollHeight = _this.data.scrollHeight,
+      height = e.detail.scrollHeight - scrollHeight,
+      top = e.detail.scrollTop;
+    var per = parseInt((top / height) * 100)
+    _this.setData({
+      per: per
+    })
+    console.log(per)
+  },
   // 兑换包
   onReddem(e){
     console.log(e.target.id)
@@ -26,6 +39,7 @@ Page({
     var type = e.target.id
     app.api.exscore(function(data){
       console.log(data)
+
     }, _this.data.userInfo.score, type)
   },
   // 启动抽奖
@@ -79,7 +93,13 @@ Page({
     count()
   },
   onLoad(){
-    this.onUserInfo();
+    var _this =this;
+    _this.onUserInfo();
+    wx.createSelectorQuery().select('#redeem').boundingClientRect(function (rect) {
+      _this.setData({
+        scrollHeight:rect.height
+      })
+    }).exec()
   },
   onUserInfo(){
     var _this =this

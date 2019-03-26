@@ -2,9 +2,9 @@
 <view class="home">
   <view class='boxes' wx:if="{{!isVideo}}">
     <image class='boxes' src='/images/home_bg.jpg'></image>
-    <view class='btn_play bg' bindtap='onPlay'></view>
-    <view class='btn_rule bg' bindtap='onBtnRule'></view>
-    <view class='btn_store bg' bindtap='onBtnStore'></view>
+    <button class='btn_play btn bg' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-click="onPlay"></button>
+    <button class='btn_rule btn bg' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-click="onBtnRule"></button>
+    <button class='btn_store btn bg' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-click="onBtnStore"></button>
     <input class='input' type='text' bindinput='bindInput' bindfocus="bindFocus" bindblur="bindBlur"></input>
     <image wx:if="{{!isInput}}" src='/images/home_input_text.png' class='input_hint'></image>
     <button class='btn_info btn bg' open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>

@@ -58,6 +58,7 @@ Page({
   },
   onLoad(e) {
     var _this = this;
+
     if (e.isSkip) _this.bindended()
     // mta.Page.init();
     // mta.Event.stat("01",{})
@@ -108,30 +109,46 @@ Page({
   },
   getUserInfo(e) {
     var _this = this;
+    var click = e.target.dataset.click;
+
     console.log(e)
+
     if (!e.detail.userInfo){
       //拒绝授权
       console.log("拒绝授权")
       return false
     }
+
     wx.checkSession({
       success: (res) => {
-        _this.onExcode();
+        if(!click) _this.onExcode();
+        else _this.onClick(click)
       },
       fail: (res) => {
-        _this.onLogin(e.detail.userInfo)
-      },
-      complete:(res)=>{
-        console.log(res)
+        _this.onLogin(e.detail.userInfo, function () {
+          if (!click) _this.onExcode()
+          else _this.onClick(click)
+        })
       }
     })
   },
-  onLogin(userInfo) {
+  onClick(click){
+    var _this = this
+    console.log(click)
+    if (click == "onBtnStore") {
+      _this.onBtnStore();
+    } else if (click == "onBtnRule") {
+      _this.onBtnRule();
+    } else if (click == "onPlay") {
+      _this.onPlay();
+    }
+  },
+  onLogin(userInfo,callback) {
     var _this = this;
     app.api.login(function(data) {
       console.log(data)
       if (data.code == 0) {
-        _this.onExcode();
+        callback()
       }
     }, userInfo)
   },

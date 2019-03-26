@@ -175,6 +175,11 @@ Page({
   },
   onLoad: function(e) {
     var _this = this;
+    
+    _this.data.audios["bg"] = wx.createInnerAudioContext()
+    _this.data.audios.bg.src = `/sounds/bgMusic_${e.select}_${e.style}.mp3`
+    console.log(_this.data.audios, _this.data.audios.bg.src)
+
     var sounds = _this.data.sounds;
     app.api.getStatus(function(data) {
       console.log(data, sounds)
@@ -182,20 +187,16 @@ Page({
       _this.setData({
         sounds: sounds
       })
+      _this.data.audios.bg.play()
+      _this.onStart();
     })
 
-    _this.data.audios["bg"] = wx.createInnerAudioContext()
-    _this.data.audios.bg.src = `/sounds/bgMusic_${e.select}_${e.style}.mp3`
-    console.log(_this.data.audios,_this.data.audios.bg.src)
-
-    _this.data.audios.bg.play()
 
     _this.setData({
       style:e.style,
       text:e.text,
       bgSrc:_this.data.audios.bg.src
     })
-    _this.onStart();
   },
   onAnew() {
     var _this = this;

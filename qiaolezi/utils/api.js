@@ -20,8 +20,8 @@ const SERVICE = {
 
 const isAPi= 0;     //是否使用模拟数据
 
-function getStorage() {
-  var paramater = wx.getStorageSync(STORAGE.PARAMATER) || { "loginData": "xxxaaa" };
+function getStorage(callback) {
+  var paramater = wx.getStorageSync(STORAGE.PARAMATER)// || { "loginData": "xxxaaa" };
   return paramater;
 }
 
@@ -42,7 +42,7 @@ function request(url, data, success, fail) {
 /**
  * 登录
  */
-function login(callback, userInfo) {
+function login(callback) {
   console.log(getStorage());
   wx.login({
     success: (res) => {
@@ -55,14 +55,21 @@ function login(callback, userInfo) {
           callback(res)
           return false;
         }
-        request(URL + SERVICE.LOGIN, {
-          code: code,
-          nickName: userInfo.nickName,
-          avatarUrl: userInfo.avatarUrl
-        }, function (res) {
-          if(res.data.code == 0){
-            wx.setStorageSync(STORAGE.PARAMATER, { "loginData": res.data.data });
-            callback(res)
+        wx.getUserInfo({
+          success(e){
+            request(URL + SERVICE.LOGIN, {
+              code: code,
+              nickName: e.userInfo.nickName,
+              avatarUrl: e.userInfo.avatarUrl
+            }, function (res) {
+              if(res.data.code == 0){
+                wx.setStorageSync(STORAGE.PARAMATER, { "loginData": res.data.data });
+                callback(res.data)
+              }
+            })
+          },
+          fail(e){
+            
           }
         })
       }
@@ -75,6 +82,12 @@ function login(callback, userInfo) {
  */
 function getinfo(callback){
   var paramater = getStorage();
+  if (!paramater.loginData) {
+    login(function () {
+      getinfo(callback)
+    })
+    return
+  }
 
   console.log(paramater)
   if (isAPi) {
@@ -86,7 +99,7 @@ function getinfo(callback){
   }
   request(URL + SERVICE.GETINFO, paramater, function (res) {
     if (res.data.code == 0) {
-      callback(res)
+      callback(res.data)
     }
   })
 
@@ -98,6 +111,14 @@ function getinfo(callback){
  */
 function excode(callback, excode, type) {
   var paramater = getStorage();
+
+  if (!paramater.loginData) {
+    login(function () {
+      excode(callback, excode, type)
+    })
+    return
+  }
+
   paramater.excode = excode;
   paramater.type = type;
 
@@ -134,6 +155,14 @@ function excode(callback, excode, type) {
  */
 function savetel(callback, encryptedData, iv, lid) {
   var paramater = getStorage();
+
+  if (!paramater.loginData) {
+    login(function () {
+      savetel(callback, encryptedData, iv, lid)
+    })
+    return
+  }
+
   paramater.encryptedData = encryptedData;
   paramater.iv = iv;
   paramater.lid = lid;
@@ -148,7 +177,7 @@ function savetel(callback, encryptedData, iv, lid) {
   }
   request(URL + SERVICE.SAVETEL, paramater, function (res) {
     if (res.data.code == 0) {
-      callback(res)
+      callback(res.data)
     }
   })
 }
@@ -156,8 +185,14 @@ function savetel(callback, encryptedData, iv, lid) {
 /**
  * 获取beats状态
  */
-function getStatus(callback){
+function getStatus(callback) {
   var paramater = getStorage();
+  if (!paramater.loginData) {
+    login(function () {
+      getStatus(callback)
+    })
+    return
+  }
 
   console.log(paramater)
   if(isAPi){
@@ -180,6 +215,13 @@ function getStatus(callback){
  */
 function unlock(callback,type){
   var paramater = getStorage();
+  if (!paramater.loginData) {
+    login(function () {
+      unlock(callback, type)
+    })
+    return
+  }
+
   paramater.type = type
   console.log(paramater)
   if(isAPi){
@@ -192,7 +234,7 @@ function unlock(callback,type){
   }
   request(URL + SERVICE.UNLOCK, paramater, function (res) {
     if (res.data.code == 0) {
-      callback(res)
+      callback(res.data)
     }
   })
 }
@@ -202,6 +244,12 @@ function unlock(callback,type){
  */
 function saveFile(callback, content) {
   var paramater = getStorage();
+  if (!paramater.loginData) {
+    login(function () {
+      saveFile(callback, content)
+    })
+    return
+  }
   paramater.content = content
 
   console.log(paramater)
@@ -226,6 +274,12 @@ function saveFile(callback, content) {
  */
 function getFile(callback, fid) {
   var paramater = getStorage();
+  if (!paramater.loginData) {
+    login(function () {
+      getFile(callback, fid)
+    })
+    return
+  }
   paramater.fid = fid
 
   console.log(paramater)
@@ -238,7 +292,7 @@ function getFile(callback, fid) {
   }
   request(URL + SERVICE.GETFILE, paramater, function (res) {
     if (res.data.code == 0) {
-      callback(res)
+      callback(res.data)
     }
   })
 }
@@ -248,6 +302,12 @@ function getFile(callback, fid) {
  */
 function getUserInfo(callback){
   var paramater = getStorage();
+  if (!paramater.loginData) {
+    login(function () {
+      getUserInfo(callback)
+    })
+    return
+  }
   
   console.log(paramater)
   if(isAPi){
@@ -268,7 +328,7 @@ function getUserInfo(callback){
   }
   request(URL + SERVICE.GETUSERINFO, paramater, function (res) {
     if (res.data.code == 0) {
-      callback(res)
+      callback(res.data)
     }
   })
 }
@@ -278,6 +338,12 @@ function getUserInfo(callback){
  */
 function lottery(callback,score) {
   var paramater = getStorage();
+  if (!paramater.loginData) {
+    login(function () {
+      lottery(callback, score)
+    })
+    return
+  }
   paramater.score = score
 
   console.log(paramater)
@@ -290,7 +356,7 @@ function lottery(callback,score) {
   }
   request(URL + SERVICE.LOTTERY, paramater, function (res) {
     if (res.data.code == 0) {
-      callback(res)
+      callback(res.data)
     }
   })
 }
@@ -300,6 +366,12 @@ function lottery(callback,score) {
  */
 function saveUser(callback,award_id,name,tel,addr){
   var paramater = getStorage();
+  if (!paramater.loginData) {
+    login(function () {
+      saveUser(callback, award_id, name, tel, addr)
+    })
+    return
+  }
   paramater.award_id = award_id;
   paramater.name = name;
   paramater.tel = tel;
@@ -315,7 +387,7 @@ function saveUser(callback,award_id,name,tel,addr){
   }
   request(URL + SERVICE.SAVEUSER, paramater, function (res) {
     if (res.data.code == 0) {
-      callback(res)
+      callback(res.data)
     }
   })
 }
@@ -325,6 +397,12 @@ function saveUser(callback,award_id,name,tel,addr){
  */
 function exscore(callback,score,type){
   var paramater = getStorage();
+  if (!paramater.loginData) {
+    login(function () {
+      exscore(callback, score, type)
+    })
+    return
+  }
   paramater.score = score
   paramater.type = type
 
@@ -338,7 +416,7 @@ function exscore(callback,score,type){
   }
   request(URL + SERVICE.EXSCORE, paramater, function (res) {
     if (res.data.code == 0) {
-      callback(res)
+      callback(res.data)
     }
   })
 }

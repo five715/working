@@ -92,7 +92,7 @@
 					"id": 7,
 					"name": "回流",
 					"pathName": "pages/back/index",
-					"query": "fid=1",
+					"query": "fid=7",
 					"scene": null
 				}
 			]

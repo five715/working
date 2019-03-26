@@ -13,8 +13,8 @@ Page({
       { src: "beats8", color: "red", bt: 1, name: "踢踏舞" }
     ],
     audios: {},
-    arr:"",
-    bgSrc:"",
+    arr: "",
+    bgSrc: "",
     bgTimer: 30000,
     time: 0, //时间
     timer: null //定时器
@@ -72,7 +72,7 @@ Page({
     }
   },
   onLoad(query) {
-    var _this =this
+    var _this = this
     const scene = decodeURIComponent(query.q)
 
     console.log(query.fid, scene)
@@ -121,7 +121,7 @@ Page({
       _this.setData({
         arr: con,
         bgSrc: src
-      },_this.onPlay)
+      }, _this.onPlay)
     }, _this.data.fid)
   }
 })
