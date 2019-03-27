@@ -1,0 +1,13 @@
+Page({
+  data:{
+    lid:"",
+    openid:""
+  },
+  onLoad(e){
+    console.log(e)
+    this.setData({
+      lid:e.lid,
+      openid:e.openid
+    })
+  }
+})

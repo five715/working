@@ -31,6 +31,10 @@
 
 
 /* 弹窗 */
+.popup_openRed{width: 471rpx; height: 610rpx; top: 174rpx;left: 127rpx;}
+.popup_openRed_open{position: absolute; top: 270rpx; width: 100%; text-align: center; font-size: 50rpx;}
+.popup_openRed .close{top: 661rpx; left: 208rpx; width: 80rpx; height: 80rpx;}
+
 .popup_red{width: 471rpx; height: 610rpx; top: 174rpx;left: 127rpx;}
 .popup_red .red{position: absolute; top: 149rpx; left: 97rpx; width: 307rpx; height: 179rpx;}
 .popup_red .close{top: 661rpx; left: 208rpx; width: 80rpx; height: 80rpx;}
@@ -53,8 +57,6 @@ padding:0;border:none;}
 .popup_guide{position: absolute; top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.8);z-index: 5}
 .popup_guide .con{position: absolute;top: 245rpx; left: 165.5rpx;width: 419rpx; height: 631rpx;}
 .popup_guide .close_one{position: absolute;top: 702rpx; left: 169.5rpx;width: 80rpx; height: 80rpx;}
-
-
 
 
 /* 新 */

@@ -25,7 +25,12 @@
 
 
 
-<view class='popup {{red || isInfo || isGuide ? "block" : "none"}}'>
+<view class='popup {{red || openRed || isInfo || isGuide  ? "block" : "none"}}'>
+  <view wx:if="{{openRed}}" class='popup_openRed pop'>
+    <image class='boxes' src='/images/popup_red_boxes.png'></image>
+    <text class='popup_openRed_open' bindtap='onBtnOpen'>开</text>
+    <image class='close' bindtap='onClose' src='/images/popup_red_close.png'></image>
+  </view>
   <view wx:if="{{red}}" class='popup_red pop'>
     <image class='boxes' src='/images/popup_red_boxes.png'></image>
     <image class='red' src='/images/popup_red_{{red}}.png'></image>

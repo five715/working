@@ -10,9 +10,11 @@ Page({
     isGuide: false,
     idCard: ["", ""],
     excode: "", //棒签兑换码
+    isOne : true,
+    openRed: false,
     per:0,
     isVideo:true,
-    webView:''
+    search:''
   },
   onBtnRule: nav.onBtnRule,
   onPlay() {
@@ -57,34 +59,30 @@ Page({
   onReady(e){
     this.videoContext = wx.createVideoContext('indexVideo')
   },
-  onLoad(e) {
-    var _this = this;
-
-    if (e.isSkip) _this.bindended()
-    // mta.Page.init();
-    // mta.Event.stat("01",{})
-    // this.getUserInfo();
-    // sendBizRedPacket
-    wx.sendBizRedPacket({
-      timeStamp: "demo",
-      nonceStr: "demo",
-      package: "demo",
-      signType: "MD5",
-      paySign: "70f47031c8e8d4bb78e741f8d0ee45beef65cfcd",
-      success: function (res) {
-        console.log('红包success',res)
-      },
-      fail: function (res) {
-        console.log('红包fail',res)
-      },
-      complete: function (res) {
-        console.log('红包complete',res)
-        // wx.showModal({
-        //   title: '红包complete',
-        //   content: '红包complete',
-        // })
-      }
+  onShow(){
+    if (this.data.isOne) return false;
+    this.setData({
+      openRed: false
     })
+  },
+  onLoad(query) {
+    var _this = this;
+    if (query.isSkip) _this.bindended()
+    console.log(query)
+
+    // const scene = decodeURIComponent(query.q)
+    const scene = "https://qiaolezi.act.qq.com/e/c/code/XXXXXXXYYYYYY";      //线下
+    if (!scene || scene == 'undefined') return false
+    this.onIf(scene)
+  },
+  onIf(scene) {
+    var _this = this;
+    var arr = scene.split("/");
+    var code = arr[arr.length - 1]
+    if (code.length == 13) {
+      //带兑换码进入
+      _this.onExcode(code)
+    }
   },
   bindended(e){
     console.log(123)
@@ -153,30 +151,28 @@ Page({
       }
     }, userInfo)
   },
-  onExcode() {
+  onExcode(decode) {
     var _this = this;
-    var code = _this.data.excode
+    var code = decode || _this.data.excode
+    console.log(code)
     var paramater = app.api.getStorage()
     app.api.excode(function(data) {
-      // var url = `http://10.1.1.210:8020/svn/tx/yili/qiaolezi2018/wap/web-view.html?lid=${data.lid}&openid=${paramater.loginData}`
-      // console.log(data, url, paramater)
-      // _this.setData({
-      //   webView: url
-      // })
-      // setTimeout(function(){
-      //   _this.setData({
-      //     webView:""
-      //   })
-      // },5000)
-      wx.navigateTo({
-        url: `/pages/web/web?lid=${data.lid}&openid=${paramater.loginData}`,
+      var search = `?lid=${data.lid}&openid=${paramater.loginData}`
+      console.log(data, search, paramater)
+      _this.setData({
+        openRed: true,
+        search: search
       })
 
-      // app.globalData["lid"] = data.lid
-      // _this.setData({
-      //   red: data.ret
-      // })
-    }, code, 1)
+    }, code, decode ? 2 : 1)
+  },
+  onBtnOpen(e){
+    var _this =this;
+    var search = _this.data.search
+    _this.data.isOne = false
+    wx.navigateTo({
+      url: `/pages/web/web${search}`
+    })
   },
   onRedBtn(e) {
     this.setData({
@@ -195,7 +191,7 @@ Page({
       isInfo: false
     })
   },
-  upfile: function(e) {
+  upfile: function (e) {
     var id = e.currentTarget.id
     var _this = this;
     wx.chooseImage({
@@ -219,19 +215,16 @@ Page({
       isGuide: true
     })
   },
-  getPhoneNumber(e){
+  getPhoneNumber(e) {
     wx.getSetting({
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) {
         console.log(res)
       },
     })
-    app.api.savetel(function(data){
+    app.api.savetel(function (data) {
       console.log(data)
-    },e.detail.encryptedData, e.detail.iv, app.globalData["lid"])
+    }, e.detail.encryptedData, e.detail.iv, app.globalData["lid"])
   },
-  bindmessage(e){
-    console.log(e,654564)
-  }
 })
