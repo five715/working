@@ -7,31 +7,59 @@ Page({
     qrcode:"",
     pic:"",
     locolurl:"",
+    nickName:""
   },
   onLoad(e){
     var _this =this;
     console.log(e)
+    _this.data.fid = e.fid
     wx.showShareMenu({
       withShareTicket: true
     })
-    
-    wx.showLoading({
-      title: '图片生成中'
-    })
-    var _this =this
+  },
+  onShow() {
+    var _this = this;
+    if (_this.data.pic) return
+    console.log(_this.data.fid)
+    wx.getUserInfo({
+      success(user){
+        console.log(user)
+        wx.showLoading({
+          title: '图片生成中'
+        })
+        wx.downloadFile({
+          url: user.userInfo.avatarUrl,
+          success: res => {
+            console.log(res)
+            // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+            if (res.statusCode === 200) {
+              _this.setData({
+                locolurl: res.tempFilePath,//将下载下来的地址给data中的变量变量
+                nickName:user.userInfo.nickName
+              });
+              _this.onCreateQrcode(_this.data.fid)
+            }
+          }, fail: res => {
+            console.log(res);
+          }
+        })
+      },
+      fail(res){
+        wx.showModal({
+          title: '未打开',
+          content: '是否前往打开',
+          success(res) {
+            if (res.confirm) {
+              wx.openSetting({
+                success:(res)=>{
+                  console.log("打开")
+                }
+              })
+            } else if (res.cancel) {
 
-    wx.downloadFile({
-      url: "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKl06gDibQ7aOxHd47M5C35QS9YK5TDK5L5LdRQZgqACTJIrugp7PcGiazrT0urPkcK80CGJCw1r7SA/132",
-      success: res => {
-        // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
-        if (res.statusCode === 200) {
-          this.setData({
-            locolurl: res.tempFilePath//将下载下来的地址给data中的变量变量
-          });
-          _this.onCreateQrcode(e.fid)
-        }
-      }, fail: res => {
-        console.log(res);
+            }
+          }
+        })
       }
     })
   },
@@ -47,11 +75,16 @@ Page({
     ctx.drawImage(_this.data.locolurl, 50, 50, 50, 50)
     ctx.draw(true)
 
+    ctx.setFillStyle('#fff')
+    ctx.setFontSize(30)
+    ctx.fillText(_this.data.nickName, 60,30)
+    ctx.draw(true)
+
 
     setTimeout(function () {
       wx.canvasToTempFilePath({
         width: 750,
-        height: 350,
+        height: 750,
         canvasId: 'picture',
         success: (res) => {
           _this.setData({
@@ -73,12 +106,15 @@ Page({
       wx.canvasToTempFilePath({
         canvasId: 'myQrcode',
         success: (res) => {
+          console.log(res,12321)
           _this.setData({
             qrcode: res.tempFilePath
           }, _this.onPicture)
+        },fail(res){
+          _this.onCreateQrcode(_this.data.fid)
         }
       })
-    },100)
+    },1000)
   },
   bindlongtap(e){
     console.log(e,e.target.dataset.src)

@@ -182,7 +182,7 @@ Page({
 
     var sounds = _this.data.sounds;
     app.api.getStatus(function(data) {
-      console.log(data, sounds)
+      console.log("返回内容："+data, sounds)
       for (var bt in data) if (bt.indexOf("bt") !== -1) sounds[bt.substr(2, 1) - 1].bt = data[bt]
       _this.setData({
         sounds: sounds

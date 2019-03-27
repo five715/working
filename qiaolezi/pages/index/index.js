@@ -11,7 +11,8 @@ Page({
     idCard: ["", ""],
     excode: "", //棒签兑换码
     per:0,
-    isVideo:true
+    isVideo:true,
+    webView:''
   },
   onBtnRule: nav.onBtnRule,
   onPlay() {
@@ -155,12 +156,26 @@ Page({
   onExcode() {
     var _this = this;
     var code = _this.data.excode
+    var paramater = app.api.getStorage()
     app.api.excode(function(data) {
-      console.log(data)
-      app.globalData["lid"] = data.lid
-      _this.setData({
-        red: data.ret
+      // var url = `http://10.1.1.210:8020/svn/tx/yili/qiaolezi2018/wap/web-view.html?lid=${data.lid}&openid=${paramater.loginData}`
+      // console.log(data, url, paramater)
+      // _this.setData({
+      //   webView: url
+      // })
+      // setTimeout(function(){
+      //   _this.setData({
+      //     webView:""
+      //   })
+      // },5000)
+      wx.navigateTo({
+        url: `/pages/web/web?lid=${data.lid}&openid=${paramater.loginData}`,
       })
+
+      // app.globalData["lid"] = data.lid
+      // _this.setData({
+      //   red: data.ret
+      // })
     }, code, 1)
   },
   onRedBtn(e) {
@@ -215,7 +230,8 @@ Page({
     app.api.savetel(function(data){
       console.log(data)
     },e.detail.encryptedData, e.detail.iv, app.globalData["lid"])
+  },
+  bindmessage(e){
+    console.log(e,654564)
   }
-
-
 })

@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -93,6 +93,13 @@
 					"name": "回流",
 					"pathName": "pages/back/index",
 					"query": "fid=7",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "web红包",
+					"pathName": "pages/web/web",
+					"query": "lid=123&openid=xxxaaaaa",
 					"scene": null
 				}
 			]

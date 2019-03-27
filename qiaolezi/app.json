@@ -8,6 +8,7 @@
     "pages/game/music",
     "pages/game/create",
     "pages/back/index",
+    "pages/web/web",
     "pages/index/foreshow"
   ],
   "window":{
