@@ -1,0 +1,277 @@
+html {
+  font-size: 31.25%;
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+ol,
+div,
+dl,
+dt,
+dd,
+p,
+img,
+a,
+form {
+  margin: 0;
+  padding: 0;
+  font-family: "微软雅黑";
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  appearance: none;
+}
+div {
+  width: auto;
+  border: none;
+  outline: none;
+  outline-style: none;
+}
+body,
+html {
+  padding: 0;
+  margin: 0;
+  font-family: Helvetica,STHeiti,Microsoft Yahei;
+  background-color: #e3828c;
+  overflow: visible;
+  line-height: 1.4;
+  color: #110e15;
+  -webkit-text-size-adjust: 100%!important;
+}
+img {
+  vertical-align: middle;
+  border: 0 none;
+  width: 100%;
+  display: inline-block;
+}
+li {
+  list-style: none;
+  list-style-position: outside;
+}
+a {
+  text-decoration: none;
+  overflow: hidden;
+  opacity: 1;
+  outline: none;
+}
+a:hover {
+  color: #000;
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+input,
+select {
+  vertical-align: middle;
+  padding: 0;
+  margin: 0;
+  border: none;
+  outline: none;
+  outline-style: none;
+}
+body {
+  overflow-x: hidden;
+  max-width: 750px;
+}
+canvas {
+  width: 100%;
+  display: block;
+}
+.yes {
+  display: none;
+}
+.no {
+  display: block;
+}
+.active .yes {
+  display: block;
+}
+.active .no {
+  display: none;
+}
+.popup {
+  position: fixed;
+  display: none;
+  z-index: 1;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+.popup .pop {
+  display: none;
+}
+.popup_info {
+  position: absolute;
+  top: 4.13333333%;
+  left: 5%;
+  width: 90%;
+}
+.popup_info .describe {
+  position: absolute;
+  top: 107.83353733%;
+  left: 3.62962963%;
+  width: 92.74074074%;
+}
+.popup_info .submit {
+  position: absolute;
+  top: 94.24724602%;
+  left: 30.44444444%;
+  width: 39.11111111%;
+}
+.popup_info .info {
+  position: absolute;
+  top: 46.38922889%;
+  left: 6.2962963%;
+  width: 87.40740741%;
+}
+.popup_info .info .name {
+  position: absolute;
+  top: 31.25%;
+  left: 15.08474576%;
+  width: 30%;
+}
+.popup_info .info .phone {
+  position: absolute;
+  top: 31.25%;
+  left: 65.08474576%;
+  width: 30%;
+}
+.popup_info .info .email {
+  position: absolute;
+  top: 73.86363636%;
+  left: 15.08474576%;
+  width: 80.33898305%;
+}
+.popup_info .info input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  display: block;
+}
+.popup_info .upfiles {
+  position: absolute;
+  top: 71.72582619%;
+  left: 13.33333333%;
+  width: 73.33333333%;
+}
+.popup_info .upfiles .front {
+  position: absolute;
+  top: 0%;
+  left: 1.41414141%;
+  width: 40.4040404%;
+  height: 75.16778523%;
+}
+.popup_info .upfiles .rear {
+  position: absolute;
+  top: 0%;
+  left: 58.18181818%;
+  width: 40.4040404%;
+  height: 75.16778523%;
+}
+.popup_info .upfiles input {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+}
+.popup_info .upfiles .show {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+}
+.popup_info .guide {
+  position: absolute;
+  top: 86.29130967%;
+  left: 88.88888889%;
+  width: 4.44444444%;
+}
+.popup_guide {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+}
+.popup_guide .con {
+  position: absolute;
+  top: 16.33333333%;
+  left: 22.06666667%;
+  width: 55.86666667%;
+}
+.popup_guide .close_one {
+  position: absolute;
+  top: 76.33087633%;
+  left: 44.66666667%;
+  width: 10.66666667%;
+}
+.popup_success,
+.popup_end {
+  position: absolute;
+  top: 21.4%;
+  left: 13%;
+  width: 74%;
+}
+.popup_success .close,
+.popup_end .close {
+  position: absolute;
+  top: 116.7115903%;
+  left: 42.79279279%;
+  width: 14.41441441%;
+}
+.popup_red {
+  position: absolute;
+  top: 10.93333333%;
+  left: 16.93333333%;
+  width: 62.8%;
+}
+.popup_red .money {
+  position: absolute;
+  top: 25.64516129%;
+  left: 18.04670913%;
+  width: 69.42675159%;
+  text-align: center;
+  font-size: 10rem;
+  color: #e0003f;
+  line-height: 0;
+}
+.popup_red .money em {
+  font-size: 2.4rem;
+  font-style: normal;
+}
+.popup_red .money img {
+  display: inline-block;
+  width: 18.04281346%;
+}
+.popup_red .money .dot {
+  width: 10.09174312%;
+}
+.popup_red .text {
+  position: absolute;
+  top: 24.67741935%;
+  left: 21.23142251%;
+  width: 65.18046709%;
+}
+.popup_red .close {
+  position: absolute;
+  top: 108.22580645%;
+  left: 44.16135881%;
+  width: 16.985138%;
+}
+.popup_red .submit {
+  position: absolute;
+  top: 107.90322581%;
+  left: 21.23142251%;
+  width: 57.53715499%;
+}
+.index {
+  position: relative;
+}

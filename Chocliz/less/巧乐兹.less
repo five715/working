@@ -1,0 +1,157 @@
+@box_w: 750;
+@box_h: 1221;
+@box_h: 1350;
+@box_h: 1500;
+@W : @box_w;
+@H : @box_h;
+@import "D:\working\git\fiveGit\less\style/wap_less_init"; 
+//@import "H:\无双\GIT\five\less\style/wap_less_init"; 
+
+.reset(#e3828c); 
+.active();
+//弹层
+.popup{
+    .pf();
+    .dn();
+    z-index: 1;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    .pop{.dn();}
+    //填写信息
+    &_info{
+        .mainContent(62,675);
+        .describe{
+            @W : 675;
+            @H : 817;
+            .mainContent(881,626,@W,@H);
+        }
+        .submit{
+            @W : 675;
+            @H : 817;
+            .mainContent(770,264,@W,@H);
+        }
+        .info{
+            @W : 675;
+            @H : 817;
+            .mainContent(379,590,@W,@H);
+            .name{
+                @W : 590;
+                @H : 176;
+                .main(55,89,177,@W,@H);
+            }
+            .phone{
+                @W : 590;
+                @H : 176;
+                .main(55,384,177,@W,@H);
+            }
+            .email{
+                @W : 590;
+                @H : 176;
+                .main(130,89,474,@W,@H);
+            }
+            input{
+                width: 100%;
+                height: 100%;
+                background: transparent;
+                .db();
+            }
+        }
+        .upfiles{
+            @W : 675;
+            @H : 817;
+            .mainContent(586,495,@W,@H);
+            .front{
+                @W : 495;
+                @H : 149;
+                .main(0,7,200,@W,@H);
+                .height(112,@H);
+            }
+            .rear{
+                @W : 495;
+                @H : 149;
+                .main(0,288,200,@W,@H);
+                .height(112,@H);
+            }
+            input{
+                opacity: 0;
+                width: 100%;
+                height: 100%;
+                .pa();
+                z-index: 1;
+            }
+            .show{
+                .main(0,0,750);
+                height: 100%;
+            }
+        }
+        .guide{
+            @W : 675;
+            @H : 817;
+            .main(705,600,30,@W,@H)
+        }
+    }
+    &_guide{
+        .main(0,0,750);
+        height:100%;
+        background: rgba(0,0,0,0.8);
+        .con{        
+            .mainContent(245,419);
+        }
+        .close_one{
+            @H:1221;
+            .mainContent(932,80,@W,@H);
+        }
+    }
+    &_success,&_end{
+        .mainContent(321,555);
+        .close{
+            @W : 555;
+            @H : 371;
+            .mainContent(433,80,@W,@H);
+        }
+        
+    }
+    //红包
+    &_red{
+        .main(164,127,471);
+        .money{
+            @W : 471;
+            @H : 620;
+            .main(159,85,327,@W,@H);
+            text-align: center;
+            font-size: 10rem;
+            color: #e0003f;
+            line-height: 0;
+            em{
+                font-size: 2.4rem;
+                font-style: normal;
+            }
+            img{
+                display:  inline-block;
+                .width(59,327);
+            }
+            .dot{
+                .width(33,327);
+            }
+        }
+        .text{
+            @W : 471;
+            @H : 620;
+            .main(278-125,100,307,@W,@H);
+        }
+        .close{
+            @W : 471;
+            @H : 620;
+            .main(671,208,80,@W,@H);
+        }
+        .submit{
+            @W : 471;
+            @H : 620;
+            .mainContent(669,271,@W,@H);   
+        }
+    }
+}
+//首页
+.index{
+    .pr();
+}

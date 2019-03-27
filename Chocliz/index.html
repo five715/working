@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<title>巧乐兹</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/VogsoStyle-1.0.0.css">
+<script src="js/libs/jquery-3.2.1.min.js"></script>
+<script src="js/libs/Vogsojs-1.0.0.js"></script>
+<script src="js/common.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js" ></script>
+</head>
+<script type="text/javascript">
+//	wx.miniProgram.navigateBack()	//上一页
+
+</script>
+<body >
+<div class="box">
+	<!--弹层-->
+	<div class="popup">
+		<div class="bg">
+			<img src="images/popup_bg.png"/>
+			<!--填写信息-->
+			<div class="popup_info pop">
+				<img src="images/popup_info_con.png"/>
+				<div class="describe">
+					<img src="images/popup_info_describe.png"/>
+				</div>
+				<div class="submit">
+					<img src="images/popup_info_submit.png"/>
+				</div>
+				<div class="info">
+					<img src="images/popup_info_input_bg.png"/>
+					<div class="name">
+						<input type="text" name="name" id="name" value="" />
+					</div>
+					<div class="phone">
+						<input type="tel" name="tel" id="tel" maxlength="11" value="" />
+					</div>
+					<div class="email">
+						<input type="email" name="email" id="email" value="" />
+					</div>
+				</div>
+				<div class="upfiles">
+					<img src="images/popup_info_upfiles.png"/>
+					<div class="front">					
+						<input type="file" accept="image/*" name="" id="" value="" />
+						<div class="show"></div>
+					</div>
+					<div class="rear">					
+						<input type="file" accept="image/*" name="" id="" value="" />
+						<div class="show"></div>
+					</div>
+				</div>
+				<div class="guide">
+					<img src="images/popup_info_guide.png"/>
+				</div>
+			</div>
+			<!--引导-->
+			<div class="popup_guide pop">
+				<div class="con">	
+					<img src="images/popup_guide_con.png"/>
+				</div>
+				<div class="close_one">
+					<img src="images/popup_close.png"/>
+				</div>
+			</div>
+			<!--提交成功-->
+			<div class="popup_success pop">
+				<img src="images/popup_success_con.png"/>
+				<div class="close" onclick="wx.miniProgram.navigateBack()">
+					<img src="images/popup_close.png"/>
+				</div>
+			</div>
+			<!--红包-->
+			<div class="popup_red pop">
+				<img src="images/popup_red_con.png"/>
+				<div class="text">
+					<img src="images/popup_red_0.33.png"/>
+				</div>
+				<div class="close" onclick="wx.miniProgram.navigateBack()">
+					<img src="images/popup_close.png"/>
+				</div>
+				<div class="submit">
+					<img src="images/popup_red_submit.png"/>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--首页-->
+	<div class="index">
+		<img src="images/index_bg.jpg"/>
+	</div>
+</div>
+</body>
+</html>
