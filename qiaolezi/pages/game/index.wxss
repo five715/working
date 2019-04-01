@@ -1,13 +1,13 @@
 .selects .slogan{position: absolute; top: 64rpx; left: 83rpx; width: 621rpx; height: 248rpx;}
+.selects .selects_boxes{position: absolute; top: 0; left: 61rpx; width: 689rpx; height: 1295rpx;}
+.selects .sle{position: absolute; top: 429rpx; left: 127rpx; width: 498rpx; height: 471rpx;}
+.selects .sle .select_1{position: absolute; top: 0; left: 4rpx; width: 494rpx; height: 58rpx;}
+.selects .sle .select_2{position: absolute; top: 65rpx; left: 1rpx; width: 495rpx; height: 74rpx;}
+.selects .sle .select_3{position: absolute; top: 151rpx; left: 1rpx; width: 495rpx; height: 69rpx;}
+.selects .sle .select_4{position: absolute; top: 234rpx; left: 0; width: 495rpx; height: 69rpx;}
+.selects .sle .select_5{position: absolute; top: 308rpx; left: 1rpx; width: 494rpx; height: 87rpx;}
+.selects .sle .select_6{position: absolute; top: 402rpx; left: 0; width: 495rpx; height: 69rpx;}
 
-.selects .sle{position: absolute; top: 420rpx; left: 119rpx; width: 502rpx; height: 479rpx;}
-.selects .sle .select_1{position: absolute; top: 0; left: 0; width: 501rpx; height: 100rpx;}
-.selects .sle .select_2{position: absolute; top: 106rpx; left: 5rpx; width: 491rpx; height: 63rpx;}
-.selects .sle .select_3{position: absolute; top: 169rpx; left: 0; width: 502rpx; height: 84rpx;}
-.selects .sle .select_4{position: absolute; top: 251rpx; left: 0; width: 501rpx; height: 71rpx;}
-.selects .sle .select_5{position: absolute; top: 325rpx; left: 0; width: 502rpx; height: 77rpx;}
-.selects .sle .select_6{position: absolute; top: 414rpx; left: 1rpx; width: 500rpx; height: 65rpx;}
+.selects .game_btn_right{position: absolute; top: 923rpx; left: 231rpx; width: 274rpx; height: 99rpx;}
 
-.selects .game_btn_right{position: absolute; top: 920rpx; left: 225rpx; width: 300rpx; height: 99rpx;}
-
-.selects .yes{border: 5rpx #000 solid; box-sizing: border-box;}
+.selects .yes{ transform: scale(1.07)}

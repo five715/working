@@ -216,7 +216,7 @@ Page({
     app.api.saveFile(function(data){
       console.log(data)
       wx.navigateTo({
-        url: `create?fid=${data.fid}`
+        url: `create?fid=${data.fid}&selects=${app.globalData.select}&style=${app.globalData.style}`
       })
     }, `${JSON.stringify(arr).replace(/"/g, "'")}&${_this.data.bgSrc}`)
   }

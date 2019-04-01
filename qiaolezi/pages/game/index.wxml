@@ -1,6 +1,7 @@
 <view class="selects pageBg">
   <image class='boxes' src='/images/selects_bg.jpg'></image>
   <image class='slogan' src='/images/game_slogan.png'></image>
+  <image class='selects_boxes' src='/images/selects_boxes_bg.png'></image>
   <view class='sle'>
     <image wx:for="{{selects}}" wx:key="" class='select_{{item.index}} {{item.sel?"yes":""}}' src='/images/selects_select_{{item.index}}.png' id="{{item.index}}" bindtap='onBtnSelect'></image>
   </view>

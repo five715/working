@@ -13,6 +13,8 @@ Page({
     var _this =this;
     console.log(e)
     _this.data.fid = e.fid
+    _this.selects = e.selects
+    _this.style = e.style
     wx.showShareMenu({
       withShareTicket: true
     })
@@ -69,22 +71,30 @@ Page({
     ctx.fillRect(0,0,750,750)
     ctx.draw(true)
 
-    ctx.drawImage(_this.data.qrcode, 0, 0, 50, 50)
+    ctx.drawImage("/images/create_bg.jpg", 0, 0, 750, 1351)
+    ctx.drawImage("/images/logo.png", 31, 45, 129, 83)
+    ctx.drawImage("/images/create_slogan.png", 82, 64, 598, 488)
+    ctx.drawImage("/images/create_iocs.png", 177, 486, 408, 156)
+    ctx.drawImage("/images/create_text_bg.png", 41, 676, 668, 135)
+    ctx.drawImage("/images/create_qrcode_bg.png", 494, 910, 172, 188)
+    ctx.drawImage("/images/create_style.png", 58, 887, 192, 86)
+    ctx.drawImage(`/images/create_style_${_this.style}.png`, 84, 981, 386, 72)
+    ctx.drawImage(`/images/create_text_${_this.selects}.png`, 186, 731, 377, 31)
+
+    ctx.rect(519, 919,105,104)
+    ctx.setFillStyle('#ffffff')
+    ctx.fill()
+    ctx.drawImage(_this.data.qrcode, 524, 923, 96, 96)
     ctx.draw(true)
 
-    ctx.drawImage(_this.data.locolurl, 50, 50, 50, 50)
-    ctx.draw(true)
 
-    ctx.setFillStyle('#fff')
-    ctx.setFontSize(30)
-    ctx.fillText(_this.data.nickName, 60,30)
     ctx.draw(true)
 
 
     setTimeout(function () {
       wx.canvasToTempFilePath({
         width: 750,
-        height: 750,
+        height: 1351,
         canvasId: 'picture',
         success: (res) => {
           _this.setData({
@@ -100,6 +110,8 @@ Page({
       width: 200,
       height: 200,
       canvasId: 'myQrcode',
+      foreground:"#592111",
+      // image: { imageResource: _this.data.locolurl, dx: 75, dy: 75, dWidth: 50, dHeight: 50 },
       text: `https:aa.q.com?fid=${fid}`
     })
     setTimeout(function(){
@@ -153,5 +165,11 @@ Page({
         // }
       }
     })
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '标题都去我家大青蛙蔷薇蔷薇蔷薇请问请问我去的季节请问',
+      imageUrl:""
+    }
   }
 })

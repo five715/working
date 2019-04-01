@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -64,7 +64,7 @@
 					"id": 3,
 					"name": "合成",
 					"pathName": "pages/game/create",
-					"query": "fid=1",
+					"query": "fid=1&selects=3&style=2",
 					"scene": null
 				},
 				{
@@ -100,6 +100,13 @@
 					"name": "web红包",
 					"pathName": "pages/web/web",
 					"query": "lid=123&openid=xxxaaaaa",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "风格",
+					"pathName": "pages/game/style",
+					"query": "",
 					"scene": null
 				}
 			]

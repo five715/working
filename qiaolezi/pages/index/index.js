@@ -70,8 +70,8 @@ Page({
     if (query.isSkip) _this.bindended()
     console.log(query)
 
-    // const scene = decodeURIComponent(query.q)
-    const scene = "https://qiaolezi.act.qq.com/e/c/code/XXXXXXXYYYYYY";      //线下
+    const scene = decodeURIComponent(query.q)
+    // const scene = "https://qiaolezi.act.qq.com/e/c/code/XXXXXXXYYYYYY";      //线下
     if (!scene || scene == 'undefined') return false
     this.onIf(scene)
   },

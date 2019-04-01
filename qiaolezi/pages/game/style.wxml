@@ -1,8 +1,12 @@
 <view class='style pageBg'>
   <image class='boxes' src='/images/style_bg.jpg'></image>
   <image class='slogan' src='/images/style_slogan.png'></image>
-  <view class='musics'>
-    <image wx:for="{{styles}}" wx:key="" class='music music_{{item.index}} {{item.sel?"yes":""}}' bindtap='onBtnMusic' id="{{item.index}}" src="/images/style_{{item.index}}.png"></image>
-  </view>
+  <swiper class='musics' previous-margin="170rpx" next-margin="170rpx" circular="true" bindchange="bindchange" bindtransition="bindtransition">
+    <block wx:for="{{styles}}" wx:key="">
+      <swiper-item>
+        <image class='music {{current== item.index-1?"yes":"no"}}' bindtap='onBtnMusic' id="{{item.index}}" src="/images/style_{{item.index}}.png"/>
+      </swiper-item>
+    </block>
+  </swiper>
   <image class='style_btn_right' bindtap='onBtnRight' src='/images/style_btn_right.png'></image>
 </view>

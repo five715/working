@@ -1,9 +1,11 @@
 .style .slogan{position: absolute; top: 44rpx; left: 37rpx; width: 676rpx; height: 377rpx;}
 .style .musics{position: absolute; top: 417rpx; left: 72rpx; width: 596rpx; height: 587rpx;}
 .style .musics .music{position: absolute; top: 0; left: 0; width: 256rpx; height: 277rpx;}
-.style .musics .music_2{top: 27rpx; left: 358rpx; width: 238rpx; height: 241rpx;}
-.style .musics .music_3{top: 349rpx; left: 10rpx; width: 238rpx; height: 238rpx;}
-.style .musics .music_4{top: 346rpx; left: 358rpx; width: 238rpx; height: 241rpx;}
+/* .style .musics .music_2{top: 27rpx; left: 358rpx; width: 238rpx; height: 241rpx;} */
+/* .style .musics .music_3{top: 349rpx; left: 10rpx; width: 238rpx; height: 238rpx;} */
+/* .style .musics .music_4{top: 346rpx; left: 358rpx; width: 238rpx; height: 241rpx;} */
 .style .style_btn_right{position: absolute; top: 1049rpx; left: 151rpx; width: 447rpx; height: 145rpx;}
 
-.style .yes{border: 5rpx #000 solid; box-sizing: border-box;}
+.style .yes{}
+.style .musics .music{transition: all 0.5s;}
+.style .no{transform: scale(0.5)}
