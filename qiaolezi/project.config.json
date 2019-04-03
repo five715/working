@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
@@ -92,7 +92,7 @@
 					"id": 7,
 					"name": "回流",
 					"pathName": "pages/back/index",
-					"query": "fid=7",
+					"query": "fid=1&style=1&text=6",
 					"scene": null
 				},
 				{

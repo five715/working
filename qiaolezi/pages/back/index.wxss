@@ -1,0 +1,6 @@
+.advance .play{position: absolute; top: 82rpx; left: 0rpx; width:675rpx; height: 606rpx; background:rgba(0,0,0,0);}
+.advance .sign{position: absolute; top: 721rpx; left: 79rpx; width: 593rpx; height: 72rpx;}
+.advance .sign text{position: absolute; top: 0; left: 30rpx; width: 446rpx; font-size: 30rpx; line-height: 62rpx; color: #7f3b2e;}
+.advance .anew{position: absolute; top: 875rpx; left: 198rpx; width: 353rpx; height: 118rpx;}
+.advance .create{position: absolute; top: 1030rpx; left: 198rpx; width: 353rpx; height: 118rpx;}
+.advance .btn_game_index{position: absolute; top: 890rpx; left: 163rpx; width: 435rpx; height: 143rpx;}

@@ -18,7 +18,7 @@ const SERVICE = {
   EXSCORE: "/default/exscore" //积分兑换
 }
 
-const isAPi= 1;     //是否使用模拟数据
+const isAPi= 0;     //是否使用模拟数据
 
 function getStorage(callback) {
   var paramater = wx.getStorageSync(STORAGE.PARAMATER)// || { "loginData": "xxxaaa" };
@@ -190,7 +190,7 @@ function getStatus(callback) {
 
   console.log(paramater)
   if(isAPi){
-    var res = {"code": 0, "message": "suc", "bt1": 0, "bt2": 0}
+    var res = { "code": 0, "message": "suc", "bt1": 1, "bt2": 1, "bt3": 1, "bt4": 0, "bt5": 0, "bt6": 0, "bt7": 0, "bt8": 0}
     // 失败的例子
     // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
 
@@ -419,7 +419,7 @@ function exscore(callback,score,type){
  * 初始化
  */
 function init() {
-  if(!isAPi) wx.clearStorageSync(STORAGE.PARAMATER);
+  // if(!isAPi) wx.clearStorageSync(STORAGE.PARAMATER);
   console.log("接口文件=>初始化")
 }
 

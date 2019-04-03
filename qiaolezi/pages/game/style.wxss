@@ -1,11 +1,28 @@
 .style .slogan{position: absolute; top: 44rpx; left: 37rpx; width: 676rpx; height: 377rpx;}
-.style .musics{position: absolute; top: 417rpx; left: 72rpx; width: 596rpx; height: 587rpx;}
-.style .musics .music{position: absolute; top: 0; left: 0; width: 256rpx; height: 277rpx;}
+.style .stage{position: absolute; top: 864rpx; left: 19rpx; width: 718rpx; height: 232rpx;}
+.style .iocs{position: absolute; top: 443rpx; left: 234rpx; width: 117rpx; height: 130rpx;}
+.style .style_btn_right{position: absolute; top: 1089rpx; left: 214rpx; width: 323rpx; height: 105rpx;}
+
+.style .musics{position: absolute; top: 510rpx; left: 114rpx; width: 524rpx; height: 447rpx;}
+.style .musics .music{position: absolute; top: 0; left: 0; width: 273rpx; height: 418rpx;transition: transform 0.5s;}
 /* .style .musics .music_2{top: 27rpx; left: 358rpx; width: 238rpx; height: 241rpx;} */
 /* .style .musics .music_3{top: 349rpx; left: 10rpx; width: 238rpx; height: 238rpx;} */
 /* .style .musics .music_4{top: 346rpx; left: 358rpx; width: 238rpx; height: 241rpx;} */
-.style .style_btn_right{position: absolute; top: 1049rpx; left: 151rpx; width: 447rpx; height: 145rpx;}
 
-.style .yes{}
-.style .musics .music{transition: all 0.5s;}
-.style .no{transform: scale(0.5)}
+.style .musics .music{transition: all 0.5s;transform-origin: 50% 100%}
+.style .musics swiper-item{overflow:initial}
+.style .no{}
+
+.style .next{position: absolute; top: 648rpx; left: 630rpx; width: 67rpx; height: 72rpx;}
+.style .prev{position: absolute; top: 648rpx; left: 53rpx; width: 67rpx; height: 72rpx;}
+.style .text{position: absolute; top: 965rpx; left: 311rpx; width: 129rpx; height: 69rpx;}
+
+
+#slick_3d {
+  -webkit-perspective: 750px;
+  perspective: 750px;
+}
+#slick_3d .container {
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}

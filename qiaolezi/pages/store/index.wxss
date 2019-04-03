@@ -15,20 +15,20 @@
 .store .redeem .bag:nth-last-child(2),
 .store .redeem .bag:nth-last-child(3){margin-bottom: 0}
 
-.store .redeem .scroll{position: absolute; top: 47rpx; left: 557.5rpx; width: 31rpx;  height: 381rpx;}
-.store .redeem .scroll .duan{position: absolute; width: 31rpx; height: 56rpx; left: 0; top: 0;}
+.store .redeem .scroll{position: absolute; top: 69rpx; left: 557.5rpx; width: 31rpx;  height: 294rpx;}
+.store .redeem .scroll .duan{position: absolute; width: 30rpx; height: 106rpx; left: 0; top: 0;}
 
 
-.store .luckZone{position: absolute; top: 661rpx; height: 465rpx; left: 64rpx; width: 623rpx;}
-.store .luckZone .prize{position: absolute; top: 199rpx; left: 228rpx; width: 168rpx; height: 113rpx;}
-.store .luckZone .prize_1{top:82rpx; left: 56rpx;}
-.store .luckZone .prize_2{top:82rpx; left: 228rpx;}
-.store .luckZone .prize_3{top:82rpx; left: 400rpx;}
-.store .luckZone .prize_4{top:199rpx; left: 400rpx;}
-.store .luckZone .prize_5{top:315rpx; left: 400rpx;}
-.store .luckZone .prize_6{top:315rpx; left: 228rpx;}
-.store .luckZone .prize_7{top:315rpx; left: 56rpx;}
-.store .luckZone .prize_8{top:199rpx; left: 56rpx;}
+.store .luckZone{position: absolute; top: 638rpx; height: 488rpx; left: 6rpx; width: 744rpx;}
+.store .luckZone .prize{position: absolute; top: 222rpx; left: 286rpx; width: 168rpx; height: 113rpx;}
+.store .luckZone .prize_1{top:105rpx; left: 114rpx;}
+.store .luckZone .prize_2{top:105rpx; left: 286rpx;}
+.store .luckZone .prize_3{top:105rpx; left: 458rpx;}
+.store .luckZone .prize_4{top:222rpx; left: 458rpx;}
+.store .luckZone .prize_5{top:338rpx; left: 458rpx;}
+.store .luckZone .prize_6{top:338rpx; left: 286rpx;}
+.store .luckZone .prize_7{top:338rpx; left: 114rpx;}
+.store .luckZone .prize_8{top:222rpx; left: 114rpx;}
 .store .luckZone .yes{border: 5rpx #000 solid; box-sizing: border-box;}
 
 

@@ -2,26 +2,35 @@ const app = getApp();
 Page({
   data: {
     sounds: [
-      { src: "beats1", color: "red", bt: 1, name: "风铃" },
-      { src: "beats2", color: "red", bt: 1, name: "海豚" },
-      { src: "beats3", color: "red", bt: 1, name: "心跳" },
-      { src: "beats4", color: "red", bt: 1, name: "画眉鸟" },
-      { src: "beats5", color: "red", bt: 1, name: "“波”" },
-      { src: "beats6", color: "red", bt: 1, name: "小猫叫" },
-      { src: "beats7", color: "red", bt: 1, name: "爱你" },
-      { src: "beats8", color: "red", bt: 1, name: "踢踏舞" }
+      { music: 1, src: "beats1", color: "red", bt: 1, name: "风铃" },
+      { music: 1, src: "beats2", color: "red", bt: 1, name: "海豚" },
+      { music: 1, src: "beats3", color: "red", bt: 1, name: "心跳" },
+      { music: 1, src: "beats4", color: "red", bt: 1, name: "画眉鸟" },
+      { music: 2, src: "timer", color: "red", bt: 1, name: "画眉鸟" },
+      { music: 1, src: "beats5", color: "red", bt: 1, name: "“波”" },
+      { music: 1, src: "beats6", color: "red", bt: 1, name: "小猫叫" },
+      { music: 1, src: "beats7", color: "red", bt: 1, name: "爱你" },
+      { music: 1, src: "beats8", color: "red", bt: 1, name: "踢踏舞" },
+      { music: 3, src: "beats_no_1", color: "red", bt: 1, name: "踢踏舞" },
+      { music: 3, src: "beats_no_2", color: "red", bt: 1, name: "踢踏舞" },
+      { music: 3, src: "beats_no_3", color: "red", bt: 1, name: "踢踏舞" }
     ],
     audios: {},
     style:null,
     text:"",
-    bgTimer: 30000,
+    select:0,
+    bgTimer: 20000,
     isStart: false, //是否开始记录
     isAdvance: false, //是否预创作
     time: 0, //时间
     t: 0, //播放时间
     timer: null, //定时器
     arr: [], //记录数据
-    bgSrc:""
+    bgSrc:"",
+    per:0,
+    isCancel: false, //是否可以取消
+    scrollHeight: 942,
+    scrollPer: 0
   },
   onReady() {
     var _this = this;
@@ -33,8 +42,8 @@ Page({
   onAudio(e) {
     var _this = this;
     var obj = _this.data.sounds;
+    console.log(e,obj)
 
-    console.log(e)
     if (e.target.dataset.bt == 0) {
       var type = e.target.dataset.i + 1
       wx.showModal({
@@ -56,16 +65,19 @@ Page({
       })
       return false;
     }
+    if (!_this.data.isStart) return false;
 
     var target = e.target;
     var dataset = target.dataset;
     var audio = _this.data.audios[target.id];
     // console.log(e,_this.data.sounds[dataset.i],dataset.i);
+
     if (obj[dataset.i].color == "red") {
       obj[dataset.i].color = "#000";
       audio.src = dataset.src;
       audio.play();
     } else {
+      if (!_this.data.isCancel) return false
       obj[dataset.i].color = "red"
       audio.stop()
     }
@@ -101,7 +113,8 @@ Page({
         var t = new Date().getTime() - _this.timeDate
         _this.onForAudio(t, _this.data.arr)
         _this.setData({
-          time: parseInt(t/1000)
+          time: parseInt(t/1000),
+          per : t / _this.data.bgTimer*100
         })
       }, 100)
     })
@@ -115,16 +128,17 @@ Page({
     this.setData({
       isStart: false,
       isAdvance: true
-    }, _this.funcStop)
+    })
+    _this.funcStop(1)
   },
-  funcStop() {
+  funcStop(bol) {
     var _this = this
     clearInterval(_this.data.timer);
     var audios = _this.data.audios
     for (var audio in audios) {
       audios[audio].stop();
       // console.log(audio.split("sounds"),audio)
-      if (audio != "bg") _this.data.sounds[audio.split("beats")[1]].color = "red";
+      if (audio != "bg" && bol) _this.data.sounds[audio.split("beats")[1]].color = "red";
       _this.setData({
         sounds: _this.data.sounds
       })
@@ -151,12 +165,13 @@ Page({
     var _this = this;
     var obj = _this.data.sounds
     if (t >= _this.data.bgTimer) {
-      _this.timeDate = new Date().getTime();
+      // _this.timeDate = new Date().getTime();
       _this.data.audios.bg.stop()
-      _this.data.audios.bg.play()
-      arrs.forEach((arr) => {
-        arr.s = false
-      })
+      _this.funcStop();
+      // _this.data.audios.bg.play()
+      // arrs.forEach((arr) => {
+      //   arr.s = false
+      // })
       return false;
     } else {
       _this.data.audios.bg.play()
@@ -175,6 +190,13 @@ Page({
   },
   onLoad: function(e) {
     var _this = this;
+    wx.getSystemInfo({
+      //获取系统信息成功，将系统窗口的宽高赋给页面的宽高
+      success: function (res) {
+        _this.width = res.windowWidth,
+          _this.height = res.windowHeight
+      }
+    });
     
     _this.data.audios["bg"] = wx.createInnerAudioContext()
     _this.data.audios.bg.src = `/sounds/bgMusic_${e.select}_${e.style}.mp3`
@@ -188,24 +210,33 @@ Page({
         sounds: sounds
       })
       _this.data.audios.bg.play()
-      _this.onStart();
+      // _this.onStart();
     })
 
 
     _this.setData({
       style:e.style,
-      text:e.text,
+      text: e.text,
+      select: e.select,
       bgSrc:_this.data.audios.bg.src
     })
+
+    wx.createSelectorQuery().select('#beats').boundingClientRect(function (rect) {
+      _this.setData({
+        scrollHeight: rect.height
+      })
+    }).exec()
+
   },
   onAnew() {
     var _this = this;
     _this.funcStop();
-    _this.onStart();
     _this.setData({
       isAdvance: false,
       time: 0,
-      t: 0
+      t: 0,
+      per:0,
+      isStart:false
     })
   },
   onCreate() {
@@ -216,8 +247,18 @@ Page({
     app.api.saveFile(function(data){
       console.log(data)
       wx.navigateTo({
-        url: `create?fid=${data.fid}&selects=${app.globalData.select}&style=${app.globalData.style}`
+        url: `create?fid=${data.fid}&selects=${_this.data.select}&style=${_this.data.style}`
       })
     }, `${JSON.stringify(arr).replace(/"/g, "'")}&${_this.data.bgSrc}`)
-  }
+  },
+  bindscroll(e) {
+    var _this = this
+    var scrollHeight = _this.data.scrollHeight,
+      height = e.detail.scrollHeight - scrollHeight,
+      top = e.detail.scrollTop;
+    var scrollPer = parseInt((top / height) * 100)
+    _this.setData({
+      scrollPer: scrollPer
+    })
+  },
 })

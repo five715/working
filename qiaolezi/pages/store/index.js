@@ -7,12 +7,12 @@ Page({
     luck:"",
     userInfo:"",
     prizes: [
-      { prize: "no", state: "yes" },
+      { prize: "vip", state: "yes" },
       { prize: "red", state: "no" },
-      { prize: "vip", state: "no" },
+      { prize: "vip_30", state: "no" },
       { prize: "red", state: "no" },
       { prize: "no", state: "no" },
-      { prize: "vip", state: "no" },
+      { prize: "vip_7", state: "no" },
       { prize: "no", state: "no" },
       { prize: "oppo", state: "no" }
     ],

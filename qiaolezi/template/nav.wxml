@@ -2,5 +2,7 @@
 <view class="navs">
   <image bindtap='onBtnHome' class='home nav' src='/images/navs_home.png'></image>
   <image bindtap='onBtnRule' class='rule nav' src='/images/navs_rule.png'></image>
-  <navigator class='oneself nav' url="/pages/store/oneself"><image class='boxes' src='/images/navs_oneself.png' ></image></navigator>
+  <navigator hover-class="none" class='oneself nav' url="/pages/store/oneself">
+    <image class='boxes' src='/images/navs_oneself.png' ></image>
+  </navigator>
 </view>

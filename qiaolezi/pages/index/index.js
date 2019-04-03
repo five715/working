@@ -6,7 +6,7 @@ Page({
     isInput: false, //是否输入状态
     isEnd: false, //活动是否结束
     red: 0, //0代表关闭弹窗 || 0.33, 0.52, 1.17, 1.25, 3.33, 99显示弹窗
-    isInfo: false,
+    isInfo: 0,
     isGuide: false,
     idCard: ["", ""],
     excode: "", //棒签兑换码
@@ -14,16 +14,13 @@ Page({
     openRed: false,
     per:0,
     isVideo:true,
-    search:''
+    search: '',
   },
   onBtnRule: nav.onBtnRule,
   onPlay() {
     wx.navigateTo({
       url: '/pages/game/index'
     })
-  },
-  onBtnRule() {
-    console.log("活动规则")
   },
   onBtnStore() {
     wx.navigateTo({
@@ -70,6 +67,11 @@ Page({
     if (query.isSkip) _this.bindended()
     console.log(query)
 
+
+    
+
+
+
     const scene = decodeURIComponent(query.q)
     // const scene = "https://qiaolezi.act.qq.com/e/c/code/XXXXXXXYYYYYY";      //线下
     if (!scene || scene == 'undefined') return false
@@ -78,10 +80,10 @@ Page({
   onIf(scene) {
     var _this = this;
     var arr = scene.split("/");
-    var code = arr[arr.length - 1]
-    if (code.length == 13) {
+    _this.code = arr[arr.length - 1]
+    if (_this.code.length == 13) {
       //带兑换码进入
-      _this.onExcode(code)
+      _this.onExcode()
     }
   },
   bindended(e){
@@ -151,20 +153,39 @@ Page({
       }
     }, userInfo)
   },
-  onExcode(decode) {
+  onExcode(e) {
     var _this = this;
-    var code = decode || _this.data.excode
-    console.log(code)
+    var code = _this.code || _this.data.excode
+    console.log(e)
     var paramater = app.api.getStorage()
     app.api.excode(function(data) {
       var search = `?lid=${data.lid}&openid=${paramater.loginData}`
       console.log(data, search, paramater)
+
+      wx.sendBizRedPacket({
+        timeStamp: data.timeStamp, // 支付签名时间戳，
+        nonceStr: data.nonceStr, // 支付签名随机串，不长于 32 位
+        package: data.package, //扩展字段，由商户传入
+        signType: 'MD5', // 签名方式，
+        paySign: data.paySign, // 支付签名
+        success: function (res) {
+          console.log(res)
+         },
+        fail: function (res) { 
+          console.log(res)
+        },
+        complete: function (res) { 
+          console.log(res)
+        }
+      })
+
       _this.setData({
-        openRed: true,
+        // openRed: true,
         search: search
       })
 
-    }, code, decode ? 2 : 1)
+    }, code, _this.code ? 2 : 1)
+
   },
   onBtnOpen(e){
     var _this =this;
@@ -184,7 +205,7 @@ Page({
     var _this = this;
     var obj = e.detail.value;
     obj.idCard = _this.data.idCard
-    console.log(obj)
+    console.log(e,obj)
 
     //关闭弹窗
     _this.setData({

@@ -40,7 +40,7 @@
     </button>
     <!-- <image wx:else class='btn' bindtap='onRedBtn' src='/images/index_red_btn.png'></image> -->
   </view>
-  <form wx:elif="{{isInfo}}" class='popup_info pop' bindsubmit="formSubmit">
+  <form wx:elif="{{isInfo}}" class='popup_info pop' bindsubmit="formSubmit" report-submit='true' >
     <image class='boxes' src='/images/popup_info_con.png'></image>
     <image class='describe' src='/images/popup_info_describe.png'></image>
     <button form-type="submit" class='submit' hover-class='none' plain="true">

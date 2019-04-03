@@ -1,4 +1,13 @@
-<view class='back pageBg'>
-  <button class='btn_play' open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击播放</button>
-  {{time}}
+<view class="back advance pageBg">
+  <image class='boxes' src='/images/advance_bg.jpg'></image>
+  <button class='btn_play play btn' open-type="getUserInfo" bindgetuserinfo="getUserInfo" >
+    <image class='boxes' src='/images/advance_play_{{style}}.png' ></image>
+  </button>
+  <view class='sign' >
+    <text>{{text}}</text>
+    <image class='boxes' src='/images/advance_sign.png'></image>
+  </view>
+  <navigator hover-class="none" class='btn_game_index' url="/pages/game/index">
+    <image class='boxes' src='/images/back_game_index.png' ></image>
+  </navigator>
 </view>

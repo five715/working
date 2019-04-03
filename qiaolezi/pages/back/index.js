@@ -2,6 +2,8 @@ const app = getApp();
 Page({
   data: {
     fid: "",
+    style:1,
+    text:"",
     sounds: [
       { src: "beats1", color: "red", bt: 1, name: "风铃" },
       { src: "beats2", color: "red", bt: 1, name: "海豚" },
@@ -12,6 +14,7 @@ Page({
       { src: "beats7", color: "red", bt: 1, name: "爱你" },
       { src: "beats8", color: "red", bt: 1, name: "踢踏舞" }
     ],
+    selects:["我不但可爱,我还可爱你了", "我咬你的时候,你也要对我笑", "我跟你除恋爱真美什么好谈的", "爱我是真心话,凶我是大冒险", "你的牙印,一定是爱我的小标记", "不许动手,只许动心"],
     audios: {},
     arr: "",
     bgSrc: "",
@@ -73,11 +76,26 @@ Page({
   },
   onLoad(query) {
     var _this = this
-    const scene = decodeURIComponent(query.q)
+    // const scene = decodeURIComponent(query.q)
+    const scene = "https://www.baidu.com?1"
+    var fid = scene.split("?")[1];
+    console.log(fid)
 
-    console.log(query.fid, scene)
     _this.setData({
-      fid: query.fid
+      fid: fid
+    })
+
+    wx.getSetting({
+      success: (res) => {
+        console.log(res)
+        if(res.authSetting['scope.userInfo']){
+          wx.getUserInfo({
+            success(e){
+              _this.onLogin(e.userInfo)
+            }
+          })
+        }
+      }
     })
   },
   getUserInfo(e) {
@@ -110,6 +128,7 @@ Page({
     var _this = this;
     app.api.getFile(function (data) {
       console.log(data)
+
       var array = data.content.split("&")
       var con = JSON.parse(array[0].replace(/'/g, '"'));
       var src = array[1]
@@ -117,10 +136,13 @@ Page({
       _this.data.audios["bg"] = wx.createInnerAudioContext()
       _this.data.audios["bg"].src = src
       _this.data.audios.bg.play()
-
+      var arr = src.split("_")
+      console.log(arr[1],arr[2].replace(".mp3",""))
       _this.setData({
         arr: con,
-        bgSrc: src
+        bgSrc: src,
+        style: arr[1],
+        text: _this.data.selects[arr[2].replace(".mp3","") - 1]
       }, _this.onPlay)
     }, _this.data.fid)
   }

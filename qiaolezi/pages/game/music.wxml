@@ -1,18 +1,47 @@
 <view class='music pageBg' wx:if="{{!isAdvance}}">
   <image class='boxes' src='/images/music_bg.jpg'></image>
   <image class='title' src='/images/music_title.png'></image>
-  <view class='audio timer'>
-    <text>{{bgTimer/1000-time}}</text>
-    <image class='boxes' src='/images/music_beats_timer.png'></image>
+  <view class='scroll'>
+    <image class='chang' src='/images/music_chang.png'></image>
+    <image class='duan' style='top:{{scrollPer}}%' src='/images/music_duan.png'></image>
   </view>
-  <image src="/images/music_{{item.src}}.png" class="audio {{item.src}} {{item.bt==1?'':'lock'}} {{item.color}}" bindtap='onAudio' style="color:{{item.color}}" wx:for="{{sounds}}" wx:key="" wx:for-index="i" id="beats{{i}}" data-i="{{i}}" data-src="/sounds/{{item.src}}.mp3" data-bt="{{item.bt}}">{{item.name}}</image>
+  <scroll-view id="beats" class='beats' scroll-y bindscroll="bindscroll">
+    <block  wx:for="{{sounds}}" wx:key="" wx:for-index="i">
+      <image wx:if="{{item.music == 1}}" src="/images/music_{{item.src}}_{{item.color=='red'?'no':'yes'}}.png" class="audio {{item.src}} {{item.bt==1?'':'lock'}} {{item.color}}" bindtap='onAudio' style="color:{{item.color}}" id="beats{{i}}" data-i="{{i}}" data-src="/sounds/{{item.src}}.mp3" data-bt="{{item.bt}}">{{item.name}}</image>
+      <view wx:elif="{{item.music == 2}}"class='audio timer'>
+        <image class='boxes' src='/images/music_beats_timer.png'></image>
+        <block wx:if="{{!isStart}}">
+          <image class='hint_text' bindtap='onStart' src='/images/music_hint.png'></image>
+        </block>
+        <block wx:else>
+          <text>{{bgTimer/1000-time}}</text>
+          <image class='timer_boxes {{isStart && per<100?"timer_boxes_a":""}}' src="/images/music_timer_boxes.png"></image>
+        </block>
+        <!-- 进度条 -->
+        <view class='per_bg per_bg_4'>
+          <view wx:if="{{per>70}}" class='per per_4' style='height:{{(per-70)/30*100}}%'></view>
+        </view>
+        <view class='per_bg per_bg_3'>
+          <view wx:if="{{per>50}}" class='per per_3' style='width:{{per<70 ? (per-50)/20*100 : 100}}%'></view>
+        </view>
+        <view class='per_bg per_bg_2'>
+          <view wx:if="{{per>20}}" class='per per_2' style='height:{{per<50 ? (per-20)/30*100 : 100}}%'></view>
+        </view>
+        <view class='per_bg per_bg_1'>
+          <view class='per per_1' style='width:{{per<20 ? per/20*100 : 100}}%'></view>
+        </view>
+        <!-- 进度条end -->
+      </view>
+      <image wx:elif="{{item.music == 3}}" src="/images/music_{{item.src}}.png" class="audio {{item.src}}"></image>
+    </block>
+  </scroll-view>
   <image class='music_btn_right' bindtap='onEnd' src='/images/music_btn_right.png'></image>
 </view>
 
 <view class="advance pageBg" wx:elif="{{isAdvance}}">
   <image class='boxes' src='/images/advance_bg.jpg'></image>
   <image class='play' src='/images/advance_play_{{style}}.png' bindtap='onPlay'></image>
-  <view class='sign' >
+  <view class='sign'>
     <text>{{text}}</text>
     <image class='boxes' src='/images/advance_sign.png'></image>
   </view>
