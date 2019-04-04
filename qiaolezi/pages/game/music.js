@@ -261,4 +261,11 @@ Page({
       scrollPer: scrollPer
     })
   },
+  onShareAppMessage: function () {
+    return {
+      title: 'qiaolezi',
+      path: `/pages/index/index`,
+      imageUrl: ""
+    }
+  }
 })

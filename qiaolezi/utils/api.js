@@ -109,12 +109,12 @@ function getinfo(callback){
 /**
  * 棒签兑换
  */
-function excode(callback, excode, type) {
+function requeExcode(callback, excode, type) {
   var paramater = getStorage();
-
+  console.log(paramater)
   if (!paramater.loginData) {
     login(function () {
-      excode(callback, excode, type)
+      requeExcode(callback, excode, type)
     })
     return
   }
@@ -411,6 +411,10 @@ function exscore(callback,score,type){
   request(URL + SERVICE.EXSCORE, paramater, function (res) {
     if (res.data.code == 0) {
       callback(res.data)
+    }else if(res.data.code == -1){
+      wx.showToast({
+        title: res.data.message
+      })
     }
   })
 }
@@ -428,7 +432,7 @@ module.exports = {
   getStorage: getStorage,
   login: login,
   getinfo: getinfo,
-  excode: excode,
+  excode: requeExcode,
   savetel: savetel,
   getStatus: getStatus,
   unlock:unlock,

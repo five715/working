@@ -7,7 +7,7 @@ Page({
     qrcode:"",
     pic:"",
     locolurl:"",
-    nickName:""
+    nickName:"",
   },
   onLoad(e){
     var _this =this;
@@ -167,8 +167,10 @@ Page({
     })
   },
   onShareAppMessage: function () {
+    var _this = this;
     return {
-      title: '标题都去我家大青蛙蔷薇蔷薇蔷薇请问请问我去的季节请问',
+      title: 'qiaolezi',
+      path: `/pages/back/index?${_this.data.fid}`,
       imageUrl:""
     }
   }

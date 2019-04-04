@@ -1,5 +1,4 @@
 var nav = require("../../template/nav.js");
-var mta = require('../../utils/mta_analysis.js')
 const app = getApp();
 Page({
   data: {
@@ -87,7 +86,7 @@ Page({
     }
   },
   bindended(e){
-    console.log(123)
+    app.globalData.bgm.play()
     this.setData({
       isVideo: false,
       per: -1
@@ -248,4 +247,11 @@ Page({
       console.log(data)
     }, e.detail.encryptedData, e.detail.iv, app.globalData["lid"])
   },
+  onShareAppMessage: function () {
+    return {
+      title: 'qiaolezi',
+      path: `/pages/index/index`,
+      imageUrl: ""
+    }
+  }
 })

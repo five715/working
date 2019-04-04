@@ -77,7 +77,7 @@ Page({
   onLoad(query) {
     var _this = this
     // const scene = decodeURIComponent(query.q)
-    const scene = "https://www.baidu.com?1"
+    const scene = "https://www.baidu.com?2"
     var fid = scene.split("?")[1];
     console.log(fid)
 
@@ -145,5 +145,12 @@ Page({
         text: _this.data.selects[arr[2].replace(".mp3","") - 1]
       }, _this.onPlay)
     }, _this.data.fid)
+  },
+  onShareAppMessage: function () {
+    return {
+      title: 'qiaolezi',
+      path: `/pages/index/index`,
+      imageUrl: ""
+    }
   }
 })

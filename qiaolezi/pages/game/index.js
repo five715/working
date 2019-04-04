@@ -32,5 +32,12 @@ Page({
     wx.navigateTo({
       url: `style`,
     })
+  },
+  onShareAppMessage: function () {
+    return {
+      title: 'qiaolezi',
+      path: `/pages/index/index`,
+      imageUrl: ""
+    }
   }
 })

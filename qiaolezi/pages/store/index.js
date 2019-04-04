@@ -45,16 +45,19 @@ Page({
   // 启动抽奖
   onBtnLuck(e) {
     var _this = this;
+    var userInfo = _this.data.userInfo
     app.api.lottery(function(data){
+      userInfo.score-=10 
       console.log(data)
       if(data.code == 0){
         _this.funcLuck(function(){
           _this.setData({
             isPop: true,
             isLuck: true,
-            luck: data
+            luck: data,
+            userInfo:userInfo
           })
-        },data.award_id)
+        },data.award_code)
       }
     }, _this.data.userInfo.score)
   },
@@ -115,5 +118,12 @@ Page({
     this.setData({
       isPop: false
     })
+  },
+  onShareAppMessage: function () {
+    return {
+      title: 'qiaolezi',
+      path: `/pages/index/index`,
+      imageUrl: ""
+    }
   }
 })

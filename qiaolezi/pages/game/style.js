@@ -82,5 +82,12 @@ Page({
     if (Math.abs(x - this.pageX) < 70) return false
     if (x > this.pageX) this.onNext()
     else this.onPrev()
+  },
+  onShareAppMessage: function () {
+    return {
+      title: 'qiaolezi',
+      path: `/pages/index/index`,
+      imageUrl: ""
+    }
   }
 })

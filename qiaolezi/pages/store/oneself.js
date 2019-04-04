@@ -24,5 +24,12 @@ Page({
   },
   saveuser(e){
     console.log("完善个人信息")
+  },
+  onShareAppMessage: function () {
+    return {
+      title: 'qiaolezi',
+      path: `/pages/index/index`,
+      imageUrl: ""
+    }
   }
 })
