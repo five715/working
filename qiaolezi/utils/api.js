@@ -351,6 +351,10 @@ function lottery(callback,score) {
   request(URL + SERVICE.LOTTERY, paramater, function (res) {
     if (res.data.code == 0) {
       callback(res.data)
+    } else if (res.data.code == -1) {
+      wx.showToast({
+        title: res.data.message
+      })
     }
   })
 }
