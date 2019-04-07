@@ -18,3 +18,10 @@ image,page{width: 100%;height: 100%;display: block}
 
 
 .pageBg{position: fixed; top: 0; left: 0; width: 750rpx; height: 1350rpx;}
+
+
+.advance .play{ animation: advanceMove 0.5s infinite linear alternate}
+@keyframes advanceMove{
+  0%{transform: scale(1)}
+  100%{transform: scale(1.01)}
+}

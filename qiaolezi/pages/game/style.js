@@ -8,7 +8,7 @@ Page({
       { index: 4, text: "中国风", css: "" }
     ],
     obj: [
-      "transform: translate3d(50%, 0%, 0px); z-index: 2; ",
+      "transform: translate3d(50%, 0%, 0px); z-index: 2; animation: move1 0.8s infinite linear alternate ",
       "transform: translate3d(170%, 45%, -800px); z-index: 1;",
       "transform: translate3d(50%, 45%, -900px); z-index: 1;opacity: 0",
       "transform: translate3d(-80%, 45%, -800px); z-index: 1;",

@@ -133,13 +133,14 @@ function requeExcode(callback, excode, type) {
     return false
   }
   request(URL + SERVICE.EXCODE, paramater, function (res) {
-    if (res.data.code == 0) {
+    // if (res.data.code == 0) {
       callback(res.data)
-    }else if(res.data.code == -1){
-      wx.showToast({
-        title: res.data.message
-      })
-    }
+    // }else if(res.data.code == -1){
+    //   wx.showModal({
+    //     title: res.data.message,
+    //     showCancel: false,
+    //   })
+    // }
   })
 
 }
@@ -229,6 +230,11 @@ function unlock(callback,type){
   request(URL + SERVICE.UNLOCK, paramater, function (res) {
     if (res.data.code == 0) {
       callback(res.data)
+    }else if(res.data.code == -1){
+      wx.showModal({
+        title: '解锁失败，心跳值还不够(ಥ﹏ಥ)',
+        showCancel: false
+      })
     }
   })
 }
@@ -352,8 +358,9 @@ function lottery(callback,score) {
     if (res.data.code == 0) {
       callback(res.data)
     } else if (res.data.code == -1) {
-      wx.showToast({
-        title: res.data.message
+      wx.showModal({
+        title: `心跳值不足哦，点击【获取更多心跳】寻找心跳领取秘诀吧~`,
+        showCancel: false
       })
     }
   })
@@ -416,7 +423,8 @@ function exscore(callback,score,type){
     if (res.data.code == 0) {
       callback(res.data)
     }else if(res.data.code == -1){
-      wx.showToast({
+      wx.showModal({
+        showCancel:false,
         title: res.data.message
       })
     }

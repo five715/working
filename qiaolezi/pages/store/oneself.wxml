@@ -6,9 +6,9 @@
     <image class='boxes' src='/images/personal_menu_bg.png'></image>
     <image class='head' src='{{head}}'></image>
     <text class='nick'>{{nick}}</text>
-    <text class='score'>{{score}}积分</text>
+    <text class='score'>{{score}}心跳</text>
     <view class='length stat'>已兑换红包:{{redeem.length}}个</view>
-    <view class='now stat'>现在积分:{{score}}分</view>
+    <view class='now stat'>现在心跳:{{score}}分</view>
     <image class='btn_saveuser' bindtap='saveuser' src='/images/personal_menu_btn.png'></image>
   </view>
   <view class='lists'>

@@ -34,32 +34,70 @@ Page({
   },
   // 兑换包
   onReddem(e){
-    console.log(e.target.id)
+    var id = e.target.id
+    console.log(id)
     var _this =this;
-    var type = e.target.id
-    app.api.exscore(function(data){
-      console.log(data)
-
-    }, _this.data.userInfo.score, type)
+    var title = "确定要消耗xxx心跳兑换吗？"
+    if(id == 4) title = '解锁视频需要消耗50心跳，是否确定消耗？'
+    wx.showModal({
+      title: title,
+      cancelText: '否',
+      confirmText: '是',
+      success(res) {
+        if (res.confirm) {
+          var type = e.target.id
+          app.api.exscore(function(data){
+            console.log(data)
+            wx.showModal({
+              showCancel: false,
+              title: '恭喜你兑换成功啦~ 前往活动规则了解更多奖品使用信息'
+            })
+          }, _this.data.userInfo.score, type)
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
   },
   // 启动抽奖
   onBtnLuck(e) {
     var _this = this;
     var userInfo = _this.data.userInfo
-    app.api.lottery(function(data){
-      userInfo.score-=10 
-      console.log(data)
-      if(data.code == 0){
-        _this.funcLuck(function(){
-          _this.setData({
-            isPop: true,
-            isLuck: true,
-            luck: data,
-            userInfo:userInfo
-          })
-        },data.award_code)
+    wx.showModal({
+      title: '确定要用心跳参与抽奖吗？',
+      showCancel: true,
+      cancelText: '否',
+      confirmText: '是',
+      success(res){
+        if (res.confirm) {
+          app.api.lottery(function(data){
+            userInfo.score-=10 
+            console.log(data)
+            if(data.code == 0){
+              _this.funcLuck(function () {
+                wx.showModal({
+                  title: `恭喜你，获得${data.award_name}奖品`,
+                  showCancel: false
+                })
+                // wx.showModal({
+                //   title: '谢谢参与~',
+                //   showCancel: false
+                // })
+                _this.setData({
+                  // isPop: true,
+                  // isLuck: true,
+                  luck: data,
+                  userInfo:userInfo
+                })
+              },data.award_code)
+            }
+          }, _this.data.userInfo.score)
+        }else{
+
+        }
       }
-    }, _this.data.userInfo.score)
+    })
+
   },
   funcLuck(callback, id) {
     var _this = this

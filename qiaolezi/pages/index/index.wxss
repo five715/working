@@ -58,6 +58,10 @@ padding:0;border:none;}
 .popup_guide .con{position: absolute;top: 245rpx; left: 165.5rpx;width: 419rpx; height: 631rpx;}
 .popup_guide .close_one{position: absolute;top: 702rpx; left: 169.5rpx;width: 80rpx; height: 80rpx;}
 
+.popup_hint{position: absolute; top: 300rpx; left: 56.5rpx; width: 637rpx; height: 374rpx;}
+.popup_hint .close{position: absolute; top: -130rpx; right: 0; width: 80rpx; height: 80rpx;}
+.popup_hint text{position: absolute; top: 180rpx; width: 100%; text-align: center;font-size: 50rpx;color: #913223}
+
 
 /* 新 */
 .home{position: absolute; z-index: 9; top: 0; left: 0;width: 750rpx; height: 1500rpx;}

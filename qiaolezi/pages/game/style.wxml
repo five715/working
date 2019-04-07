@@ -6,7 +6,7 @@
 
   <view class='musics' id="slick_3d" bind:touchstart="touchstart" bind:touchend="touchend">
     <view class='container'>
-      <view class='music {{current!= item.index-1 ? "no":""}}' wx:for="{{styles}}" wx:key="" style='{{item.css}}' bindtap='onBtnMusic' id="{{item.index}}">
+      <view class='music {{current!= item.index-1 ? "no":""}}' wx:for="{{styles}}" wx:key="" style='{{item.css}}' id="{{item.index}}">
         <image class='boxes' src='/images/style_{{item.index}}.png' ></image>
       </view>
     </view>

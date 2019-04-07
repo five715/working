@@ -14,6 +14,8 @@ Page({
     per:0,
     isVideo:true,
     search: '',
+    hint:false,
+    hintText:"该串码已被使用~"
   },
   onBtnRule: nav.onBtnRule,
   onPlay() {
@@ -30,7 +32,8 @@ Page({
   onClose() {
     this.setData({
       red: 0,
-      isGuide: false
+      isGuide: false,
+      hint:0
     })
   },
   // 获取焦点
@@ -160,7 +163,13 @@ Page({
     app.api.excode(function(data) {
       var search = `?lid=${data.lid}&openid=${paramater.loginData}`
       console.log(data, search, paramater)
-
+      if(data.code == -1){
+        _this.setData({
+          hint:1,
+          hintText:data.message
+        })
+        return false
+      }
       wx.sendBizRedPacket({
         timeStamp: data.timeStamp, // 支付签名时间戳，
         nonceStr: data.nonceStr, // 支付签名随机串，不长于 32 位

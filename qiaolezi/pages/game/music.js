@@ -42,18 +42,21 @@ Page({
   onAudio(e) {
     var _this = this;
     var obj = _this.data.sounds;
-    console.log(e,obj)
-
-    if (e.target.dataset.bt == 0) {
-      var type = e.target.dataset.i + 1
+    console.log(e,obj,_this.data.arr)
+    if (e.currentTarget.dataset.bt == 0) {
+      var type = e.currentTarget.dataset.i + 1
       wx.showModal({
-        title: '解锁beats',
-        content: '点击确认解锁当前beats',
+        title: '确定要用100个心跳解锁音效吗？',
+        cancelText: '否',
+        confirmText: '是',
         success(res) {
           if (res.confirm) {
             app.api.unlock(function(data) {
               console.log(data, obj[type - 1].bt = 1)
-
+              wx.showModal({
+                title: '解锁成功！快去Mix你的炫彩音乐吧~',
+                showCancel: false
+              })
               _this.setData({
                 sounds: obj
               })
@@ -67,11 +70,18 @@ Page({
     }
     if (!_this.data.isStart) return false;
 
-    var target = e.target;
+    var target = e.currentTarget;
+    console.log(e,target)
     var dataset = target.dataset;
     var audio = _this.data.audios[target.id];
     // console.log(e,_this.data.sounds[dataset.i],dataset.i);
-
+    if(_this.data.arr.length == 4){
+      wx.showModal({
+        title: '音效选择数量已经达上限（一首最多可选4个beats可叠加使用，之后再添加会弹出此弹层提示）',
+        showCancel: false
+      })
+      return false
+    }
     if (obj[dataset.i].color == "red") {
       obj[dataset.i].color = "#000";
       audio.src = dataset.src;
@@ -203,9 +213,17 @@ Page({
     console.log(_this.data.audios, _this.data.audios.bg.src)
 
     var sounds = _this.data.sounds;
+
     app.api.getStatus(function(data) {
       console.log("返回内容："+data, sounds)
-      for (var bt in data) if (bt.indexOf("bt") !== -1) sounds[bt.substr(2, 1) - 1].bt = data[bt]
+      for (var bt in data) {
+        if (bt.indexOf("bt") !== -1) {
+          sounds.forEach((s)=>{
+            if(s.music == 1) if(s.src == "beats"+bt.substr(2, 1)) s.bt = data[bt]
+          })
+        }
+      }
+      console.log(sounds)
       _this.setData({
         sounds: sounds
       })
@@ -230,6 +248,9 @@ Page({
   },
   onAnew() {
     var _this = this;
+    wx.navigateBack({
+      delta: 2
+    })
     _this.funcStop();
     _this.setData({
       isAdvance: false,

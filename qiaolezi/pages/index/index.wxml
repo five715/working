@@ -23,9 +23,12 @@
 </view>
 
 
-
-
-<view class='popup {{red || openRed || isInfo || isGuide  ? "block" : "none"}}'>
+<view class='popup {{hint || red || openRed || isInfo || isGuide  ? "block" : "none"}}'>
+  <view wx:if="{{hint}}" class='popup_hint'>
+    <image class='boxes' src='/images/popup_hint.png'></image>
+    <text>{{hintText}}</text>
+    <image class='close' bindtap='onClose' src='/images/ioc_close.png'></image>
+  </view>
   <view wx:if="{{openRed}}" class='popup_openRed pop'>
     <image class='boxes' src='/images/popup_red_boxes.png'></image>
     <text class='popup_openRed_open' bindtap='onBtnOpen'>开</text>

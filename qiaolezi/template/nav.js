@@ -1,5 +1,8 @@
 function onBtnRule(e){
-  console.log(e,123)
+  wx.showModal({
+    title: '活动规则',
+    showCancel: false,
+  })
 }
 function onBtnHome(e){
   wx.navigateTo({

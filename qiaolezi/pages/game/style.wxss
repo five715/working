@@ -13,9 +13,18 @@
 .style .musics swiper-item{overflow:initial}
 .style .no{}
 
-.style .next{position: absolute; top: 648rpx; left: 630rpx; width: 67rpx; height: 72rpx;}
-.style .prev{position: absolute; top: 648rpx; left: 53rpx; width: 67rpx; height: 72rpx;}
+.style .next{position: absolute; top: 648rpx; left: 630rpx; width: 67rpx; height: 72rpx; animation: move 1s infinite linear alternate}
+.style .prev{position: absolute; top: 648rpx; left: 53rpx; width: 67rpx; height: 72rpx;animation: move 1s infinite linear alternate-reverse}
 .style .text{position: absolute; top: 965rpx; left: 311rpx; width: 129rpx; height: 69rpx;}
+
+@keyframes move{
+  0%{margin-left: 10rpx}
+  100%{margin-left: 0}
+}
+@keyframes move1{
+  0%{margin-top: -10rpx}
+  100%{margin-top: 0}
+}
 
 
 #slick_3d {
