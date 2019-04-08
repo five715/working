@@ -108,7 +108,8 @@ Page({
         encircle = 5,   //最少圈数
         buffer = 7,     //缓冲数量
         prizes = _this.data.prizes
-    
+    console.log(id)
+    // if(id == 1 )
     function count() {
       ++i > prizes.length && (i = 1, encircle--)
 

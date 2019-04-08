@@ -2,18 +2,18 @@ const app = getApp();
 Page({
   data: {
     sounds: [
-      { music: 1, src: "beats1", color: "red", bt: 1, name: "风铃" },
+      { music: 1, src: "beats1", color: "red", bt: 1, name: "mua" },
       { music: 1, src: "beats2", color: "red", bt: 1, name: "海豚" },
       { music: 1, src: "beats3", color: "red", bt: 1, name: "心跳" },
       { music: 1, src: "beats4", color: "red", bt: 1, name: "画眉鸟" },
-      { music: 2, src: "timer", color: "red", bt: 1, name: "画眉鸟" },
-      { music: 1, src: "beats5", color: "red", bt: 1, name: "“波”" },
+      { music: 2, src: "timer", color: "red", bt: 1, name: "时间" },
+      { music: 1, src: "beats5", color: "red", bt: 1, name: "风铃" },
       { music: 1, src: "beats6", color: "red", bt: 1, name: "小猫叫" },
-      { music: 1, src: "beats7", color: "red", bt: 1, name: "爱你" },
+      { music: 1, src: "beats7", color: "red", bt: 1, name: "honey" },
       { music: 1, src: "beats8", color: "red", bt: 1, name: "踢踏舞" },
-      { music: 3, src: "beats_no_1", color: "red", bt: 1, name: "踢踏舞" },
-      { music: 3, src: "beats_no_2", color: "red", bt: 1, name: "踢踏舞" },
-      { music: 3, src: "beats_no_3", color: "red", bt: 1, name: "踢踏舞" }
+      { music: 3, src: "beats_no_1", color: "red", bt: 1, name: "敬请期待" },
+      { music: 3, src: "beats_no_2", color: "red", bt: 1, name: "敬请期待" },
+      { music: 3, src: "beats_no_3", color: "red", bt: 1, name: "敬请期待" }
     ],
     audios: {},
     style:null,
@@ -26,6 +26,7 @@ Page({
     t: 0, //播放时间
     timer: null, //定时器
     arr: [], //记录数据
+    arrInit: [], //人声数据
     bgSrc:"",
     per:0,
     isCancel: false, //是否可以取消
@@ -75,7 +76,7 @@ Page({
     var dataset = target.dataset;
     var audio = _this.data.audios[target.id];
     // console.log(e,_this.data.sounds[dataset.i],dataset.i);
-    if(_this.data.arr.length == 4){
+    if(_this.data.arr.length == 6){
       wx.showModal({
         title: '音效选择数量已经达上限（一首最多可选4个beats可叠加使用，之后再添加会弹出此弹层提示）',
         showCancel: false
@@ -114,9 +115,10 @@ Page({
   onStart() {
     var _this = this;
     _this.funcStop();
+    _this.data.audios.bg.play()
     this.setData({
       isStart: true,
-      arr: []
+      arr:_this.data.arrInit
     }, function() {
       _this.timeDate = new Date().getTime();
       _this.data.timer = setInterval(function() {
@@ -142,13 +144,14 @@ Page({
     _this.funcStop(1)
   },
   funcStop(bol) {
+    console.log("停止")
     var _this = this
     clearInterval(_this.data.timer);
     var audios = _this.data.audios
     for (var audio in audios) {
       audios[audio].stop();
       // console.log(audio.split("sounds"),audio)
-      if (audio != "bg" && bol) _this.data.sounds[audio.split("beats")[1]].color = "red";
+      if (audio != "bg" && audio.indexOf("voice") == -1 && bol) _this.data.sounds[audio.split("beats")[1]].color = "red";
       _this.setData({
         sounds: _this.data.sounds
       })
@@ -177,6 +180,9 @@ Page({
     if (t >= _this.data.bgTimer) {
       // _this.timeDate = new Date().getTime();
       _this.data.audios.bg.stop()
+      _this.setData({
+        isStart:false
+      })
       _this.funcStop();
       // _this.data.audios.bg.play()
       // arrs.forEach((arr) => {
@@ -184,19 +190,26 @@ Page({
       // })
       return false;
     } else {
-      _this.data.audios.bg.play()
+      // _this.data.audios.bg.play()
     }
     arrs.forEach((arr) => {
       if (t >= arr.t && !arr.s) {
         console.log(a, t, arr)
+        _this.data.audios[arr.id].stop()
         _this.data.audios[arr.id].play()
-        obj[arr.id.split("beats")[1]].color = '#000';
+        obj.forEach((o)=>{
+          if(o.src == arr.id) o.color == "#000"
+        })
+        // obj[arr.id.split("beats")[1]].color = '#000';
         arr.s = true
       }
     })
     _this.setData({
       sounds: obj
     })
+  },
+  onUnload(){
+    this.funcStop()
   },
   onLoad: function(e) {
     var _this = this;
@@ -207,10 +220,20 @@ Page({
           _this.height = res.windowHeight
       }
     });
+    var _t = 2000
+    if(e.style == 4) if(e.select == 3 || e.select == 5) _t = 0
+    var id = `voice_${e.select}_${e.style}`
+    _this.data.arrInit = [{ id: id, t: _t, s: false }, { id: id, t: _t+10000, s: false }]
+
+    _this.data.audios[id] = wx.createInnerAudioContext()
+    _this.data.audios[id].src = `/sounds/${id}.mp3`
+
     
     _this.data.audios["bg"] = wx.createInnerAudioContext()
-    _this.data.audios.bg.src = `/sounds/bgMusic_${e.select}_${e.style}.mp3`
-    console.log(_this.data.audios, _this.data.audios.bg.src)
+    _this.data.audios.bg.src = `/sounds/bgMusic_${e.style}.mp3`
+
+    // console.log(_this.data.arrInit)
+    // console.log(_this.data.audios, _this.data.audios.bg.src)
 
     var sounds = _this.data.sounds;
 
@@ -227,7 +250,7 @@ Page({
       _this.setData({
         sounds: sounds
       })
-      _this.data.audios.bg.play()
+      // _this.data.audios.bg.play()
       // _this.onStart();
     })
 
@@ -270,7 +293,7 @@ Page({
       wx.navigateTo({
         url: `create?fid=${data.fid}&selects=${_this.data.select}&style=${_this.data.style}`
       })
-    }, `${JSON.stringify(arr).replace(/"/g, "'")}&${_this.data.bgSrc}`)
+    }, `${JSON.stringify(arr).replace(/"/g, "'")}&${_this.data.bgSrc}&${_this.data.select}`)
   },
   bindscroll(e) {
     var _this = this

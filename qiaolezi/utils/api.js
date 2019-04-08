@@ -284,7 +284,7 @@ function getFile(callback, fid) {
 
   console.log(paramater)
   if(isAPi){
-    var res = { "code": 0, "message": "suc", "content":"[{'id':'beats0','t':4519,'s':false},{'id':'beats1','t':8005,'s':false}]&/sounds/bgMusic_1_1.mp3"}
+    var res = { "code": 0, "message": "suc", "content":"[{'id':'voice_1_1','t':2000,'s':false},{'id':'voice_1_1','t':12000,'s':false},{'id':'beats1','t':531,'s':false},{'id':'beats0','t':3282,'s':false}]&/sounds/bgMusic_1.mp3&1"}
     // 失败的例子
     // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
     callback(res)

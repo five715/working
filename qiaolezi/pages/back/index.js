@@ -18,7 +18,7 @@ Page({
     audios: {},
     arr: "",
     bgSrc: "",
-    bgTimer: 30000,
+    bgTimer: 20000,
     time: 0, //时间
     timer: null //定时器
   },
@@ -44,9 +44,9 @@ Page({
     var _this = this;
     var obj = _this.data.sounds
     if (t >= _this.data.bgTimer) {
-      _this.timeDate = new Date().getTime();
+      // _this.timeDate = new Date().getTime();
       _this.data.audios.bg.stop()
-      _this.data.audios.bg.play()
+      // _this.data.audios.bg.play()
       arrs.forEach((arr) => {
         arr.s = false
       })
@@ -57,8 +57,9 @@ Page({
     arrs.forEach((arr) => {
       if (t >= arr.t && !arr.s) {
         console.log(a, t, arr)
+        _this.data.audios[arr.id].stop()
         _this.data.audios[arr.id].play()
-        obj[arr.id.split("beats")[1]].color = '#000';
+        // obj[arr.id.split("beats")[1]].color = '#000';
         arr.s = true
       }
     })
@@ -68,16 +69,33 @@ Page({
   },
   onReady() {
     var _this = this;
-    var sounds = _this.data.sounds
-    for (var i = 0; i < sounds.length; i++) {
-      _this.data.audios["beats" + i] = wx.createInnerAudioContext()
-      _this.data.audios["beats" + i].src = `/sounds/${sounds[i].src}.mp3`
+    // var sounds = _this.data.sounds
+    // for (var i = 0; i < sounds.length; i++) {
+    //   _this.data.audios["beats" + i] = wx.createInnerAudioContext()
+    //   _this.data.audios["beats" + i].src = `/sounds/${sounds[i].src}.mp3`
+    // }
+  },
+  onUnload() {
+    this.funcStop()
+  },
+  onBtnMix() {
+    this.funcStop()
+    wx.navigateTo({
+      url: '/pages/game/index'
+    })
+  },
+  funcStop() {
+    var _this = this
+    clearInterval(_this.data.timer);
+    var audios = _this.data.audios
+    for (var audio in audios) {
+      audios[audio].stop();
     }
   },
   onLoad(query) {
     var _this = this
     // const scene = decodeURIComponent(query.q)
-    const scene = "https://www.baidu.com?2"
+    const scene = "https://www.baidu.com?16"
     var fid = scene.split("?")[1];
     console.log(fid)
 
@@ -129,20 +147,24 @@ Page({
     app.api.getFile(function (data) {
       console.log(data)
 
-      var array = data.content.split("&")
+      var array = data.content.replace(/&#039;/g, '"').replace(/&amp;/g, '&').split("&")
       var con = JSON.parse(array[0].replace(/'/g, '"'));
       var src = array[1]
+      con.forEach((c)=>{
+        _this.data.audios[c.id] = wx.createInnerAudioContext();
+        _this.data.audios[c.id].src = `/sounds/${c.id}.mp3`
+      })
+      console.log(con, src, array)
 
       _this.data.audios["bg"] = wx.createInnerAudioContext()
       _this.data.audios["bg"].src = src
       _this.data.audios.bg.play()
       var arr = src.split("_")
-      console.log(arr[1],arr[2].replace(".mp3",""))
       _this.setData({
         arr: con,
         bgSrc: src,
-        style: arr[1],
-        text: _this.data.selects[arr[2].replace(".mp3","") - 1]
+        style: arr[1].replace(".mp3",""),
+        text: _this.data.selects[array[2]-1]
       }, _this.onPlay)
     }, _this.data.fid)
   },

@@ -8,7 +8,5 @@
     <text>{{text}}</text>
     <image class='boxes' src='/images/advance_sign.png'></image>
   </view>
-  <navigator hover-class="none" class='btn_game_index' url="/pages/game/index">
-    <image class='boxes' src='/images/back_game_index.png' ></image>
-  </navigator>
+  <image class='btn_game_index' bindtap='onBtnMix' src='/images/back_game_index.png' ></image>
 </view>

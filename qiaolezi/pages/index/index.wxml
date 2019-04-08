@@ -1,6 +1,6 @@
-<video autoplay="{{isVideo}}" id="indexVideo" class='indexVideo' muted controls='' show-center-play-btn='' src='http://qq.vogso.com/taipingyang/interaction/wap/media/index.mp4' bindprogress='bindprogress' bindended='bindended'></video>
+<video autoplay="{{isVideo}}" id="indexVideo" class='indexVideo' muted controls='' show-center-play-btn='' src='http://qq.vogso.com/taipingyang/interaction/wap/media/index.mp4' bindtimeupdate='bindtimeupdate' bindprogress='bindprogress' ></video>
 <view class="home">
-  <view class='boxes' wx:if="{{!isVideo}}">
+  <view class='boxes {{!isVideo ? "block":"none"}}'>
     <image class='boxes' src='/images/home_bg.jpg'></image>
     <button class='btn_play btn bg' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-click="onPlay"></button>
     <button class='btn_rule btn bg' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-click="onBtnRule"></button>

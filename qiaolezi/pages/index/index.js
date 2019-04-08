@@ -88,8 +88,16 @@ Page({
       _this.onExcode()
     }
   },
+  bindtimeupdate(e){
+    var c = e.detail.currentTime,
+        d = e.detail.duration;
+      if(c/d>0.9){
+        this.bindended()
+      }
+  },
   bindended(e){
     app.globalData.bgm.play()
+    // this.videoContext.seek(4.5)
     this.setData({
       isVideo: false,
       per: -1
@@ -178,7 +186,7 @@ Page({
         paySign: data.paySign, // 支付签名
         success: function (res) {
           console.log(res)
-         },
+        },
         fail: function (res) { 
           console.log(res)
         },
