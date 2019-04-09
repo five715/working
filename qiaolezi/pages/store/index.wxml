@@ -1,33 +1,33 @@
 <view class='store pageBg'>
-  <image class='boxes' src='/images/store_bg.jpg'></image>
+  <image class='boxes' src='{{imagesUrl}}/store_bg.jpg'></image>
   <!-- 个人资料 -->
   <view class='oneself'>
-    <image class='boxes' src='/images/store_oneself_bg.png'></image>
+    <image class='boxes' src='{{imagesUrl}}/store_oneself_bg.png'></image>
     <image class='head' src='{{userInfo.head}}'></image>
     <text class='nick'>{{userInfo.nick}}</text>
     <text class='score'>{{userInfo.score}}积分</text>
   </view> 
   <!-- 兑奖区 -->
   <view class='redeem'>
-    <image class='boxes' src='/images/store_redeem_bg.png'></image>
+    <image class='boxes' src='{{imagesUrl}}/store_redeem_bg.png'></image>
     <scroll-view id="redeem" scroll-y bindscroll="bindscroll">
-      <image class='bag bag_1' src='/images/store_redeem_bag_1.png' bindtap='onReddem' id="1">100积分</image>
-      <image class='bag bag_2' src='/images/store_redeem_bag_2.png' bindtap='onReddem' id="2">150积分</image>
-      <image class='bag bag_3' src='/images/store_redeem_bag_3.png' bindtap='onReddem' id="3">200积分</image>
-      <image class='bag bag_4' src='/images/store_redeem_bag_4.png' bindtap='onReddem' id="4">300积分</image>
-      <image class='bag bag_5' src='/images/store_redeem_bag_5.png' bindtap='onReddem' id="5">600积分</image>
-      <image class='bag bag_6' src='/images/store_redeem_bag_6.png' bindtap='onReddem' id="6">1000积分</image>
+      <image class='bag bag_1' src='{{imagesUrl}}/store_redeem_bag_1.png' bindtap='onReddem' id="1">100积分</image>
+      <image class='bag bag_2' src='{{imagesUrl}}/store_redeem_bag_2.png' bindtap='onReddem' id="2">150积分</image>
+      <image class='bag bag_3' src='{{imagesUrl}}/store_redeem_bag_3.png' bindtap='onReddem' id="3">200积分</image>
+      <image class='bag bag_4' src='{{imagesUrl}}/store_redeem_bag_4.png' bindtap='onReddem' id="4">300积分</image>
+      <image class='bag bag_5' src='{{imagesUrl}}/store_redeem_bag_5.png' bindtap='onReddem' id="5">600积分</image>
+      <image class='bag bag_6' src='{{imagesUrl}}/store_redeem_bag_6.png' bindtap='onReddem' id="6">1000积分</image>
     </scroll-view>
     <view class='scroll'>
-      <image class='duan' style='top:{{per}}%' src='/images/store_duan.png'></image>
+      <image class='duan' style='top:{{per}}%' src='{{imagesUrl}}/store_duan.png'></image>
     </view>
     
   </view>
   <!-- 抽奖区 -->
   <view class='luckZone'>
-    <image class='boxes' src='/images/store_luckZone_bg.png'></image>
-    <image wx:for='{{prizes}}' wx:key='' wx:for-index='i' class='prize prize_{{i+1}} {{item.state}}' src='/images/store_luckZone_{{item.prize}}.png'></image>
-    <image class='prize' bindtap='onBtnLuck' src='/images/store_luckZone_play.png'></image>
+    <image class='boxes' src='{{imagesUrl}}/store_luckZone_bg.png'></image>
+    <image wx:for='{{prizes}}' wx:key='' wx:for-index='i' class='prize prize_{{i+1}} {{item.state}}' src='{{imagesUrl}}/store_luckZone_{{item.prize}}.png'></image>
+    <image class='prize' bindtap='onBtnLuck' src='{{imagesUrl}}/store_luckZone_play.png'></image>
   </view>
 </view>
 <include  src="/template/nav.wxml"/>

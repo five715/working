@@ -1,12 +1,12 @@
 <view class="back advance pageBg">
-  <image class='boxes' src='/images/advance_bg.jpg'></image>
-  <image class='tit' src='/images/back_tit.png'></image>
+  <image class='boxes' src='{{imagesUrl}}/advance_bg.jpg'></image>
+  <image class='tit' src='{{imagesUrl}}/back_tit.png'></image>
   <button class='btn_play play btn' open-type="getUserInfo" bindgetuserinfo="getUserInfo" >
     <image class='boxes' src='{{imagesUrl}}/advance_play_{{style}}.png' ></image>
   </button>
   <view class='sign' >
     <text>{{text}}</text>
-    <image class='boxes' src='/images/advance_sign.png'></image>
+    <image class='boxes' src='{{imagesUrl}}/advance_sign.png'></image>
   </view>
-  <image class='btn_game_index' bindtap='onBtnMix' src='/images/back_game_index.png' ></image>
+  <image class='btn_game_index' bindtap='onBtnMix' src='{{imagesUrl}}/back_game_index.png' ></image>
 </view>

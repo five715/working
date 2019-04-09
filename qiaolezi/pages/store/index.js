@@ -17,7 +17,8 @@ Page({
       { prize: "oppo", state: "no" }
     ],
     scrollHeight:200,
-    per :0
+    per: 0,
+    imagesUrl: app.globalData.imagesUrl,
   },
   onBtnRule: nav.onBtnRule,
   onBtnHome: nav.onBtnHome,

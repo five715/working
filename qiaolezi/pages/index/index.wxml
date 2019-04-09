@@ -1,19 +1,19 @@
-<video autoplay="{{isVideo}}" id="indexVideo" class='indexVideo' muted controls='' show-center-play-btn='' src='http://qq.vogso.com/taipingyang/interaction/wap/media/index.mp4' bindtimeupdate='bindtimeupdate' bindprogress='bindprogress' ></video>
+<video autoplay="{{isVideo}}" id="indexVideo" class='indexVideo' muted controls='' show-center-play-btn='' src='{{videoUrl}}/index.mp4' bindtimeupdate='bindtimeupdate' bindprogress='bindprogress' ></video>
 <view class="home">
   <view class='boxes {{!isVideo ? "block":"none"}}'>
-    <image class='boxes' src='/images/home_bg.jpg'></image>
+    <image class='boxes' src='{{imagesUrl}}/home_bg.jpg'></image>
     <button class='btn_play btn bg' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-click="onPlay"></button>
     <button class='btn_rule btn bg' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-click="onBtnRule"></button>
     <button class='btn_store btn bg' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-click="onBtnStore"></button>
     <input class='input' type='text' bindinput='bindInput' bindfocus="bindFocus" bindblur="bindBlur"></input>
-    <image wx:if="{{!isInput}}" src='/images/home_input_text.png' class='input_hint'></image>
+    <image wx:if="{{!isInput}}" src='{{imagesUrl}}/home_input_text.png' class='input_hint'></image>
     <button class='btn_info btn bg' open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
-    <image class='note' src='/images/home_note.png'></image>
+    <image class='note' src='{{imagesUrl}}/home_note.png'></image>
     <view class='iocs'>
-      <image class='ioc ioc_1' src='/images/home_ioc_1.png'></image>
-      <image class='ioc ioc_2' src='/images/home_ioc_2.png'></image>
-      <image class='ioc ioc_3' src='/images/home_ioc_3.png'></image>
-      <image class='ioc ioc_4' src='/images/home_ioc_4.png'></image>
+      <image class='ioc ioc_1' src='{{imagesUrl}}/home_ioc_1.png'></image>
+      <image class='ioc ioc_2' src='{{imagesUrl}}/home_ioc_2.png'></image>
+      <image class='ioc ioc_3' src='{{imagesUrl}}/home_ioc_3.png'></image>
+      <image class='ioc ioc_4' src='{{imagesUrl}}/home_ioc_4.png'></image>
     </view>
   </view>
   <view wx:if="{{!isVideo || per != -1}}">
@@ -25,38 +25,38 @@
 
 <view class='popup {{hint || red || openRed || isInfo || isGuide  ? "block" : "none"}}'>
   <view wx:if="{{hint}}" class='popup_hint'>
-    <image class='boxes' src='/images/popup_hint.png'></image>
+    <image class='boxes' src='{{imagesUrl}}/popup_hint.png'></image>
     <text>{{hintText}}</text>
-    <image class='close' bindtap='onClose' src='/images/ioc_close.png'></image>
+    <image class='close' bindtap='onClose' src='{{imagesUrl}}/ioc_close.png'></image>
   </view>
   <view wx:if="{{openRed}}" class='popup_openRed pop'>
-    <image class='boxes' src='/images/popup_red_boxes.png'></image>
+    <image class='boxes' src='{{imagesUrl}}/popup_red_boxes.png'></image>
     <text class='popup_openRed_open' bindtap='onBtnOpen'>开</text>
-    <image class='close' bindtap='onClose' src='/images/popup_red_close.png'></image>
+    <image class='close' bindtap='onClose' src='{{imagesUrl}}/popup_red_close.png'></image>
   </view>
   <view wx:if="{{red}}" class='popup_red pop'>
-    <image class='boxes' src='/images/popup_red_boxes.png'></image>
-    <image class='red' src='/images/popup_red_{{red}}.png'></image>
-    <image wx:if="{{red != 99}}" class='close' bindtap='onClose' src='/images/popup_red_close.png'></image>
+    <image class='boxes' src='{{imagesUrl}}/popup_red_boxes.png'></image>
+    <image class='red' src='{{imagesUrl}}/popup_red_{{red}}.png'></image>
+    <image wx:if="{{red != 99}}" class='close' bindtap='onClose' src='{{imagesUrl}}/popup_red_close.png'></image>
     <button wx:else class='btn' plain='true' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
-      <image class='boxes' src='/images/index_red_btn.png'></image>
+      <image class='boxes' src='{{imagesUrl}}/index_red_btn.png'></image>
     </button>
-    <!-- <image wx:else class='btn' bindtap='onRedBtn' src='/images/index_red_btn.png'></image> -->
+    <!-- <image wx:else class='btn' bindtap='onRedBtn' src='{{imagesUrl}}/index_red_btn.png'></image> -->
   </view>
   <form wx:elif="{{isInfo}}" class='popup_info pop' bindsubmit="formSubmit" report-submit='true' >
-    <image class='boxes' src='/images/popup_info_con.png'></image>
-    <image class='describe' src='/images/popup_info_describe.png'></image>
+    <image class='boxes' src='{{imagesUrl}}/popup_info_con.png'></image>
+    <image class='describe' src='{{imagesUrl}}/popup_info_describe.png'></image>
     <button form-type="submit" class='submit' hover-class='none' plain="true">
-      <image class='boxes' src='/images/popup_info_submit.png'></image>
+      <image class='boxes' src='{{imagesUrl}}/popup_info_submit.png'></image>
     </button>
     <view class='info'>
-      <image class='boxes' src='/images/popup_info_input_bg.png'></image>
+      <image class='boxes' src='{{imagesUrl}}/popup_info_input_bg.png'></image>
       <input class='name' name="name" type='text'></input>
       <input class='phone' name="phone" type='number' maxlength='11'></input>
       <input class='email' name="email" type='text'></input>
     </view>
     <view class='upfiles'>
-      <image class='boxes' src='/images/popup_info_upfiles.png'></image>
+      <image class='boxes' src='{{imagesUrl}}/popup_info_upfiles.png'></image>
       <view class='front' bindtap='upfile' id="0">
         <image class='boxes' src='{{idCard[0]}}'></image>
       </view>
@@ -64,12 +64,12 @@
         <image class='boxes' src='{{idCard[1]}}'></image>
       </view>
     </view>
-    <image class='guide' bindtap='onGuide' src='/images/popup_info_guide.png'></image>
+    <image class='guide' bindtap='onGuide' src='{{imagesUrl}}/popup_info_guide.png'></image>
   </form>
   <view wx:if="{{isGuide}}" class='popup_guide pop'>
     <view class='con'>
-      <image class='boxes' src='/images/popup_guide_con.png'></image>
-      <image class='close_one' bindtap='onClose' src='/images/popup_close.png'></image>
+      <image class='boxes' src='{{imagesUrl}}/popup_guide_con.png'></image>
+      <image class='close_one' bindtap='onClose' src='{{imagesUrl}}/popup_close.png'></image>
     </view>
   </view>
 </view>

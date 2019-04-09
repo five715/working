@@ -21,7 +21,7 @@ Page({
     bgTimer: 20000,
     time: 0, //时间
     timer: null, //定时器
-    imagesUrl:app.globalData.imagesUrl,
+    imagesUrl: app.globalData.imagesUrl,
   },
   onPlay(arr) {
     var _this = this;

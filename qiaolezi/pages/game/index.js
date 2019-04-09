@@ -8,7 +8,8 @@ Page({
       { index: 4, text: "爱我是真心话,凶我是大冒险" },
       { index: 5, text: "你的牙印,一定是爱我的小标记" },
       { index: 6, text: "不许动手,只许动心" }
-    ]
+    ],
+    imagesUrl: app.globalData.imagesUrl,
   },
   onLoad(e) {
     console.log(e)

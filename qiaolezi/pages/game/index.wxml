@@ -1,9 +1,9 @@
 <view class="selects pageBg">
-  <image class='boxes' src='/images/selects_bg.jpg'></image>
-  <image class='slogan' src='/images/game_slogan.png'></image>
-  <image class='selects_boxes' src='/images/selects_boxes_bg.png'></image>
+  <image class='boxes' src='{{imagesUrl}}/selects_bg.jpg'></image>
+  <image class='slogan' src='{{imagesUrl}}/game_slogan.png'></image>
+  <image class='selects_boxes' src='{{imagesUrl}}/selects_boxes_bg.png'></image>
   <view class='sle'>
-    <image wx:for="{{selects}}" wx:key="" class='select_{{item.index}} {{item.sel?"yes":""}}' src='/images/selects_select_{{item.index}}.png' id="{{item.index}}" bindtap='onBtnSelect'></image>
+    <image wx:for="{{selects}}" wx:key="" class='select_{{item.index}} {{item.sel?"yes":""}}' src='{{imagesUrl}}/selects_select_{{item.index}}.png' id="{{item.index}}" bindtap='onBtnSelect'></image>
   </view>
-  <image class='game_btn_right' bindtap='onBtnRight' src='/images/game_btn_right.png'></image>
+  <image class='game_btn_right' bindtap='onBtnRight' src='{{imagesUrl}}/game_btn_right.png'></image>
 </view>

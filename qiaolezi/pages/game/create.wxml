@@ -1,4 +1,4 @@
 <canvas class='myQrcode' canvas-id='myQrcode'style="width: 200px; height: 200px;" ></canvas>
 <canvas class='picture' canvas-id='picture'></canvas>
 <image class='createPic' src='{{pic}}' data-src='{{pic}}' bindlongtap='bindlongtap'></image>
-<button bindtap='onBtnBack'>临时跳入回流页{{backUrl}}</button>
+<!-- <button bindtap='onBtnBack'>临时跳入回流页{{backUrl}}</button> -->

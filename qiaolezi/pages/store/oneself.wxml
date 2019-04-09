@@ -1,23 +1,23 @@
 <view class='personal pageBg'>
-  <image class='boxes' src='/images/personal_bg.jpg'></image>
-  <image class='slogan' src='/images/personal_slogan.png'></image>
+  <image class='boxes' src='{{imagesUrl}}/personal_bg.jpg'></image>
+  <image class='slogan' src='{{imagesUrl}}/personal_slogan.png'></image>
   <image class='iocs' src='{{imagesUrl}}/personal_iocs.png'></image>
   <view class='menu'>
-    <image class='boxes' src='/images/personal_menu_bg.png'></image>
+    <image class='boxes' src='{{imagesUrl}}/personal_menu_bg.png'></image>
     <image class='head' src='{{head}}'></image>
     <text class='nick'>{{nick}}</text>
     <text class='score'>{{score}}心跳</text>
     <view class='length stat'>已兑换红包:{{redeem.length}}个</view>
     <view class='now stat'>现在心跳:{{score}}分</view>
-    <image class='btn_saveuser' bindtap='saveuser' src='/images/personal_menu_btn.png'></image>
+    <image class='btn_saveuser' bindtap='saveuser' src='{{imagesUrl}}/personal_menu_btn.png'></image>
   </view>
   <view class='lists'>
-    <image class='boxes' src='/images/personal_lists_bg.png'></image>
+    <image class='boxes' src='{{imagesUrl}}/personal_lists_bg.png'></image>
     <scroll-view scroll-y>
       <view wx:for="{{redeem}}" wx:key="item" wx:for-index="i" data-id="{{item.award_id}}">{{item.award_time}}兑换获得{{item.award_name}}{{item.award_code? "：" + item.award_code: item.award_code}}</view>
     </scroll-view>
   </view>
-  <navigator class='nav_store' url='/pages/store/index'><image src='/images/personal_btn_store.png'></image></navigator>
-  <navigator class='nav_score'  url='/pages/game/index'><image src='/images/personal_btn_score.png'></image></navigator>
+  <navigator class='nav_store' url='/pages/store/index'><image src='{{imagesUrl}}/personal_btn_store.png'></image></navigator>
+  <navigator class='nav_score'  url='/pages/game/index'><image src='{{imagesUrl}}/personal_btn_score.png'></image></navigator>
 </view>
 <include src="/template/nav.wxml" />
