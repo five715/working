@@ -2,7 +2,7 @@
   <image class='boxes' src='/images/advance_bg.jpg'></image>
   <image class='tit' src='/images/back_tit.png'></image>
   <button class='btn_play play btn' open-type="getUserInfo" bindgetuserinfo="getUserInfo" >
-    <image class='boxes' src='/images/advance_play_{{style}}.png' ></image>
+    <image class='boxes' src='{{imagesUrl}}/advance_play_{{style}}.png' ></image>
   </button>
   <view class='sign' >
     <text>{{text}}</text>

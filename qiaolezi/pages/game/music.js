@@ -31,7 +31,9 @@ Page({
     per:0,
     isCancel: false, //是否可以取消
     scrollHeight: 942,
-    scrollPer: 0
+    scrollPer: 0,
+    soundsUrl: app.globalData.soundsUrl,
+    imagesUrl: app.globalData.imagesUrl,
   },
   onReady() {
     var _this = this;
@@ -226,11 +228,11 @@ Page({
     _this.data.arrInit = [{ id: id, t: _t, s: false }, { id: id, t: _t+10000, s: false }]
 
     _this.data.audios[id] = wx.createInnerAudioContext()
-    _this.data.audios[id].src = `/sounds/${id}.mp3`
+    _this.data.audios[id].src = `${app.globalData.soundsUrl}/${id}.mp3`
 
     
     _this.data.audios["bg"] = wx.createInnerAudioContext()
-    _this.data.audios.bg.src = `/sounds/bgMusic_${e.style}.mp3`
+    _this.data.audios.bg.src = `${app.globalData.soundsUrl}/bgMusic_${e.style}.mp3`
 
     // console.log(_this.data.arrInit)
     // console.log(_this.data.audios, _this.data.audios.bg.src)

@@ -18,7 +18,7 @@
   </view>
   <view wx:if="{{!isVideo || per != -1}}">
     <text class='per' wx:if="{{isVideo && per != -1}}">{{per}}%</text>
-    <image class='musicBox' src='/images/index_music_box.png'></image>
+    <image class='musicBox' src='{{imagesUrl}}/index_music_box.png'></image>
   </view>
 </view>
 

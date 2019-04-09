@@ -1,7 +1,7 @@
 <view class='personal pageBg'>
   <image class='boxes' src='/images/personal_bg.jpg'></image>
   <image class='slogan' src='/images/personal_slogan.png'></image>
-  <image class='iocs' src='/images/personal_iocs.png'></image>
+  <image class='iocs' src='{{imagesUrl}}/personal_iocs.png'></image>
   <view class='menu'>
     <image class='boxes' src='/images/personal_menu_bg.png'></image>
     <image class='head' src='{{head}}'></image>

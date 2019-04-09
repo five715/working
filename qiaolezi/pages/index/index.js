@@ -15,7 +15,8 @@ Page({
     isVideo:true,
     search: '',
     hint:false,
-    hintText:"该串码已被使用~"
+    hintText: "该串码已被使用~",
+    imagesUrl: app.globalData.imagesUrl,
   },
   onBtnRule: nav.onBtnRule,
   onPlay() {

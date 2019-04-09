@@ -435,7 +435,7 @@ function exscore(callback,score,type){
  * 初始化
  */
 function init() {
-  // if(!isAPi) wx.clearStorageSync(STORAGE.PARAMATER);
+  if(!isAPi) wx.clearStorageSync(STORAGE.PARAMATER);
   console.log("接口文件=>初始化")
 }
 

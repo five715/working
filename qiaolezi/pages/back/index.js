@@ -20,7 +20,8 @@ Page({
     bgSrc: "",
     bgTimer: 20000,
     time: 0, //时间
-    timer: null //定时器
+    timer: null, //定时器
+    imagesUrl:app.globalData.imagesUrl,
   },
   onPlay(arr) {
     var _this = this;
@@ -95,9 +96,10 @@ Page({
   onLoad(query) {
     var _this = this
     // const scene = decodeURIComponent(query.q)
-    const scene = "https://www.baidu.com?16"
-    var fid = scene.split("?")[1];
-    console.log(fid)
+    // const scene = "https://www.baidu.com?18"
+    const fid = query.url
+    // var fid = scene.split("?")[1];
+    console.log(query,fid)
 
     _this.setData({
       fid: fid
@@ -152,7 +154,7 @@ Page({
       var src = array[1]
       con.forEach((c)=>{
         _this.data.audios[c.id] = wx.createInnerAudioContext();
-        _this.data.audios[c.id].src = `/sounds/${c.id}.mp3`
+        _this.data.audios[c.id].src = `${app.globalData.soundsUrl}/${c.id}.mp3`
       })
       console.log(con, src, array)
 

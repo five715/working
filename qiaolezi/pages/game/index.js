@@ -10,8 +10,8 @@ Page({
       { index: 6, text: "不许动手,只许动心" }
     ]
   },
-  onLoad() {
-
+  onLoad(e) {
+    console.log(e)
   },
   onBtnSelect(e) {
     var _this = this;
@@ -30,7 +30,7 @@ Page({
   },
   onBtnRight(e) {
     wx.navigateTo({
-      url: `style`,
+      url: `style?select=${app.globalData.select}`,
     })
   },
   onShareAppMessage: function () {

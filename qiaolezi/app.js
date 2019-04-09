@@ -10,6 +10,7 @@ App({
     this.globalData.bgm.loop = true
   },
   globalData: {
-
+    soundsUrl: 'http://qq.vogso.com/q2019/sumsang/living0410/pc/sounds',
+    imagesUrl: 'http://qq.vogso.com/q2019/sumsang/living0410/pc/img'
   }
 })

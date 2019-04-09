@@ -6,7 +6,8 @@ Page({
     head:"",
     nick:"",
     redeem:[], //已兑换棒签
-    score: 200 //积分
+    score: 200, //积分
+    imagesUrl: app.globalData.imagesUrl,
   },
   onBtnRule: nav.onBtnRule,
   onBtnHome: nav.onBtnHome,
@@ -23,7 +24,10 @@ Page({
     })
   },
   saveuser(e){
-    console.log("完善个人信息")
+    wx.showModal({
+      title: '完善个人信息',
+      showCancel: false
+    })
   },
   onShareAppMessage: function () {
     return {

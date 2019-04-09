@@ -7,7 +7,9 @@ Page({
     qrcode:"",
     pic:"",
     locolurl:"",
-    nickName:"",
+    nickName: "",
+    imagesUrl: app.globalData.imagesUrl,
+    backUrl:"https://aa.q.com"
   },
   onLoad(e){
     var _this =this;
@@ -67,13 +69,14 @@ Page({
   },
   onPicture(){
     var _this = this
+    var imagesUrl = _this.data.imagesUrl
     ctx.setFillStyle('#545')
     ctx.fillRect(0,0,750,750)
     ctx.draw(true)
-
+    
     ctx.drawImage("/images/create_bg.jpg", 0, 0, 750, 1351)
     ctx.drawImage("/images/logo.png", 31, 45, 129, 83)
-    ctx.drawImage("/images/create_slogan.png", 82, 64, 598, 488)
+    ctx.drawImage(`/images/create_slogan.png`, 82, 64, 598, 488)
     ctx.drawImage("/images/create_iocs.png", 177, 486, 408, 156)
     ctx.drawImage("/images/create_text_bg.png", 41, 676, 668, 135)
     ctx.drawImage("/images/create_qrcode_bg.png", 494, 910, 172, 188)
@@ -106,13 +109,17 @@ Page({
   },
   onCreateQrcode(fid){
     var _this = this;
+    var backUrl = `${_this.data.backUrl}?${fid}`
     drawQrcode({
       width: 200,
       height: 200,
       canvasId: 'myQrcode',
       foreground:"#592111",
       // image: { imageResource: _this.data.locolurl, dx: 75, dy: 75, dWidth: 50, dHeight: 50 },
-      text: `https:aa.q.com?fid=${fid}`
+      text: backUrl
+    })
+    _this.setData({
+      backUrl: backUrl
     })
     setTimeout(function(){
       wx.canvasToTempFilePath({
@@ -164,6 +171,13 @@ Page({
         //   })
         // }
       }
+    })
+  },
+  onBtnBack(){
+    var _this = this;
+    console.log(`/pages/back/index?url=${_this.data.backUrl.split("?")[1]}`)
+    wx.navigateTo({
+      url: `/pages/back/index?url=${_this.data.backUrl.split("?")[1]}`
     })
   },
   onShareAppMessage: function () {

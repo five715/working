@@ -13,12 +13,35 @@ Page({
       "transform: translate3d(50%, 45%, -900px); z-index: 1;opacity: 0",
       "transform: translate3d(-80%, 45%, -800px); z-index: 1;",
     ],
+    audios:[],
     current: 0,
-
+    imagesUrl: app.globalData.imagesUrl,
+    select: 0,
+    bgTimer: 20000,
+    time: 0, //时间
+    t: 0, //播放时间
+    timer: null, //定时器
+    arr: [], //记录数据
+    arrInit: [], //人声数据
   },
   onLoad(e) {
-    app.globalData.style = this.data.current + 1;
-    this.onMove();
+    var _this = this;
+    console.log(e)
+    app.globalData.style = _this.data.current + 1;
+    _this.setData({
+      select: e.select
+    })
+
+    var styles = _this.data.styles
+    for (var i = 1; i <= styles.length; i++) {
+      var id = `voice_${e.select}_${i}`
+      _this.data.audios[id] = wx.createInnerAudioContext()
+      _this.data.audios[id].src = `${app.globalData.soundsUrl}/${id}.mp3`
+      _this.data.audios["bg" + i] = wx.createInnerAudioContext()
+      _this.data.audios["bg" + i].src = `${app.globalData.soundsUrl}/bgMusic_${i}.mp3`
+    }
+    console.log(_this.data.audios)
+    _this.onMove();
   },
   onBtnMusic(e) {
     var _this = this;
@@ -34,6 +57,7 @@ Page({
     app.globalData.style = id
   },
   onBtnRight(e) {
+    this.funcStop()
     wx.navigateTo({
       url: `music?select=${app.globalData.select}&style=${app.globalData.style}&text=${app.globalData.text}`,
     })
@@ -60,10 +84,12 @@ Page({
     this.onMove();
   },
   onMove() {
+    this.funcStop();
     var _this = this,
       obj = _this.data.obj,
       styles = _this.data.styles,
       current = _this.data.current
+    
     styles.forEach((s, i) => {
       i += current
       s.css = obj[i > 3 ? i - 4 : i]
@@ -73,6 +99,56 @@ Page({
       styles: styles,
       current: current
     })
+
+
+    var _t = 2000
+    if (app.globalData.style == 4) if (_this.data.select == 3 || _this.data.select == 5) _t = 0
+    var id = `voice_${_this.data.select}_${app.globalData.style}`
+    _this.data.arrInit = [{ id: id, t: _t, s: false }, { id: id, t: _t + 10000, s: false }]
+
+
+    console.log(_this.data.arrInit,_this.data.select, app.globalData.style)
+    this.onPlay(app.globalData.style)
+  },
+  onPlay(style) {
+    var _this = this;
+    var arr = _this.data.arrInit
+    arr.forEach((arr) => {
+      arr.s = false
+    })
+    _this.data.audios[`bg${style}`].play()
+    _this.timeDate = new Date().getTime();
+    _this.data.timer = setInterval(function () {
+      var t = new Date().getTime() - _this.timeDate
+      _this.onForAudio(t, arr)
+      _this.setData({
+        t: t
+      })
+    }, 100)
+  }, 
+  onForAudio(t, arrs) {
+    var a = t;
+    var _this = this;
+    if (t >= _this.data.bgTimer) {
+      _this.funcStop();
+      return false;
+    }
+    arrs.forEach((arr) => {
+      if (t >= arr.t && !arr.s) {
+        console.log(a, t, arr)
+        _this.data.audios[arr.id].stop()
+        _this.data.audios[arr.id].play()
+        arr.s = true
+      }
+    })
+  },
+  funcStop() {
+    var _this = this
+    clearInterval(_this.data.timer);
+    var audios = _this.data.audios
+    for (var audio in audios) {
+      audios[audio].stop();
+    }
   },
   touchstart(e) {
     this.pageX = e.touches[0].pageX
