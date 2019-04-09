@@ -8,12 +8,12 @@ Page({
       { music: 1, src: "beats4", color: "red", bt: 1, name: "画眉鸟" },
       { music: 2, src: "timer", color: "red", bt: 1, name: "时间" },
       { music: 1, src: "beats5", color: "red", bt: 1, name: "风铃" },
-      { music: 1, src: "beats6", color: "red", bt: 1, name: "小猫叫" },
-      { music: 1, src: "beats7", color: "red", bt: 1, name: "honey" },
-      { music: 1, src: "beats8", color: "red", bt: 1, name: "踢踏舞" },
-      { music: 3, src: "beats_no_1", color: "red", bt: 1, name: "敬请期待" },
-      { music: 3, src: "beats_no_2", color: "red", bt: 1, name: "敬请期待" },
-      { music: 3, src: "beats_no_3", color: "red", bt: 1, name: "敬请期待" }
+      { music: 1, src: "beats6", color: "red", bt: 0, name: "小猫叫" },
+      { music: 1, src: "beats7", color: "red", bt: 0, name: "honey" },
+      { music: 1, src: "beats8", color: "red", bt: 0, name: "踢踏舞" },
+      { music: 3, src: "beats_no_1", color: "red", bt: 0, name: "敬请期待" },
+      { music: 3, src: "beats_no_2", color: "red", bt: 0, name: "敬请期待" },
+      { music: 3, src: "beats_no_3", color: "red", bt: 0, name: "敬请期待" }
     ],
     audios: {},
     style:null,
@@ -88,6 +88,7 @@ Page({
     if (obj[dataset.i].color == "red") {
       obj[dataset.i].color = "#000";
       audio.src = dataset.src;
+      console.log(audio)
       audio.play();
     } else {
       if (!_this.data.isCancel) return false
@@ -165,6 +166,7 @@ Page({
     arr.forEach((arr) => {
       arr.s = false
     })
+    _this.data.audios.bg.play()
     var obj = _this.data.sounds
     _this.timeDate = new Date().getTime();
     _this.data.timer = setInterval(function() {
@@ -182,9 +184,9 @@ Page({
     if (t >= _this.data.bgTimer) {
       // _this.timeDate = new Date().getTime();
       _this.data.audios.bg.stop()
-      _this.setData({
-        isStart:false
-      })
+      // _this.setData({
+      //   isStart:false
+      // })
       _this.funcStop();
       // _this.data.audios.bg.play()
       // arrs.forEach((arr) => {
@@ -198,7 +200,9 @@ Page({
       if (t >= arr.t && !arr.s) {
         console.log(a, t, arr)
         _this.data.audios[arr.id].stop()
-        _this.data.audios[arr.id].play()
+        setTimeout(function(){
+          _this.data.audios[arr.id].play()
+        },70)
         obj.forEach((o)=>{
           if(o.src == arr.id) o.color == "#000"
         })
