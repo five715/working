@@ -1,8 +1,8 @@
 <!-- 导航 -->
 <view class="navs">
-  <image bindtap='onBtnHome' class='home nav' src='/images/navs_home.png'></image>
-  <image bindtap='onBtnRule' class='rule nav' src='/images/navs_rule.png'></image>
+  <image bindtap='onBtnHome' class='home nav' src='{{imagesUrl}}/navs_home.png'></image>
+  <image bindtap='onBtnRule' class='rule nav' src='{{imagesUrl}}/navs_rule.png'></image>
   <navigator hover-class="none" class='oneself nav' url="/pages/store/oneself">
-    <image class='boxes' src='/images/navs_oneself.png' ></image>
+    <image class='boxes' src='{{imagesUrl}}/navs_oneself.png' ></image>
   </navigator>
 </view>

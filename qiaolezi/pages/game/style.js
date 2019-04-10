@@ -62,6 +62,9 @@ Page({
       url: `music?select=${app.globalData.select}&style=${app.globalData.style}&text=${app.globalData.text}`,
     })
   },
+  onUnload() {
+    this.funcStop()
+  },
   bindchange(e) {
     var _this = this;
     console.log(e, e.detail.current)

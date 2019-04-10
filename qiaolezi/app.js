@@ -1,7 +1,7 @@
 //app.js
 var api = require('/utils/api.js')
 // const cndUrl = "http://qq.vogso.com/q2019/sumsang/living0410/pc/img"
-const cndUrl = "https://appmusic.gtimg.com/music/641012973/imgs"
+const cndUrl = "https://appmedia.gtimg.com/media/641012973/imgs"
 // const cndUrl = ""
 App({
   api: api,
@@ -13,7 +13,7 @@ App({
     this.globalData.bgm.loop = true
   },
   globalData: {
-    soundsUrl: `${cndUrl}/music`,
+    soundsUrl: `https://appmusic.gtimg.com/music/641012973/imgs/music`,
     imagesUrl: `${cndUrl}/images`,
     videoUrl: `${cndUrl}/video`
   }
