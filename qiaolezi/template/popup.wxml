@@ -1,0 +1,34 @@
+<view class='popup {{popup  ? "block" : "none"}}'>
+  <form wx:if="{{popup == 'info' || popup == 'guide'}}" class='popup_info pop' bindsubmit="formSubmit" report-submit='true' >
+    <image class='boxes' src='/images/popup_info_con.png'></image>
+    <image wx:if="{{redType == 1}}" class='describe' src='/images/popup_info_describe_99.png'></image>
+    <image wx:elif="{{redType == 2}}" class='describe' src='/images/popup_info_describe_52.png'></image>
+    <image wx:elif="{{redType == 3}}" class='describe' src='/images/popup_info_describe_520.png'></image>
+    <button form-type="submit" class='submit' hover-class='none' plain="true">
+      <image class='boxes' src='/images/popup_info_submit.png'></image>
+    </button>
+    <view class='info'>
+      <image class='boxes' src='/images/popup_info_input_bg.png'></image>
+      <input class='name' name="name" type='text'></input>
+      <input class='phone' name="tel" type='number' maxlength='11'></input>
+      <input class='email' name="email" type='text'></input>
+    </view>
+    <view class='upfiles'>
+      <image class='boxes' src='/images/popup_info_upfiles.png'></image>
+      <view class='front' bindtap='upfile' id="0">
+        <image class='boxes' src='{{idCard[0]}}'></image>
+      </view>
+      <view class='rear' bindtap='upfile' id='1'>
+        <image class='boxes' src='{{idCard[1]}}'></image>
+      </view>
+    </view>
+    <image class='guide' bindtap='onGuide' src='{{imagesUrl}}/popup_info_guide.png'></image>
+    <image class='close' bindtap='onClose' src='{{imagesUrl}}/popup_close.png'></image>
+  </form>
+  <view wx:if="{{popup == 'guide'}}" class='popup_guide pop'>
+    <view class='con'>
+      <image class='boxes' src='{{imagesUrl}}/popup_guide_con.png'></image>
+      <image class='close_one' bindtap='onClose' src='{{imagesUrl}}/popup_close.png'></image>
+    </view>
+  </view>
+</view>
