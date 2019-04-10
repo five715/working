@@ -21,3 +21,4 @@
   <navigator class='nav_score'  url='/pages/game/index'><image src='{{imagesUrl}}/personal_btn_score.png'></image></navigator>
 </view>
 <include src="/template/nav.wxml" />
+<include src="/template/popup.wxml" />

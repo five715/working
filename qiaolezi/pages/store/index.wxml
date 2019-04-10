@@ -31,6 +31,7 @@
   </view>
 </view>
 <include  src="/template/nav.wxml"/>
+<include  src="/template/popup.wxml"/>
 <!-- 弹窗 -->
 <view class='popup {{isPop ? "block" : none}}'>
   <view wx:if="{{isLuck}}" class='popup_luckYes pop'>

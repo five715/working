@@ -296,8 +296,14 @@ Page({
     // console.log(JSON.parse(JSON.stringify(arr)), JSON.stringify(arr).replace(/"/g,"'"))
     app.api.saveFile(function(data){
       console.log(data)
-      wx.navigateTo({
-        url: `create?fid=${data.fid}&selects=${_this.data.select}&style=${_this.data.style}`
+      wx.showModal({
+        title: data.status == 0 ? '提交成功,但不加分' : (data.status == 1 && '提交作品加1分'),
+        showCancel: false,
+        complete() {
+          wx.navigateTo({
+            url: `create?fid=${data.fid}&selects=${_this.data.select}&style=${_this.data.style}`
+          })
+        }
       })
     }, `${JSON.stringify(arr).replace(/"/g, "'")}&${_this.data.bgSrc}&${_this.data.select}`)
   },

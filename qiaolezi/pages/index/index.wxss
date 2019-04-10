@@ -40,23 +40,6 @@
 .popup_red .close{top: 661rpx; left: 208rpx; width: 80rpx; height: 80rpx;}
 .popup_red .btn{position:absolute; top: 659rpx; left: 113rpx; width: 271rpx; height: 83rpx;}
 
-.popup_info{top: 62rpx;left: 37.5rpx;width: 675rpx; height: 817rpx;}
-.popup_info .describe{position: absolute; top: 881rpx; left: 24.5rpx; width: 626rpx; height: 138rpx;}
-.popup_info .submit{position: absolute; top: 770rpx; left: 205.5rpx; width: 264rpx; height: 69rpx;
-padding:0;border:none;}
-.popup_info .info{position: absolute; top: 379rpx; left: 42.5rpx; width: 590rpx; height: 176rpx;}
-.popup_info .info input{font-size: 24rpx;}
-.popup_info .info .name{position: absolute; top: 47rpx; left: 89rpx; width: 177rpx;}
-.popup_info .info .phone{position: absolute; top: 47rpx; left: 384rpx; width: 177rpx;}
-.popup_info .info .email{position: absolute; top: 122rpx; left: 89rpx; width: 474rpx;}
-.popup_info .upfiles{position: absolute; top: 586rpx; left: 90rpx; width: 495rpx; height: 149rpx;}
-.popup_info .upfiles .front{position: absolute; top: 0; left: 7rpx; width: 200rpx; height: 112rpx;}
-.popup_info .upfiles .rear{position: absolute; top: 0; left: 288rpx; width: 200rpx; height: 112rpx;}
-.popup_info .guide{position: absolute; top: 705rpx; left: 600rpx; width: 30rpx; height: 30rpx;}
-
-.popup_guide{position: absolute; top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.8);z-index: 5}
-.popup_guide .con{position: absolute;top: 245rpx; left: 165.5rpx;width: 419rpx; height: 631rpx;}
-.popup_guide .close_one{position: absolute;top: 702rpx; left: 169.5rpx;width: 80rpx; height: 80rpx;}
 
 .popup_hint{position: absolute; top: 300rpx; left: 56.5rpx; width: 637rpx; height: 374rpx;}
 .popup_hint .close{position: absolute; top: -130rpx; right: 0; width: 80rpx; height: 80rpx;}

@@ -21,9 +21,9 @@
     <image class='musicBox' src='{{imagesUrl}}/index_music_box.png'></image>
   </view>
 </view>
+<include src="/template/popup.wxml"/>
 
-
-<view class='popup {{hint || red || openRed || isInfo || isGuide  ? "block" : "none"}}'>
+<!-- <view class='popup {{hint || red || openRed || isInfo || isGuide  ? "block" : "none"}}'>
   <view wx:if="{{hint}}" class='popup_hint'>
     <image class='boxes' src='{{imagesUrl}}/popup_hint.png'></image>
     <text>{{hintText}}</text>
@@ -41,7 +41,6 @@
     <button wx:else class='btn' plain='true' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
       <image class='boxes' src='{{imagesUrl}}/index_red_btn.png'></image>
     </button>
-    <!-- <image wx:else class='btn' bindtap='onRedBtn' src='{{imagesUrl}}/index_red_btn.png'></image> -->
   </view>
   <form wx:elif="{{isInfo}}" class='popup_info pop' bindsubmit="formSubmit" report-submit='true' >
     <image class='boxes' src='{{imagesUrl}}/popup_info_con.png'></image>
@@ -52,7 +51,7 @@
     <view class='info'>
       <image class='boxes' src='{{imagesUrl}}/popup_info_input_bg.png'></image>
       <input class='name' name="name" type='text'></input>
-      <input class='phone' name="phone" type='number' maxlength='11'></input>
+      <input class='phone' name="tel" type='number' maxlength='11'></input>
       <input class='email' name="email" type='text'></input>
     </view>
     <view class='upfiles'>
@@ -72,4 +71,4 @@
       <image class='close_one' bindtap='onClose' src='{{imagesUrl}}/popup_close.png'></image>
     </view>
   </view>
-</view>
+</view> -->

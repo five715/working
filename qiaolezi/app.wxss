@@ -1,11 +1,6 @@
 image,page{width: 100%;height: 100%;display: block}
 .boxes{width: 100%;height: 100%;}
 
-.popup{position: fixed; top:0;left: 0;width: 100%;height: 100%;z-index: 9;background: rgba(0,0,0,0.8); display: none;}
-.popup .pop{position: absolute;}
-.popup .close{position: absolute; top: -60rpx; right: 5rpx; width: 67rpx; height: 67rpx;}
-.block{display: block}
-.none{display: none}
 
 .btn{padding: 0;border: none;border-color: transparent; }
 .btn::after{border: none}
@@ -25,3 +20,30 @@ image,page{width: 100%;height: 100%;display: block}
   0%{transform: scale(1)}
   100%{transform: scale(1.01)}
 }
+
+/* 弹窗 */
+.popup{position: fixed; top:0;left: 0;width: 100%;height: 100%;z-index: 9;background: rgba(0,0,0,0.8); display: none;}
+.popup .pop{position: absolute;}
+.popup .close{position: absolute; top: -60rpx; right: 5rpx; width: 67rpx; height: 67rpx;}
+
+.popup_info{top: 350rpx;left: 56.5rpx;width: 637rpx; height: 497rpx;}
+.popup_info .describe{position: absolute; top: 19rpx; left: 20rpx; width: 599rpx; height: 122rpx;}
+.popup_info .submit{position: absolute; top: 522rpx; left: 157rpx; width: 323rpx; height: 105rpx;padding:0;border:none;}
+.popup_info .info{position: absolute; top: 158rpx; left: 23rpx; width: 584rpx; height: 130rpx;}
+.popup_info .info input{font-size: 24rpx;}
+.popup_info .info .name{position: absolute; top: 4rpx; left: 95rpx; width: 177rpx;}
+.popup_info .info .phone{position: absolute; top: 4rpx; left: 384rpx; width: 177rpx;}
+.popup_info .info .email{position: absolute; top: 75rpx; left: 95rpx; width: 474rpx;}
+.popup_info .upfiles{position: absolute; top: 303rpx; left: 81rpx; width: 473rpx; height: 154rpx;}
+.popup_info .upfiles .front{position: absolute; top: 0; left: 0; width: 208rpx; height: 114rpx;}
+.popup_info .upfiles .rear{position: absolute; top: 0; left: 261rpx; width: 208rpx; height: 114rpx;}
+.popup_info .guide{position: absolute; top: 705rpx; left: 600rpx; width: 30rpx; height: 30rpx;}
+.popup_info .close{position: absolute; top: -107rpx; left: 552rpx; width: 80rpx; height: 80rpx;}
+
+.popup_guide{position: absolute; top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.8);z-index: 5}
+.popup_guide .con{position: absolute;top: 245rpx; left: 165.5rpx;width: 419rpx; height: 631rpx;}
+.popup_guide .close_one{position: absolute;top: 702rpx; left: 169.5rpx;width: 80rpx; height: 80rpx;}
+
+/* 弹窗End */
+.block{display: block}
+.none{display: none}

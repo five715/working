@@ -1,4 +1,5 @@
 var nav = require("../../template/nav.js");
+var popup = require("../../template/popup.js");
 const app = getApp();
 Page({
   data:{
@@ -19,9 +20,15 @@ Page({
     scrollHeight:200,
     per: 0,
     imagesUrl: app.globalData.imagesUrl,
+    popup: false,
+    redType: 2,
   },
   onBtnRule: nav.onBtnRule,
   onBtnHome: nav.onBtnHome,
+  onGuide: popup.onGuide,
+  onClose: popup.onClose,
+  upfile: popup.upfile,
+  formSubmit: popup.formSubmit,
   bindscroll(e) {
     var _this = this
     var scrollHeight = _this.data.scrollHeight,

@@ -1,11 +1,12 @@
 var nav = require("../../template/nav.js");
+var popup = require("../../template/popup.js");
 const app = getApp();
 Page({
   data: {
     isInput: false, //是否输入状态
     isEnd: false, //活动是否结束
     red: 0, //0代表关闭弹窗 || 0.33, 0.52, 1.17, 1.25, 3.33, 99显示弹窗
-    isInfo: 0,
+    isInfo: 1,
     isGuide: false,
     idCard: ["", ""],
     excode: "", //棒签兑换码
@@ -18,8 +19,14 @@ Page({
     hintText: "该串码已被使用~",
     imagesUrl: app.globalData.imagesUrl,
     videoUrl: app.globalData.videoUrl,
+    popup:false,
+    redType:1,
   },
   onBtnRule: nav.onBtnRule,
+  onGuide: popup.onGuide,
+  onClose: popup.onClose,
+  upfile: popup.upfile,
+  formSubmit: popup.formSubmit,
   onPlay() {
     wx.navigateTo({
       url: '/pages/game/index'
@@ -30,13 +37,6 @@ Page({
       url: '/pages/store/index'
     })
 
-  },
-  onClose() {
-    this.setData({
-      red: 0,
-      isGuide: false,
-      hint:0
-    })
   },
   // 获取焦点
   bindFocus(e) {
@@ -180,6 +180,12 @@ Page({
         })
         return false
       }
+      if(data.ret == 6){
+        _this.setData({
+          popup:'info'
+        })
+        return false;
+      }
       wx.sendBizRedPacket({
         timeStamp: data.timeStamp, // 支付签名时间戳，
         nonceStr: data.nonceStr, // 支付签名随机串，不长于 32 位
@@ -217,41 +223,6 @@ Page({
     this.setData({
       isInfo: true,
       red: 0
-    })
-  },
-  formSubmit(e) {
-    var _this = this;
-    var obj = e.detail.value;
-    obj.idCard = _this.data.idCard
-    console.log(e,obj)
-
-    //关闭弹窗
-    _this.setData({
-      isInfo: false
-    })
-  },
-  upfile: function (e) {
-    var id = e.currentTarget.id
-    var _this = this;
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success(res) {
-        // tempFilePath可以作为img标签的src属性显示图片
-        const tempFilePaths = res.tempFilePaths[0]
-        var arr = _this.data.idCard
-        console.log(res, tempFilePaths)
-        arr[id] = tempFilePaths
-        _this.setData({
-          idCard: arr
-        })
-      }
-    })
-  },
-  onGuide() {
-    this.setData({
-      isGuide: true
     })
   },
   getPhoneNumber(e) {

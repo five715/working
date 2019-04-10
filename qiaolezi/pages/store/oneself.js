@@ -1,4 +1,5 @@
 var nav = require("../../template/nav.js");
+var popup = require("../../template/popup.js");
 const app = getApp();
 
 Page({
@@ -8,9 +9,15 @@ Page({
     redeem:[], //已兑换棒签
     score: 200, //积分
     imagesUrl: app.globalData.imagesUrl,
+    popup: false,
+    redType: 1,
   },
   onBtnRule: nav.onBtnRule,
   onBtnHome: nav.onBtnHome,
+  onGuide: popup.onGuide,
+  onClose: popup.onClose,
+  upfile: popup.upfile,
+  formSubmit: popup.formSubmit,
   onLoad(e){
     var _this = this;
     app.api.getUserInfo(function(data){

@@ -14,7 +14,7 @@ const SERVICE = {
   GETFILE: "/default/getfile", //拉取作品信息
   GETUSERINFO: "/default/getuserinfo", //拉取个人中心数据
   LOTTERY: "/default/lottery", //抽奖
-  // SAVEUSER: "/default/saveuser", //完善个人信息
+  SAVEUSER: "/default/saveuser", //完善个人信息
   EXSCORE: "/default/exscore" //积分兑换
 }
 
@@ -69,7 +69,23 @@ function login(callback) {
             })
           },
           fail(e){
-            
+            console.log(e)
+            wx.showModal({
+              title: '用户权限未打开',
+              content: '是否前往打开',
+              success(res) {
+                if (res.confirm) {
+                  wx.openSetting({
+                    success:(res)=>{
+                      console.log("打开")
+                      callback()
+                    }
+                  })
+                } else if (res.cancel) {
+
+                }
+              }
+            })
           }
         })
       }
@@ -125,7 +141,7 @@ function requeExcode(callback, excode, type) {
   console.log(paramater)
 
   if (isAPi) {
-    var res = { "code": 0, "message": "suc","lid": 123 }
+    var res = { "code": 0, "message": "suc", "ret": 6, " package ": "xxx", "lid": 123, 'package':'asda', 'timeStamp': 1234, 'nonceStr': 12312, 'paySign': "asd" }
 
     // 失败的例子
     // var res = { "code":-1, "message": "\u975e\u6cd5\u8bf7\u6c42"}
@@ -254,7 +270,7 @@ function saveFile(callback, content) {
 
   console.log(paramater)
   if(isAPi){
-    var res = { "code": 0, "message": "suc", "fid": 1 }
+    var res = { "code": 0, "message": "suc", "fid": 1, "status": 1 }
     // 失败的例子
     // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
     callback(res)
@@ -348,7 +364,7 @@ function lottery(callback,score) {
 
   console.log(paramater)
   if(isAPi){
-    var res = { "code":0, "message":"suc","score": 113, "award_code": "xxx","award_name": "xxx", "award_id":1 }
+    var res = { "code":0, "message":"suc","score": 113, "award_code": 1,"award_name": "xxx", "award_id":1 }
     // 失败的例子
     // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
     callback(res)
@@ -369,22 +385,20 @@ function lottery(callback,score) {
 /**
  * 完善个人信息
  */
-function saveUser(callback,award_id,name,tel,addr){
+function saveUser(callback,data){
   var paramater = getStorage();
   if (!paramater.loginData) {
     login(function () {
-      saveUser(callback, award_id, name, tel, addr)
+      saveUser(callback,data)
     })
     return
   }
-  paramater.award_id = award_id;
-  paramater.name = name;
-  paramater.tel = tel;
-  paramater.addr = addr;
+
+  for(var d in data) paramater[d] = data[d]
 
   console.log(paramater)
   if(isAPi){
-    var res = { "code":0, "message":"suc"}
+    var res = { "code":0, "message":"suc", 'package':'asda', 'timeStamp':1234, 'nonceStr':12312, 'paySign':'asd' }
     // 失败的例子
     // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
     callback(res)
@@ -393,6 +407,11 @@ function saveUser(callback,award_id,name,tel,addr){
   request(URL + SERVICE.SAVEUSER, paramater, function (res) {
     if (res.data.code == 0) {
       callback(res.data)
+    } else if (res.data.code == -1) {
+      wx.showModal({
+        title: res.data.message,
+        showCancel: false
+      })
     }
   })
 }
