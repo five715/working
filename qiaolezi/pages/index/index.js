@@ -125,13 +125,13 @@ Page({
     var click = e.target.dataset.click;
 
     console.log(e)
-
     if (!e.detail.userInfo){
       //拒绝授权
       console.log("拒绝授权")
       return false
     }
 
+    app.globalData.userInfo = e.detail.userInfo
     wx.checkSession({
       success: (res) => {
         if(!click) _this.onExcode();

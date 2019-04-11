@@ -335,6 +335,9 @@ function getUserInfo(callback){
         { "award_id": "xx", "award_code": "222222xxxxx", "award_name": "爱奇艺VIP", "award_time": "20190223" },
         { "award_id": "xx", "award_code": "333333xxxxx", "award_name": "爱奇艺VIP", "award_time": "20190223" },
         { "award_id": "xx", "award_code": "444444xxxxx", "award_name": "爱奇艺VIP", "award_time": "20190223" }
+      ],
+      "lotteryCount":[
+          {"aqiyi":"111","aqiyimonth":22,"aqiyiji":"33","babyphoto":"44","wzyphoto":"55"}
       ]
     }
     // 失败的例子

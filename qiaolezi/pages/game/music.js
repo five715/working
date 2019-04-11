@@ -8,9 +8,9 @@ Page({
       { music: 1, src: "beats4", color: "red", bt: 1, name: "画眉鸟" },
       { music: 2, src: "timer", color: "red", bt: 1, name: "时间" },
       { music: 1, src: "beats5", color: "red", bt: 1, name: "风铃" },
-      { music: 1, src: "beats6", color: "red", bt: 0, name: "小猫叫" },
-      { music: 1, src: "beats7", color: "red", bt: 0, name: "honey" },
-      { music: 1, src: "beats8", color: "red", bt: 0, name: "踢踏舞" },
+      { music: 1, src: "beats6", color: "red", bt: 1, name: "小猫叫" },
+      { music: 1, src: "beats7", color: "red", bt: 1, name: "honey" },
+      { music: 1, src: "beats8", color: "red", bt: 1, name: "踢踏舞" },
       { music: 3, src: "beats_no_1", color: "red", bt: 0, name: "敬请期待" },
       { music: 3, src: "beats_no_2", color: "red", bt: 0, name: "敬请期待" },
       { music: 3, src: "beats_no_3", color: "red", bt: 0, name: "敬请期待" }

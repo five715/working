@@ -11,12 +11,12 @@ Page({
     imagesUrl: app.globalData.imagesUrl,
     backUrl:"https://qiaolezi.act.qq.com",
     texts:[
-      "为你而唱炫彩（&）情歌~1",
-      "为你而唱炫彩（&）情歌~2",
-      "为你而唱炫彩（&）情歌~3",
-      "为你而唱炫彩（&）情歌~4",
-      "为你而唱炫彩（&）情歌~5",
-      "为你而唱炫彩（&）情歌~6"
+      '为你而唱（&）炫彩情歌，我的心在左边，你在我的心里边',
+      '为你而唱（&）炫彩情歌，我不是唯物主义者，是唯你主义者',
+      '为你而唱（&）炫彩情歌，小小爱意，不成敬意',
+      '您好，这里有一箱情愿请查收--为你定制的（&）炫彩情歌～',
+      '明枪易躲 暗恋难防，我的（&）炫彩情歌, 猝不及防。',
+     ' 为你而唱(&)炫彩情歌，喜你成疾，药石无医'
     ]
   },
   onLoad(e){
@@ -78,7 +78,8 @@ Page({
   onPicture(){
     var _this = this
     var imagesUrl = _this.data.imagesUrl
-    var simona = _this.data.texts[parseInt(Math.random()*6)]
+    var simona = _this.data.texts[parseInt(Math.random() * _this.data.texts.length)]
+    var interval = 38
     ctx.setFillStyle('#545')
     ctx.fillRect(0,0,750,750)
     ctx.draw(true)
@@ -90,15 +91,30 @@ Page({
     ctx.drawImage(`/images/create_text_bg.png`, 41, 676, 668, 135)
     ctx.drawImage(`/images/create_qrcode_bg.png`, 494, 910, 172, 188)
     ctx.drawImage(`/images/create_style.png`, 58, 887, 192, 86)
-    ctx.drawImage(`/images/create_style_hint.png`, 84, 981+40, 178, 32)
+    // ctx.drawImage(`/images/create_style_hint.png`, 84, 981+40, 178, 32)
     ctx.drawImage(`/images/create_text_${_this.selects}.png`, 186, 731, 377, 31)
 
     ctx.setFontSize(30)
     ctx.setStrokeStyle("#ff60d2")
     ctx.setLineWidth(0.8)
     ctx.setFillStyle("#ffffff")
-    ctx.fillText(simona.replace("&", ['说唱', '民谣', '摇滚', '中国风'][_this.style]), 84, 1008)
-    ctx.strokeText(simona.replace("&", ['说唱', '民谣', '摇滚', '中国风'][_this.style]), 84, 1008)
+    var text = simona.replace("&", ['说唱', '民谣', '摇滚', '中国风'][_this.style])
+    console.log(text,text.length)
+    if(text.length)
+    var arr = []
+    var i = 0;
+    var sn = 14;
+    while (i < text.length) {
+      arr.push(text.substr(i, sn));
+      i += sn;
+    }
+
+    arr.forEach((a,i)=>{
+      ctx.fillText(a, 84, 1008 + interval * i)
+      ctx.strokeText(a, 84, 1008 + interval * i)
+    })
+    ctx.fillText('邀你扫码倾听', 84, 1008 + interval * arr.length)
+    ctx.strokeText('邀你扫码倾听', 84, 1008 + interval * arr.length)
 
     ctx.rect(519, 919,105,104)
     ctx.setFillStyle('#ffffff')

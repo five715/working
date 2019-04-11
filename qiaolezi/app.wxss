@@ -45,5 +45,5 @@ image,page{width: 100%;height: 100%;display: block}
 .popup_guide .close_one{position: absolute;top: 702rpx; left: 169.5rpx;width: 80rpx; height: 80rpx;}
 
 /* 弹窗End */
-.block{display: block}
 .none{display: none}
+.block{display: block}

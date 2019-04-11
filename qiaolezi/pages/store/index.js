@@ -7,11 +7,20 @@ Page({
     isLuck:true,
     luck:"",
     userInfo:"",
+    redeems: [
+      { src: 1, score: 300, surplus: 80, type: 3, name: "爱奇艺季卡" },
+      { src: 2, score: 100, surplus: 90, type: 2, name: "爱奇艺月卡" },
+      { src: 3, score: 50, surplus: 90, type: 1, name: "爱奇艺7天卡" },
+      // { src: 4, score: -1, surplus: 80 },
+      // { src: 5, score: -1, surplus: 90 },
+      { src: 6, score: 800, surplus: 80, type: 4, name: "baby签名照" },
+      { src: 6, score: 800, surplus: 80, type: 5, name: "王子异签名照" }
+    ],
     prizes: [
       { prize: "vip", state: "yes" },
-      { prize: "red", state: "no" },
+      { prize: "red_52", state: "no" },
       { prize: "vip_30", state: "no" },
-      { prize: "red", state: "no" },
+      { prize: "red_520", state: "no" },
       { prize: "no", state: "no" },
       { prize: "vip_7", state: "no" },
       { prize: "no", state: "no" },
@@ -42,10 +51,12 @@ Page({
   },
   // 兑换包
   onReddem(e){
-    var id = e.target.id
-    console.log(id)
+    var id = e.currentTarget.dataset.id
     var _this =this;
-    var title = "确定要消耗xxx心跳兑换吗？"
+    var objs = _this.data.redeems
+    var userInfo = _this.data.userInfo
+    console.log(objs)
+    var title = `确定要消耗${objs[id].score}心跳兑换吗？`
     if(id == 4) title = '解锁视频需要消耗50心跳，是否确定消耗？'
     wx.showModal({
       title: title,
@@ -53,12 +64,18 @@ Page({
       confirmText: '是',
       success(res) {
         if (res.confirm) {
-          var type = e.target.id
+          var type = objs[id].type
           app.api.exscore(function(data){
             console.log(data)
             wx.showModal({
               showCancel: false,
               title: '恭喜你兑换成功啦~ 前往活动规则了解更多奖品使用信息'
+            })
+            objs[id].surplus--
+            userInfo.score -= objs[id].score
+            _this.setData({
+              redeems: objs,
+              userInfo:userInfo
             })
           }, _this.data.userInfo.score, type)
         } else if (res.cancel) {
@@ -110,7 +127,7 @@ Page({
   funcLuck(callback, id) {
     var _this = this
     var isIn = false,   //是开始减速
-        speed = 30,     //起始速度
+        speed = 80,     //起始速度
         rise = 50,      //速度增长单位
         i = 1,          //起始位置
         encircle = 5,   //最少圈数
@@ -168,7 +185,7 @@ Page({
   },
   onShareAppMessage: function () {
     return {
-      title: 'qiaolezi',
+      title: `qiaolezi`,
       path: `/pages/index/index`,
       imageUrl: ""
     }

@@ -10,10 +10,13 @@
     height: 0;
     color: transparent;
 }
-.store .redeem .bag{width: 160rpx; height: 183rpx; display: inline-block; margin:0 9rpx 5rpx;}
+.store .redeem .bag{width: 160rpx; height: 183rpx; display: inline-block; margin:0 9rpx 5rpx; position: relative;}
 .store .redeem .bag:nth-last-child(1),
 .store .redeem .bag:nth-last-child(2),
 .store .redeem .bag:nth-last-child(3){margin-bottom: 0}
+.store .redeem .bag .textScore{position: absolute; top: 103rpx;left: 0; width: 100%; font-size:22rpx; color: #ff7185; text-align: center;}
+.store .redeem .bag .textSurplus{position: absolute; top: 124rpx;left: 0; width: 100%; font-size:20rpx; color: #949494; text-align: center;}
+
 
 .store .redeem .scroll{position: absolute; top: 69rpx; left: 557.5rpx; width: 31rpx;  height: 294rpx;}
 .store .redeem .scroll .duan{position: absolute; width: 30rpx; height: 106rpx; left: 0; top: 0;}
@@ -29,7 +32,8 @@
 .store .luckZone .prize_6{top:338rpx; left: 286rpx;}
 .store .luckZone .prize_7{top:338rpx; left: 114rpx;}
 .store .luckZone .prize_8{top:222rpx; left: 114rpx;}
-.store .luckZone .yes{border: 5rpx #000 solid; box-sizing: border-box;}
+/* .store .luckZone .yes{border: 5rpx #000 solid; box-sizing: border-box;} */
+.store .luckZone .prize .bg{position: absolute; top: 0;left: 0}
 
 
 
