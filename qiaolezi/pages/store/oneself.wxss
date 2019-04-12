@@ -15,3 +15,5 @@
 .personal .nav_score{position: absolute; top: 1063rpx; left: 96rpx; width: 254rpx; height: 34rpx;}
 .personal .nav_store{position: absolute; top: 1060rpx; left: 481rpx; width: 185rpx; height: 34rpx;}
 
+.personal .redeem_btn{color: red}
+

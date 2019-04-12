@@ -7,14 +7,14 @@
     <image class='head' src='{{head}}'></image>
     <text class='nick'>{{nick}}</text>
     <text class='score'>{{score}}心跳</text>
-    <view class='length stat'>已兑换红包:{{redeem.length}}个</view>
+    <view class='length stat'>已兑换红包:{{redcount}}个</view>
     <view class='now stat'>现在心跳:{{score}}分</view>
     <image class='btn_saveuser' bindtap='saveuser' src='{{imagesUrl}}/personal_menu_btn.png'></image>
   </view>
   <view class='lists'>
     <image class='boxes' src='{{imagesUrl}}/personal_lists_bg.png'></image>
     <scroll-view scroll-y>
-      <view wx:for="{{redeem}}" wx:key="item" wx:for-index="i" data-id="{{item.award_id}}">{{item.award_time}}兑换获得{{item.award_name}}{{item.award_code? "：" + item.award_code: item.award_code}}</view>
+      <view wx:for="{{redeem}}" wx:key="item" wx:for-index="i" data-id="{{item.award_id}}">{{item.award_time}}兑换获得{{item.award_name}}{{item.award_code? "：" + item.award_code: item.award_code}}<text class='redeem_btn' bindtap='saveuser' wx:if="{{item.isinfo == 1}}">完善个人信息</text></view>
     </scroll-view>
   </view>
   <navigator class='nav_store' url='/pages/store/index'><image src='{{imagesUrl}}/personal_btn_store.png'></image></navigator>

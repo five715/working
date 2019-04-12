@@ -332,15 +332,16 @@ function getUserInfo(callback){
     var res = {
       "code": 0, "message": "suc", "score": 123, "head": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKl06gDibQ7aOxHd47M5C35QS9YK5TDK5L5LdRQZgqACTJIrugp7PcGiazrT0urPkcK80CGJCw1r7SA/132" , "nick": "five",
       "data": [
-        { "award_id": "xx", "award_code": "xxxxx111111", "award_name": "爱奇艺VIP", "award_time":"20190223"},
-        { "award_id": "xx", "award_code": "", "award_name": "oppo手机一部", "award_time":"20190223"}, 
+        { "award_id": "xx", "award_code": "xxxxx111111", "award_name": "爱奇艺VIP", "award_time": "20190223"},
+        { "award_id": "xx", "award_code": "", "award_name": "oppo手机一部", "award_time": "20190223", "isinfo": 1 }, 
         { "award_id": "xx", "award_code": "222222xxxxx", "award_name": "爱奇艺VIP", "award_time": "20190223" },
         { "award_id": "xx", "award_code": "333333xxxxx", "award_name": "爱奇艺VIP", "award_time": "20190223" },
         { "award_id": "xx", "award_code": "444444xxxxx", "award_name": "爱奇艺VIP", "award_time": "20190223" }
       ],
       "lotteryCount":[
           {"aqiyi":"111","aqiyimonth":22,"aqiyiji":"33","babyphoto":"44","wzyphoto":"55"}
-      ]
+      ],
+      "redcount": 123
     }
     // 失败的例子
     // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
@@ -492,7 +493,7 @@ function getQrcode(callback, fid) {
   var requestTask = wx.request({
     url: URL + SERVICE.GETQRCODE,
     method: "GET",
-    data: paramater,
+    data: paramater,//{ifd:fid},
     header: {
       'Content-Type': 'application/x-www-form-urlencoded'
     },

@@ -8,6 +8,7 @@ Page({
     nick:"",
     redeem:[], //已兑换棒签
     score: 200, //积分
+    redcount:0,
     imagesUrl: app.globalData.imagesUrl,
     popup: false,
     redType: 1,
@@ -22,15 +23,22 @@ Page({
     var _this = this;
     app.api.getUserInfo(function(data){
       console.log(data)
+
+      data.data.forEach((d,i)=>{
+        console.log(d.award_name)
+        // if(d.award_name.indexOf("oppo")!= -1 || )
+      })
       _this.setData({
         score: data.score,
         redeem:data.data,
         head:data.head,
-        nick:data.nick
+        nick:data.nick,
+        redcount:data.redcount
       })
     })
   },
   saveuser(e){
+    console.log(e)
     wx.showModal({
       title: '完善个人信息',
       showCancel: false
