@@ -15,10 +15,12 @@ const SERVICE = {
   GETUSERINFO: "/default/getuserinfo", //拉取个人中心数据
   LOTTERY: "/default/lottery", //抽奖
   SAVEUSER: "/default/saveuser", //完善个人信息
-  EXSCORE: "/default/exscore" //积分兑换
+  EXSCORE: "/default/exscore", //积分兑换
+  SAVEINFO: "/default/saveinfo", //完善实物个人信息
+  GETQRCODE: "/default/getqrcode" //获取小程序二维码
 }
 
-const isAPi= 0;     //是否使用模拟数据
+const isAPi= 1;     //是否使用模拟数据
 
 function getStorage(callback) {
   var paramater = wx.getStorageSync(STORAGE.PARAMATER)// || { "loginData": "xxxaaa" };
@@ -141,10 +143,10 @@ function requeExcode(callback, excode, type) {
   console.log(paramater)
 
   if (isAPi) {
-    var res = { "code": 0, "message": "suc", "ret": 6, " package ": "xxx", "lid": 123, 'package':'asda', 'timeStamp': 1234, 'nonceStr': 12312, 'paySign': "asd" }
+    var res = { "code": 0, "message": "suc", "ret": 6, " package ": "xxx", "award_id": 4, 'package':'asda', 'timeStamp': 1234, 'nonceStr': 12312, 'paySign': "asd" }
 
     // 失败的例子
-    // var res = { "code":-1, "message": "\u975e\u6cd5\u8bf7\u6c42"}
+    // var res = { "code":-1, "message": "兑换失败,输入的串码有误，\    请仔细核实后再输入~"}
     callback(res)
     return false
   }
@@ -367,21 +369,14 @@ function lottery(callback,score) {
 
   console.log(paramater)
   if(isAPi){
-    var res = { "code":0, "message":"suc","score": 113, "award_code": 1,"award_name": "xxx", "award_id":1 }
+    var res = { "code": 0, "message": "suc", "score": 123, "ret": 4, "award_name": "520红包", "award_id":4, "fcode":11 , "pwd":11  }
     // 失败的例子
-    // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+    // var res = { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
     callback(res)
     return false
   }
   request(URL + SERVICE.LOTTERY, paramater, function (res) {
-    if (res.data.code == 0) {
-      callback(res.data)
-    } else if (res.data.code == -1) {
-      wx.showModal({
-        title: `心跳值不足哦，点击【获取更多心跳】寻找心跳领取秘诀吧~`,
-        showCancel: false
-      })
-    }
+    callback(res.data)
   })
 }
 
@@ -422,7 +417,7 @@ function saveUser(callback,data){
 /**
  * 积分兑换
  */
-function exscore(callback,score,type){
+function exscore(callback, score, type) {
   var paramater = getStorage();
   if (!paramater.loginData) {
     login(function () {
@@ -434,21 +429,76 @@ function exscore(callback,score,type){
   paramater.type = type
 
   console.log(paramater)
-  if(isAPi){
-    var res = { "code":0, "message":"suc","score": 123}
+  if (isAPi) {
+    var res = { "code": 0, "message": "suc", "score": 123, "ret": 4, "award_name": "520红包", "award_id": 4, "fcode": 11, "pwd": 11 }
     // 失败的例子
-    // { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+    // var res = { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
     callback(res)
     return false
   }
   request(URL + SERVICE.EXSCORE, paramater, function (res) {
-    if (res.data.code == 0) {
+    callback(res.data)
+  })
+}
+
+/**
+ * 完善实物个人信息
+ */
+function saveinfo(callback, data) {
+  var paramater = getStorage();
+  if (!paramater.loginData) {
+    login(function () {
+      saveinfo(callback, data)
+    })
+    return
+  }
+
+  for (var d in data) paramater[d] = data[d]
+
+  console.log(paramater)
+  if (isAPi) {
+    var res = { "code": 0, "message": "suc" }
+    // 失败的例子
+    // var res = { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+    callback(res)
+    return false
+  }
+  request(URL + SERVICE.SAVEINFO, paramater, function (res) {
+    callback(res.data)
+  })
+}
+
+/**
+ * 完善实物个人信息
+ */
+function getQrcode(callback, fid) {
+  var paramater = getStorage();
+  if (!paramater.loginData) {
+    login(function () {
+      getQrcode(callback, fid)
+    })
+    return
+  }
+  paramater.fid = fid
+
+  console.log(paramater)
+  if (isAPi) {
+    var res = { "code": 0, "message": "suc" }
+    // 失败的例子
+    // var res = { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+    callback(res)
+    return false
+  }
+  var requestTask = wx.request({
+    url: URL + SERVICE.GETQRCODE,
+    method: "GET",
+    data: paramater,
+    header: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    dataType: "json",
+    success: function(res){
       callback(res.data)
-    }else if(res.data.code == -1){
-      wx.showModal({
-        showCancel:false,
-        title: res.data.message
-      })
     }
   })
 }
@@ -475,5 +525,7 @@ module.exports = {
   getUserInfo: getUserInfo,
   lottery: lottery,
   saveUser:saveUser,
-  exscore: exscore
+  exscore: exscore,
+  saveinfo: saveinfo,
+  getQrcode: getQrcode
 }

@@ -41,10 +41,6 @@
 .popup_red .btn{position:absolute; top: 659rpx; left: 113rpx; width: 271rpx; height: 83rpx;}
 
 
-.popup_hint{position: absolute; top: 300rpx; left: 56.5rpx; width: 637rpx; height: 374rpx;}
-.popup_hint .close{position: absolute; top: -130rpx; right: 0; width: 80rpx; height: 80rpx;}
-.popup_hint text{position: absolute; top: 180rpx; width: 100%; text-align: center;font-size: 50rpx;color: #913223}
-
 
 /* 新 */
 .home{position: absolute; z-index: 9; top: 0; left: 0;width: 750rpx; height: 1500rpx;}

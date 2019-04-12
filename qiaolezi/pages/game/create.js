@@ -113,8 +113,8 @@ Page({
       ctx.fillText(a, 84, 1008 + interval * i)
       ctx.strokeText(a, 84, 1008 + interval * i)
     })
-    ctx.fillText('邀你扫码倾听', 84, 1008 + interval * arr.length)
-    ctx.strokeText('邀你扫码倾听', 84, 1008 + interval * arr.length)
+    ctx.fillText('邀你扫码倾听', 84, 1008 + interval * (arr.length+1))
+    ctx.strokeText('邀你扫码倾听', 84, 1008 + interval * (arr.length+1))
 
     ctx.rect(519, 919,105,104)
     ctx.setFillStyle('#ffffff')
@@ -141,31 +141,35 @@ Page({
   },
   onCreateQrcode(fid){
     var _this = this;
-    var backUrl = `${_this.data.backUrl}?${fid}`
-    drawQrcode({
-      width: 200,
-      height: 200,
-      canvasId: 'myQrcode',
-      foreground:"#592111",
-      // image: { imageResource: _this.data.locolurl, dx: 75, dy: 75, dWidth: 50, dHeight: 50 },
-      text: backUrl
-    })
-    _this.setData({
-      backUrl: backUrl
-    })
-    setTimeout(function(){
-      wx.canvasToTempFilePath({
-        canvasId: 'myQrcode',
-        success: (res) => {
-          console.log(res,12321)
-          _this.setData({
-            qrcode: res.tempFilePath
-          }, _this.onPicture)
-        },fail(res){
-          _this.onCreateQrcode(_this.data.fid)
-        }
-      })
-    },1000)
+    app.api.getQrcode(function(data){
+      console.log(data)
+      _this.onPicture()
+    },fid)
+    // var backUrl = `${_this.data.backUrl}?${fid}`
+    // drawQrcode({
+    //   width: 200,
+    //   height: 200,
+    //   canvasId: 'myQrcode',
+    //   foreground:"#592111",
+    //   // image: { imageResource: _this.data.locolurl, dx: 75, dy: 75, dWidth: 50, dHeight: 50 },
+    //   text: backUrl
+    // })
+    // _this.setData({
+    //   backUrl: backUrl
+    // })
+    // setTimeout(function(){
+    //   wx.canvasToTempFilePath({
+    //     canvasId: 'myQrcode',
+    //     success: (res) => {
+    //       console.log(res,12321)
+    //       _this.setData({
+    //         qrcode: res.tempFilePath
+    //       }, _this.onPicture)
+    //     },fail(res){
+    //       _this.onCreateQrcode(_this.data.fid)
+    //     }
+    //   })
+    // },1000)
   },
   bindlongtap(e){
     console.log(e,e.target.dataset.src)

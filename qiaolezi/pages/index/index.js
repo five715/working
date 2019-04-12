@@ -16,7 +16,7 @@ Page({
     isVideo:true,
     search: '',
     hint:false,
-    hintText: "该串码已被使用~",
+    hintText: ["该串码已被使用~"],
     imagesUrl: app.globalData.imagesUrl,
     videoUrl: app.globalData.videoUrl,
     popup:false,
@@ -27,6 +27,12 @@ Page({
   onClose: popup.onClose,
   upfile: popup.upfile,
   formSubmit: popup.formSubmit,
+  onOver(){
+    this.setData({
+      popup: 'hintOver',
+      hintText: ['巧乐兹扫码抢红包活动已结束', '不过巧乐兹”喜欢就给他点颜色“活动', '仍在进行, 快来MIX你的炫彩音乐吧!']
+    })
+  },
   onPlay() {
     wx.navigateTo({
       url: '/pages/game/index'
@@ -70,14 +76,11 @@ Page({
     var _this = this;
     if (query.isSkip) _this.bindended()
     console.log(query)
-
-
-    
-
-
-
     const scene = decodeURIComponent(query.q)
-    // const scene = "https://qiaolezi.act.qq.com/e/c/code/XXXXXXXYYYYYY";      //线下
+    // const scene = "https://qiaolezi.act.qq.com/e/c/code/5";
+    // const scene = "https://qiaolezi.act.qq.com/e/c/code/XXXXXXXYYYYY";
+    // const scene = "https://qiaolezi.act.qq.com/e/c/code/"
+    // const scene = "https://qiaolezi.act.qq.com/e/c/code/fid=19"
     if (!scene || scene == 'undefined') return false
     this.onIf(scene)
   },
@@ -85,6 +88,12 @@ Page({
     var _this = this;
     var arr = scene.split("/");
     _this.code = arr[arr.length - 1]
+    // if(_this.code.indexOf("fid") !== -1){
+    //   wx.navigateTo({
+    //     url: '/pages/back/index'
+    //   })
+    //   return false
+    // }
     if (_this.code.length == 13) {
       //带兑换码进入
       _this.onExcode()
@@ -173,10 +182,11 @@ Page({
     app.api.excode(function(data) {
       var search = `?lid=${data.lid}&openid=${paramater.loginData}`
       console.log(data, search, paramater)
+      _this.data.award_id = data.award_id
       if(data.code == -1){
         _this.setData({
-          hint:1,
-          hintText:data.message
+          popup:'hint',
+          hintText:[data.message]
         })
         return false
       }

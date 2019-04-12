@@ -1,6 +1,49 @@
 <view class='popup {{popup  ? "block" : "none"}}'>
-  <form wx:if="{{popup == 'info' || popup == 'guide'}}" class='popup_info pop' bindsubmit="formSubmit" report-submit='true' >
+  <form wx:if="{{popup == 'entity'}}" class='popup_info popup_info_entity pop' bindsubmit="formSubmitEntity" report-submit='true'>
     <image class='boxes' src='/images/popup_info_con.png'></image>
+    <image class='describe' src='/images/popup_info_describe.png'></image>
+    <button form-type="submit" class='submit' hover-class='none' plain="true">
+      <image class='boxes' src='/images/popup_info_submit.png'></image>
+    </button>
+    <view class='info'>
+      <image class='boxes' src='/images/popup_info_oppo_input_bg.png'></image>
+      <input class='name' name="name" type='text'></input>
+      <input class='phone' name="tel" type='number' maxlength='11'></input>
+      <input class='email' name="email" type='text'></input>
+      <input class='addr' name="text" type='text'></input>
+    </view>
+    <!-- <image class='guide' bindtap='onGuide' src='{{imagesUrl}}/popup_info_guide.png'></image> -->
+    <image class='close' bindtap='onClose' src='{{imagesUrl}}/popup_close.png'></image>
+  </form>
+  <form wx:if="{{popup == 'oppo'}}" class='popup_info popup_info_oppo pop' bindsubmit="formSubmitEntity" report-submit='true'>
+    <image class='boxes' src='/images/popup_info_con_oppo.png'></image>
+    <image class='describe' src='/images/popup_info_describe_oppo.png'></image>
+    <button form-type="submit" class='submit' hover-class='none' plain="true">
+      <image class='boxes' src='/images/popup_info_submit.png'></image>
+    </button>
+    <view class='info'>
+      <image class='boxes' src='/images/popup_info_oppo_input_bg.png'></image>
+      <input class='name' name="name" type='text'></input>
+      <input class='phone' name="tel" type='number' maxlength='11'></input>
+      <input class='email' name="email" type='text'></input>
+      <input class='addr' name="text" type='text'></input>
+    </view>
+    <view class='upfiles'>
+      <image class='boxes' src='/images/popup_info_upfiles.png'></image>
+      <view class='front' bindtap='upfile' id="0">
+        <image class='boxes' src='{{idCard[0]}}'></image>
+      </view>
+      <view class='rear' bindtap='upfile' id='1'>
+        <image class='boxes' src='{{idCard[1]}}'></image>
+      </view>
+    </view>
+    <!-- <image class='guide' bindtap='onGuide' src='{{imagesUrl}}/popup_info_guide.png'></image> -->
+    <image class='close' bindtap='onClose' src='{{imagesUrl}}/popup_close.png'></image>
+  </form>
+  <form wx:if="{{popup == 'info' || popup == 'guide'}}" class='popup_info pop' bindsubmit="formSubmit" report-submit='true'>
+    <image wx:if="{{redType == 1}}" class='boxes' src='/images/popup_info_red_99.png'></image>
+    <image wx:elif="{{redType == 2}}" class='boxes' src='/images/popup_info_red_52.png'></image>
+    <image wx:elif="{{redType == 3}}" class='boxes' src='/images/popup_info_red_520.png'></image>
     <image wx:if="{{redType == 1}}" class='describe' src='/images/popup_info_describe_99.png'></image>
     <image wx:elif="{{redType == 2}}" class='describe' src='/images/popup_info_describe_52.png'></image>
     <image wx:elif="{{redType == 3}}" class='describe' src='/images/popup_info_describe_520.png'></image>
@@ -22,7 +65,7 @@
         <image class='boxes' src='{{idCard[1]}}'></image>
       </view>
     </view>
-    <image class='guide' bindtap='onGuide' src='{{imagesUrl}}/popup_info_guide.png'></image>
+    <!-- <image class='guide' bindtap='onGuide' src='{{imagesUrl}}/popup_info_guide.png'></image> -->
     <image class='close' bindtap='onClose' src='{{imagesUrl}}/popup_close.png'></image>
   </form>
   <view wx:if="{{popup == 'guide'}}" class='popup_guide pop'>
@@ -30,5 +73,37 @@
       <image class='boxes' src='{{imagesUrl}}/popup_guide_con.png'></image>
       <image class='close_one' bindtap='onClose' src='{{imagesUrl}}/popup_close.png'></image>
     </view>
+  </view>
+  <view wx:if="{{popup == 'hint' || popup == 'hintBtn'}}" class='popup_hint'>
+    <image class='boxes' src='/images/popup_hint.png'></image>
+    <view class="text">
+      <text wx:for="{{hintText}}" wx:key="">{{item}}</text>
+    </view>
+    <button wx:if="{{popup =='hintBtn'}}" plain="true" hover-class="none" bindtap='onBtnHintYes' class='popup_hint_btn popup_hint_yes'>是</button>
+    <button wx:if="{{popup =='hintBtn'}}" plain="true" hover-class="none" bindtap='onClose' class='popup_hint_btn popup_hint_no'>否</button>
+    <image class='close' bindtap='onClose' src='/images/ioc_close.png'></image>
+  </view>
+  <view wx:if="{{popup == 'LuckHint' || popup == 'LuckHintBtn'}}" class='popup_hint'>
+    <image class='boxes' src='/images/popup_hint.png'></image>
+    <view class="text">
+      <text wx:for="{{hintText}}" wx:key="">{{item}}</text>
+    </view>
+    <button wx:if="{{popup =='LuckHintBtn'}}" plain="true" hover-class="none" bindtap='onBtnLuckHintYes' class='popup_hint_btn popup_hint_yes'>是</button>
+    <button wx:if="{{popup =='LuckHintBtn'}}" plain="true" hover-class="none" bindtap='onClose' class='popup_hint_btn popup_hint_no'>否</button>
+    <image class='close' bindtap='onClose' src='/images/ioc_close.png'></image>
+  </view>
+  <view wx:if="{{popup == 'hintOver'}}" class='popup_hint'>
+    <image class='boxes' src='/images/popup_hint.png'></image>
+    <view class="text">
+      <text wx:for="{{hintText}}" wx:key="" style='font-size:30rpx;'>{{item}}</text>
+    </view>
+    <image class='close' bindtap='onClose' src='/images/ioc_close.png'></image>
+  </view>
+  <view wx:if="{{popup == 'hintSubmit'}}" class='popup_hint'>
+    <image class='boxes' src='/images/popup_hint.png'></image>
+    <view class="text">
+      <text wx:for="{{hintText}}" wx:key="" style='font-size:35rpx;'>{{item}}</text>
+    </view>
+    <image class='close' bindtap='onClose' src='/images/ioc_close.png'></image>
   </view>
 </view>

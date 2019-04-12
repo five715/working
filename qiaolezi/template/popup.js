@@ -6,6 +6,7 @@ function onGuide(e) {
   })
 }
 function onClose(e) {
+  console.log(e)
   var _this = this;
   if (_this.data.popup == 'guide') {
     _this.setData({
@@ -29,7 +30,7 @@ function upfile(e) {
       // tempFilePath可以作为img标签的src属性显示图片
       const tempFilePaths = res.tempFilePaths[0]
       var arr = _this.data.idCard
-      console.log(res, tempFilePaths)
+      console.log(id,res, tempFilePaths)
       arr[id] = tempFilePaths
       _this.setData({
         idCard: arr
@@ -40,10 +41,11 @@ function upfile(e) {
 function formSubmit(e) {
   var _this = this;
   var obj = e.detail.value;
-  
+  obj.award_id = _this.data.award_id
   obj.imageup = _this.data.idCard[0]
   obj.imagedown = _this.data.idCard[1]
   obj.form_id = e.detail.formId
+  obj.type = _this.data.redType
   console.log(e, obj,app)
   app.api.saveUser(function(data){
     console.log(data)
@@ -72,9 +74,29 @@ function formSubmit(e) {
   // })
 }
 
+function formSubmitEntity(e) {
+  var _this = this;
+  var obj = e.detail.value;
+  obj.award_id = _this.data.award_id
+  obj.type = _this.data.redType
+  if(obj.type == 5) {
+    obj.imageup = _this.data.idCard[0]
+    obj.imagedown = _this.data.idCard[1]
+  }
+  console.log(e, obj, app)
+
+  app.api.saveinfo(function(data){
+    console.log(data)
+
+  },obj)
+}
+
+
+
 module.exports = {
   onGuide: onGuide,
   onClose: onClose,
   upfile: upfile,
-  formSubmit: formSubmit
+  formSubmit: formSubmit,
+  formSubmitEntity: formSubmitEntity
 }
