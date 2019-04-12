@@ -243,22 +243,22 @@ Page({
 
     var sounds = _this.data.sounds;
 
-    app.api.getStatus(function(data) {
-      console.log("返回内容："+data, sounds)
-      for (var bt in data) {
-        if (bt.indexOf("bt") !== -1) {
-          sounds.forEach((s)=>{
-            if(s.music == 1) if(s.src == "beats"+bt.substr(2, 1)) s.bt = data[bt]
-          })
-        }
-      }
-      console.log(sounds)
-      _this.setData({
-        sounds: sounds
-      })
-      // _this.data.audios.bg.play()
-      // _this.onStart();
-    })
+    // app.api.getStatus(function(data) {
+    //   console.log("返回内容："+data, sounds)
+    //   for (var bt in data) {
+    //     if (bt.indexOf("bt") !== -1) {
+    //       sounds.forEach((s)=>{
+    //         if(s.music == 1) if(s.src == "beats"+bt.substr(2, 1)) s.bt = data[bt]
+    //       })
+    //     }
+    //   }
+    //   console.log(sounds)
+    //   _this.setData({
+    //     sounds: sounds
+    //   })
+    //   // _this.data.audios.bg.play()
+    //   // _this.onStart();
+    // })
 
 
     _this.setData({

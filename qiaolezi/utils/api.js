@@ -20,7 +20,7 @@ const SERVICE = {
   GETQRCODE: "/default/getqrcode" //获取小程序二维码
 }
 
-const isAPi= 1;     //是否使用模拟数据
+const isAPi= 0;     //是否使用模拟数据
 
 function getStorage(callback) {
   var paramater = wx.getStorageSync(STORAGE.PARAMATER)// || { "loginData": "xxxaaa" };
@@ -333,10 +333,16 @@ function getUserInfo(callback){
       "code": 0, "message": "suc", "score": 123, "head": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKl06gDibQ7aOxHd47M5C35QS9YK5TDK5L5LdRQZgqACTJIrugp7PcGiazrT0urPkcK80CGJCw1r7SA/132" , "nick": "five",
       "data": [
         { "award_id": "xx", "award_code": "xxxxx111111", "award_name": "爱奇艺VIP", "award_time": "20190223"},
-        { "award_id": "xx", "award_code": "", "award_name": "oppo手机一部", "award_time": "20190223", "isinfo": 1 }, 
+        { "award_id": "xx", "award_code": "2204", "award_name": "oppo手机一部", "award_time": "20190223", "isinfo": 1 }, 
         { "award_id": "xx", "award_code": "222222xxxxx", "award_name": "爱奇艺VIP", "award_time": "20190223" },
         { "award_id": "xx", "award_code": "333333xxxxx", "award_name": "爱奇艺VIP", "award_time": "20190223" },
-        { "award_id": "xx", "award_code": "444444xxxxx", "award_name": "爱奇艺VIP", "award_time": "20190223" }
+        { "award_id": "xx", "award_code": "444444xxxxx", "award_name": "爱奇艺VIP", "award_time": "20190223" },
+        { "award_id": "xx", "award_code": "20002", "award_name": "52红包", "award_time": "20190223" , "isinfo": 1 },
+        { "award_id": "xx", "award_code": "20003", "award_name": "520红包", "award_time": "20190223", "isinfo": 1  },
+        { "award_id": "xx", "award_code": "2204", "award_name": "oppo手机一部", "award_time": "20190223", "isinfo": 1  },
+        { "award_id": "xx", "award_code": "3204", "award_name": "baby签名照", "award_time": "20190223", "isinfo": 1  },
+        { "award_id": "xx", "award_code": "3205", "award_name": "王子异签名照", "award_time": "20190223", "isinfo": 1  },
+        
       ],
       "lotteryCount":[
           {"aqiyi":"111","aqiyimonth":22,"aqiyiji":"33","babyphoto":"44","wzyphoto":"55"}

@@ -38,11 +38,31 @@ Page({
     })
   },
   saveuser(e){
-    console.log(e)
-    wx.showModal({
-      title: '完善个人信息',
-      showCancel: false
-    })
+    var _this = this;
+    var code = e.currentTarget.dataset.code
+    console.log(e, code)
+    switch (code) {
+      case "20002":
+        //52红包
+        _this.setData({ popup: 'info', redType: 2})
+        break;
+      case "20003":
+        //520红包
+        _this.setData({ popup: 'info', redType: 3})
+        break;
+      case "2204":
+        //oppo
+        _this.setData({ popup: 'oppo', redType: 4})
+        break;
+      case "3204":
+        //baby
+        _this.setData({ popup: 'entity', redType: 5})
+        break;
+      case "3205":
+        //王子异
+        _this.setData({ popup: 'entity', redType: 5})
+        break;
+    }
   },
   onShareAppMessage: function () {
     return {

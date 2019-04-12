@@ -10,10 +10,10 @@
 .personal .menu .btn_saveuser{position: absolute; top: 395rpx; left: 214rpx; width: 192rpx; height: 45rpx;}
 
 .personal .lists{position: absolute; top: 905rpx; left: 86rpx; width: 591rpx; height: 126rpx;}
-.personal .lists scroll-view{position: absolute; top: 28rpx; left: 65rpx; width: 528rpx; height: 75rpx; color: #fff;font-size: 25rpx;line-height: 43rpx;}
+.personal .lists scroll-view{position: absolute; top: 28rpx; left: 25rpx; width: 568rpx; height: 75rpx; color: #fff;font-size: 25rpx;line-height: 43rpx;}
 
 .personal .nav_score{position: absolute; top: 1063rpx; left: 96rpx; width: 254rpx; height: 34rpx;}
 .personal .nav_store{position: absolute; top: 1060rpx; left: 481rpx; width: 185rpx; height: 34rpx;}
 
-.personal .redeem_btn{color: red}
+.personal .redeem_btn{color: red;text-decoration:underline;}
 
