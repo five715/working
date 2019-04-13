@@ -17,7 +17,7 @@
         <text class='textSurplus'>(还剩{{item.surplus}}个)</text>
       </view>
     </scroll-view>
-    <view class='scroll'>
+    <view class='scroll' wx:if="{{redeems.length>6}}">
       <image class='duan' style='top:{{per}}%' src='{{imagesUrl}}/store_duan.png'></image>
     </view>
     

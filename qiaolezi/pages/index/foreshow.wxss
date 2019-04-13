@@ -1,24 +1,64 @@
-.foreshow{width: 100%;height: 100%;background: #f6c1c3;position: fixed; top: 0}
+.indexVideo{position: fixed; top: 0;left: 0;z-index: 9;width: 750rpx;height: 1500rpx;}
 
-.foreshow_bg{width: 750rpx;height: 1500rpx;}
-.foreshow_con{position: absolute;top: 0rpx;left: 0}
-.logo{position: absolute; top: 48rpx;left: 57rpx;width: 119rpx;height: 76rpx;}
-.foreshow_slogan{position: absolute; top: 202rpx;left: 39rpx;width: 672rpx;height: 138rpx;}
-.foreshow_timer{position: absolute; top: 374rpx;left: 261rpx;width: 227rpx; height: 119rpx;}
-.foreshow_timer_hint{position: absolute; top: 539rpx;left: 101rpx;width: 564rpx; height: 71rpx;}
+.index{position: fixed; top: 0}
+.index_bg{width: 750rpx; height: 1500rpx;}
+.index_logo{position: absolute; top: 25rpx; left: 27rpx; width: 161rpx; height: 104rpx;}
+.index_title{position: absolute; top: 51rpx; left: 56rpx; width:633rpx; height: 557rpx;}
+.index_title_like{position: absolute; top: 177rpx; left: 178rpx; width:386rpx; height: 130rpx;}
 
-.popup .pop{top: 0rpx; left: 0rpx; width: 750rpx; height: 1500rpx;}
-.popup .slogan{position: absolute; left: 40rpx; width: 675rpx; height: 139rpx;}
-.popup .text{position: absolute; left: 0rpx; width: 750rpx; font-size: 30rpx;color: #ffffff;  text-align: center}
-.popup .text text{font-size: 35rpx;line-height: 100rpx;}
+.index_play{position: absolute;top: 330rpx;left: 188rpx;width: 374rpx;height: 455rpx;overflow: hidden;}
+.index_play .image{top: 0;left: 0;width: 4862rpx;height: 455rpx; animation: sprite 2s steps(13) infinite; z-index: 5;}  
+@keyframes sprite {
+  0% {margin-left: 0%}
+  100% {margin-left: -4862rpx}
+}
 
-.popup_cdkey .slogan{top: 475rpx;}
-.popup_cdkey .text{top: 639rpx;}
-.popup_cdkey .code{top: 913rpx;font-size: 30.54rpx;}
-.popup_cdkey .qrcode{position: absolute; top: 965rpx; left: 301rpx; width: 153rpx; height: 152rpx;}
-.popup_cdkey .hint{position: absolute; top: 1143rpx; left: 149rpx; width: 445rpx; height: 52rpx;}
+.index .info{position: absolute; top: 839rpx;left: 15rpx;width: 450rpx;height: 58rpx;}
+.index .info_text{position: absolute;top: 20rpx; left: 26rpx; width: 405rpx;height: 23rpx;}
+.index .info_text image{display: block;position: absolute;}
+.index .info_text .end{width: 406rpx; height: 19rpx;}
+.index .info input{position: absolute;top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box;padding:0 26rpx; font-size: 22rpx; color: #511b10;}
 
-.popup_hint .text{ top: 323rpx;line-height: 47.84rpx;}
-.popup_hint .slogan{top: 181rpx;}
-.popup_hint .qrcode_bg{position: absolute; top:952rpx; left: 258rpx; width: 234rpx; height: 233rpx;}
-.popup_hint .qrcode{position: absolute; top: 1112rpx;left: 274rpx; width: 203rpx;height: 203rpx;}
+.index_btn_info{position: absolute; top: 822rpx; left: 485rpx; width: 262rpx; height: 86rpx;}
+.index_btn_rule{position: absolute; top: 1030rpx; left: 613rpx; width: 118rpx; height: 26rpx;}
+
+.index_btn_store{position: absolute; top: 1030rpx; left: 0rpx;}/*商城*/
+
+.index_product{position: absolute; top: 912rpx; left: 150rpx; width: 440rpx; height: 215rpx;}
+
+.index_balloon_1{position: absolute; top:102rpx;left: 583rpx; width: 98rpx; height: 133rpx;}
+.index_balloon_2{position: absolute; top:56rpx;left: 546rpx; width: 37rpx; height: 47rpx;}
+
+
+/* 弹窗 */
+.popup_openRed{width: 471rpx; height: 610rpx; top: 174rpx;left: 127rpx;}
+.popup_openRed_open{position: absolute; top: 270rpx; width: 100%; text-align: center; font-size: 50rpx;}
+.popup_openRed .close{top: 661rpx; left: 208rpx; width: 80rpx; height: 80rpx;}
+
+.popup_red{width: 471rpx; height: 610rpx; top: 174rpx;left: 127rpx;}
+.popup_red .red{position: absolute; top: 149rpx; left: 97rpx; width: 307rpx; height: 179rpx;}
+.popup_red .close{top: 661rpx; left: 208rpx; width: 80rpx; height: 80rpx;}
+.popup_red .btn{position:absolute; top: 659rpx; left: 113rpx; width: 271rpx; height: 83rpx;}
+
+
+
+/* 新 */
+.home{position: fixed; z-index: 9; top: 0; left: 0;width: 750rpx; height: 1500rpx;}
+.home .musicBox{position: absolute; top: 615rpx; left: 228rpx; width: 306rpx; height: 262rpx;}
+.home .per{position: absolute; top: 509rpx;color: #ffffff; text-align: center; width: 100%; display: inline-block; line-height: 100rpx;}
+.home .btn_play{position: absolute; top: 874rpx; left: 43rpx; width: 668rpx; height: 149rpx;}
+.home .btn_rule{position: absolute; top: 1136rpx; left: 106rpx; width: 212rpx; height: 65rpx;}
+.home .btn_store{position: absolute; top: 1136rpx; left: 439rpx; width: 212rpx; height: 65rpx;}
+.home .btn_info{position: absolute; top: 1028rpx; left: 469rpx; width: 251rpx; height: 108rpx;}
+.home .input_hint{position: absolute; top: 1070rpx; left: 75rpx; width: 389rpx; height: 22rpx;}
+.home .input{position: absolute; top: 1050rpx; left: 72rpx; width: 396rpx; height: 57rpx;box-sizing: border-box; font-size: 22rpx; color: #511b10;}
+.home .bg{background:rgba(0,0,0,0);}
+.home .note{position: absolute; top: 409rpx; left: 140rpx; width: 153rpx; height: 343rpx;z-index: 2}
+.home .iocs .ioc{position: absolute;top: 704rpx; left: 98rpx; width: 114rpx; height: 116rpx; animation: move 0.3s alternate infinite linear}
+.home .iocs .ioc_2{top: 466rpx; left: 302rpx; width: 132rpx; height: 135rpx; animation: move 0.3s 0.1s alternate infinite linear}
+.home .iocs .ioc_3{top: 518rpx; left: 406rpx; width: 125rpx; height: 120rpx; animation: move 0.3s 0.2s alternate infinite linear}
+.home .iocs .ioc_4{top: 702rpx; left: 539rpx; width: 130rpx; height: 128rpx; animation: move 0.3s alternate infinite linear}
+@keyframes move{
+  0%{margin-top: 0rpx;}
+  100%{margin-top: -10rpx;}
+}

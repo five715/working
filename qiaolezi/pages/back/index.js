@@ -173,7 +173,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: 'qiaolezi',
-      path: `/pages/index/index`,
+      path: `/pages/index/foreshow`,
       imageUrl: ""
     }
   }

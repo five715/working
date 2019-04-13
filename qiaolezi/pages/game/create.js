@@ -137,14 +137,43 @@ Page({
           }, wx.hideLoading)
         }
       })
-    }, 500)
+    }, 1000)
   },
-  onCreateQrcode(fid){
+  onCreateQrcode(fid) {
     var _this = this;
-    app.api.getQrcode(function(data){
-      console.log(data)
-      _this.onPicture()
-    },fid)
+    app.api.getQrcode(function (data) {
+      const ctx = wx.createCanvasContext('myQrcode'), //canvas
+        fsm = wx.getFileSystemManager(),  //文件管理器
+        FILE_BASE_NAME = 'tmp_base64src', //文件名
+        format = 'png', //文件后缀
+        base64Str = (data), //base64字符串
+        buffer = wx.base64ToArrayBuffer(base64Str), //base 转二进制
+        filePath = `${wx.env.USER_DATA_PATH}/www.${format}`; //文件名
+
+      fsm.writeFile({ //写文件
+        filePath,
+        data: buffer,
+        encoding: 'binary',
+        success(res) {
+          wx.getImageInfo({ //读取图片
+            src: filePath,
+            success: function (res) {
+              console.log({
+                res
+              })
+              _this.setData({
+                qrcode: res.path,
+              }, _this.onPicture)
+            },
+            error(res) {
+              console.log({
+                res
+              })
+            }
+          })
+        }
+      })
+    }, fid)
     // var backUrl = `${_this.data.backUrl}?${fid}`
     // drawQrcode({
     //   width: 200,
@@ -170,7 +199,9 @@ Page({
     //     }
     //   })
     // },1000)
+
   },
+
   bindlongtap(e){
     console.log(e,e.target.dataset.src)
     var _this =this;

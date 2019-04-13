@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/index/foreshow",
     "pages/store/index",
     "pages/store/oneself",
     "pages/game/index",
@@ -9,7 +9,7 @@
     "pages/game/create",
     "pages/back/index",
     "pages/web/web",
-    "pages/index/foreshow"
+    "pages/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

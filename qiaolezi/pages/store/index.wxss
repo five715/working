@@ -1,6 +1,6 @@
 .store .oneself{position: absolute; top: 43rpx; left: 65rpx; width: 621rpx; height: 134rpx;}
 .store .oneself .head{position: absolute; top: 24rpx; left: 69rpx; width: 96rpx; height: 97rpx; border-radius: 50%;border: 5rpx #fff solid; box-sizing: border-box;}
-.store .oneself .nick{position: absolute; top: 33rpx;left: 175rpx; font-size: 30rpx; color: #fff;}
+.store .oneself .nick{position: absolute; top: 33rpx;left: 175rpx; font-size: 30rpx; color: #fff;overflow: hidden; width: 150rpx;height: 40rpx;}
 .store .oneself .score{position: absolute; top: 75rpx;left: 175rpx; font-size: 30rpx; color: #fff;}
 
 .store .redeem{position: absolute; top: 172rpx; left: 64rpx; width: 623rpx; height: 494rpx; overflow: hidden;}

@@ -3,7 +3,7 @@
 .personal .menu{position: absolute; top: 374rpx; left: 65rpx; width: 621rpx; height: 479rpx;}
 .personal .menu .head{position: absolute; top: 50rpx; left: 126rpx; width:160rpx; height: 160rpx; border-radius: 50%;border: 5rpx #26eaee solid;}
 .personal .menu text{font-size: 48rpx; color: #fff;}
-.personal .menu .nick{position: absolute; top: 71rpx; left: 300rpx;}
+.personal .menu .nick{position: absolute; top: 71rpx; left: 300rpx;overflow: hidden; width: 190rpx; height: 70rpx;}
 .personal .menu .score{position: absolute; top: 140rpx; left: 300rpx;}
 .personal .menu .stat{position: absolute; top: 239rpx; left: 96rpx;font-size: 42.42rpx; color: #e5feff; width: 429rpx; height: 64rpx; background-color: #3292a2; border-radius: 32rpx; text-align: center;line-height: 64rpx;}
 .personal .menu .now{top: 318rpx;}

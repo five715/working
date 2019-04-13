@@ -127,6 +127,7 @@ Page({
       app.api.lottery(function (data) {
         userInfo.score -= 10
         console.log(data,_this.data.prizes)
+        data.ret = data.award_code
         // var ret = data
         var rets = []
         _this.data.prizes.forEach((p,i)=>{
@@ -245,7 +246,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: `qiaolezi`,
-      path: `/pages/index/index`,
+      path: `/pages/index/foreshow`,
       imageUrl: ""
     }
   }
