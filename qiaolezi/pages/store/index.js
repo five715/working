@@ -104,9 +104,11 @@ Page({
           userInfo:userInfo
         })
       }else if(data.code == -1){
+        var arr = []
+        arr.push(data.message)
         _this.setData({
           popup: 'hint',
-          hintText: ['“糟糕，心跳值不足，','再来支巧乐兹获得更多心跳吧“']
+          hintText: arr
         })
       }
     }, _this.data.userInfo.score, type)
@@ -141,7 +143,7 @@ Page({
             if(data.ret == 0){
               _this.setData({
                 popup: 'LuckHint',
-                hintText: `谢谢参与~`
+                hintText: [`谢谢参与~`]
               })
             }else{
               if(data.ret>0 && data.ret <4){

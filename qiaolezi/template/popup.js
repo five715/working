@@ -27,13 +27,27 @@ function upfile(e) {
     sizeType: ['original', 'compressed'],
     sourceType: ['album', 'camera'],
     success(res) {
+      if(res.tempFiles[0].size/1000>5000){
+        wx.showModal({
+          title: '文件过大，不得超过5M',
+          showCancel: false
+        })
+        return false
+      }
       // tempFilePath可以作为img标签的src属性显示图片
       const tempFilePaths = res.tempFilePaths[0]
-      var arr = _this.data.idCard
-      console.log(id,res, tempFilePaths)
-      arr[id] = tempFilePaths
-      _this.setData({
-        idCard: arr
+      var fs = wx.getFileSystemManager();
+      fs.readFile({
+        filePath:tempFilePaths,
+        encoding:"base64",
+        success(res){
+          // console.log(`data:image/png;base64,${res.data}`)
+          var arr = _this.data.idCard
+          arr[id] = `data:image/png;base64,${res.data}`
+          _this.setData({
+            idCard: arr
+          })
+        }
       })
     }
   })
@@ -79,7 +93,7 @@ function formSubmitEntity(e) {
   var obj = e.detail.value;
   obj.award_id = _this.data.award_id
   obj.type = _this.data.redType
-  if(obj.type == 5) {
+  if(obj.type == 1) {
     obj.imageup = _this.data.idCard[0]
     obj.imagedown = _this.data.idCard[1]
   }

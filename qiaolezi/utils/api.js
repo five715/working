@@ -376,7 +376,7 @@ function lottery(callback,score) {
 
   console.log(paramater)
   if(isAPi){
-    var res = { "code": 0, "message": "suc", "score": 123, "ret": 4, "award_name": "520红包", "award_id":4, "fcode":11 , "pwd":11  }
+    var res = { "code": 0, "message": "suc", "score": 123, "award_code": 6, "award_name": "520红包", "award_id":4, "fcode":11 , "pwd":11  }
     // 失败的例子
     // var res = { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
     callback(res)

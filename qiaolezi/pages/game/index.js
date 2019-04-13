@@ -1,4 +1,5 @@
 const app = getApp();
+var popup = require("../../template/popup.js");
 Page({
   data: {
     selects: [
@@ -10,7 +11,10 @@ Page({
       { index: 6, text: "不许动手,只许动心" }
     ],
     imagesUrl: app.globalData.imagesUrl,
+    popup:false,
+    hintText:""
   },
+  onClose:popup.onClose,
   onLoad(e) {
     console.log(e)
   },
@@ -30,9 +34,23 @@ Page({
     console.log(selects[id-1].text,selects[id-1],id)
   },
   onBtnRight(e) {
-    wx.navigateTo({
-      url: `style?select=${app.globalData.select}`,
+    var _is = false
+    this.data.selects.forEach((s)=>{
+      if(s.sel) _is = true
     })
+    if(_is){
+      wx.navigateTo({
+        url: `style?select=${app.globalData.select}`,
+      })
+      return false
+    }else{
+      this.setData({
+        popup:"hint",
+        hintText: ['请选择你喜欢的文案']
+      })
+    }
+
+    
   },
   onShareAppMessage: function () {
     return {

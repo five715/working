@@ -230,7 +230,7 @@ Page({
     if(e.style == 4) if(e.select == 3 || e.select == 5) _t = 0
     var id = `voice_${e.select}_${e.style}`
     _this.data.arrInit = [{ id: id, t: _t, s: false }, { id: id, t: _t+10000, s: false }]
-
+    _this.data.arr = _this.data.arrInit
     _this.data.audios[id] = wx.createInnerAudioContext()
     _this.data.audios[id].src = `${app.globalData.soundsUrl}/${id}.mp3`
 
@@ -297,7 +297,7 @@ Page({
     app.api.saveFile(function(data){
       console.log(data)
       wx.showModal({
-        title: data.status == 0 ? '提交成功,但不加分' : (data.status == 1 && '提交作品加1分'),
+        title: data.status == 0 ? '提交成功' : (data.status == 1 && '提交作品加1分'),
         showCancel: false,
         complete() {
           wx.navigateTo({

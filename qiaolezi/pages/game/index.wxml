@@ -7,3 +7,4 @@
   </view>
   <image class='game_btn_right' bindtap='onBtnRight' src='{{imagesUrl}}/game_btn_right.png'></image>
 </view>
+<include src="/template/popup.wxml" />

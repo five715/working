@@ -1,4 +1,4 @@
-<video autoplay="{{isVideo}}" id="indexVideo" class='indexVideo' muted controls='' show-center-play-btn='' src='{{videoUrl}}/index.mp4' bindtimeupdate='bindtimeupdate' bindprogress='bindprogress' bindplay="bindplay" ></video>
+<video autoplay="{{isVideo}}" id="indexVideo" class='indexVideo' style="left:{{videoLeft}}rpx" muted controls='' show-center-play-btn='' src='{{videoUrl}}/index.mp4' bindtimeupdate='bindtimeupdate' bindprogress='bindprogress' bindplay="bindplay" ></video>
 <view class="home">
   <view class='boxes {{!isVideo ? "block":"none"}}'>
     <image class='boxes' src='{{imagesUrl}}/home_bg.jpg'></image>

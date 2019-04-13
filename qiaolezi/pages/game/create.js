@@ -209,7 +209,7 @@ Page({
     wx.getSetting({
       success: function(res) {
         console.log(res)
-        // if(res.authSetting["scope.writePhotosAlbum"]){
+        if(res.authSetting["scope.writePhotosAlbum"]){
           wx.saveImageToPhotosAlbum({
             filePath: src,
             success:(res)=>{
@@ -220,23 +220,23 @@ Page({
               })
             }
           })
-        // }else{
-        //   wx.showModal({
-        //     title: '未打开保存权限',
-        //     content: '是否前往打开',
-        //     success(res) {
-        //       if (res.confirm) {
-        //         wx.openSetting({
-        //           success:(res)=>{
-        //             console.log("打开")
-        //           }
-        //         })
-        //       } else if (res.cancel) {
+        }else{
+          wx.showModal({
+            title: '未打开保存权限',
+            content: '是否前往打开',
+            success(res) {
+              if (res.confirm) {
+                wx.openSetting({
+                  success:(res)=>{
+                    console.log("打开")
+                  }
+                })
+              } else if (res.cancel) {
 
-        //       }
-        //     }
-        //   })
-        // }
+              }
+            }
+          })
+        }
       }
     })
   },

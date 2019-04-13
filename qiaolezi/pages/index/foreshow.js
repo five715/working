@@ -19,8 +19,9 @@ Page({
     hintText: ["该串码已被使用~"],
     imagesUrl: app.globalData.imagesUrl,
     videoUrl: app.globalData.videoUrl,
-    popup: false,
+    popup: 'info',
     redType: 1,
+    videoLeft:0
   },
   onBtnRule: nav.onBtnRule,
   onGuide: popup.onGuide,
@@ -115,7 +116,8 @@ Page({
     // this.videoContext.seek(4.5)
     this.setData({
       isVideo: false,
-      per: -1
+      per: -1,
+      videoLeft:"850"
     })
   },
   bindprogress(e) {
