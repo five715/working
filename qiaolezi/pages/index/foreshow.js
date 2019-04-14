@@ -67,12 +67,12 @@ Page({
   onReady(e) {
     this.videoContext = wx.createVideoContext('indexVideo')
   },
-  onShow() {
-    if (this.data.isOne) return false;
-    this.setData({
-      openRed: false
-    })
-  },
+  // onShow() {
+  //   if (this.data.isOne) return false;
+  //   this.setData({
+  //     openRed: false
+  //   })
+  // },
   onLoad(query) {
     var _this = this;
     if (query.isSkip) _this.bindended()

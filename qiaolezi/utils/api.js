@@ -471,7 +471,14 @@ function saveinfo(callback, data) {
     return false
   }
   request(URL + SERVICE.SAVEINFO, paramater, function (res) {
-    callback(res.data)
+    if (res.data.code == 0) {
+      callback(res.data)
+    } else if (res.data.code == -1) {
+      wx.showModal({
+        title: res.data.message + "11",
+        showCancel: false
+      })
+    }
   })
 }
 
