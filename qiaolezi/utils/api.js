@@ -414,7 +414,7 @@ function saveUser(callback,data){
       callback(res.data)
     } else if (res.data.code == -1) {
       wx.showModal({
-        title: res.data.message,
+        title: res.data.message+"00",
         showCancel: false
       })
     }
@@ -437,7 +437,7 @@ function exscore(callback, score, type) {
 
   console.log(paramater)
   if (isAPi) {
-    var res = { "code": 0, "message": "suc", "score": 123, "ret": 4, "award_name": "520红包", "award_id": 4, "fcode": 11, "pwd": 11 }
+    var res = { "code":0, "message":"suc","score": 123, "award_id":22, "ret":1, "fcode":11 , "pwd":11 }
     // 失败的例子
     // var res = { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
     callback(res)
@@ -476,7 +476,7 @@ function saveinfo(callback, data) {
 }
 
 /**
- * 完善实物个人信息
+ * 小程序码
  */
 function getQrcode(callback, fid) {
   var paramater = getStorage();

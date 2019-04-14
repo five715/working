@@ -6,7 +6,8 @@ Page({
   data:{
     head:"",
     nick:"",
-    redeem:[], //已兑换棒签
+    redeem: [], //已兑换棒签
+    idCard: ["", ""],
     score: 200, //积分
     redcount:0,
     imagesUrl: app.globalData.imagesUrl,

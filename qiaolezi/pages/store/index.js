@@ -66,26 +66,30 @@ Page({
   },
   onBtnHintYes(e) {
     var _this = this;
+    if(_this.isReddem) return
+    _this.isReddem = true
     var objs = _this.data.redeems
     var userInfo = _this.data.userInfo
     var id = _this.id;
     console.log(objs)
     var type = objs[id].type
     app.api.exscore(function(data){
+      _this.isReddem = false
       console.log(data)
       _this.data.award_id = data.award_id
       if(data.code==0){
-        if (objs[id].type > 0 && objs[id].type < 4) {
+        if (data.ret > 0 && data.ret < 4) {
+          var name = data.ret == 1 ? "爱奇艺7天" : (data.ret == 2 ? "爱奇艺月卡" : (data.ret == 3 && "爱奇艺季卡"))
           _this.setData({
             popup: 'LuckHint',
-            hintText: [`恭喜你，获得${data.award_name}奖品`, `卡号:${data.fcode}`, `卡号:${data.pwd}`]
+            hintText: [`恭喜你，获得${name}奖品`, `卡号:${data.fcode}`, `密码:${data.pwd}`]
           })
-        }else if(objs[id].type==4){
+        } else if (data.ret==4){
           _this.setData({
             popup: 'entity',
             redType:2
           })
-        } else if (objs[id].type == 5){
+        } else if (data.ret == 5){
           _this.setData({
             popup: 'entity',
             redType: 3
@@ -149,7 +153,7 @@ Page({
               if(data.ret>0 && data.ret <4){
                 _this.setData({
                   popup: 'LuckHint',
-                  hintText: [`恭喜你，获得${data.award_name}奖品`, `卡号:${data.fcode}`, `卡号:${data.pwd}`]
+                  hintText: [`恭喜你，获得${data.award_name}奖品`, `卡号:${data.fcode}`, `密码:${data.pwd}`]
                 })
               }else if(data.ret == 4){
                 _this.setData({

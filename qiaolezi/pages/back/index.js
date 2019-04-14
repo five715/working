@@ -97,7 +97,7 @@ Page({
     var _this = this
     // const scene = decodeURIComponent(query.q)
     // const scene = "https://www.baidu.com?18"
-    const fid = query.url
+    const fid = query.fid
     // var fid = scene.split("?")[1];
     console.log(query,fid)
 

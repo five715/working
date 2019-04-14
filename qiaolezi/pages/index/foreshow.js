@@ -19,7 +19,7 @@ Page({
     hintText: ["该串码已被使用~"],
     imagesUrl: app.globalData.imagesUrl,
     videoUrl: app.globalData.videoUrl,
-    popup: 'info',
+    popup: false,
     redType: 1,
     videoLeft:0
   },
@@ -183,9 +183,19 @@ Page({
   onExcode(e) {
     var _this = this;
     var code = _this.code || _this.data.excode
-    console.log(e)
+    console.log(e,code)
+    if(code.length!==13) {
+      _this.setData({
+        popup: 'hint',
+        hintText: ['需要13位兑换码']
+      })
+      return
+    }
+    if (_this.isExcode) return
+    _this.isExcode = true
     var paramater = app.api.getStorage()
     app.api.excode(function (data) {
+      _this.isExcode = false
       var search = `?lid=${data.lid}&openid=${paramater.loginData}`
       console.log(data, search, paramater)
       _this.data.award_id = data.award_id

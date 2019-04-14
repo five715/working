@@ -94,11 +94,12 @@ Page({
     // ctx.drawImage(`/images/create_style_hint.png`, 84, 981+40, 178, 32)
     ctx.drawImage(`/images/create_text_${_this.selects}.png`, 186, 731, 377, 31)
 
+    var s = ['说唱', '民谣', '摇滚', '中国风']
     ctx.setFontSize(30)
     ctx.setStrokeStyle("#ff60d2")
     ctx.setLineWidth(0.8)
     ctx.setFillStyle("#ffffff")
-    var text = simona.replace("&", ['说唱', '民谣', '摇滚', '中国风'][_this.style])
+    var text = simona.replace("&", s[_this.style])
     console.log(text,text.length)
     if(text.length)
     var arr = []
@@ -209,7 +210,6 @@ Page({
     wx.getSetting({
       success: function(res) {
         console.log(res)
-        if(res.authSetting["scope.writePhotosAlbum"]){
           wx.saveImageToPhotosAlbum({
             filePath: src,
             success:(res)=>{
@@ -220,7 +220,7 @@ Page({
               })
             }
           })
-        }else{
+      if(res.authSetting["scope.writePhotosAlbum"] == false){
           wx.showModal({
             title: '未打开保存权限',
             content: '是否前往打开',

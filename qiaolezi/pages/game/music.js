@@ -295,11 +295,13 @@ Page({
     var arr = _this.data.arr;
     // console.log(JSON.parse(JSON.stringify(arr)), JSON.stringify(arr).replace(/"/g,"'"))
     app.api.saveFile(function(data){
-      console.log(data)
+      console.log(data, data.status == 0 ? '提交成功' : (data.status == 1 && '提交作品加1分'))
+      var title = data.status == 0 ? '提交成功' : (data.status == 1 && '提交作品加1分')
       wx.showModal({
-        title: data.status == 0 ? '提交成功' : (data.status == 1 && '提交作品加1分'),
+        title: title,
         showCancel: false,
-        complete() {
+        complete(e) {
+          console.log(e)
           wx.navigateTo({
             url: `create?fid=${data.fid}&selects=${_this.data.select}&style=${_this.data.style}`
           })

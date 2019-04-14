@@ -5,7 +5,7 @@
     <image class='boxes' src='{{imagesUrl}}/store_oneself_bg.png'></image>
     <image class='head' src='{{userInfo.head}}'></image>
     <text class='nick'>{{userInfo.nick}}</text>
-    <text class='score'>{{userInfo.score}}积分</text>
+    <text class='score'>{{userInfo.score}}心跳</text>
   </view> 
   <!-- 兑奖区 -->
   <view class='redeem'>

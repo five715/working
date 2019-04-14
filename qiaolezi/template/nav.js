@@ -6,7 +6,7 @@ function onBtnRule(e){
 }
 function onBtnHome(e){
   wx.navigateTo({
-    url: '/pages/index/index?isSkip=true',
+    url: '/pages/index/foreshow?isSkip=true',
   })
 }
 

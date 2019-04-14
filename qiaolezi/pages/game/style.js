@@ -58,7 +58,7 @@ Page({
   },
   onBtnRight(e) {
     this.funcStop()
-    wx.navigateTo({
+    wx.redirectTo({
       url: `music?select=${app.globalData.select}&style=${app.globalData.style}&text=${app.globalData.text}`,
     })
   },

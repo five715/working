@@ -21,6 +21,7 @@ function onClose(e) {
 
 function upfile(e) {
   var id = e.currentTarget.id
+  console.log(id)
   var _this = this;
   wx.chooseImage({
     count: 1,
