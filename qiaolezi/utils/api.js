@@ -399,7 +399,7 @@ function saveUser(callback,data){
     return
   }
 
-  for(var d in data) paramater[d] = data[d]
+  for(var d in data) paramater[d] = data[d] || "null"
 
   console.log(paramater)
   if(isAPi){
@@ -414,7 +414,7 @@ function saveUser(callback,data){
       callback(res.data)
     } else if (res.data.code == -1) {
       wx.showModal({
-        title: res.data.message+"00",
+        title: res.data.message,
         showCancel: false
       })
     }
@@ -460,7 +460,7 @@ function saveinfo(callback, data) {
     return
   }
 
-  for (var d in data) paramater[d] = data[d]
+  for (var d in data) paramater[d] = data[d] || "null"
 
   console.log(paramater)
   if (isAPi) {
@@ -475,7 +475,7 @@ function saveinfo(callback, data) {
       callback(res.data)
     } else if (res.data.code == -1) {
       wx.showModal({
-        title: res.data.message + "11",
+        title: res.data.message,
         showCancel: false
       })
     }

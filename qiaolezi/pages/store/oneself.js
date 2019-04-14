@@ -20,6 +20,7 @@ Page({
   onClose: popup.onClose,
   upfile: popup.upfile,
   formSubmit: popup.formSubmit,
+  formSubmitEntity: popup.formSubmitEntity,
   onLoad(e){
     var _this = this;
     app.api.getUserInfo(function(data){

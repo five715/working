@@ -74,6 +74,8 @@ image,page{width: 100%;height: 100%;display: block}
 .popup_hint_yes{left: 139rpx;}
 .popup_hint_no{left: 458rpx;}
 
+.popup_btn_yes{left: 300.5rpx}
+
 /* 弹窗End */
 .none{display: none}
 .block{display: block}

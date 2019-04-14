@@ -106,4 +106,14 @@
     </view>
     <image class='close' bindtap='onClose' src='/images/ioc_close.png'></image>
   </view>
+
+  
+  <view wx:if="{{popup == 'hintMusic'}}" class='popup_hint '>
+    <image class='boxes' src='/images/popup_hint.png'></image>
+    <view class="text">
+      <text wx:for="{{hintText}}" wx:key="">{{item}}</text>
+    </view>
+    <button data-nav="{{hintNav}}" plain="true" hover-class="none" bindtap='onbtnHintMusic' class='popup_hint_btn popup_hint_yes popup_btn_yes'>是</button>
+    <image class='close' bindtap='onClose' src='/images/ioc_close.png'></image>
+  </view>
 </view>

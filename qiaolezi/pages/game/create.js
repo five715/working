@@ -33,9 +33,9 @@ Page({
     var _this = this;
     if (_this.data.pic) return
     console.log(_this.data.fid)
-    // wx.getUserInfo({
-    //   success(user){
-    //     console.log(user)
+    wx.getUserInfo({
+      success(user){
+        console.log(user)
         wx.showLoading({
           title: '图片生成中'
         })
@@ -45,35 +45,35 @@ Page({
         //     console.log(res)
         //     // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
         //     if (res.statusCode === 200) {
-        //       _this.setData({
+              _this.setData({
         //         locolurl: res.tempFilePath,//将下载下来的地址给data中的变量变量
-        //         nickName:user.userInfo.nickName
-        //       });
+                nickName:user.userInfo.nickName
+              });
               _this.onCreateQrcode(_this.data.fid)
     //         }
     //       }, fail: res => {
     //         console.log(res);
     //       }
     //     })
-    //   },
-    //   fail(res){
-    //     wx.showModal({
-    //       title: '未打开',
-    //       content: '是否前往打开',
-    //       success(res) {
-    //         if (res.confirm) {
-    //           wx.openSetting({
-    //             success:(res)=>{
-    //               console.log("打开")
-    //             }
-    //           })
-    //         } else if (res.cancel) {
+      },
+      fail(res){
+        wx.showModal({
+          title: '未打开',
+          content: '是否前往打开',
+          success(res) {
+            if (res.confirm) {
+              wx.openSetting({
+                success:(res)=>{
+                  console.log("打开")
+                }
+              })
+            } else if (res.cancel) {
 
-    //         }
-    //       }
-    //     })
-    //   }
-    // })
+            }
+          }
+        })
+      }
+    })
   },
   onPicture(){
     var _this = this
@@ -90,7 +90,7 @@ Page({
     ctx.drawImage(`/images/create_iocs.png`, 177, 486, 408, 156)
     ctx.drawImage(`/images/create_text_bg.png`, 41, 676, 668, 135)
     ctx.drawImage(`/images/create_qrcode_bg.png`, 494, 910, 172, 188)
-    ctx.drawImage(`/images/create_style.png`, 58, 887, 192, 86)
+    ctx.drawImage(`/images/create_style.png`, 58, 887, 77, 86)
     // ctx.drawImage(`/images/create_style_hint.png`, 84, 981+40, 178, 32)
     ctx.drawImage(`/images/create_text_${_this.selects}.png`, 186, 731, 377, 31)
 
@@ -99,7 +99,7 @@ Page({
     ctx.setStrokeStyle("#ff60d2")
     ctx.setLineWidth(0.8)
     ctx.setFillStyle("#ffffff")
-    var text = simona.replace("&", s[_this.style])
+    var text = simona.replace("&", s[_this.style-1])
     console.log(text,text.length)
     if(text.length)
     var arr = []
@@ -114,8 +114,13 @@ Page({
       ctx.fillText(a, 84, 1008 + interval * i)
       ctx.strokeText(a, 84, 1008 + interval * i)
     })
-    ctx.fillText('邀你扫码倾听', 84, 1008 + interval * (arr.length+1))
-    ctx.strokeText('邀你扫码倾听', 84, 1008 + interval * (arr.length+1))
+
+    ctx.fillText('邀你扫码倾听', 84, 1008 + interval * (arr.length + 1))
+    ctx.strokeText('邀你扫码倾听', 84, 1008 + interval * (arr.length + 1))
+
+    ctx.setFontSize(40)
+    ctx.fillText(_this.data.nickName, 136, 968)
+    ctx.strokeText(_this.data.nickName, 136, 968)
 
     ctx.rect(519, 919,105,104)
     ctx.setFillStyle('#ffffff')

@@ -1,4 +1,4 @@
-.indexVideo{position: absolute; top: 0;left: 0;z-index: 9;width: 750rpx;height: 1500rpx;}
+.indexVideo{position: fixed; top: 0;left: 0;z-index: 9;width: 750rpx;height: 1500rpx;}
 
 .index{position: fixed; top: 0}
 .index_bg{width: 750rpx; height: 1500rpx;}
@@ -20,9 +20,9 @@
 .index .info input{position: absolute;top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box;padding:0 26rpx; font-size: 22rpx; color: #511b10;}
 
 .index_btn_info{position: absolute; top: 822rpx; left: 485rpx; width: 262rpx; height: 86rpx;}
-.index_btn_rule{position: absolute; top: 970rpx; left: 613rpx; width: 118rpx; height: 26rpx;}
+.index_btn_rule{position: absolute; top: 1030rpx; left: 613rpx; width: 118rpx; height: 26rpx;}
 
-.index_btn_store{position: absolute; top: 970rpx; left: 0rpx;}/*商城*/
+.index_btn_store{position: absolute; top: 1030rpx; left: 0rpx;}/*商城*/
 
 .index_product{position: absolute; top: 912rpx; left: 150rpx; width: 440rpx; height: 215rpx;}
 
@@ -43,7 +43,7 @@
 
 
 /* 新 */
-.home{position: absolute; z-index: 9; top: 0; left: 0;width: 750rpx; height: 1500rpx;}
+.home{position: fixed; z-index: 9; top: 0; left: 0;width: 750rpx; height: 1500rpx;}
 .home .musicBox{position: absolute; top: 615rpx; left: 228rpx; width: 306rpx; height: 262rpx;}
 .home .per{position: absolute; top: 509rpx;color: #ffffff; text-align: center; width: 100%; display: inline-block; line-height: 100rpx;}
 .home .btn_play{position: absolute; top: 874rpx; left: 43rpx; width: 668rpx; height: 149rpx;}

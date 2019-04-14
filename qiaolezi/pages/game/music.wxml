@@ -50,6 +50,8 @@
   <image class='create' src='{{imagesUrl}}/advance_btn_create.png' bindtap="onCreate"></image>
 </view>
 
+<include src="/template/popup.wxml"/>
+
 <!--index.wxml-->
 <!-- <view class="made" wx:if="{{!isAdvance}}">
   <view class="audio" bindtap='onAudio' style="color:{{item.color}}" wx:for="{{sounds}}" wx:key="" wx:for-index="i" id="beats{{i}}" data-i="{{i}}" data-src="/sounds/{{item.src}}.mp3" data-bt="{{item.bt}}">{{item.name}}</view>

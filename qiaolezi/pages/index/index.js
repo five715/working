@@ -10,24 +10,25 @@ Page({
     isGuide: false,
     idCard: ["", ""],
     excode: "", //棒签兑换码
-    isOne : true,
+    isOne: true,
     openRed: false,
-    per:0,
-    isVideo:true,
+    per: 0,
+    isVideo: true,
     search: '',
-    hint:false,
+    hint: false,
     hintText: ["该串码已被使用~"],
     imagesUrl: app.globalData.imagesUrl,
     videoUrl: app.globalData.videoUrl,
-    popup:false,
-    redType:1,
+    popup: false,
+    redType: 1,
+    videoLeft: 0
   },
   onBtnRule: nav.onBtnRule,
   onGuide: popup.onGuide,
   onClose: popup.onClose,
   upfile: popup.upfile,
   formSubmit: popup.formSubmit,
-  onOver(){
+  onOver() {
     this.setData({
       popup: 'hintOver',
       hintText: ['巧乐兹扫码抢红包活动已结束', '不过巧乐兹”喜欢就给他点颜色“活动', '仍在进行, 快来MIX你的炫彩音乐吧!']
@@ -63,15 +64,15 @@ Page({
       excode: e.detail.value
     })
   },
-  onReady(e){
+  onReady(e) {
     this.videoContext = wx.createVideoContext('indexVideo')
   },
-  onShow(){
-    if (this.data.isOne) return false;
-    this.setData({
-      openRed: false
-    })
-  },
+  // onShow() {
+  //   if (this.data.isOne) return false;
+  //   this.setData({
+  //     openRed: false
+  //   })
+  // },
   onLoad(query) {
     var _this = this;
     if (query.isSkip) _this.bindended()
@@ -99,28 +100,33 @@ Page({
       _this.onExcode()
     }
   },
-  bindtimeupdate(e){
-    var c = e.detail.currentTime,
-        d = e.detail.duration;
-      if(c/d>0.9){
-        this.bindended()
-      }
+  bindplay(e) {
+    console.log(e)
+    setTimeout(this.bindended, 5000)
   },
-  bindended(e){
+  bindtimeupdate(e) {
+    var c = e.detail.currentTime,
+      d = e.detail.duration;
+    if (c / d > 0.9) {
+      this.bindended()
+    }
+  },
+  bindended(e) {
     app.globalData.bgm.play()
     // this.videoContext.seek(4.5)
     this.setData({
       isVideo: false,
-      per: -1
+      per: -1,
+      videoLeft: "850"
     })
   },
-  bindprogress(e){
+  bindprogress(e) {
     var _this = this;
-    if(!_this.data.isVideo) return false;
+    if (!_this.data.isVideo) return false;
     var per = e.detail.buffered
     _this.setData({
       per: per
-    },function(){
+    }, function () {
       if (per >= 100) {
         _this.videoContext.play();
         _this.setData({
@@ -134,7 +140,7 @@ Page({
     var click = e.target.dataset.click;
 
     console.log(e)
-    if (!e.detail.userInfo){
+    if (!e.detail.userInfo) {
       //拒绝授权
       console.log("拒绝授权")
       return false
@@ -143,7 +149,7 @@ Page({
     app.globalData.userInfo = e.detail.userInfo
     wx.checkSession({
       success: (res) => {
-        if(!click) _this.onExcode();
+        if (!click) _this.onExcode();
         else _this.onClick(click)
       },
       fail: (res) => {
@@ -154,7 +160,7 @@ Page({
       }
     })
   },
-  onClick(click){
+  onClick(click) {
     var _this = this
     console.log(click)
     if (click == "onBtnStore") {
@@ -165,9 +171,9 @@ Page({
       _this.onPlay();
     }
   },
-  onLogin(userInfo,callback) {
+  onLogin(userInfo, callback) {
     var _this = this;
-    app.api.login(function(data) {
+    app.api.login(function (data) {
       console.log(data)
       if (data.code == 0) {
         callback()
@@ -177,22 +183,32 @@ Page({
   onExcode(e) {
     var _this = this;
     var code = _this.code || _this.data.excode
-    console.log(e)
+    console.log(e, code)
+    if (code.length !== 13) {
+      _this.setData({
+        popup: 'hint',
+        hintText: ['需要13位兑换码']
+      })
+      return
+    }
+    if (_this.isExcode) return
+    _this.isExcode = true
     var paramater = app.api.getStorage()
-    app.api.excode(function(data) {
+    app.api.excode(function (data) {
+      _this.isExcode = false
       var search = `?lid=${data.lid}&openid=${paramater.loginData}`
       console.log(data, search, paramater)
       _this.data.award_id = data.award_id
-      if(data.code == -1){
+      if (data.code == -1) {
         _this.setData({
-          popup:'hint',
-          hintText:[data.message]
+          popup: 'hint',
+          hintText: [data.message]
         })
         return false
       }
-      if(data.ret == 6){
+      if (data.ret == 6) {
         _this.setData({
-          popup:'info'
+          popup: 'info'
         })
         return false;
       }
@@ -205,10 +221,10 @@ Page({
         success: function (res) {
           console.log(res)
         },
-        fail: function (res) { 
+        fail: function (res) {
           console.log(res)
         },
-        complete: function (res) { 
+        complete: function (res) {
           console.log(res)
         }
       })
@@ -221,8 +237,8 @@ Page({
     }, code, _this.code ? 2 : 1)
 
   },
-  onBtnOpen(e){
-    var _this =this;
+  onBtnOpen(e) {
+    var _this = this;
     var search = _this.data.search
     _this.data.isOne = false
     wx.navigateTo({

@@ -56,6 +56,13 @@ function upfile(e) {
 function formSubmit(e) {
   var _this = this;
   var obj = e.detail.value;
+  if (!e.detail.value.name) {
+    wx.showModal({
+      title: '请输入姓名',
+      showCancel: false
+    })
+    return false
+  }
   obj.award_id = _this.data.award_id
   obj.imageup = _this.data.idCard[0]
   obj.imagedown = _this.data.idCard[1]
@@ -92,6 +99,13 @@ function formSubmit(e) {
 function formSubmitEntity(e) {
   var _this = this;
   var obj = e.detail.value;
+  if (!e.detail.value.name) {
+    wx.showModal({
+      title: '请输入姓名',
+      showCancel: false
+    })
+    return false
+  }
   obj.award_id = _this.data.award_id
   obj.type = _this.data.redType
   if(obj.type == 1) {
@@ -107,11 +121,17 @@ function formSubmitEntity(e) {
 }
 
 
+function onbtnHintMusic(e){
+  wx.navigateTo({
+    url: e.currentTarget.dataset.nav
+  })
+}
 
 module.exports = {
   onGuide: onGuide,
   onClose: onClose,
   upfile: upfile,
   formSubmit: formSubmit,
-  formSubmitEntity: formSubmitEntity
+  formSubmitEntity: formSubmitEntity,
+  onbtnHintMusic: onbtnHintMusic
 }
