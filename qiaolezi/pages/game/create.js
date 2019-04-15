@@ -256,7 +256,7 @@ Page({
     var _this = this;
     return {
       title: 'qiaolezi',
-      path: `/pages/back/index?${_this.data.fid}`,
+      path: `/pages/back/index?fid=${_this.data.fid}`,
       imageUrl:""
     }
   }

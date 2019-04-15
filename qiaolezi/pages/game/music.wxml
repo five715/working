@@ -11,7 +11,7 @@
       <view wx:elif="{{item.music == 2}}"class='audio timer'>
         <image class='boxes' src='{{imagesUrl}}/music_beats_timer.png'></image>
         <block wx:if="{{!isStart}}">
-          <image class='hint_text' bindtap='onStart' src='{{imagesUrl}}/music_hint.png'></image>
+          <image class='hint_text' bindtap='onStart' src='{{imagesURL}}/music_hint.png'></image>
         </block>
         <block wx:else>
           <text>{{bgTimer/1000-time}}</text>

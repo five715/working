@@ -59,7 +59,9 @@ Page({
       if (t >= arr.t && !arr.s) {
         console.log(a, t, arr)
         _this.data.audios[arr.id].stop()
-        _this.data.audios[arr.id].play()
+        setTimeout(function () {
+          _this.data.audios[arr.id].play()
+        }, 70)
         // obj[arr.id.split("beats")[1]].color = '#000';
         arr.s = true
       }

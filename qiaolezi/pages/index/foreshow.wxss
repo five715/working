@@ -1,4 +1,4 @@
-.indexVideo{position: fixed; top: 0;left: 0;z-index: 9;width: 750rpx;height: 1500rpx;}
+.indexVideo{position: fixed; top: 0;left: 0;z-index: 99;width: 750rpx;height: 1500rpx;}
 
 .index{position: fixed; top: 0}
 .index_bg{width: 750rpx; height: 1500rpx;}
@@ -46,12 +46,12 @@
 .home{position: fixed; z-index: 9; top: 0; left: 0;width: 750rpx; height: 1500rpx;}
 .home .musicBox{position: absolute; top: 615rpx; left: 228rpx; width: 306rpx; height: 262rpx;}
 .home .per{position: absolute; top: 509rpx;color: #ffffff; text-align: center; width: 100%; display: inline-block; line-height: 100rpx;}
-.home .btn_play{position: absolute; top: 874rpx; left: 43rpx; width: 668rpx; height: 149rpx;}
-.home .btn_rule{position: absolute; top: 1136rpx; left: 106rpx; width: 212rpx; height: 65rpx;}
-.home .btn_store{position: absolute; top: 1136rpx; left: 439rpx; width: 212rpx; height: 65rpx;}
-.home .btn_info{position: absolute; top: 1028rpx; left: 469rpx; width: 251rpx; height: 108rpx;}
-.home .input_hint{position: absolute; top: 1070rpx; left: 75rpx; width: 389rpx; height: 22rpx;}
-.home .input{position: absolute; top: 1050rpx; left: 72rpx; width: 396rpx; height: 57rpx;box-sizing: border-box; font-size: 22rpx; color: #511b10;}
+.home .btn_play{position: absolute; top: 854rpx; left: 43rpx; width: 668rpx; height: 149rpx;}
+.home .btn_rule{position: absolute; top: 1116rpx; left: 106rpx; width: 212rpx; height: 65rpx;}
+.home .btn_store{position: absolute; top: 1116rpx; left: 439rpx; width: 212rpx; height: 65rpx;}
+.home .btn_info{position: absolute; top: 1018rpx; left: 469rpx; width: 251rpx; height: 108rpx;}
+.home .input_hint{position: absolute; top: 1060rpx; left: 75rpx; width: 389rpx; height: 22rpx;}
+.home .input{position: absolute; top: 1040rpx; left: 72rpx; width: 396rpx; height: 57rpx;box-sizing: border-box; font-size: 22rpx; color: #511b10;}
 .home .bg{background:rgba(0,0,0,0);}
 .home .note{position: absolute; top: 409rpx; left: 140rpx; width: 153rpx; height: 343rpx;z-index: 2}
 .home .iocs .ioc{position: absolute;top: 704rpx; left: 98rpx; width: 114rpx; height: 116rpx; animation: move 0.3s alternate infinite linear}

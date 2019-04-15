@@ -2,7 +2,7 @@
 
 
 
-.music .hint_text{position: absolute; top: 34rpx; left: 0; width: 200rpx; height: 213rpx;}
+.music .hint_text{position: absolute; top: 24rpx; left: 0; width: 200rpx; height: 250rpx;}
 .music .timer_boxes{position: absolute; top: 95rpx; left: 17rpx; width:164rpx; height:119rpx;}
 .music .timer_boxes_a{animation: size 0.5s infinite alternate;}
 
@@ -20,7 +20,7 @@
 .music .per_bg_2{top:0; right: 0; width: 6rpx; height: 100%;}
 .music .per_bg_3{bottom: 0;left: 0; width: 100% ;height: 6rpx;transform: rotate(180deg)}
 .music .per_bg_4{top: 0;left: 0; width: 6rpx; height: 100%;transform: rotate(180deg)}
-.music .per{position: absolute; top: 0;left: 0; width: 100%; height: 100%; background: red;}
+.music .per{position: absolute; top: 0;left: 0; width: 100%; height: 100%; background: #47290f;}
 
 
 

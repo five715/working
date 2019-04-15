@@ -21,7 +21,8 @@ Page({
     videoUrl: app.globalData.videoUrl,
     popup: false,
     redType: 1,
-    videoLeft:0
+    videoLeft:0,
+    videoMuted:false
   },
   onBtnRule: nav.onBtnRule,
   onGuide: popup.onGuide,
@@ -67,19 +68,26 @@ Page({
   onReady(e) {
     this.videoContext = wx.createVideoContext('indexVideo')
   },
-  // onShow() {
-  //   if (this.data.isOne) return false;
+  onShow() {
+  //   console.log(this.data.isOne, 321)
+  //   if (!this.data.isOne) return false;
+  //   this.data.isOne = false
   //   this.setData({
   //     openRed: false
   //   })
-  // },
+    if (!this.data.isVideo) app.globalData.bgm.play()
+  },
+  onUnload(e){
+    app.globalData.bgm.stop()
+  },
   onLoad(query) {
     var _this = this;
     if (query.isSkip) _this.bindended()
+
     console.log(query)
     const scene = decodeURIComponent(query.q)
     // const scene = "https://qiaolezi.act.qq.com/e/c/code/5";
-    // const scene = "https://qiaolezi.act.qq.com/e/c/code/XXXXXXXYYYYY";
+    // const scene = "https://qiaolezi.act.qq.com/e/c/code/XXXXXXXYYYYYY";
     // const scene = "https://qiaolezi.act.qq.com/e/c/code/"
     // const scene = "https://qiaolezi.act.qq.com/e/c/code/fid=19"
     if (!scene || scene == 'undefined') return false
@@ -89,16 +97,6 @@ Page({
     var _this = this;
     var arr = scene.split("/");
     _this.code = arr[arr.length - 1]
-    // if(_this.code.indexOf("fid") !== -1){
-    //   wx.navigateTo({
-    //     url: '/pages/back/index'
-    //   })
-    //   return false
-    // }
-    if (_this.code.length == 13) {
-      //带兑换码进入
-      _this.onExcode()
-    }
   },
   bindplay(e){
     console.log(e)
@@ -112,12 +110,28 @@ Page({
     }
   },
   bindended(e) {
+    var _this = this;
     app.globalData.bgm.play()
-    // this.videoContext.seek(4.5)
+    this.videoContext.seek(5)
     this.setData({
       isVideo: false,
       per: -1,
-      videoLeft:"850"
+      videoLeft:"850",
+      videoMuted:true
+    })
+    if(!_this.code) return false
+    //带兑换码进入
+    wx.getUserInfo({
+      success(e) {
+        _this.onExcode()
+      },
+      fail(e) {
+        console.log(e)
+        _this.setData({
+          popup: "impower",
+          hintText: ['请点击打开用户信息权限']
+        })
+      }
     })
   },
   bindprogress(e) {
@@ -138,7 +152,6 @@ Page({
   getUserInfo(e) {
     var _this = this;
     var click = e.target.dataset.click;
-
     console.log(e)
     if (!e.detail.userInfo) {
       //拒绝授权
@@ -146,6 +159,9 @@ Page({
       return false
     }
 
+    _this.setData({
+      popup: false
+    })
     app.globalData.userInfo = e.detail.userInfo
     wx.checkSession({
       success: (res) => {
@@ -165,10 +181,12 @@ Page({
     console.log(click)
     if (click == "onBtnStore") {
       _this.onBtnStore();
+      app.globalData.bgm.stop()
     } else if (click == "onBtnRule") {
       _this.onBtnRule();
     } else if (click == "onPlay") {
       _this.onPlay();
+      app.globalData.bgm.stop()
     }
   },
   onLogin(userInfo, callback) {
@@ -196,6 +214,7 @@ Page({
     var paramater = app.api.getStorage()
     app.api.excode(function (data) {
       _this.isExcode = false
+      _this.code = null
       var search = `?lid=${data.lid}&openid=${paramater.loginData}`
       console.log(data, search, paramater)
       _this.data.award_id = data.award_id

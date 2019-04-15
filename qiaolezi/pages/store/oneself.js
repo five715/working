@@ -26,10 +26,10 @@ Page({
     app.api.getUserInfo(function(data){
       console.log(data)
 
-      data.data.forEach((d,i)=>{
-        console.log(d.award_name)
-        // if(d.award_name.indexOf("oppo")!= -1 || )
-      })
+      // data.data.forEach((d,i)=>{
+      //   console.log(d.award_name)
+      //   // if(d.award_name.indexOf("oppo")!= -1 || )
+      // })
       _this.setData({
         score: data.score,
         redeem:data.data,
@@ -42,7 +42,9 @@ Page({
   saveuser(e){
     var _this = this;
     var code = e.currentTarget.dataset.code
-    console.log(e, code)
+    var id = e.currentTarget.dataset.id
+    console.log(e, code,id)
+    _this.data.award_id = id
     switch (code) {
       case "20002":
         //52红包
@@ -54,15 +56,15 @@ Page({
         break;
       case "2204":
         //oppo
-        _this.setData({ popup: 'oppo', redType: 4})
+        _this.setData({ popup: 'oppo', redType: 1})
         break;
       case "3204":
         //baby
-        _this.setData({ popup: 'entity', redType: 5})
+        _this.setData({ popup: 'entity', redType: 2})
         break;
       case "3205":
         //王子异
-        _this.setData({ popup: 'entity', redType: 5})
+        _this.setData({ popup: 'entity', redType: 3})
         break;
     }
   },

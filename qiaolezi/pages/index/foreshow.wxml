@@ -1,6 +1,5 @@
-<video autoplay="{{isVideo}}" id="indexVideo" class='indexVideo' style="left:{{videoLeft}}rpx" muted controls='' show-center-play-btn='' src='{{videoUrl}}/index.mp4' bindtimeupdate='bindtimeupdate' bindprogress='bindprogress' bindplay="bindplay" ></video>
 <view class="home">
-  <view class='boxes {{!isVideo ? "block":"none"}}'>
+  <view class='boxes block}}'>
     <image class='boxes' src='{{imagesUrl}}/home_bg.jpg'></image>
     <button class='btn_play btn bg' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-click="onPlay"></button>
     <button class='btn_rule btn bg' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-click="onBtnRule"></button>
@@ -16,6 +15,7 @@
       <image class='ioc ioc_4' src='{{imagesUrl}}/home_ioc_4.png'></image>
     </view>
   </view>
+<video autoplay="{{isVideo}}" id="indexVideo" class='indexVideo' style="left:{{videoLeft}}rpx" muted='{{videoMuted}}' controls='' show-center-play-btn='' src='{{videoUrl}}/index.mp4' bindtimeupdate='bindtimeupdate' bindprogress='bindprogress' bindplay="bindplay" ></video>
   <view wx:if="{{!isVideo || per != -1}}">
     <text class='per' wx:if="{{isVideo && per != -1}}">{{per}}%</text>
     <image class='musicBox' src='{{imagesUrl}}/index_music_box.png'></image>

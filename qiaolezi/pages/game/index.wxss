@@ -10,4 +10,4 @@
 
 .selects .game_btn_right{position: absolute; top: 923rpx; left: 231rpx; width: 274rpx; height: 99rpx;}
 
-.selects .yes{ transform: scale(1.07)}
+.selects .yes{ transform: scale(1.1)}

@@ -107,16 +107,20 @@ function formSubmitEntity(e) {
     return false
   }
   obj.award_id = _this.data.award_id
+  console.log(_this.data.award_id)
   obj.type = _this.data.redType
-  if(obj.type == 1) {
+  // if(obj.type == 1) {
     obj.imageup = _this.data.idCard[0]
     obj.imagedown = _this.data.idCard[1]
-  }
+  // }
   console.log(e, obj, app)
 
   app.api.saveinfo(function(data){
     console.log(data)
-
+    _this.setData({
+      popup:"hintSubmit",
+      hintText:["提交成功"]
+    })
   },obj)
 }
 
