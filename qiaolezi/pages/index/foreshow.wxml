@@ -1,6 +1,6 @@
 <view class="home">
   <view class='boxes block}}'>
-    <image class='boxes' src='{{imagesUrl}}/home_bg.jpg'></image>
+    <image class='boxes' src='/images/home_bg.jpg'></image>
     <button class='btn_play btn bg' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-click="onPlay"></button>
     <button class='btn_rule btn bg' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-click="onBtnRule"></button>
     <button class='btn_store btn bg' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-click="onBtnStore"></button>

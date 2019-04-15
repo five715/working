@@ -232,7 +232,7 @@ Page({
         return false;
       }
       wx.sendBizRedPacket({
-        timeStamp: data.timeStamp, // 支付签名时间戳，
+        timeStamp: data.timeStamp+"", // 支付签名时间戳，
         nonceStr: data.nonceStr, // 支付签名随机串，不长于 32 位
         package: data.package, //扩展字段，由商户传入
         signType: 'MD5', // 签名方式，
