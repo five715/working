@@ -118,9 +118,15 @@ Page({
     ctx.fillText('邀你扫码倾听', 84, 1008 + interval * (arr.length + 1))
     ctx.strokeText('邀你扫码倾听', 84, 1008 + interval * (arr.length + 1))
 
+
+    var nick = _this.data.nickName;
+    if(nick.length > 8) {
+      nick = nick.substr(0,8)+"..."
+    }
+    
     ctx.setFontSize(40)
-    ctx.fillText(_this.data.nickName, 136, 968)
-    ctx.strokeText(_this.data.nickName, 136, 968)
+    ctx.fillText(nick, 136, 968)
+    ctx.strokeText(nick, 136, 968)
 
     ctx.rect(519, 919,105,104)
     ctx.setFillStyle('#ffffff')

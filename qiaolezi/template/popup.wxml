@@ -28,7 +28,7 @@
       <input class='name' name="name" type='text'></input>
       <input class='phone' name="tel" type='number' maxlength='11'></input>
       <input class='email' name="email" type='text'></input>
-      <input class='addr' name="text" type='text'></input>
+      <input class='addr' name="addr" type='text'></input>
     </view>
     <view class='upfiles'>
       <image class='boxes' src='{{imagesUrl}}/popup_info_upfiles.png'></image>

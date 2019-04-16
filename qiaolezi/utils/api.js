@@ -399,7 +399,7 @@ function saveUser(callback,data){
     return
   }
 
-  for(var d in data) paramater[d] = data[d] || "null"
+  for(var d in data) paramater[d] = data[d] || null
 
   console.log(paramater)
   if(isAPi){
@@ -460,7 +460,7 @@ function saveinfo(callback, data) {
     return
   }
 
-  for (var d in data) paramater[d] = data[d] || "null"
+  for (var d in data) paramater[d] = data[d] || null
 
   console.log(paramater)
   if (isAPi) {

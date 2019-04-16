@@ -46,7 +46,7 @@ Page({
     }else{
       this.setData({
         popup:"hint",
-        hintText: ['请选择你喜欢的文案']
+        hintText: ['请选择你喜欢的棒签']
       })
     }
 

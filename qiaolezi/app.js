@@ -9,7 +9,8 @@ App({
     api.init();
 
     this.globalData.bgm = wx.createInnerAudioContext()
-    this.globalData.bgm.src = `${cdnUrl}/music/bgm.mp3`
+    // this.globalData.bgm.src = `https://appmusic.gtimg.com/music/641012973/imgs/music/bgm.mp3`
+    this.globalData.bgm.src = `/sounds/bgm.mp3`
     this.globalData.bgm.loop = true
   },
   globalData: {

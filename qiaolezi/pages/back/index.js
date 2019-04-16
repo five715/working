@@ -22,10 +22,17 @@ Page({
     time: 0, //时间
     timer: null, //定时器
     imagesUrl: app.globalData.imagesUrl,
+    isPlay: false,
   },
   onPlay(arr) {
     var _this = this;
     var arr = _this.data.arr
+
+    if (_this.data.isPlay) return
+    _this.data.isPlay = true
+    _this.setData({
+      isPlay: true
+    })
     console.log(arr)
     arr.forEach((arr) => {
       arr.s = false
@@ -46,7 +53,7 @@ Page({
     var obj = _this.data.sounds
     if (t >= _this.data.bgTimer) {
       // _this.timeDate = new Date().getTime();
-      _this.data.audios.bg.stop()
+      _this.funcStop()
       // _this.data.audios.bg.play()
       arrs.forEach((arr) => {
         arr.s = false
@@ -91,6 +98,9 @@ Page({
     var _this = this
     clearInterval(_this.data.timer);
     var audios = _this.data.audios
+    _this.setData({
+      isPlay: false
+    })
     for (var audio in audios) {
       audios[audio].stop();
     }

@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -59,7 +59,7 @@
 					"id": 2,
 					"name": "制作",
 					"pathName": "pages/game/music",
-					"query": "select=1&style=1&text=不许动手,只许动心",
+					"query": "select=1&style=2&text=不许动手,只许动心",
 					"scene": null
 				},
 				{

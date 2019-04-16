@@ -157,6 +157,10 @@ Page({
     var _this = this
     clearInterval(_this.data.timer);
     var audios = _this.data.audios
+
+    _this.setData({
+      isPlay: false
+    })
     for (var audio in audios) {
       audios[audio].stop();
       // console.log(audio.split("sounds"),audio)
@@ -169,6 +173,13 @@ Page({
   onPlay() {
     var _this = this;
     var arr = _this.data.arr
+
+    if (_this.data.isPlay) return
+    _this.data.isPlay = true
+    _this.setData({
+      isPlay: true
+    })
+
     arr.forEach((arr) => {
       arr.s = false
     })
@@ -301,7 +312,7 @@ Page({
     var arr = _this.data.arr;
     // console.log(JSON.parse(JSON.stringify(arr)), JSON.stringify(arr).replace(/"/g,"'"))
     app.api.saveFile(function(data){
-      var title = data.status == 0 ? ['提交成功'] : (data.status == 1 && ['提交作品加1分'])
+      var title = data.status == 0 ? ['提交成功'] : (data.status == 1 && ['提交成功增加1个心跳值'])
       _this.setData({
         popup:"hintMusic",
         hintText:title,

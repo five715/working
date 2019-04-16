@@ -83,8 +83,9 @@ Page({
   onLoad(query) {
     var _this = this;
     if (query.isSkip) _this.bindended()
+    
 
-    console.log(query)
+    console.log(query,this)
     const scene = decodeURIComponent(query.q)
     // const scene = "https://qiaolezi.act.qq.com/e/c/code/5";
     // const scene = "https://qiaolezi.act.qq.com/e/c/code/XXXXXXXYYYYYY";
@@ -111,14 +112,16 @@ Page({
   },
   bindended(e) {
     var _this = this;
+    if(_this.isVideoEnd) return false
     app.globalData.bgm.play()
-    this.videoContext.seek(5)
+    // this.videoContext.seek(5)
     this.setData({
       isVideo: false,
       per: -1,
       videoLeft:"850",
       videoMuted:true
     })
+    _this.isVideoEnd = true
     if(!_this.code) return false
     //带兑换码进入
     wx.getUserInfo({
@@ -202,7 +205,7 @@ Page({
     var _this = this;
     var code = _this.code || _this.data.excode
     console.log(e,code)
-    if(code.length!==13) {
+    if(code.length !== 13) {
       _this.setData({
         popup: 'hint',
         hintText: ['需要13位兑换码']

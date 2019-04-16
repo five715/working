@@ -39,3 +39,16 @@
 .advance .anew{position: absolute; top: 875rpx; left: 198rpx; width: 353rpx; height: 118rpx;}
 .advance .create{position: absolute; top: 1030rpx; left: 198rpx; width: 353rpx; height: 118rpx;}
 .advance .tit{position: absolute; top: 293rpx; left: 113rpx; width: 518rpx; height: 157rpx;}
+
+
+.advance .btn_play_play{position: absolute; top: 367rpx; left: 306rpx; width: 135rpx; height: 153rpx;background:rgba(0,0,0,0);}
+.advance .btn_play_ioc_1{position: absolute; top: 18rpx; left: 148rpx; width: 183rpx; height: 198rpx;animation: move 0.5s alternate infinite linear}
+.advance .btn_play_ioc_2{position: absolute; top: 82rpx; left: 412rpx; width: 141rpx; height: 138rpx;animation: move 0.5s 0.1s alternate infinite linear}
+.advance .btn_play_ioc_3{position: absolute; top: 482rpx; left: 66rpx; width: 155rpx; height: 124rpx;animation: move 0.5s 0.2s alternate infinite linear}
+.advance .btn_play_ioc_4{position: absolute; top: 360rpx; left: 491rpx; width: 166rpx; height: 150rpx;animation: move 0.5s 0.3s alternate infinite linear}
+
+
+@keyframes move{
+  0%{margin-top: 0rpx;}
+  100%{margin-top: -10rpx;}
+}

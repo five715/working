@@ -3,9 +3,9 @@ Page({
   data: {
     styles: [
       { index: 1, text: "说唱", css: "" },
-      { index: 2, text: "民谣", css: "" },
+      { index: 4, text: "民谣", css: "" },
       { index: 3, text: "摇滚", css: "" },
-      { index: 4, text: "中国风", css: "" }
+      { index: 2, text: "中国风", css: "" }
     ],
     obj: [
       "transform: translate3d(50%, 0%, 0px); z-index: 2; animation: move1 0.8s infinite linear alternate ",

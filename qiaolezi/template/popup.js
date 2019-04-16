@@ -53,6 +53,7 @@ function upfile(e) {
     }
   })
 }
+// 52,520红包
 function formSubmit(e) {
   var _this = this;
   var obj = e.detail.value;
@@ -71,7 +72,16 @@ function formSubmit(e) {
   console.log(e, obj,app)
   app.api.saveUser(function(data){
     console.log(data)
+    
+    _this.data.redeem.forEach((redeem, i) => {
+      if (redeem.award_id == obj.award_id) {
+        _this.data.redeem[i].isinfo = 0
+      }
+    })
 
+    _this.setData({
+      redeem: _this.data.redeem
+    })
     wx.sendBizRedPacket({
       timeStamp: data.timeStamp+"", // 支付签名时间戳，
       nonceStr: data.nonceStr, // 支付签名随机串，不长于 32 位
@@ -95,7 +105,7 @@ function formSubmit(e) {
   //   isInfo: false
   // })
 }
-
+// 实物填写新体
 function formSubmitEntity(e) {
   var _this = this;
   var obj = e.detail.value;
@@ -117,9 +127,16 @@ function formSubmitEntity(e) {
 
   app.api.saveinfo(function(data){
     console.log(data)
+    _this.data.redeem.forEach((redeem,i)=>{
+      if(redeem.award_id==obj.award_id){
+        _this.data.redeem[i].isinfo = 0
+      }
+    })
+
     _this.setData({
       popup:"hintSubmit",
-      hintText:["提交成功"]
+      hintText:["提交成功"],
+      redeem:_this.data.redeem
     })
   },obj)
 }

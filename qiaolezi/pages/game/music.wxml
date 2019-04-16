@@ -11,7 +11,7 @@
       <view wx:elif="{{item.music == 2}}"class='audio timer'>
         <image class='boxes' src='{{imagesUrl}}/music_beats_timer.png'></image>
         <block wx:if="{{!isStart}}">
-          <image class='hint_text' bindtap='onStart' src='{{imagesURL}}/music_hint.png'></image>
+          <image class='hint_text' bindtap='onStart' src='{{imagesUrl}}/music_hint.png'></image>
         </block>
         <block wx:else>
           <text>{{bgTimer/1000-time}}</text>
@@ -41,7 +41,13 @@
 <view class="advance pageBg" wx:elif="{{isAdvance}}">
   <image class='boxes' src='{{imagesUrl}}/advance_bg.jpg'></image>
   <image class='tit' src='{{imagesUrl}}/advance_tit.png'></image>
-  <image class='play' src='{{imagesUrl}}/advance_play_{{style}}.png' bindtap='onPlay'></image>
+  <!-- <image class='play' src='{{imagesUrl}}/advance_play_{{style}}.png' bindtap='onPlay'></image> -->
+  
+  <view class='btn_play play'>
+    <image class='boxes heart' src='/images/advance_play_{{style}}.png' ></image>
+    <image class='btn_play_play btn' src='/images/advance_play_{{!isPlay?"yes":"no"}}.png' bindtap='onPlay'></image>
+    <image wx:for="{{[1,2,3,4]}}" wx:key="" class='btn_play_ioc btn_play_ioc_{{item}}' src='/images/advance_play_{{style}}_{{item}}.png'></image>
+  </view>
   <view class='sign'>
     <text>{{text}}</text>
     <image class='boxes' src='{{imagesUrl}}/advance_sign.png'></image>
