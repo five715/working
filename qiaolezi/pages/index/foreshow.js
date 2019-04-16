@@ -204,14 +204,15 @@ Page({
   onExcode(e) {
     var _this = this;
     var code = _this.code || _this.data.excode
-    console.log(e,code)
-    if(code.length !== 13) {
-      _this.setData({
-        popup: 'hint',
-        hintText: ['需要13位兑换码']
-      })
-      return
-    }
+    console.log(e,code,code.length)
+    // if(code.length !== 13) {
+    //   _this.setData({
+    //     popup: 'hint',
+    //     hintText: ['需要13位兑换码']
+    //   })
+    //   return
+    // }
+    // console.log(code.length)
     if (_this.isExcode) return
     _this.isExcode = true
     var paramater = app.api.getStorage()
