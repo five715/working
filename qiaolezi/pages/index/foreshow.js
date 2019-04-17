@@ -288,9 +288,9 @@ Page({
   },
   onShareAppMessage: function () {
     return {
-      title: 'MIX的炫彩音乐 唱给你听～',
+      title: app.globalData.shareTitle[0],
       path: `/pages/index/foreshow`,
-      imageUrl: ""
+      imageUrl: app.globalData.shareImg[0]
     }
   }
 })

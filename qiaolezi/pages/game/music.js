@@ -332,9 +332,9 @@ Page({
   },
   onShareAppMessage: function () {
     return {
-      title: 'qiaolezi',
+      title: app.globalData.shareTitle[0],
       path: `/pages/index/foreshow`,
-      imageUrl: ""
+      imageUrl: app.globalData.shareImg[0]
     }
   }
 })

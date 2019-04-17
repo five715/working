@@ -261,9 +261,9 @@ Page({
   onShareAppMessage: function () {
     var _this = this;
     return {
-      title: '说不出口的话，唱给你听(* /ω＼*)',
+      title: app.globalData.shareTitle[1],
       path: `/pages/back/index?fid=${_this.data.fid}`,
-      imageUrl:""
+      imageUrl: app.globalData.shareImg[1]
     }
   }
 })

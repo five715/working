@@ -23,6 +23,7 @@ Page({
     timer: null, //定时器
     imagesUrl: app.globalData.imagesUrl,
     isPlay: false,
+    isBannedClick: false
   },
   onPlay(arr) {
     var _this = this;
@@ -124,6 +125,9 @@ Page({
           wx.getUserInfo({
             success(e){
               _this.onLogin(e.userInfo)
+              _this.setData({
+                isBannedClick: true
+              })
             }
           })
         }
@@ -184,9 +188,9 @@ Page({
   },
   onShareAppMessage: function () {
     return {
-      title: 'qiaolezi',
+      title: app.globalData.shareTitle[0],
       path: `/pages/index/foreshow`,
-      imageUrl: ""
+      imageUrl: app.globalData.shareImg[0]
     }
   }
 })

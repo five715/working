@@ -3,9 +3,10 @@
   <image class='tit' src='{{imagesUrl}}/back_tit.png'></image>
   <view class='btn_play play'>
     <image class='boxes heart' src='/images/advance_play_{{style}}.png' ></image>
-    <button class='btn_play_play btn' open-type="getUserInfo" bindgetuserinfo="getUserInfo" >
+    <button wx:if="{{!isBannedClick}}" class='btn_play_play btn' open-type="getUserInfo" bindgetuserinfo="getUserInfo" >
       <image class='boxes' src='/images/advance_play_{{!isPlay?"yes":"no"}}.png'></image>
     </button>
+    <image wx:else class='btn_play_play btn' bindtap='onPlay' src='/images/advance_play_{{!isPlay?"yes":"no"}}.png'></image>
     <image wx:for="{{[1,2,3,4]}}" wx:key="" class='btn_play_ioc btn_play_ioc_{{item}}' src='/images/advance_play_{{style}}_{{item}}.png'></image>
   </view>
   <view class='sign' >
