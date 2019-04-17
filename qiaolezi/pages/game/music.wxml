@@ -5,15 +5,15 @@
     <image class='chang' src='{{imagesUrl}}/music_chang.png'></image>
     <image class='duan' style='top:{{scrollPer}}%' src='{{imagesUrl}}/music_duan.png'></image>
   </view>
+  <view wx:if="{{!isStart}}" class='hint_text_view'>
+    <image class='hint_text' bindtap='onStart' src='/images/music_hint.png'></image>
+  </view>
   <scroll-view id="beats" class='beats' scroll-y bindscroll="bindscroll">
     <block  wx:for="{{sounds}}" wx:key="" wx:for-index="i">
       <image wx:if="{{item.music == 1}}" src="{{imagesUrl}}/music_{{item.src}}_{{item.color=='red'?'no':'yes'}}.png" class="audio {{item.src}} {{item.bt==1?'':'lock'}} {{item.color}}" bindtap='onAudio' style="color:{{item.color}}" id="beats{{i}}" data-i="{{i}}" data-src="{{soundsUrl}}/{{item.src}}.mp3" data-bt="{{item.bt}}">{{item.name}}<view class='mack'></view></image>
       <view wx:elif="{{item.music == 2}}"class='audio timer'>
         <image class='boxes' src='{{imagesUrl}}/music_beats_timer.png'></image>
-        <block wx:if="{{!isStart}}">
-          <image class='hint_text' bindtap='onStart' src='{{imagesUrl}}/music_hint.png'></image>
-        </block>
-        <block wx:else>
+        <block>
           <text>{{bgTimer/1000-time}}</text>
           <image class='timer_boxes {{isStart && per<100?"timer_boxes_a":""}}' src="{{imagesUrl}}/music_timer_boxes.png"></image>
         </block>

@@ -30,7 +30,7 @@ image,page{width: 100%;height: 100%;display: block}
 .popup_info .describe{position: absolute; top: 352rpx; left: 20rpx; width: 599rpx; height: 122rpx;}
 .popup_info .submit{position: absolute; top: 845rpx; left: 157rpx; width: 323rpx; height: 105rpx;padding:0;border:none;}
 .popup_info .info{position: absolute; top: 481rpx; left: 23rpx; width: 584rpx; height: 130rpx;}
-.popup_info .info input{font-size: 24rpx;}
+.popup_info .info input{font-size: 24rpx; line-height: 57rpx; height: 57rpx}
 .popup_info .info .name{position: absolute; top: 4rpx; left: 95rpx; width: 177rpx;}
 .popup_info .info .phone{position: absolute; top: 4rpx; left: 384rpx; width: 177rpx;}
 .popup_info .info .email{position: absolute; top: 75rpx; left: 95rpx; width: 474rpx;}

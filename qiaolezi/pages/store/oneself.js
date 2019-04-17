@@ -70,7 +70,7 @@ Page({
   },
   onShareAppMessage: function () {
     return {
-      title: 'qiaolezi',
+      title: 'MIX的炫彩音乐 唱给你听～',
       path: `/pages/index/foreshow`,
       imageUrl: ""
     }

@@ -261,7 +261,7 @@ Page({
   onShareAppMessage: function () {
     var _this = this;
     return {
-      title: 'qiaolezi',
+      title: '说不出口的话，唱给你听(* /ω＼*)',
       path: `/pages/back/index?fid=${_this.data.fid}`,
       imageUrl:""
     }

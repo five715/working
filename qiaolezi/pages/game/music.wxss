@@ -1,8 +1,8 @@
 .music .title{position: absolute; top: 51rpx; left: 127rpx; width: 489rpx; height: 81rpx;}
 
 
-
-.music .hint_text{position: absolute; top: 24rpx; left: 0; width: 200rpx; height: 250rpx;}
+.music .hint_text_view{position: fixed; top: 0;left: 0;width: 750rpx; height: 1500rpx; z-index: 9;background: rgba(0,0,0,0.57)}
+.music .hint_text{position: absolute; top: 322rpx; left: 57rpx; width: 637rpx; height: 727rpx;}
 .music .timer_boxes{position: absolute; top: 95rpx; left: 17rpx; width:164rpx; height:119rpx;}
 .music .timer_boxes_a{animation: size 0.5s infinite alternate;}
 

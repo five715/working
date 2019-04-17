@@ -72,16 +72,17 @@ function formSubmit(e) {
   console.log(e, obj,app)
   app.api.saveUser(function(data){
     console.log(data)
-    
-    _this.data.redeem.forEach((redeem, i) => {
-      if (redeem.award_id == obj.award_id) {
-        _this.data.redeem[i].isinfo = 0
-      }
-    })
+    if (_this.data.redeem){
+      _this.data.redeem.forEach((redeem, i) => {
+        if (redeem.award_id == obj.award_id) {
+          _this.data.redeem[i].isinfo = 0
+        }
+      })
 
-    _this.setData({
-      redeem: _this.data.redeem
-    })
+      _this.setData({
+        redeem: _this.data.redeem
+      })
+    }
     wx.sendBizRedPacket({
       timeStamp: data.timeStamp+"", // 支付签名时间戳，
       nonceStr: data.nonceStr, // 支付签名随机串，不长于 32 位
