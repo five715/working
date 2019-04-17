@@ -22,13 +22,16 @@ Page({
     popup: false,
     redType: 1,
     videoLeft:0,
-    videoMuted:false
+    videoMuted: false,
+    per: {},
+    scrollHeight: {},
   },
   onBtnRule: nav.onBtnRule,
   onGuide: popup.onGuide,
   onClose: popup.onClose,
   upfile: popup.upfile,
   formSubmit: popup.formSubmit,
+  bindscroll: popup.bindscroll,
   onOver() {
     this.setData({
       popup: 'hintOver',

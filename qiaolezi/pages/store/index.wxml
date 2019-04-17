@@ -10,7 +10,7 @@
   <!-- 兑奖区 -->
   <view class='redeem'>
     <image class='boxes' src='{{imagesUrl}}/store_redeem_bg.png'></image>
-    <scroll-view id="redeem" scroll-y bindscroll="bindscroll">
+    <scroll-view id="redeem" scroll-y bindscroll="bindscroll" data-id="redeem">
       <view wx:for="{{redeems}}" wx:key="" wx:for-index="i" class='bag bag_{{item.src}}' bindtap='onReddem' data-id="{{i}}">
         <image class='boxes' src='{{imagesUrl}}/store_redeem_bag_{{item.src}}.png'></image>
         <text class='textScore'>{{item.score}}心跳</text>
@@ -18,7 +18,7 @@
       </view>
     </scroll-view>
     <view class='scroll' wx:if="{{redeems.length>6}}">
-      <image class='duan' style='top:{{per}}%' src='{{imagesUrl}}/store_duan.png'></image>
+      <image class='duan' style='top:{{per.redeem}}%' src='{{imagesUrl}}/store_duan.png'></image>
     </view>
     
   </view>

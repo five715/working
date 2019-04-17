@@ -1,7 +1,6 @@
 function onBtnRule(e){
-  wx.showModal({
-    title: '活动规则',
-    showCancel: false,
+  this.setData({
+    popup:'rule'
   })
 }
 function onBtnHome(e){

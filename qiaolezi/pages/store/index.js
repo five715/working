@@ -26,10 +26,10 @@ Page({
       { prize: "no", state: "no", ret: 0 },
       { prize: "oppo", state: "no", ret: 4 }
     ],
-    scrollHeight:200,
-    per: 0,
+    scrollHeight:{},
+    per: {},
     imagesUrl: app.globalData.imagesUrl,
-    popup: false,
+    popup: 'rule',
     redType: 0,
     hintText:[],
     idCard:["",""]
@@ -41,17 +41,7 @@ Page({
   upfile: popup.upfile,
   formSubmit: popup.formSubmit,
   formSubmitEntity: popup.formSubmitEntity,
-  bindscroll(e) {
-    var _this = this
-    var scrollHeight = _this.data.scrollHeight,
-      height = e.detail.scrollHeight - scrollHeight,
-      top = e.detail.scrollTop;
-    var per = parseInt((top / height) * 100)
-    _this.setData({
-      per: per
-    })
-    console.log(per)
-  },
+  bindscroll:popup.bindscroll,
   // 兑换包
   onReddem(e){
     var _this =this;
@@ -225,11 +215,6 @@ Page({
   onLoad(){
     var _this =this;
     _this.onUserInfo();
-    wx.createSelectorQuery().select('#redeem').boundingClientRect(function (rect) {
-      _this.setData({
-        scrollHeight:rect.height
-      })
-    }).exec()
   },
   onUserInfo(){
     var _this =this

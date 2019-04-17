@@ -50,8 +50,8 @@
 .home .btn_rule{position: absolute; top: 1116rpx; left: 106rpx; width: 212rpx; height: 65rpx;}
 .home .btn_store{position: absolute; top: 1116rpx; left: 439rpx; width: 212rpx; height: 65rpx;}
 .home .btn_info{position: absolute; top: 1018rpx; left: 469rpx; width: 251rpx; height: 108rpx;}
-.home .input_hint{position: absolute; top: 1060rpx; left: 75rpx; width: 389rpx; height: 22rpx;}
-.home .input{position: absolute; top: 1040rpx; left: 72rpx; width: 396rpx; height: 57rpx;box-sizing: border-box; font-size: 22rpx; color: #511b10;}
+.home .input_hint{position: absolute; top: 1053rpx; left: 75rpx; width: 389rpx; height: 22rpx;}
+.home .input{position: absolute; top: 1035rpx; left: 72rpx; width: 396rpx; height: 57rpx;box-sizing: border-box; font-size: 22rpx; color: #511b10;}
 .home .bg{background:rgba(0,0,0,0);}
 .home .note{position: absolute; top: 409rpx; left: 140rpx; width: 153rpx; height: 343rpx;z-index: 2}
 .home .iocs .ioc{position: absolute;top: 704rpx; left: 98rpx; width: 114rpx; height: 116rpx; animation: move 0.3s alternate infinite linear}

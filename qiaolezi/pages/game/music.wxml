@@ -1,12 +1,15 @@
 <view class='music pageBg' wx:if="{{!isAdvance}}">
   <image class='boxes' src='{{imagesUrl}}/music_bg.jpg'></image>
   <image class='title' src='{{imagesUrl}}/music_title.png'></image>
-  <view class='scroll'>
-    <image class='chang' src='{{imagesUrl}}/music_chang.png'></image>
-    <image class='duan' style='top:{{scrollPer}}%' src='{{imagesUrl}}/music_duan.png'></image>
-  </view>
   <view wx:if="{{!isStart}}" class='hint_text_view'>
-    <image class='hint_text' bindtap='onStart' src='/images/music_hint.png'></image>
+    <view class='hint_text'>
+      <image class='boxes' src='/images/music_hint.png'></image>
+      <text>点击开始，音乐即刻播放，
+        请于20秒内添加喜欢音效，
+        MIX炫彩情歌！</text>
+      <image class='btn' bindtap='onStart' src='/images/music_hint_btn.png'></image>
+      <image class='close' bindtap='onStart' src='{{imagesUrl}}/ioc_close.png'></image>
+    </view>
   </view>
   <scroll-view id="beats" class='beats' scroll-y bindscroll="bindscroll">
     <block  wx:for="{{sounds}}" wx:key="" wx:for-index="i">
@@ -35,6 +38,10 @@
       <image wx:elif="{{item.music == 3}}" src="{{imagesUrl}}/music_{{item.src}}.png" class="audio {{item.src}}"></image>
     </block>
   </scroll-view>
+  <view class='scroll'>
+    <image class='boxes' src='{{imagesUrl}}/music_chang.png'></image>
+    <image class='duan' style='top:{{scrollPer}}%' src='{{imagesUrl}}/music_duan.png'></image>
+  </view>
   <image class='music_btn_right' bindtap='onEnd' src='{{imagesUrl}}/music_btn_right.png'></image>
 </view>
 

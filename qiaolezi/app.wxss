@@ -67,7 +67,7 @@ image,page{width: 100%;height: 100%;display: block}
 
 .popup_hint{position: absolute; top: 300rpx; left: 25.5rpx; width: 699rpx; height: 496rpx;}
 .popup_hint .close{position: absolute; top: 23rpx; right: 5rpx; width: 80rpx; height: 80rpx;}
-.popup_hint .text{position: absolute; top: 280rpx; left: 62rpx; width: 629rpx; text-align: center;font-size: 38rpx;color: #913223}
+.popup_hint .text{position: absolute; top: 280rpx; left: 112rpx; width: 529rpx; text-align: center;font-size: 38rpx;color: #913223}
 .popup_hint .text text{display: block}
 .popup_hint_btn{position: absolute; top:375rpx; left: 139rpx; width: 156rpx; height: 64rpx;line-height: 64rpx; font-size: 38rpx;}
 .popup_hint button[plain]{border-color: #913223;color: #913223}
@@ -75,6 +75,16 @@ image,page{width: 100%;height: 100%;display: block}
 .popup_hint_no{left: 458rpx;}
 
 .popup_btn_yes{left: 300.5rpx}
+
+
+.popup_rule{position: absolute; top: 270rpx; left: 114rpx;width: 522rpx; height: 642rpx;}
+.popup_rule .product{position: absolute; top: -97rpx; left: -58rpx; width: 245rpx; height: 242rpx;}
+.popup_rule scroll-view{position: absolute; top: 98rpx; left: 20rpx; width: 680rpx; height: 513rpx;}
+.popup_rule .con{width: 480rpx; height: 3175rpx;}
+.popup_rule .scroll{position: absolute; top: 100rpx;left: 498rpx; width: 18rpx; height: 470rpx;}
+.popup_rule .scroll .boxes{height: 513rpx;}
+.popup_rule .scroll .duan{position: absolute; top: 0;left: 0;width: 18rpx;height: 43rpx;}
+.popup_rule .close{position: absolute; top: -120rpx; right: 5rpx; width: 80rpx; height: 80rpx;}
 
 /* 弹窗End */
 .none{display: none}

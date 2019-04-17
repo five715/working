@@ -17,8 +17,8 @@
       <view wx:for="{{redeem}}" wx:key="item" wx:for-index="i" data-id="{{item.award_id}}">{{item.award_time}}兑换获得{{item.award_name}}<text class='redeem_btn' bindtap='saveuser' wx:if="{{item.isinfo == 1}}" data-id="{{item.award_id}}" data-code="{{item.award_code}}">完善个人信息</text></view>
     </scroll-view>
   </view>
+  <image class='nav_score' bindtap='onMove' src='{{imagesUrl}}/personal_btn_score.png'></image>
   <navigator class='nav_store' url='/pages/store/index'><image src='{{imagesUrl}}/personal_btn_store.png'></image></navigator>
-  <navigator class='nav_score'  url='/pages/game/index'><image src='{{imagesUrl}}/personal_btn_score.png'></image></navigator>
 </view>
 <include src="/template/nav.wxml" />
 <include src="/template/popup.wxml" />

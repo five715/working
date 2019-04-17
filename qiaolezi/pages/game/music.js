@@ -36,7 +36,7 @@ Page({
     soundsUrl: app.globalData.soundsUrl,
     imagesUrl: app.globalData.imagesUrl,
     popup: false,
-    hintText: ["提交成功"],
+    hintText: ["提交成功!"],
     hintNav:""
   },
   onbtnHintMusic: popup.onbtnHintMusic,
@@ -312,7 +312,7 @@ Page({
     var arr = _this.data.arr;
     // console.log(JSON.parse(JSON.stringify(arr)), JSON.stringify(arr).replace(/"/g,"'"))
     app.api.saveFile(function(data){
-      var title = data.status == 0 ? ['提交成功'] : (data.status == 1 && ['提交成功增加1个心跳值'])
+      var title = data.status == 0 ? ['提交成功!'] : (data.status == 1 && ['作品提交成功！获得1个心跳值~可前往心跳商城参与奖品兑换和幸运抽奖哦~'])
       _this.setData({
         popup:"hintMusic",
         hintText:title,

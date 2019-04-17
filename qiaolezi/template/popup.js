@@ -149,11 +149,37 @@ function onbtnHintMusic(e){
   })
 }
 
+
+// 活动规则
+function bindscroll(e) {
+  var _this = this
+  var id = e.currentTarget.dataset.id
+  var scrollHeight = _this.data.scrollHeight
+  if (!scrollHeight[id]) {
+    wx.createSelectorQuery().select('#' + id).boundingClientRect(function (rect) {
+      scrollHeight[id] = rect.height
+      _this.setData({
+        scrollHeight: scrollHeight
+      })
+    }).exec()
+  }
+  var obj = _this.data.per
+  var scrollH = _this.data.scrollHeight[id],
+    height = e.detail.scrollHeight - scrollH,
+    top = e.detail.scrollTop;
+  obj[id] = parseInt((top / height) * 100)
+  _this.setData({
+    per: obj
+  })
+}
+
+
 module.exports = {
   onGuide: onGuide,
   onClose: onClose,
   upfile: upfile,
   formSubmit: formSubmit,
   formSubmitEntity: formSubmitEntity,
-  onbtnHintMusic: onbtnHintMusic
+  onbtnHintMusic: onbtnHintMusic,
+  bindscroll:bindscroll
 }

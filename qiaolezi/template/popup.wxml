@@ -132,4 +132,17 @@
     <button plain="true" hover-class="none" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='popup_hint_btn popup_hint_yes popup_btn_yes'>是</button>
     <image class='close' bindtap='onClose' src='{{imagesUrl}}/ioc_close.png'></image>
   </view>
+  <!-- 活动规则 -->
+  <view wx:if="{{popup == 'rule'}}" class='popup_rule'>
+    <image class='boxes' src='/images/popup_rule_boxes.png'></image>
+    <image class='product' src='/images/popup_product.png'></image>
+    <scroll-view id="rule"  scroll-y bindscroll='bindscroll' data-id="rule">
+      <image class='con' src='/images/popup_rule_con.png'></image>
+    </scroll-view>
+    <view class='scroll'>
+      <image class='boxes' src="/images/popup_rule_chang.png"></image>
+      <image class='duan' style='top:{{per.rule}}%' src='/images/popup_rule_duan.png'></image>
+    </view>
+    <image class='close' bindtap='onClose' src='{{imagesUrl}}/ioc_close.png'></image>
+  </view>
 </view>

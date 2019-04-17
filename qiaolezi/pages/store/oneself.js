@@ -13,6 +13,8 @@ Page({
     imagesUrl: app.globalData.imagesUrl,
     popup: false,
     redType: 1,
+    per: {},
+    scrollHeight: {},
   },
   onBtnRule: nav.onBtnRule,
   onBtnHome: nav.onBtnHome,
@@ -21,6 +23,7 @@ Page({
   upfile: popup.upfile,
   formSubmit: popup.formSubmit,
   formSubmitEntity: popup.formSubmitEntity,
+  bindscroll: popup.bindscroll,
   onLoad(e){
     var _this = this;
     app.api.getUserInfo(function(data){
@@ -67,6 +70,11 @@ Page({
         _this.setData({ popup: 'entity', redType: 3})
         break;
     }
+  },
+  onMove(e){
+    this.setData({
+      popup:"rule"
+    })
   },
   onShareAppMessage: function () {
     return {
