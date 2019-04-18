@@ -85,6 +85,7 @@ Page({
     app.globalData.bgm.stop()
   },
   onLoad(query) {
+    mta.Page.init()
     var _this = this;
     if (query.isSkip) _this.bindended()
     

@@ -16,6 +16,7 @@ Page({
   },
   onClose:popup.onClose,
   onLoad(e) {
+    mta.Page.init()
     console.log(e)
   },
   onBtnSelect(e) {

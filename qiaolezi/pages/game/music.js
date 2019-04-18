@@ -234,7 +234,8 @@ Page({
   onUnload(){
     this.funcStop()
   },
-  onLoad: function(e) {
+  onLoad: function (e) {
+    mta.Page.init()
     var _this = this;
     wx.getSystemInfo({
       //获取系统信息成功，将系统窗口的宽高赋给页面的宽高

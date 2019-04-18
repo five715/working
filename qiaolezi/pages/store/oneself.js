@@ -25,7 +25,8 @@ Page({
   formSubmit: popup.formSubmit,
   formSubmitEntity: popup.formSubmitEntity,
   bindscroll: popup.bindscroll,
-  onLoad(e){
+  onLoad(e) {
+    mta.Page.init()
     var _this = this;
     app.api.getUserInfo(function(data){
       console.log(data)
@@ -84,7 +85,7 @@ Page({
             scrollHeight: { rule: rect.height }
           }, function () {
             _this.setData({
-              scrollT: { rule: rectC.height*(1610/3175)}
+              scrollT: { rule: rectC.height*(1805/3332)}
             })
           })
         }).exec()

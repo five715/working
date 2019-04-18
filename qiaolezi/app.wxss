@@ -94,7 +94,7 @@ image,page{width: 100%;height: 100%;display: block}
   background-size:100%;
   background-repeat: no-repeat; 
 } */
-.popup_rule .con{width: 480rpx; height: 3175rpx;}
+.popup_rule .con{width: 480rpx; height: 3332rpx;}
 .popup_rule .scroll{position: absolute; top: 100rpx;left: 498rpx; width: 18rpx; height: 470rpx;}
 .popup_rule .scroll .boxes{height: 513rpx;}
 .popup_rule .scroll .duan{position: absolute; top: 0;left: 0;width: 18rpx;height: 43rpx;}

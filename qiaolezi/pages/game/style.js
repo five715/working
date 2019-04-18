@@ -25,6 +25,7 @@ Page({
     arrInit: [], //人声数据
   },
   onLoad(e) {
+    mta.Page.init()
     var _this = this;
     console.log(e)
     app.globalData.style = _this.data.current + 1;
