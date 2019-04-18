@@ -29,10 +29,11 @@ Page({
     scrollHeight:{},
     per: {},
     imagesUrl: app.globalData.imagesUrl,
-    popup: 'rule',
+    popup: false,
     redType: 0,
     hintText:[],
-    idCard:["",""]
+    idCard: ["", ""],
+    scrollT: {}
   },
   onBtnRule: nav.onBtnRule,
   onBtnHome: nav.onBtnHome,

@@ -12,7 +12,7 @@ Page({
     excode: "", //棒签兑换码
     isOne: true,
     openRed: false,
-    per: 0,
+    videoPer: 0,
     isVideo: true,
     search: '',
     hint: false,
@@ -25,6 +25,7 @@ Page({
     videoMuted: false,
     per: {},
     scrollHeight: {},
+    scrollT: {}
   },
   onBtnRule: nav.onBtnRule,
   onGuide: popup.onGuide,
@@ -104,6 +105,9 @@ Page({
   },
   bindplay(e){
     console.log(e)
+    this.setData({
+      videoPer: -1
+    })
     setTimeout(this.bindended,5000)
   },
   bindtimeupdate(e) {
@@ -120,7 +124,7 @@ Page({
     // this.videoContext.seek(5)
     this.setData({
       isVideo: false,
-      per: -1,
+      videoPer: -1,
       videoLeft:"850",
       videoMuted:true
     })
@@ -145,12 +149,12 @@ Page({
     if (!_this.data.isVideo) return false;
     var per = e.detail.buffered
     _this.setData({
-      per: per
+      vidoePer: per
     }, function () {
       if (per >= 100) {
         _this.videoContext.play();
         _this.setData({
-          per: -1
+          vidoePer: -1
         })
       }
     })

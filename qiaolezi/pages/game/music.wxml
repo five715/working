@@ -3,11 +3,11 @@
   <image class='title' src='{{imagesUrl}}/music_title.png'></image>
   <view wx:if="{{!isStart}}" class='hint_text_view'>
     <view class='hint_text'>
-      <image class='boxes' src='/images/music_hint.png'></image>
+      <image class='boxes' src='{{imagesUrl}}/music_hint.png'></image>
       <text>点击开始，音乐即刻播放，
         请于20秒内添加喜欢音效，
         MIX炫彩情歌！</text>
-      <image class='btn' bindtap='onStart' src='/images/music_hint_btn.png'></image>
+      <image class='btn' bindtap='onStart' src='{{imagesUrl}}/music_hint_btn.png'></image>
       <image class='close' bindtap='onStart' src='{{imagesUrl}}/ioc_close.png'></image>
     </view>
   </view>
@@ -51,9 +51,9 @@
   <!-- <image class='play' src='{{imagesUrl}}/advance_play_{{style}}.png' bindtap='onPlay'></image> -->
   
   <view class='btn_play play'>
-    <image class='boxes heart' src='/images/advance_play_{{style}}.png' ></image>
-    <image class='btn_play_play btn' src='/images/advance_play_{{!isPlay?"yes":"no"}}.png' bindtap='onPlay'></image>
-    <image wx:for="{{[1,2,3,4]}}" wx:key="" class='btn_play_ioc btn_play_ioc_{{item}}' src='/images/advance_play_{{style}}_{{item}}.png'></image>
+    <image class='boxes heart' src='{{imagesUrl}}/advance_play_{{style}}.png' ></image>
+    <image class='btn_play_play btn' src='{{imagesUrl}}/advance_play_{{!isPlay?"yes":"no"}}.png' bindtap='onPlay'></image>
+    <image wx:for="{{[1,2,3,4]}}" wx:key="" class='btn_play_ioc btn_play_ioc_{{item}}' src='{{imagesUrl}}/advance_play_{{style}}_{{item}}.png'></image>
   </view>
   <view class='sign'>
     <text>{{text}}</text>

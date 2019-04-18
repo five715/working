@@ -1,6 +1,7 @@
 function onBtnRule(e){
   this.setData({
-    popup:'rule'
+    popup:'rule',
+    scrollT: {ruel:0 }
   })
 }
 function onBtnHome(e){

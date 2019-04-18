@@ -15,6 +15,7 @@ Page({
     redType: 1,
     per: {},
     scrollHeight: {},
+    scrollT:{}
   },
   onBtnRule: nav.onBtnRule,
   onBtnHome: nav.onBtnHome,
@@ -71,9 +72,23 @@ Page({
         break;
     }
   },
-  onMove(e){
-    this.setData({
-      popup:"rule"
+  onMove(e) {
+    var _this = this;
+    _this.setData({
+      popup: "rule"
+    }, function () {
+      wx.createSelectorQuery().select('#rule').boundingClientRect(function (rect) {
+        wx.createSelectorQuery().select('#ruleC').boundingClientRect(function (rectC) {
+          console.log(rect, rectC)
+          _this.setData({
+            scrollHeight: { rule: rect.height }
+          }, function () {
+            _this.setData({
+              scrollT: { rule: rectC.height*(1610/3175)}
+            })
+          })
+        }).exec()
+      }).exec()
     })
   },
   onShareAppMessage: function () {

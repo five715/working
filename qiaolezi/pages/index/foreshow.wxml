@@ -1,6 +1,6 @@
 <view class="home">
   <view class='boxes block}}'>
-    <image class='boxes' src='/images/home_bg.jpg'></image>
+    <image class='boxes' src='{{imagesUrl}}/home_bg.jpg'></image>
     <button class='btn_play btn bg' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-click="onPlay"></button>
     <button class='btn_rule btn bg' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-click="onBtnRule"></button>
     <button class='btn_store btn bg' open-type="getUserInfo" bindgetuserinfo="getUserInfo" data-click="onBtnStore"></button>
@@ -16,9 +16,9 @@
     </view>
   </view>
 <video autoplay="{{isVideo}}" id="indexVideo" class='indexVideo' style="left:{{videoLeft}}rpx" muted='{{videoMuted}}' controls='' show-center-play-btn='' src='{{videoUrl}}/index.mp4' bindtimeupdate='bindtimeupdate' bindprogress='bindprogress' bindplay="bindplay" ></video>
-  <view wx:if="{{!isVideo || per != -1}}">
-    <text class='per' wx:if="{{isVideo && per != -1}}">{{per}}%</text>
-    <image class='musicBox' src='{{imagesUrl}}/index_music_box.png'></image>
-  </view>
+  <!-- <view class='home_per' wx:if="{{!isVideo || videoPer != -1}}"> -->
+  <text class='per' wx:if="{{videoPer != -1}}">{{videoPer}}%</text>
+  <image class='musicBox' wx:if="{{!isVideo || videoPer != -1}}" src='{{imagesUrl}}/index_music_box.png'></image>
+  <!-- </view> -->
 </view>
 <include src="/template/popup.wxml"/>

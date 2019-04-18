@@ -85,9 +85,9 @@ Page({
     var audio = _this.data.audios[target.id];
     // console.log(e,_this.data.sounds[dataset.i],dataset.i);
     if(_this.data.arr.length == 6){
-      wx.showModal({
-        title: '音效选择数量已经达上限（一首最多可选4个beats可叠加使用，之后再添加会弹出此弹层提示）',
-        showCancel: false
+      _this.setData({
+        popup:"hint",
+        hintText: ["音效最多可以选择4个哦~ (>▽<)"]
       })
       return false
     }
@@ -312,7 +312,7 @@ Page({
     var arr = _this.data.arr;
     // console.log(JSON.parse(JSON.stringify(arr)), JSON.stringify(arr).replace(/"/g,"'"))
     app.api.saveFile(function(data){
-      var title = data.status == 0 ? ['提交成功!'] : (data.status == 1 && ['作品提交成功！获得1个心跳值~可前往心跳商城参与奖品兑换和幸运抽奖哦~'])
+      var title = data.status == 0 ? ['提交成功!'] : (data.status == 1 && ['作品提交成功！获得1个心跳值~','可前往心跳商城参与奖品兑换和幸运抽奖哦~'])
       _this.setData({
         popup:"hintMusic",
         hintText:title,

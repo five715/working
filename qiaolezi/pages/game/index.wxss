@@ -10,4 +10,11 @@
 
 .selects .game_btn_right{position: absolute; top: 923rpx; left: 231rpx; width: 274rpx; height: 99rpx;}
 
-.selects .yes{ transform: scale(1.1)}
+/* .select_boxes{position: relative} */
+/* .selects .yes .selects_yes{position: absolute;top: -80;left: 0;width: 100%;height: 100%;} */
+.selects .yes .select_yes_1{position: absolute; top: -8rpx; left: -8rpx; width: 512rpx; height: 75rpx;}
+.selects .yes .select_yes_2{position: absolute; top: 54rpx; left: -8rpx; width: 512rpx; height: 91rpx}
+.selects .yes .select_yes_3{position: absolute; top: 143rpx; left: -7rpx; width: 515rpx; height: 85rpx;}
+.selects .yes .select_yes_4{position: absolute; top: 225rpx; left: -8rpx; width: 511rpx; height: 87rpx;}
+.selects .yes .select_yes_5{position: absolute; top: 300rpx; left: -8rpx; width: 512rpx; height: 103rpx;}
+.selects .yes .select_yes_6{position: absolute; top: 393rpx; left: -8rpx; width: 511rpx; height: 87rpx;}

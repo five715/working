@@ -44,7 +44,8 @@
 
 /* 新 */
 .home{position: fixed; z-index: 9; top: 0; left: 0;width: 750rpx; height: 1500rpx;}
-.home .musicBox{position: absolute; top: 615rpx; left: 228rpx; width: 306rpx; height: 262rpx;}
+.home_per{position: absolute; top: 0;left: 0;width: 750rpx; height: 1500rpx;z-index: 100}
+.home .musicBox{position: absolute; top: 595rpx; left: 228rpx; width: 306rpx; height: 262rpx;z-index: 100;}
 .home .per{position: absolute; top: 509rpx;color: #ffffff; text-align: center; width: 100%; display: inline-block; line-height: 100rpx;}
 .home .btn_play{position: absolute; top: 854rpx; left: 43rpx; width: 668rpx; height: 149rpx;}
 .home .btn_rule{position: absolute; top: 1116rpx; left: 106rpx; width: 212rpx; height: 65rpx;}

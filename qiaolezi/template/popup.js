@@ -152,6 +152,7 @@ function onbtnHintMusic(e){
 
 // 活动规则
 function bindscroll(e) {
+  console.log(e,e.detail.scrollTop)
   var _this = this
   var id = e.currentTarget.dataset.id
   var scrollHeight = _this.data.scrollHeight
@@ -160,7 +161,7 @@ function bindscroll(e) {
       scrollHeight[id] = rect.height
       _this.setData({
         scrollHeight: scrollHeight
-      })
+      }) 
     }).exec()
   }
   var obj = _this.data.per

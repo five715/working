@@ -2,12 +2,12 @@
   <image class='boxes' src='{{imagesUrl}}/advance_bg.jpg'></image>
   <image class='tit' src='{{imagesUrl}}/back_tit.png'></image>
   <view class='btn_play play'>
-    <image class='boxes heart' src='/images/advance_play_{{style}}.png' ></image>
+    <image class='boxes heart' src='{{imagesUrl}}/advance_play_{{style}}.png' ></image>
     <button wx:if="{{!isBannedClick}}" class='btn_play_play btn' open-type="getUserInfo" bindgetuserinfo="getUserInfo" >
-      <image class='boxes' src='/images/advance_play_{{!isPlay?"yes":"no"}}.png'></image>
+      <image class='boxes' src='{{imagesUrl}}/advance_play_{{!isPlay?"yes":"no"}}.png'></image>
     </button>
-    <image wx:else class='btn_play_play btn' bindtap='onPlay' src='/images/advance_play_{{!isPlay?"yes":"no"}}.png'></image>
-    <image wx:for="{{[1,2,3,4]}}" wx:key="" class='btn_play_ioc btn_play_ioc_{{item}}' src='/images/advance_play_{{style}}_{{item}}.png'></image>
+    <image wx:else class='btn_play_play btn' bindtap='onPlay' src='{{imagesUrl}}/advance_play_{{!isPlay?"yes":"no"}}.png'></image>
+    <image wx:for="{{[1,2,3,4]}}" wx:key="" class='btn_play_ioc btn_play_ioc_{{item}}' src='{{imagesUrl}}/advance_play_{{style}}_{{item}}.png'></image>
   </view>
   <view class='sign' >
     <text>{{text}}</text>

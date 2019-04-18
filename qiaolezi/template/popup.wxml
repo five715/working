@@ -115,9 +115,9 @@
     <image class='close' bindtap='onClose' src='{{imagesUrl}}/ioc_close.png'></image>
   </view>
   <!-- 音频提交 -->
-  <view wx:if="{{popup == 'hintMusic'}}" class='popup_hint '>
-    <image class='boxes' src='{{imagesUrl}}/popup_hint.png'></image>
-    <view class="text">
+  <view wx:if="{{popup == 'hintMusic'}}" class='popup_hint popup_music'>
+    <image class='boxes' src='{{imagesUrl}}/music_hint.png'></image>
+    <view class="text {{hintText.length>1?'music_text':''}}">
       <text wx:for="{{hintText}}" wx:key="">{{item}}</text>
     </view>
     <button data-nav="{{hintNav}}" plain="true" hover-class="none" bindtap='onbtnHintMusic' class='popup_hint_btn popup_hint_yes popup_btn_yes'>是</button>
@@ -134,15 +134,15 @@
   </view>
   <!-- 活动规则 -->
   <view wx:if="{{popup == 'rule'}}" class='popup_rule'>
-    <image class='boxes' src='/images/popup_rule_boxes.png'></image>
-    <image class='product' src='/images/popup_product.png'></image>
-    <scroll-view id="rule"  scroll-y bindscroll='bindscroll' data-id="rule">
-      <image class='con' src='/images/popup_rule_con.png'></image>
+    <image class='boxes' src='{{imagesUrl}}/popup_rule_boxes.png'></image>
+    <image class='product' src='{{imagesUrl}}/popup_product.png'></image>
+    <scroll-view id="rule"  scroll-y data-id="rule" scroll-top="{{scrollT.rule}}" scroll-with-animation="true">
+      <image class='con' id="ruleC" src='{{imagesUrl}}/popup_rule_con.png'></image>
     </scroll-view>
-    <view class='scroll'>
-      <image class='boxes' src="/images/popup_rule_chang.png"></image>
-      <image class='duan' style='top:{{per.rule}}%' src='/images/popup_rule_duan.png'></image>
-    </view>
+    <!-- <view class='scroll'>
+      <image class='boxes' src="{{imagesUrl}}/popup_rule_chang.png"></image>
+      <image class='duan' style='top:{{per.rule}}%' src='{{imagesUrl}}/popup_rule_duan.png'></image>
+    </view> -->
     <image class='close' bindtap='onClose' src='{{imagesUrl}}/ioc_close.png'></image>
   </view>
 </view>

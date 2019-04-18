@@ -18,7 +18,7 @@ App({
     // soundsUrl: `${cdnUrl}/music`,
     imagesUrl: `${cdnUrl}/images`,
     videoUrl: `${cdnUrl}/video`,
-    shareTitle: ["MIX的炫彩音乐 唱给你听～", "说不出口的话，唱给你听(* /ω＼*)"],  //首页,回流页
-    shareImg: ["", ""]//首页,回流页
+    shareTitle: ["MIX的炫彩音乐 唱给你听～", "说不出的话唱给你听(* /ω＼*)"],  //首页,回流页
+    shareImg: ["/images/share.jpg", "/images/share.jpg"]//首页,回流页
   }
 })

@@ -21,7 +21,8 @@ Page({
   onBtnSelect(e) {
     var _this = this;
     var selects = _this.data.selects
-    var id = e.target.id;
+    var id = e.currentTarget.id;
+    console.log(selects,id,e)
     selects.forEach((s) => {
       if (s.index == id) s.sel = true
       else s.sel = false
