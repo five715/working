@@ -1,8 +1,8 @@
 const STORAGE = {
   PARAMATER: "paramater"
 }
-// const URL = "https://qiaolezi.act.qq.com";
-const URL = "https://s1-test.act.qq.com"
+const URL = "https://qiaolezi.act.qq.com";
+// const URL = "https://s1-test.act.qq.com"
 const SERVICE = {
   LOGIN: "/default/login", //登录注册
   //GETINFO: "/default/getinfo",  //是否中99红包
