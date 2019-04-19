@@ -27,7 +27,7 @@ Page({
     per: {},
     scrollHeight: {},
     scrollT: {},
-    isBmd:false
+    isBmd:true
   },
   onBtnRule: nav.onBtnRule,
   onGuide: popup.onGuide,
@@ -142,6 +142,10 @@ Page({
           popup: 'hint',
           hintText: ['请保留好您的棒签串码和脆筒二维码，活动将于4月22日正式上线，敬请期待！'],
           isBmd:true
+        })
+      }else{
+        _this.setData({
+          isBmd:false
         })
       }
     })
