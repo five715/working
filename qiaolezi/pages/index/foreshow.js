@@ -20,7 +20,7 @@ Page({
     hintText: ["请保留好您的棒签串码和脆筒二维码，活动将于4月22日正式上线，敬请期待！"],
     imagesUrl: app.globalData.imagesUrl,
     videoUrl: app.globalData.videoUrl,
-    popup: 'hint',
+    popup: false,
     redType: 1,
     videoLeft:0,
     videoMuted: false,
@@ -134,11 +134,18 @@ Page({
     })
     _this.isVideoEnd = true
 
-    //白名单
+    //活动开始
     app.api.checkTime(function(data){
       console.log(data)
+      if(data.code == -1){
+        _this.setData({
+          popup: 'hint',
+          hintText: ['请保留好您的棒签串码和脆筒二维码，活动将于4月22日正式上线，敬请期待！'],
+          isBmd:true
+        })
+      }
     })
-    //白名单end
+    //活动开始end
 
     if(!_this.code) return false
     //带兑换码进入
@@ -179,23 +186,40 @@ Page({
       console.log("拒绝授权")
       return false
     }
-
-    _this.setData({
-      popup: false
-    })
-    app.globalData.userInfo = e.detail.userInfo
-    wx.checkSession({
-      success: (res) => {
-        if (!click) _this.onExcode();
-        else _this.onClick(click)
-      },
-      fail: (res) => {
-        _this.onLogin(e.detail.userInfo, function () {
-          if (!click) _this.onExcode()
+    if (_this.data.isBmd){
+      app.api.bmd(function (res) {
+        console.log(res)
+        if (res.code == 0) {
+          code0()
+        } else {
+          _this.setData({
+            popup: 'hint',
+            hintText: ['请保留好您的棒签串码和脆筒二维码，活动将于4月22日正式上线，敬请期待！']
+          })
+        }
+      })
+    }else{
+      code0()
+    }
+    function code0(){
+      _this.setData({
+        popup: false
+      })
+      app.globalData.userInfo = e.detail.userInfo
+      wx.checkSession({
+        success: (res) => {
+          if (!click) _this.onExcode();
           else _this.onClick(click)
-        })
-      }
-    })
+        },
+        fail: (res) => {
+          _this.onLogin(e.detail.userInfo, function () {
+            if (!click) _this.onExcode()
+            else _this.onClick(click)
+          })
+        }
+      })
+
+    }
   },
   onClick(click) {
     var _this = this
@@ -221,7 +245,16 @@ Page({
   },
   onExcode(e) {
     var _this = this;
+
     var code = _this.code || _this.data.excode
+    if(!_this.code){
+      //点击兑换
+      console.log(24,'输入串码兑换')
+      mta.Event.stat(`24`, {})
+    }else{
+      // 扫码兑换
+    }
+
     console.log(e,code,code.length)
     // if(code.length !== 13) {
     //   _this.setData({
@@ -234,8 +267,7 @@ Page({
     if (_this.isExcode) return
     _this.isExcode = true
     var paramater = app.api.getStorage()
-
-    mta.Event.stat(`24`, {})
+    
     app.api.excode(function (data) {
       _this.isExcode = false
       _this.code = null
@@ -256,6 +288,8 @@ Page({
         })
         return false
       }
+      // 红包抽取成功
+      mta.Event.stat(`25`, {})
       if (data.ret == 6) {
         _this.setData({
           popup: 'info'

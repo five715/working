@@ -18,8 +18,8 @@ const SERVICE = {
   EXSCORE: "/default/exscore", //积分兑换
   SAVEINFO: "/default/saveinfo", //完善实物个人信息
   GETQRCODE: "/default/getqrcode", //获取小程序二维码
-  BMD: "default/bmd", //白名单
-  CHECKTIME: "default/checktime"  //校验是否到时间提示弹层
+  BMD: "/default/bmd", //白名单
+  CHECKTIME: "/default/checktime"  //校验是否到时间提示弹层
 }
 
 const isAPi= 0;     //是否使用模拟数据
@@ -544,7 +544,7 @@ function bmd(callback) {
 }
 
 function checkTime(callback){
-  request(URL+SERVICE.CHECKTIME,function(res){
+  request(URL+SERVICE.CHECKTIME,{},function(res){
     callback(res.data)
   })
 }
