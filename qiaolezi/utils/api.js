@@ -17,7 +17,9 @@ const SERVICE = {
   SAVEUSER: "/default/saveuser", //完善个人信息
   EXSCORE: "/default/exscore", //积分兑换
   SAVEINFO: "/default/saveinfo", //完善实物个人信息
-  GETQRCODE: "/default/getqrcode" //获取小程序二维码
+  GETQRCODE: "/default/getqrcode", //获取小程序二维码
+  BMD: "default/bmd", //白名单
+  CHECKTIME: "default/checktime"  //校验是否到时间提示弹层
 }
 
 const isAPi= 0;     //是否使用模拟数据
@@ -511,12 +513,41 @@ function getQrcode(callback, fid) {
       'Content-Type': 'application/x-www-form-urlencoded'
     },
     dataType: "json",
-    success: function(res){
+    success: function (res) {
       callback(res.data)
     }
   })
 }
+/**
+ * 白名单
+ */
+function bmd(callback) {
+  var paramater = getStorage();
+  if (!paramater.loginData) {
+    login(function () {
+      bmd(callback)
+    })
+    return
+  }
 
+  console.log(paramater)
+  if (isAPi) {
+    var res = { "code": 0, "message": "suc" }
+    // 失败的例子
+    // var res = { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+    callback(res)
+    return false
+  }
+  request(URL + SERVICE.BMD, paramater, function (res) {
+    callback(res.data)
+  })
+}
+
+function checkTime(callback){
+  request(URL+SERVICE.CHECKTIME,function(res){
+    callback(res.data)
+  })
+}
 /**
  * 初始化
  */
@@ -541,5 +572,7 @@ module.exports = {
   saveUser:saveUser,
   exscore: exscore,
   saveinfo: saveinfo,
-  getQrcode: getQrcode
+  getQrcode: getQrcode,
+  bmd:bmd,
+  checkTime:checkTime
 }

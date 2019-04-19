@@ -17,16 +17,17 @@ Page({
     isVideo: true,
     search: '',
     hint: false,
-    hintText: ["该串码已被使用~"],
+    hintText: ["请保留好您的棒签串码和脆筒二维码，活动将于4月22日正式上线，敬请期待！"],
     imagesUrl: app.globalData.imagesUrl,
     videoUrl: app.globalData.videoUrl,
-    popup: false,
+    popup: 'hint',
     redType: 1,
     videoLeft:0,
     videoMuted: false,
     per: {},
     scrollHeight: {},
-    scrollT: {}
+    scrollT: {},
+    isBmd:false
   },
   onBtnRule: nav.onBtnRule,
   onGuide: popup.onGuide,
@@ -132,6 +133,13 @@ Page({
       videoMuted:true
     })
     _this.isVideoEnd = true
+
+    //白名单
+    app.api.checkTime(function(data){
+      console.log(data)
+    })
+    //白名单end
+
     if(!_this.code) return false
     //带兑换码进入
     wx.getUserInfo({
