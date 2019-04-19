@@ -1,5 +1,6 @@
 var nav = require("../../template/nav.js");
 var popup = require("../../template/popup.js");
+var mta = require("../../utils/mta_analysis.js")
 const app = getApp();
 Page({
   data:{
@@ -116,6 +117,7 @@ Page({
     })
   },
   onBtnLuckHintYes() {
+    mta.Event.stat(`23`, {})
     var _this = this;
     _this.setData({
       popup: false

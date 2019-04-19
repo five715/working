@@ -1,6 +1,7 @@
 const app = getApp();
 import drawQrcode from '../../utils/weapp.qrcode.js'
 const ctx = wx.createCanvasContext('picture')
+var mta = require("../../utils/mta_analysis.js")
 var qrcode;
 Page({
   data:{
@@ -85,7 +86,7 @@ Page({
     ctx.fillRect(0,0,750,750)
     ctx.draw(true)
     
-    ctx.drawImage(`/images/create_bg.jpg`, 0, 0, 750, 1351)
+    ctx.drawImage(`/images/create_bg.jpg`, 0, 0, 750, 1500)
     ctx.drawImage(`/images/logo.png`, 31, 45, 129, 83)
     ctx.drawImage(`/images/create_slogan.png`, 82, 64, 598, 488)
     ctx.drawImage(`/images/create_iocs.png`, 177, 486, 408, 156)
@@ -140,7 +141,7 @@ Page({
     setTimeout(function () {
       wx.canvasToTempFilePath({
         width: 750,
-        height: 1351,
+        height: 1500,
         canvasId: 'picture',
         success: (res) => {
           _this.setData({

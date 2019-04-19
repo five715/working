@@ -1,6 +1,6 @@
 //app.js
 var api = require('/utils/api.js')
-var mta = require("../../utils/mta_analysis.js")
+var mta = require("/utils/mta_analysis.js")
 // const cdnUrl = "http://qq.vogso.com/q2019/sumsang/living0410/pc/img"
 const cdnUrl = "https://appmedia.gtimg.com/media/641012973/imgs"
 // const cdnUrl = ""

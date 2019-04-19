@@ -1,5 +1,6 @@
 var nav = require("../../template/nav.js");
 var popup = require("../../template/popup.js");
+var mta = require("../../utils/mta_analysis.js")
 const app = getApp();
 Page({
   data: {
@@ -40,6 +41,7 @@ Page({
     })
   },
   onPlay() {
+    mta.Event.stat(`09`, {})
     wx.navigateTo({
       url: '/pages/game/index'
     })
@@ -224,6 +226,8 @@ Page({
     if (_this.isExcode) return
     _this.isExcode = true
     var paramater = app.api.getStorage()
+
+    mta.Event.stat(`24`, {})
     app.api.excode(function (data) {
       _this.isExcode = false
       _this.code = null
@@ -234,6 +238,13 @@ Page({
         _this.setData({
           popup: 'hint',
           hintText: [data.message]
+        })
+        return false
+      }
+      if(data.ret == 0){
+        _this.setData({
+          popup:'hint',
+          hintText: ['您输入的棒签码已兑换或者无效，请输入正确的棒签码']
         })
         return false
       }

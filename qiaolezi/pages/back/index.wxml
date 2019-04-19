@@ -1,5 +1,5 @@
 <view class="back advance pageBg">
-  <image class='boxes' src='{{imagesUrl}}/advance_bg.jpg'></image>
+  <image class='boxes' src='/images/advance_bg.jpg'></image>
   <image class='tit' src='{{imagesUrl}}/back_tit.png'></image>
   <view class='btn_play play'>
     <image class='boxes heart' src='{{imagesUrl}}/advance_play_{{style}}.png' ></image>

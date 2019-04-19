@@ -1,5 +1,6 @@
 var nav = require("../../template/nav.js");
 var popup = require("../../template/popup.js");
+var mta = require("../../utils/mta_analysis.js")
 const app = getApp();
 
 Page({

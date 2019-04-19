@@ -1,17 +1,18 @@
 const app = getApp();
 var popup = require("../../template/popup.js");
+var mta = require("../../utils/mta_analysis.js")
 Page({
   data: {
     sounds: [
-      { music: 1, src: "beats1", color: "red", bt: 1, name: "mua" },
-      { music: 1, src: "beats2", color: "red", bt: 1, name: "海豚" },
-      { music: 1, src: "beats3", color: "red", bt: 1, name: "心跳" },
-      { music: 1, src: "beats4", color: "red", bt: 1, name: "画眉鸟" },
-      { music: 2, src: "timer", color: "red", bt: 1, name: "时间" },
-      { music: 1, src: "beats5", color: "red", bt: 1, name: "风铃" },
-      { music: 1, src: "beats6", color: "red", bt: 1, name: "小猫叫" },
-      { music: 1, src: "beats7", color: "red", bt: 1, name: "honey" },
-      { music: 1, src: "beats8", color: "red", bt: 1, name: "踢踏舞" },
+      { music: 1, src: "beats1", color: "red", bt: 1, name: "mua",mta:"15" },
+      { music: 1, src: "beats2", color: "red", bt: 1, name: "海豚", mta: "16" },
+      { music: 1, src: "beats3", color: "red", bt: 1, name: "心跳", mta: "17"},
+      { music: 1, src: "beats4", color: "red", bt: 1, name: "画眉鸟", mta: "18" },
+      { music: 2, src: "timer", color: "red", bt: 1, name: "时间"},
+      { music: 1, src: "beats5", color: "red", bt: 1, name: "风铃", mta: "19" },
+      { music: 1, src: "beats6", color: "red", bt: 1, name: "小猫叫", mta: "20" },
+      { music: 1, src: "beats7", color: "red", bt: 1, name: "honey", mta: "21"},
+      { music: 1, src: "beats8", color: "red", bt: 1, name: "踢踏舞", mta: "22"},
       { music: 3, src: "beats_no_1", color: "red", bt: 0, name: "敬请期待" },
       { music: 3, src: "beats_no_2", color: "red", bt: 0, name: "敬请期待" },
       { music: 3, src: "beats_no_3", color: "red", bt: 0, name: "敬请期待" }
@@ -51,7 +52,7 @@ Page({
   onAudio(e) {
     var _this = this;
     var obj = _this.data.sounds;
-    console.log(e,obj,_this.data.arr)
+    // console.log(e,obj,_this.data.arr)
     if (e.currentTarget.dataset.bt == 0) {
       var type = e.currentTarget.dataset.i + 1
       wx.showModal({
@@ -80,10 +81,11 @@ Page({
     if (!_this.data.isStart) return false;
 
     var target = e.currentTarget;
-    console.log(e,target)
+    // console.log(e,target)
     var dataset = target.dataset;
     var audio = _this.data.audios[target.id];
     // console.log(e,_this.data.sounds[dataset.i],dataset.i);
+
     if(_this.data.arr.length == 6){
       _this.setData({
         popup:"hint",
@@ -94,8 +96,13 @@ Page({
     if (obj[dataset.i].color == "red") {
       obj[dataset.i].color = "#000";
       audio.src = dataset.src;
-      console.log(audio)
+      // console.log(audio)
       audio.play();
+      // mta
+      var mtaId = obj[dataset.i].mta
+      console.log(obj[dataset.i].name,mtaId)
+      mta.Event.stat(mtaId, {})
+      // mtaEnd
     } else {
       if (!_this.data.isCancel) return false
       obj[dataset.i].color = "red"

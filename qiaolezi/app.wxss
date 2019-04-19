@@ -12,7 +12,7 @@ image,page{width: 100%;height: 100%;display: block}
 .navs .nav:last-child{margin-right: 0}
 
 
-.pageBg{position: fixed; top: 0; left: 0; width: 750rpx; height: 1350rpx;}
+.pageBg{position: fixed; top: 0; left: 0; width: 750rpx; height: 1500rpx;}
 
 
 /* .advance .play .heart{ animation: advanceMove 0.5s infinite linear alternate} */

@@ -108,10 +108,11 @@ Page({
   },
   onLoad(query) {
     var _this = this
-    // const scene = decodeURIComponent(query.q)
-    const scene = "https://qiaolezi.act.qq.com/e/c/backcode/?18"
+    const scene = decodeURIComponent(query.q)
+    // const scene = "https://qiaolezi.act.qq.com/e/c/backcode/?18"
     // const fid = query.fid
     var fid = scene.split("?")[1];
+    if(!fid) return false
     console.log(query,scene,fid)
 
     _this.setData({

@@ -1,5 +1,6 @@
 const app = getApp();
 var popup = require("../../template/popup.js");
+var mta = require("../../utils/mta_analysis.js")
 Page({
   data: {
     selects: [
@@ -20,6 +21,7 @@ Page({
     console.log(e)
   },
   onBtnSelect(e) {
+    mta.Event.stat(`10`, {})
     var _this = this;
     var selects = _this.data.selects
     var id = e.currentTarget.id;

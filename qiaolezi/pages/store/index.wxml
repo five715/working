@@ -1,5 +1,5 @@
 <view class='store pageBg'>
-  <image class='boxes' src='{{imagesUrl}}/store_bg.jpg'></image>
+  <image class='boxes' src='/images/store_bg.jpg'></image>
   <!-- 个人资料 -->
   <view class='oneself'>
     <image class='boxes' src='{{imagesUrl}}/store_oneself_bg.png'></image>
