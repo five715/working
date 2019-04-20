@@ -81,7 +81,7 @@
   <!-- 兑换提示 -->
   <view wx:if="{{popup == 'hint' || popup == 'hintBtn'}}" class='popup_hint'>
     <image class='boxes' src='{{imagesUrl}}/popup_hint.png'></image>
-    <view class="text">
+    <view class="text" style="top:{{hintText.length>2?'228rpx':''}}">
       <text wx:for="{{hintText}}" wx:key="">{{item}}</text>
     </view>
     <button wx:if="{{popup =='hintBtn'}}" plain="true" hover-class="none" bindtap='onBtnHintYes' class='popup_hint_btn popup_hint_yes'>是</button>

@@ -27,7 +27,7 @@ Page({
     per: {},
     scrollHeight: {},
     scrollT: {},
-    isBmd:false,
+    isBmd:true,
     pagePosition:'fixed'
   },
   onBtnRule: nav.onBtnRule,
@@ -138,20 +138,20 @@ Page({
     _this.isVideoEnd = true
 
     //活动开始
-    // app.api.checkTime(function(data){
-    //   console.log(data)
-    //   if(data.code == -1){
-    //     _this.setData({
-    //       popup: 'hint',
-    //       hintText: ['请保留好您的棒签串码和脆筒二维码，活动将于4月22日正式上线，敬请期待！'],
-    //       isBmd:true
-    //     })
-    //   }else{
-    //     _this.setData({
-    //       isBmd:false
-    //     })
-    //   }
-    // })
+    app.api.checkTime(function(data){
+      console.log(data)
+      if(data.code == -1){
+        _this.setData({
+          popup: 'hint',
+          hintText: ['请保留好您的棒签串码和脆筒二维码，活动将于4月22日正式上线，敬请期待！'],
+          isBmd:true
+        })
+      }else{
+        _this.setData({
+          isBmd:false
+        })
+      }
+    })
     //活动开始end
 
     if(!_this.code) return false

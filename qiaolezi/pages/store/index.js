@@ -14,7 +14,7 @@ Page({
       { src: 3, score: 50, surplus: 90, type: 1, name: "爱奇艺7天卡", code:"aqiyi" },
       // { src: 4, score: 50, surplus: 80 },
       // { src: 5, score: -1, surplus: 90 },
-      { src: 6, score: 500, surplus: 80, type: 4, name: "baby签名照",code:"babyphoto" }
+      { src: 6, score: 500, surplus: 80, type: 4, name: "Angelababy",code:"babyphoto" }
       // { src: 6, score: 800, surplus: 80, type: 5, name: "王子异签名照",code:"wzyphoto" }
     ],
     prizes: [
@@ -51,7 +51,7 @@ Page({
     var _this =this;
     var objs = _this.data.redeems
     _this.id = e.currentTarget.dataset.id
-    var title = [`确定要消耗${objs[_this.id].score}心跳兑换吗？`]
+    var title = [`巧乐兹代言人${objs[_this.id].name}签名`,`照，多款签名照片随机发放！`,`确定要消耗${objs[_this.id].score}积分心跳兑换吗？`]
     if (objs[_this.id].src == 4) title = ['解锁视频需要消耗50心跳，','是否确定消耗？']
     _this.setData({
       popup:'hintBtn',
