@@ -1,4 +1,5 @@
 const app = getApp();
+var popup = require("../../template/popup.js");
 var mta = require("../../utils/mta_analysis.js")
 Page({
   data: {
@@ -24,10 +25,13 @@ Page({
     timer: null, //定时器
     arr: [], //记录数据
     arrInit: [], //人声数据
+    pagePosition: 'fixed'
   },
+  setPageHeight: popup.setPageHeight,
   onLoad(e) {
     mta.Page.init()
     var _this = this;
+    _this.setPageHeight();
     console.log(e)
     app.globalData.style = _this.data.current + 1;
     _this.setData({

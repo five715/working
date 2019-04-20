@@ -1,3 +1,4 @@
+var popup = require("../../template/popup.js");
 const app = getApp();
 Page({
   data: {
@@ -23,8 +24,10 @@ Page({
     timer: null, //定时器
     imagesUrl: app.globalData.imagesUrl,
     isPlay: false,
-    isBannedClick: false
+    isBannedClick: false,
+    pagePosition: 'fixed'
   },
+  setPageHeight: popup.setPageHeight,
   onPlay(arr) {
     var _this = this;
     var arr = _this.data.arr
@@ -108,12 +111,18 @@ Page({
   },
   onLoad(query) {
     var _this = this
+    _this.setPageHeight();
     const scene = decodeURIComponent(query.q)
     // const scene = "https://qiaolezi.act.qq.com/e/c/backcode/?18"
     // const fid = query.fid
-    var fid = scene.split("?")[1];
+    var fid = ''
+    if (query.fid) {
+      fid = query.fid
+    }else{
+      fid = scene.split("?")[1];
+    }
+    console.log(query, scene, fid)
     if(!fid) return false
-    console.log(query,scene,fid)
 
     _this.setData({
       fid: fid

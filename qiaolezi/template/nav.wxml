@@ -1,5 +1,5 @@
 <!-- 导航 -->
-<view class="navs">
+<view class="navs" style="position:{{pagePosition=='relative'?'absolute':'fixed'}}">
   <image bindtap='onBtnHome' class='home nav' src='{{imagesUrl}}/navs_home.png'></image>
   <image bindtap='onBtnRule' class='rule nav' src='{{imagesUrl}}/navs_rule.png'></image>
   <navigator hover-class="none" class='oneself nav' url="/pages/store/oneself">

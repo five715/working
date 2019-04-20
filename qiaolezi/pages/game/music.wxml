@@ -1,4 +1,4 @@
-<view class='music pageBg' wx:if="{{!isAdvance}}">
+<view class='music pageBg' wx:if="{{!isAdvance}}" style="position:{{pagePosition}}">
   <image class='boxes' src='/images/music_bg.jpg'></image>
   <image class='title' src='{{imagesUrl}}/music_title.png'></image>
   <view wx:if="{{!isStart}}" class='hint_text_view'>
@@ -45,7 +45,7 @@
   <image class='music_btn_right' bindtap='onEnd' src='{{imagesUrl}}/music_btn_right.png'></image>
 </view>
 
-<view class="advance pageBg" wx:elif="{{isAdvance}}">
+<view class="advance pageBg" wx:elif="{{isAdvance}}" style="position:{{pagePosition}}">
   <image class='boxes' src='/images/advance_bg.jpg'></image>
   <image class='tit' src='{{imagesUrl}}/advance_tit.png'></image>
   <!-- <image class='play' src='{{imagesUrl}}/advance_play_{{style}}.png' bindtap='onPlay'></image> -->

@@ -53,7 +53,7 @@ function upfile(e) {
     }
   })
 }
-// 52,520红包
+// 99,52,520红包
 function formSubmit(e) {
   var _this = this;
   var obj = e.detail.value;
@@ -91,12 +91,9 @@ function formSubmit(e) {
       paySign: data.paySign, // 支付签名
       success: function (res) {
         console.log(res)
-      },
-      fail: function (res) {
-        console.log(res)
-      },
-      complete: function (res) {
-        console.log(res)
+        app.api.updateLottery(function (resDate) {
+          console.log(resDate)
+        }, obj.award_id)
       }
     })
   }, obj)
@@ -174,6 +171,27 @@ function bindscroll(e) {
   })
 }
 
+// 屏幕高度
+
+function setPageHeight(){
+  console.log(11)
+  var _this = this
+  wx.getSystemInfo({
+    success(res){
+      // console.log(res)
+      // console.log(res.windowHeight, 1182 * (res.windowWidth / 750))
+      if (res.windowHeight <= 1182 * (res.windowWidth / 750)) {
+        _this.setData({
+          pagePosition: 'relative'
+        });
+      }else{
+        _this.setData({
+          pagePosition:'fixed'
+        });
+      }
+    }
+  })
+}
 
 module.exports = {
   onGuide: onGuide,
@@ -182,5 +200,6 @@ module.exports = {
   formSubmit: formSubmit,
   formSubmitEntity: formSubmitEntity,
   onbtnHintMusic: onbtnHintMusic,
-  bindscroll:bindscroll
+  bindscroll:bindscroll,
+  setPageHeight: setPageHeight
 }

@@ -16,7 +16,8 @@ Page({
     redType: 1,
     per: {},
     scrollHeight: {},
-    scrollT:{}
+    scrollT: {},
+    pagePosition: 'fixed'
   },
   onBtnRule: nav.onBtnRule,
   onBtnHome: nav.onBtnHome,
@@ -26,9 +27,11 @@ Page({
   formSubmit: popup.formSubmit,
   formSubmitEntity: popup.formSubmitEntity,
   bindscroll: popup.bindscroll,
+  setPageHeight: popup.setPageHeight,
   onLoad(e) {
     mta.Page.init()
     var _this = this;
+    _this.setPageHeight();
     app.api.getUserInfo(function(data){
       console.log(data)
 

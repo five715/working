@@ -1,8 +1,8 @@
 const STORAGE = {
   PARAMATER: "paramater"
 }
-const URL = "https://qiaolezi.act.qq.com";
-// const URL = "https://s1-test.act.qq.com"
+// const URL = "https://qiaolezi.act.qq.com";
+const URL = "https://s1-test.act.qq.com"
 const SERVICE = {
   LOGIN: "/default/login", //登录注册
   //GETINFO: "/default/getinfo",  //是否中99红包
@@ -19,7 +19,8 @@ const SERVICE = {
   SAVEINFO: "/default/saveinfo", //完善实物个人信息
   GETQRCODE: "/default/getqrcode", //获取小程序二维码
   BMD: "/default/bmd", //白名单
-  CHECKTIME: "/default/checktime"  //校验是否到时间提示弹层
+  CHECKTIME: "/default/checktime",  //校验是否到时间提示弹层
+  UPDATELOTTERY : "/default/updatelottery"  //红包领取成功后
 }
 
 const isAPi= 0;     //是否使用模拟数据
@@ -543,11 +544,34 @@ function bmd(callback) {
   })
 }
 
+/**
+ * 校验是否到时间提示弹层接口
+ */
 function checkTime(callback){
   request(URL+SERVICE.CHECKTIME,{},function(res){
     callback(res.data)
   })
 }
+
+/**
+ * 红包领取成功后
+ */
+function updateLottery(callback, award_id) {
+  var paramater = getStorage();
+  if (!paramater.loginData) {
+    login(function () {
+      updateLottery(callback, award_id)
+    })
+    return
+  }
+  paramater.award_id = award_id
+
+  console.log(paramater)
+  request(URL + SERVICE.UPDATELOTTERY, paramater, function (res) {
+    callback(res.data)
+  })
+}
+
 /**
  * 初始化
  */
@@ -564,15 +588,16 @@ module.exports = {
   excode: requeExcode,
   savetel: savetel,
   getStatus: getStatus,
-  unlock:unlock,
-  saveFile:saveFile,
-  getFile:getFile,
+  unlock: unlock,
+  saveFile: saveFile,
+  getFile: getFile,
   getUserInfo: getUserInfo,
   lottery: lottery,
-  saveUser:saveUser,
+  saveUser: saveUser,
   exscore: exscore,
   saveinfo: saveinfo,
   getQrcode: getQrcode,
-  bmd:bmd,
-  checkTime:checkTime
+  bmd: bmd,
+  checkTime: checkTime,
+  updateLottery: updateLottery
 }

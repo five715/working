@@ -34,7 +34,8 @@ Page({
     redType: 0,
     hintText:[],
     idCard: ["", ""],
-    scrollT: {}
+    scrollT: {},
+    pagePosition: 'fixed'
   },
   onBtnRule: nav.onBtnRule,
   onBtnHome: nav.onBtnHome,
@@ -43,7 +44,8 @@ Page({
   upfile: popup.upfile,
   formSubmit: popup.formSubmit,
   formSubmitEntity: popup.formSubmitEntity,
-  bindscroll:popup.bindscroll,
+  bindscroll: popup.bindscroll,
+  setPageHeight: popup.setPageHeight,
   // 兑换包
   onReddem(e){
     var _this =this;
@@ -218,6 +220,7 @@ Page({
   onLoad() {
     mta.Page.init()
     var _this =this;
+    _this.setPageHeight();
     _this.onUserInfo();
   },
   onUserInfo(){

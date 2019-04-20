@@ -13,11 +13,14 @@ Page({
     ],
     imagesUrl: app.globalData.imagesUrl,
     popup:false,
-    hintText:""
+    hintText: "",
+    pagePosition: 'fixed'
   },
+  setPageHeight: popup.setPageHeight,
   onClose:popup.onClose,
   onLoad(e) {
     mta.Page.init()
+    this.setPageHeight();
     console.log(e)
   },
   onBtnSelect(e) {

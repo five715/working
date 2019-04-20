@@ -38,10 +38,12 @@ Page({
     imagesUrl: app.globalData.imagesUrl,
     popup: false,
     hintText: ["提交成功!"],
-    hintNav:""
+    hintNav: "",
+    pagePosition: 'fixed'
   },
   onbtnHintMusic: popup.onbtnHintMusic,
   onClose: popup.onClose,
+  setPageHeight: popup.setPageHeight,
   onReady() {
     var _this = this;
     var sounds = _this.data.sounds
@@ -244,6 +246,7 @@ Page({
   onLoad: function (e) {
     mta.Page.init()
     var _this = this;
+    _this.setPageHeight();
     wx.getSystemInfo({
       //获取系统信息成功，将系统窗口的宽高赋给页面的宽高
       success: function (res) {

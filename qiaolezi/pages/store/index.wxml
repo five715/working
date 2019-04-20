@@ -1,4 +1,4 @@
-<view class='store pageBg'>
+<view class='store pageBg' style="position:{{pagePosition}}">
   <image class='boxes' src='/images/store_bg.jpg'></image>
   <!-- 个人资料 -->
   <view class='oneself'>

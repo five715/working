@@ -1,6 +1,7 @@
 const app = getApp();
 import drawQrcode from '../../utils/weapp.qrcode.js'
 const ctx = wx.createCanvasContext('picture')
+var popup = require("../../template/popup.js");
 var mta = require("../../utils/mta_analysis.js")
 var qrcode;
 Page({
@@ -18,11 +19,15 @@ Page({
       '您好，这里有一箱情愿请查收--为你定制的（&）炫彩情歌～',
       '明枪易躲 暗恋难防，我的（&）炫彩情歌, 猝不及防。',
      ' 为你而唱(&)炫彩情歌，喜你成疾，药石无医'
-    ]
+    ],
+    pagePosition: 'fixed',
+    isShow:true
   },
+  setPageHeight: popup.setPageHeight,
   onLoad(e) {
     mta.Page.init()
     var _this =this;
+    _this.setPageHeight();
     console.log(e)
     _this.data.fid = e.fid
     _this.selects = e.selects
@@ -145,7 +150,8 @@ Page({
         canvasId: 'picture',
         success: (res) => {
           _this.setData({
-            pic: res.tempFilePath
+            pic: res.tempFilePath,
+            isShow:false
           }, wx.hideLoading)
         }
       })

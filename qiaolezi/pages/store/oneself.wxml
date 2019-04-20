@@ -1,4 +1,4 @@
-<view class='personal pageBg'>
+<view class='personal pageBg' style="position:{{pagePosition}}">
   <image class='boxes' src='/images/personal_bg.jpg'></image>
   <image class='slogan' src='{{imagesUrl}}/personal_slogan.png'></image>
   <image class='iocs' src='{{imagesUrl}}/personal_iocs.png'></image>
