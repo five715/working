@@ -32,7 +32,7 @@ Page({
     imagesUrl: app.globalData.imagesUrl,
     popup: false,
     redType: 0,
-    hintText:[],
+    hintText: [],
     idCard: ["", ""],
     scrollT: {},
     pagePosition: 'fixed'
@@ -46,13 +46,24 @@ Page({
   formSubmitEntity: popup.formSubmitEntity,
   bindscroll: popup.bindscroll,
   setPageHeight: popup.setPageHeight,
+  onMove: popup.onMove,
   // 兑换包
   onReddem(e){
     var _this =this;
     var objs = _this.data.redeems
     _this.id = e.currentTarget.dataset.id
-    var title = [`巧乐兹代言人${objs[_this.id].name}签名`,`照，多款签名照片随机发放！`,`确定要消耗${objs[_this.id].score}积分心跳兑换吗？`]
-    if (objs[_this.id].src == 4) title = ['解锁视频需要消耗50心跳，','是否确定消耗？']
+    console.log(objs, _this.id, objs[_this.id].surplus)
+    if (objs[_this.id].surplus <= 0) {
+      _this.setData({
+        popup: 'hint',
+        hintText: ["哎呀，你来晚啦，本周奖品已兑换完了，下周早点来呀~"]
+      })
+      return false
+    }
+
+    var title = [`确定要消耗${objs[_this.id].score}心跳兑换吗？`]
+    if (objs[_this.id].src == 4) title = ['解锁视频需要消耗50心跳，', '是否确定消耗？']
+    if (objs[_this.id].src == 6) title = [`巧乐兹代言人${objs[_this.id].name}签名`, `照，多款签名照片随机发放！`, `确定要消耗${objs[_this.id].score}心跳兑换吗？`]
     _this.setData({
       popup:'hintBtn',
       hintText: title
@@ -173,10 +184,9 @@ Page({
             })
           }, ret)
         }else{
-            _this.setData({
-              popup: 'LuckHint',
-              hintText: [`心跳值不足哦，`, `点击【获取更多心跳】`,`寻找心跳领取秘诀吧~`]
-            })
+          _this.setData({
+            popup: 'notEnough'
+          })
         }
       }, _this.data.userInfo.score)
     })

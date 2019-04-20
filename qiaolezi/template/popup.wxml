@@ -98,6 +98,16 @@
     <button wx:if="{{popup =='LuckHintBtn'}}" plain="true" hover-class="none" bindtap='onClose' class='popup_hint_btn popup_hint_no'>否</button>
     <image class='close' bindtap='onClose' src='{{imagesUrl}}/ioc_close.png'></image>
   </view>
+  <!-- 心跳值不足 -->
+  <view wx:if="{{popup == 'notEnough'}}" class='popup_hint'>
+    <image class='boxes' src='{{imagesUrl}}/popup_hint.png'></image>
+    <view class="text">
+      <text>心跳值不足哦，</text>
+      <text bindtap='onMove'>点击【获取更多心跳】</text>
+      <text>寻找心跳领取秘诀吧~</text>
+    </view>
+    <image class='close' bindtap='onClose' src='{{imagesUrl}}/ioc_close.png'></image>
+  </view>
 
   <view wx:if="{{popup == 'hintOver'}}" class='popup_hint'>
     <image class='boxes' src='{{imagesUrl}}/popup_hint.png'></image>

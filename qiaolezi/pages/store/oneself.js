@@ -28,6 +28,7 @@ Page({
   formSubmitEntity: popup.formSubmitEntity,
   bindscroll: popup.bindscroll,
   setPageHeight: popup.setPageHeight,
+  onMove: popup.onMove,
   onLoad(e) {
     mta.Page.init()
     var _this = this;
@@ -76,25 +77,6 @@ Page({
         _this.setData({ popup: 'entity', redType: 3})
         break;
     }
-  },
-  onMove(e) {
-    var _this = this;
-    _this.setData({
-      popup: "rule"
-    }, function () {
-      wx.createSelectorQuery().select('#rule').boundingClientRect(function (rect) {
-        wx.createSelectorQuery().select('#ruleC').boundingClientRect(function (rectC) {
-          console.log(rect, rectC)
-          _this.setData({
-            scrollHeight: { rule: rect.height }
-          }, function () {
-            _this.setData({
-              scrollT: { rule: rectC.height*(1805/3332)}
-            })
-          })
-        }).exec()
-      }).exec()
-    })
   },
   onShareAppMessage: function () {
     return {

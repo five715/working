@@ -125,16 +125,20 @@ function formSubmitEntity(e) {
 
   app.api.saveinfo(function(data){
     console.log(data)
-    _this.data.redeem.forEach((redeem,i)=>{
-      if(redeem.award_id==obj.award_id){
-        _this.data.redeem[i].isinfo = 0
-      }
-    })
+    if (_this.data.redeem){
+      _this.data.redeem.forEach((redeem,i)=>{
+        if(redeem.award_id==obj.award_id){
+          _this.data.redeem[i].isinfo = 0
+        }
+      })
+      _this.setData({
+        redeem: _this.data.redeem
+      })
+    }
 
     _this.setData({
       popup:"hintSubmit",
-      hintText:["提交成功"],
-      redeem:_this.data.redeem
+      hintText:["提交成功"]
     })
   },obj)
 }
@@ -192,6 +196,26 @@ function setPageHeight(){
     }
   })
 }
+// 活动规则锚点
+function onMove(e) {
+  var _this = this;
+  _this.setData({
+    popup: "rule"
+  }, function () {
+    wx.createSelectorQuery().select('#rule').boundingClientRect(function (rect) {
+      wx.createSelectorQuery().select('#ruleC').boundingClientRect(function (rectC) {
+        console.log(rect, rectC)
+        _this.setData({
+          scrollHeight: { rule: rect.height }
+        }, function () {
+          _this.setData({
+            scrollT: { rule: rectC.height * (1805 / 3332) }
+          })
+        })
+      }).exec()
+    }).exec()
+  })
+}
 
 module.exports = {
   onGuide: onGuide,
@@ -201,5 +225,6 @@ module.exports = {
   formSubmitEntity: formSubmitEntity,
   onbtnHintMusic: onbtnHintMusic,
   bindscroll:bindscroll,
-  setPageHeight: setPageHeight
+  setPageHeight: setPageHeight,
+  onMove:onMove
 }
