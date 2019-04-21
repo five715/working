@@ -13,7 +13,7 @@
   </view>
   <scroll-view id="beats" class='beats' scroll-y bindscroll="bindscroll">
     <block  wx:for="{{sounds}}" wx:key="" wx:for-index="i">
-      <image wx:if="{{item.music == 1}}" src="{{imagesUrl}}/music_{{item.src}}_{{item.color=='red'?'no':'yes'}}.png" class="audio {{item.src}} {{item.bt==1?'':'lock'}} {{item.color}}" bindtap='onAudio' style="color:{{item.color}}" id="beats{{i}}" data-i="{{i}}" data-src="{{soundsUrl}}/{{item.src}}.mp3" data-bt="{{item.bt}}">{{item.name}}<view class='mack'></view></image>
+      <image wx:if="{{item.music == 1}}" src="{{i==0?'/images':imagesUrl}}/music_{{item.src}}_{{item.color=='red'?'no':'yes'}}.png" class="audio {{item.src}} {{item.bt==1?'':'lock'}} {{item.color}}" bindtap='onAudio' style="color:{{item.color}}" id="beats{{i}}" data-i="{{i}}" data-src="{{soundsUrl}}/{{item.src}}.mp3" data-bt="{{item.bt}}">{{item.name}}<view class='mack'></view></image>
       <view wx:elif="{{item.music == 2}}"class='audio timer'>
         <image class='boxes' src='{{imagesUrl}}/music_beats_timer.png'></image>
         <block>

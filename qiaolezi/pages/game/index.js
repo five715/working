@@ -6,7 +6,7 @@ Page({
     selects: [
       { index: 1, text: "我不但可爱,我还可爱你了", mta: 26 },
       { index: 2, text: "我咬你的时候,你也要对我笑", mta: 27 },
-      { index: 3, text: "我跟你除恋爱真没什么好谈的", mta: 28 },
+      { index: 3, text: "我跟你除了恋爱真没什么好谈的", mta: 28 },
       { index: 4, text: "爱我是真心话,凶我是大冒险", mta: 29 },
       { index: 5, text: "你的牙印,一定是爱我的小标记", mta: 30 },
       { index: 6, text: "不许动手,只许动心", mta: 31 }
