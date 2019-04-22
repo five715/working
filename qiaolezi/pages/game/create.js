@@ -65,7 +65,7 @@ Page({
       },
       fail(res){
         wx.showModal({
-          title: '未打开',
+          title: '权限未打开',
           content: '是否前往打开',
           success(res) {
             if (res.confirm) {
@@ -86,7 +86,7 @@ Page({
     var _this = this
     var imagesUrl = _this.data.imagesUrl
     var simona = _this.data.texts[parseInt(Math.random() * _this.data.texts.length)]
-    var interval = 38
+    var interval = 40
     ctx.setFillStyle('#545')
     ctx.fillRect(0,0,750,750)
     ctx.draw(true)
@@ -96,8 +96,8 @@ Page({
     ctx.drawImage(`/images/create_slogan.png`, 82, 64, 598, 488)
     ctx.drawImage(`/images/create_iocs.png`, 177, 486, 408, 156)
     ctx.drawImage(`/images/create_text_bg.png`, 41, 676, 668, 135)
-    ctx.drawImage(`/images/create_qrcode_bg.png`, 494, 910, 172, 188)
-    ctx.drawImage(`/images/create_style.png`, 58, 887, 77, 86)
+    ctx.drawImage(`/images/create_qrcode_bg.png`, 497, 910, 169, 188)
+    ctx.drawImage(`/images/create_style.png`, 58, 870, 78, 86)
     // ctx.drawImage(`/images/create_style_hint.png`, 84, 981+40, 178, 32)
     ctx.drawImage(`/images/create_text_${_this.selects}.png`, 186, 731, 377, 31)
 
@@ -132,13 +132,13 @@ Page({
     }
     
     ctx.setFontSize(40)
-    ctx.fillText(nick, 136, 968)
-    ctx.strokeText(nick, 136, 968)
+    ctx.fillText(nick, 136, 953)
+    ctx.strokeText(nick, 136, 953)
 
-    ctx.rect(519, 919,105,104)
+    ctx.rect(520,919,105,105)
     ctx.setFillStyle('#ffffff')
     ctx.fill()
-    ctx.drawImage(_this.data.qrcode, 524, 923, 96, 96)
+    ctx.drawImage(_this.data.qrcode, 524, 923, 97, 97)
     ctx.draw(true)
 
     ctx.draw(true)
@@ -260,6 +260,11 @@ Page({
     console.log(`/pages/back/index?url=${_this.data.backUrl.split("?")[1]}`)
     wx.navigateTo({
       url: `/pages/back/index?url=${_this.data.backUrl.split("?")[1]}`
+    })
+  },
+  onBtnHome(e){
+    wx.navigateTo({
+      url: '/pages/index/foreshow',
     })
   },
   onShareAppMessage: function () {

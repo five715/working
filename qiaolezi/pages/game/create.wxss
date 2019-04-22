@@ -2,4 +2,5 @@
 .myQrcode {position: absolute; top: 0; left:750rpx; }
 .createPic {width: 750rpx; height: 1500rpx; }
 button{position: absolute; top: 0; left: 0; z-index: 9}
+.btn_home{position: absolute; top: 1106rpx; left: 497rpx; width: 161rpx; height: 29rpx;}
 /* page{position: fixed;} */

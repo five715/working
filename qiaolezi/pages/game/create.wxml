@@ -2,3 +2,4 @@
 <canvas class='picture' canvas-id='picture' style="display:{{isShow?'block':'none'}}"></canvas>
 <image class='createPic' src='{{pic}}' data-src='{{pic}}' bindlongtap='bindlongtap' style="position:{{pagePosition}}"></image>
 <!-- <button bindtap='onBtnBack'>临时跳入回流页{{backUrl}}</button> -->
+<image wx:if="{{pic}}" class='btn_home' src='/images/create_btn_home.png' bindtap='onBtnHome'></image>

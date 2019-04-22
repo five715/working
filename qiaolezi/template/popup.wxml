@@ -145,7 +145,7 @@
   <!-- 活动规则 -->
   <view wx:if="{{popup == 'rule'}}" class='popup_rule'>
     <image class='boxes' src='/images/popup_rule_boxes.png'></image>
-    <image class='product' src='{{imagesUrl}}/popup_product.png'></image>
+    <image class='product' src='/images/popup_product.png'></image>
     <scroll-view id="rule"  scroll-y data-id="rule" scroll-top="{{scrollT.rule}}" scroll-with-animation="true">
       <image class='con' id="ruleC" src='/images/popup_rule_con.png'></image>
     </scroll-view>
