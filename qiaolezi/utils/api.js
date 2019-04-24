@@ -1,8 +1,8 @@
 const STORAGE = {
   PARAMATER: "paramater"
 }
-const URL = "https://qiaolezi.act.qq.com";
-// const URL = "https://s1-test.act.qq.com"
+// const URL = "https://qiaolezi.act.qq.com";
+const URL = "https://s1-test.act.qq.com"
 const SERVICE = {
   LOGIN: "/default/login", //登录注册
   //GETINFO: "/default/getinfo",  //是否中99红包
@@ -20,7 +20,9 @@ const SERVICE = {
   GETQRCODE: "/default/getqrcode", //获取小程序二维码
   BMD: "/default/bmd", //白名单
   CHECKTIME: "/default/checktime",  //校验是否到时间提示弹层
-  UPDATELOTTERY : "/default/updatelottery"  //红包领取成功后
+  UPDATELOTTERY : "/default/updatelottery",  //红包领取成功后
+  UNLOCKVIDEO: "/default/unlockvideo",  //解锁视频
+  GETVIDEO: "/default/getvideo"  //获取视频解锁状态
 }
 
 const isAPi= 0;     //是否使用模拟数据
@@ -572,6 +574,51 @@ function updateLottery(callback, award_id) {
   })
 }
 
+// 解锁视频
+function unlockVideo(callback) {
+  var paramater = getStorage();
+  if (!paramater.loginData) {
+    login(function () {
+      unlockVideo(callback)
+    })
+    return
+  }
+  console.log(paramater)
+
+  if(isAPi){
+    var res = { "code": 0, "message": "suc" }
+    // 失败的例子
+    // var res= { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+    callback(res)
+    return false
+  }
+  request(URL + SERVICE.UNLOCKVIDEO, paramater, function (res) {
+    callback(res.data)
+  })
+}
+// 获取视频解锁状态
+function getVideo(callback) {
+  var paramater = getStorage();
+  if (!paramater.loginData) {
+    login(function () {
+      getVideo(callback)
+    })
+    return
+  }
+  console.log(paramater)
+
+  if (isAPi) {
+    var res = { "code": 0, "message": "suc" }
+    // 失败的例子
+    // var res = { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+    callback(res)
+    return false
+  }
+  request(URL + SERVICE.GETVIDEO, paramater, function (res) {
+    callback(res.data)
+  })
+}
+
 /**
  * 初始化
  */
@@ -599,5 +646,7 @@ module.exports = {
   getQrcode: getQrcode,
   bmd: bmd,
   checkTime: checkTime,
-  updateLottery: updateLottery
+  updateLottery: updateLottery,
+  unlockVideo: unlockVideo,
+  getVideo: getVideo
 }

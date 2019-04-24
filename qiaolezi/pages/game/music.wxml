@@ -44,25 +44,6 @@
   </view>
   <image class='music_btn_right' bindtap='onEnd' src='{{imagesUrl}}/music_btn_right.png'></image>
 </view>
-
-<view class="advance pageBg" wx:elif="{{isAdvance}}" style="position:{{pagePosition}}">
-  <image class='boxes' src='/images/advance_bg.jpg'></image>
-  <image class='tit' src='{{imagesUrl}}/advance_tit.png'></image>
-  <!-- <image class='play' src='{{imagesUrl}}/advance_play_{{style}}.png' bindtap='onPlay'></image> -->
-  
-  <view class='btn_play play'>
-    <image class='boxes heart' src='{{imagesUrl}}/advance_play_{{style}}.png' ></image>
-    <image class='btn_play_play btn' src='{{imagesUrl}}/advance_play_{{!isPlay?"yes":"no"}}.png' bindtap='onPlay'></image>
-    <image wx:for="{{[1,2,3,4]}}" wx:key="" class='btn_play_ioc btn_play_ioc_{{item}}' src='{{imagesUrl}}/advance_play_{{style}}_{{item}}.png'></image>
-  </view>
-  <view class='sign'>
-    <text>{{text}}</text>
-    <image class='boxes' src='{{imagesUrl}}/advance_sign.png'></image>
-  </view>
-  <image class='anew' src='{{imagesUrl}}/advance_btn_anew.png' bindtap='onAnew'></image>
-  <image class='create' src='{{imagesUrl}}/advance_btn_create.png' bindtap="onCreate"></image>
-</view>
-
 <include src="/template/popup.wxml"/>
 
 <!--index.wxml-->

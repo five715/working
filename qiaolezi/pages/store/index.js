@@ -11,8 +11,8 @@ Page({
     redeems: [
       { src: 1, score: 300, surplus: 80, type: 3, name: "爱奇艺季卡" ,code:"aqiyiji"},
       { src: 2, score: 100, surplus: 90, type: 2, name: "爱奇艺月卡",code:"aqiyimonth" },
-      { src: 3, score: 50, surplus: 90, type: 1, name: "爱奇艺7天卡", code:"aqiyi" },
-      // { src: 4, score: 50, surplus: 80 },
+      { src: 3, score: 50, surplus: 90, type: 1, name: "爱奇艺7天卡", code: "aqiyi" },
+      { src: 4, score: 50, surplus: 80, isUnlock: false },
       // { src: 5, score: -1, surplus: 90 },
       { src: 6, score: 500, surplus: 80, type: 4, name: "Angelababy",code:"babyphoto" }
       // { src: 6, score: 800, surplus: 80, type: 5, name: "王子异签名照",code:"wzyphoto" }
@@ -78,6 +78,21 @@ Page({
     var id = _this.id;
     console.log(objs)
     var type = objs[id].type
+    if (objs[_this.id].src == 4){
+      app.api.unlockVideo(function (data) {
+        _this.isReddem = false
+        console.log(data)
+        if(data.code == 0){
+          objs[_this.id].isUnlock = true
+          _this.setData({
+            popup: 'hint',
+            hintText: ['视频解锁成功', '请于次日再来观看'],
+            redeems: objs
+          })
+        }
+      })
+      return false
+    }
     app.api.exscore(function(data){
       _this.isReddem = false
       console.log(data)
@@ -232,6 +247,18 @@ Page({
     var _this =this;
     _this.setPageHeight();
     _this.onUserInfo();
+    app.api.getVideo(function(data){
+      console.log(data) 
+      var objs = _this.data.redeems
+      objs.forEach((o)=>{
+        if (o.src == 4) {
+          o.isUnlock = data.code == 0 ? true : false
+        }
+      })
+      _this.setData({
+        redeems:objs
+      })
+    })
   },
   onUserInfo(){
     var _this =this

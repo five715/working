@@ -155,11 +155,13 @@ Page({
       arr.s = false
     })
     console.log(_this.data.arr)
-    this.setData({
-      isStart: false,
-      isAdvance: true
-    })
     _this.funcStop(1)
+
+    app.globalData.content = `${JSON.stringify(_this.data.arr).replace(/"/g, "'")}&${_this.data.bgSrc}&${_this.data.select}`
+    console.log(app.globalData.content)
+    wx.navigateTo({
+      url: `/pages/game/custom?content=${app.globalData.content}`
+    })
   },
   funcStop(bol) {
     console.log("停止")
