@@ -139,13 +139,23 @@ Page({
   },
   // 启动抽奖
   onBtnLuck(e) {
-    this.setData({
-      popup: 'LuckHintBtn',
-      hintText: ['确定要用心跳参与抽奖吗？']
-    })
+    var _this = this;
+    console.log(23, '点击抽取按钮')
+    mta.Event.stat(`23`, {})
+    if (!_this.data.userInfo.score || _this.data.userInfo.score < 10) {
+      _this.setData({
+        popup: 'notEnough'
+      })
+    }else{
+      this.setData({
+        popup: 'LuckHintBtn',
+        hintText: ['确定要用心跳参与抽奖吗？']
+      })
+    }
   },
   onBtnLuckHintYes() {
-    mta.Event.stat(`23`, {})
+    console.log(32, '是,开始抽取')
+    mta.Event.stat(`32`, {})
     var _this = this;
     _this.setData({
       popup: false
