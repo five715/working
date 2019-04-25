@@ -92,23 +92,55 @@ Page({
   onLoad(query) {
     mta.Page.init()
     var _this = this;
-    if (query.isSkip) _this.bindended()
 
     this.setPageHeight();
 
     console.log(query,this)
     const scene = decodeURIComponent(query.q)
-    // const scene = "https://qiaolezi.act.qq.com/e/c/code/5";
+    // const scene = "https://qiaolezi.act.qq.com/e/c/code/6";
     // const scene = "https://qiaolezi.act.qq.com/e/c/code/XXXXXXXYYYYYY";
     // const scene = "https://qiaolezi.act.qq.com/e/c/code/"
-    // const scene = "https://qiaolezi.act.qq.com/e/c/code/fid=19"
-    if (!scene || scene == 'undefined') return false
-    this.onIf(scene)
+    if (!scene || scene == 'undefined') {
+      //小程序码进入
+      if (!query.isSkip){
+        console.log("直接进入07")
+        mta.Event.stat(`07`, {})
+      }
+    }else{
+      this.onIf(scene)
+    }
+    if (query.isSkip) _this.bindended()
   },
   onIf(scene) {
     var _this = this;
     var arr = scene.split("/");
     _this.code = arr[arr.length - 1]
+
+    var code = _this.code
+    _this.setData({
+      code: code
+    })
+    console.log(code)
+
+    if (code.length == 13) {
+      //带兑换码进入
+      console.log("06")
+      mta.Event.stat(`06`, {})
+      _this.setData({
+        isPopCdkey: true
+      })
+    } else if (code <= 5 && code > 0) {
+      //指定五个地址
+      console.log(`0${code}`)
+      mta.Event.stat(`0${code}`, {})
+    } else if (code == 6) {
+      console.log(code, "08")
+      mta.Event.stat(`08`, {})
+    } else {
+      //小程序码进入
+      console.log("07")
+      mta.Event.stat(`07`, {})
+    }
   },
   bindplay(e){
     console.log(e)
@@ -154,7 +186,8 @@ Page({
     })
     //活动开始end
 
-    if(!_this.code) return false
+    if (!_this.code) return false
+    if (_this.code.length !== 13) return false
     //带兑换码进入
     wx.getUserInfo({
       success(e) {

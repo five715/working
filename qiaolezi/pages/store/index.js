@@ -12,10 +12,10 @@ Page({
       { src: 1, score: 300, surplus: 80, type: 3, name: "爱奇艺季卡" ,code:"aqiyiji"},
       { src: 2, score: 100, surplus: 90, type: 2, name: "爱奇艺月卡",code:"aqiyimonth" },
       { src: 3, score: 50, surplus: 90, type: 1, name: "爱奇艺7天卡", code: "aqiyi" },
-      // { src: 4, score: 50, surplus: 80, isUnlock: false },
-      // { src: 5, score: -1, surplus: 90 },
-      { src: 6, score: 500, surplus: 80, type: 4, name: "Angelababy",code:"babyphoto" }
-      // { src: 6, score: 800, surplus: 80, type: 5, name: "王子异签名照",code:"wzyphoto" }
+      { src: 4, score: 50, surplus: 80, isUnlock: false },
+      // { src: 5, score: 0, surplus: 90 },
+      { src: 6, score: 500, surplus: 80, type: 4, name: "Angelababy",code:"babyphoto" },
+      { src: 6, score: 800, surplus: 80, type: 5, name: "王子异签名照",code:"wzyphoto" }
     ],
     prizes: [
       { prize: "vip", state: "yes", ret: 3 },

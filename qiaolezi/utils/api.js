@@ -54,7 +54,7 @@ function login(callback) {
   wx.login({
     success: (res) => {
       var code = res.code
-      console.log(code)
+      console.log(res,code)
       if (code) {
         if(isAPi){
           var res = {"code": 0, "message": "suc", "data": "xxxaaaa"}
