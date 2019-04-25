@@ -99,7 +99,11 @@ Page({
       obj[dataset.i].color = "#000";
       audio.src = dataset.src;
       // console.log(audio)
-      audio.play();
+      // audio.play();
+      audio.stop()
+      setTimeout(function () {
+        audio.play()
+      }, 70)
       // mta
       var mtaId = obj[dataset.i].mta
       console.log(obj[dataset.i].name,mtaId)
@@ -156,7 +160,11 @@ Page({
     })
     console.log(_this.data.arr)
     _this.funcStop(1)
-
+    _this.setData({
+      time: 0,
+      per: 0,
+      isStart: false
+    })
     app.globalData.content = `${JSON.stringify(_this.data.arr).replace(/"/g, "'")}&${_this.data.bgSrc}&${_this.data.select}`
     console.log(app.globalData.content)
     wx.navigateTo({
@@ -304,34 +312,6 @@ Page({
       })
     }).exec()
 
-  },
-  onAnew() {
-    var _this = this;
-    wx.navigateBack({
-      delta: 2
-    })
-    _this.funcStop();
-    _this.setData({
-      isAdvance: false,
-      time: 0,
-      t: 0,
-      per:0,
-      isStart:false
-    })
-  },
-  onCreate() {
-    var _this = this;
-    _this.funcStop();
-    var arr = _this.data.arr;
-    // console.log(JSON.parse(JSON.stringify(arr)), JSON.stringify(arr).replace(/"/g,"'"))
-    app.api.saveFile(function(data){
-      var title = data.status == 0 ? ['提交成功!'] : (data.status == 1 && ['作品提交成功！获得1个心跳值~','可前往心跳商城参与奖品兑换和幸运抽奖哦~'])
-      _this.setData({
-        popup:"hintMusic",
-        hintText:title,
-        hintNav: `create?fid=${data.fid}&selects=${_this.data.select}&style=${_this.data.style}`
-      })
-    }, `${JSON.stringify(arr).replace(/"/g, "'")}&${_this.data.bgSrc}&${_this.data.select}`)
   },
   bindscroll(e) {
     var _this = this

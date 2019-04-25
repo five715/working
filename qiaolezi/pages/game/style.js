@@ -66,20 +66,20 @@ Page({
     this.funcStop()
     switch(app.globalData.style){
       case 1:
-        console.log(app.globalData.style,"说唱",11)
         mta.Event.stat(`11`, {})
+        console.log(app.globalData.style,"说唱",11)
         break;
       case 2:
+        mta.Event.stat(`14`, {})
         console.log(app.globalData.style,"民谣", 14)
         break;
-        mta.Event.stat(`14`, {})
       case 3:
-        console.log(app.globalData.style,"摇滚", 13)
         mta.Event.stat(`13`, {})
+        console.log(app.globalData.style,"摇滚", 13)
         break;
       case 4:
-        console.log(app.globalData.style,"中国风", 12)
         mta.Event.stat(`12`, {})
+        console.log(app.globalData.style,"中国风", 12)
         break;
     }
     wx.navigateTo({

@@ -178,7 +178,6 @@ function bindscroll(e) {
 // 屏幕高度
 
 function setPageHeight(){
-  console.log(11)
   var _this = this
   wx.getSystemInfo({
     success(res){

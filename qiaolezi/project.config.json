@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 11,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
@@ -94,7 +94,7 @@
 					"id": 7,
 					"name": "回流",
 					"pathName": "pages/back/index",
-					"query": "fid=179",
+					"query": "fid=459032",
 					"scene": null
 				},
 				{
@@ -119,10 +119,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 11,
 					"name": "定制成功",
 					"pathName": "pages/game/custom",
-					"query": "fid=19&selects=3&style=4",
+					"query": "",
 					"scene": null
 				}
 			]
