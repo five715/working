@@ -137,9 +137,7 @@ Page({
   onStart() {
     var _this = this;
     _this.funcStop();
-    setTimeout(function(){
-      _this.data.audios.bg.play()
-    },70)
+    _this.data.audios.bg.play()
     this.setData({
       isStart: true,
       arr:_this.data.arrInit
@@ -256,7 +254,6 @@ Page({
     this.funcStop()
   },
   onLoad: function (e) {
-    console.log(e)
     mta.Page.init()
     var _this = this;
     _this.setPageHeight();
@@ -314,7 +311,7 @@ Page({
         scrollHeight: rect.height
       })
     }).exec()
-    _this.onStart()
+
   },
   bindscroll(e) {
     var _this = this

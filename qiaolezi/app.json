@@ -9,20 +9,13 @@
     "pages/game/create",
     "pages/back/index",
     "pages/index/index",
-    "pages/game/custom",
-    "pages/game/trial"
+    "pages/game/custom"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "巧乐兹",
     "navigationBarTextStyle": "black"
-  },
-  "plugins": {
-    "tencentvideo": {
-      "version": "1.3.0",
-      "provider": "wxa75efa648b60994b"
-    }
   },
   "sitemapLocation": "sitemap.json"
 }

@@ -1,7 +1,7 @@
 <view class='music pageBg' wx:if="{{!isAdvance}}" style="position:{{pagePosition}}">
   <image class='boxes' src='/images/music_bg.jpg'></image>
   <image class='title' src='{{imagesUrl}}/music_title.png'></image>
-  <view wx:if="{{!isStart}}" class='hint_text_view none'>
+  <view wx:if="{{!isStart}}" class='hint_text_view'>
     <view class='hint_text'>
       <image class='boxes' src='/images/music_hint.png'></image>
       <text>点击开始，音乐即刻播放，
