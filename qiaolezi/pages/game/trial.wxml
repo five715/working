@@ -1,16 +1,6 @@
 <view class='music pageBg' wx:if="{{!isAdvance}}" style="position:{{pagePosition}}">
   <image class='boxes' src='/images/music_bg.jpg'></image>
   <image class='title' src='{{imagesUrl}}/music_title.png'></image>
-  <view wx:if="{{!isStart}}" class='hint_text_view none'>
-    <view class='hint_text'>
-      <image class='boxes' src='/images/music_hint.png'></image>
-      <text>点击开始，音乐即刻播放，
-        请于20秒内添加喜欢音效，
-        MIX炫彩情歌！</text>
-      <image class='btn' bindtap='onStart' src='{{imagesUrl}}/music_hint_btn.png'></image>
-      <image class='close' bindtap='onStart' src='{{imagesUrl}}/ioc_close.png'></image>
-    </view>
-  </view>
   <scroll-view id="beats" class='beats' scroll-y bindscroll="bindscroll">
     <block  wx:for="{{sounds}}" wx:key="" wx:for-index="i">
       <image wx:if="{{item.music == 1}}" src="{{i==0?'/images':imagesUrl}}/music_{{item.src}}_{{item.color=='red'?'no':'yes'}}.png" class="audio {{item.src}} {{item.bt==1?'':'lock'}} {{item.color}}" bindtap='onAudio' style="color:{{item.color}}" id="{{item.src}}" data-i="{{i}}" data-src="{{soundsUrl}}/{{item.src}}.mp3" data-bt="{{item.bt}}">{{item.name}}<view class='mack'></view></image>
@@ -42,20 +32,6 @@
     <image class='boxes' src='{{imagesUrl}}/music_chang.png'></image>
     <image class='duan' style='top:{{scrollPer}}%' src='{{imagesUrl}}/music_duan.png'></image>
   </view>
-  <image class='music_btn_right' bindtap='onEnd' src='{{imagesUrl}}/music_btn_right.png'></image>
+  <image class='music_btn_right' bindtap='onBegin' src='{{imagesUrl}}/music_btn_right.png'></image>
 </view>
 <include src="/template/popup.wxml"/>
-
-<!--index.wxml-->
-<!-- <view class="made" wx:if="{{!isAdvance}}">
-  <view class="audio" bindtap='onAudio' style="color:{{item.color}}" wx:for="{{sounds}}" wx:key="" wx:for-index="i" id="beats{{i}}" data-i="{{i}}" data-src="/sounds/{{item.src}}.mp3" data-bt="{{item.bt}}">{{item.name}}</view>
-  <view wx:if="{{!isStart}}" bindtap='onStart'>播放音乐加上Beats定制炫彩情歌</view>
-  <view wx:else bindtap='onEnd'>结束(点击结束制作)</view>
-  <text>{{time}}</text>
-</view>
-<view class="advance" wx:elif="{{isAdvance}}">
-  <view bindtap='onPlay'>定制成功点击播放</view>
-  <text>{{t}}</text>
-  <view bindtap='onAnew'>重新定制</view>
-  <view bindtap="onCreate">生成音乐</view>
-</view> -->

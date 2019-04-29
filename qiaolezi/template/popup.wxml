@@ -162,4 +162,10 @@
       <text wx:for="{{hintText}}" wx:key="">{{item}}</text>
     </view>
   </view>
+  <view wx:if="{{popup == 'video'}}" class='video'>
+    <view class='txv-video'>
+      <txv-video vid="{{vid}}" playerid="txv1"></txv-video>
+    </view>
+    <image class='close' bindtap='onClose' src='{{imagesUrl}}/popup_close.png'></image>
+  </view>
 </view>

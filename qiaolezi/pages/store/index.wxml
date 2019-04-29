@@ -34,14 +34,3 @@
 </view>
 <include  src="/template/nav.wxml"/>
 <include  src="/template/popup.wxml"/>
-<!-- 弹窗 -->
-<view class='popup {{isPop ? "block" : none}}'>
-  <view wx:if="{{isLuck}}" class='popup_luckYes pop'>
-    恭喜获得{{luck.award_name}}奖品,请到<navigator url="/pages/store/oneself">个人中心</navigator>查看
-    <view bindtap='onClose'>关闭</view>
-  </view>
-  <view wx:else class='popup_luckNo pop'>
-    积分不足,请参考<navigator url="/pages/store/oneself">这里</navigator>获得更多积分
-    <view bindtap='onClose'>关闭</view>
-  </view>
-</view>

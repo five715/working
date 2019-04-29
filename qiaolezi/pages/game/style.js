@@ -83,7 +83,7 @@ Page({
         break;
     }
     wx.navigateTo({
-      url: `music?select=${app.globalData.select}&style=${app.globalData.style}&text=${app.globalData.text}`,
+      url: `trial?select=${app.globalData.select}&style=${app.globalData.style}&text=${app.globalData.text}`,
     })
   },
   onUnload() {

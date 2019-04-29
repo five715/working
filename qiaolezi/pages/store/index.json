@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "巧乐兹 喜欢就给他点颜色"
+  "navigationBarTitleText": "巧乐兹 喜欢就给他点颜色",
+  "usingComponents": {
+    "txv-video": "plugin://tencentvideo/video"
+  }
 }

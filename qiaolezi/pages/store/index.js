@@ -12,7 +12,7 @@ Page({
       { src: 1, score: 300, surplus: 0, type: 3, name: "爱奇艺季卡" ,code:"aqiyiji"},
       { src: 2, score: 100, surplus: 0, type: 2, name: "爱奇艺月卡",code:"aqiyimonth" },
       { src: 3, score: 50, surplus: 0, type: 1, name: "爱奇艺7天卡", code: "aqiyi" },
-      // { src: 4, score: 50, surplus: 0, isUnlock: false },
+      { src: 4, score: 20, surplus: 1, isUnlock: false },
       // { src: 5, score: 0, surplus: 0 },
       { src: 6, score: 500, surplus: 0, type: 4, name: "Angelababy",code:"babyphoto" }
       // { src: 6, score: 800, surplus: 0, type: 5, name: "王子异签名照",code:"wzyphoto" }
@@ -35,7 +35,8 @@ Page({
     hintText: [],
     idCard: ["", ""],
     scrollT: {},
-    pagePosition: 'fixed'
+    pagePosition: 'fixed',
+    vid:""
   },
   onBtnRule: nav.onBtnRule,
   onBtnHome: nav.onBtnHome,
@@ -60,14 +61,51 @@ Page({
       })
       return false
     }
-
-    var title = [`确定要消耗${objs[_this.id].score}心跳兑换吗？`]
-    if (objs[_this.id].src == 4) title = ['解锁视频需要消耗50心跳，', '是否确定消耗？']
-    if (objs[_this.id].src == 6) title = [`巧乐兹代言人${objs[_this.id].name}签名`, `照，多款签名照片随机发放！`, `确定要消耗${objs[_this.id].score}心跳兑换吗？`]
-    _this.setData({
-      popup:'hintBtn',
-      hintText: title
-    })
+    if(objs[_this.id].src == 4){
+      app.api.getVideo(function (data) {
+        console.log(data)
+        if (data.code == 0) {
+          if (!data.vid) {
+            //前端提示弹层
+            _this.setData({
+              popup: 'hint',
+              hintText: ['恭喜丸子女孩们，视频解锁成功！巧乐兹正在马不停蹄更新中，请明日来观看炫酷王子异！'],
+            })
+          } else {
+            // 播放视频
+            _this.setData({
+              vid: data.vid,
+              popup:"video"
+            })
+          }
+          // var objs = _this.data.redeems
+          // objs.forEach((o) => {
+          //   if (o.src == 4) {
+          //     o.isUnlock = data.code == 0 ? true : false
+          //     o.surplus = data.code == 0 ? 0 : 1
+          //   }
+          // })
+          // _this.setData({
+          //   redeems: objs
+          // })
+        }else{
+          _this.setData({
+            popup: 'hintBtn',
+            hintText: ['解锁视频需要消耗50心跳，', '是否确定消耗？']
+          })
+        }
+      })
+    }else if (objs[_this.id].src == 6) {
+      _this.setData({
+        popup: 'hintBtn',
+        hintText: [`巧乐兹代言人${objs[_this.id].name}签名`, `照，多款签名照片随机发放！`, `确定要消耗${objs[_this.id].score}心跳兑换吗？`]
+      })
+    }else{
+      _this.setData({
+        popup:'hintBtn',
+        hintText: [`确定要消耗${objs[_this.id].score}心跳兑换吗？`]
+      })
+    }
   },
   onBtnHintYes(e) {
     var _this = this;
@@ -86,8 +124,15 @@ Page({
           objs[_this.id].isUnlock = true
           _this.setData({
             popup: 'hint',
-            hintText: ['视频解锁成功', '请于次日再来观看'],
+            hintText: ['积分已扣除，请等待视频解锁'],
             redeems: objs
+          })
+        } else {
+          var arr = []
+          arr.push(data.message)
+          _this.setData({
+            popup: 'hint',
+            hintText: arr
           })
         }
       })
@@ -257,18 +302,6 @@ Page({
     var _this =this;
     _this.setPageHeight();
     _this.onUserInfo();
-    // app.api.getVideo(function(data){
-    //   console.log(data) 
-    //   var objs = _this.data.redeems
-    //   objs.forEach((o)=>{
-    //     if (o.src == 4) {
-    //       o.isUnlock = data.code == 0 ? true : false
-    //     }
-    //   })
-    //   _this.setData({
-    //     redeems:objs
-    //   })
-    // })
   },
   onUserInfo(){
     var _this =this

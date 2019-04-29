@@ -1,8 +1,8 @@
 const STORAGE = {
   PARAMATER: "paramater"
 }
-const URL = "https://qiaolezi.act.qq.com";  //正是地址
-// const URL = "https://s1-test.act.qq.com" //测试地址
+// const URL = "https://qiaolezi.act.qq.com";  //正是地址
+const URL = "https://s1-test.act.qq.com" //测试地址
 const SERVICE = {
   LOGIN: "/default/login", //登录注册
   //GETINFO: "/default/getinfo",  //是否中99红包
@@ -22,7 +22,8 @@ const SERVICE = {
   CHECKTIME: "/default/checktime",  //校验是否到时间提示弹层
   UPDATELOTTERY : "/default/updatelottery",  //红包领取成功后
   UNLOCKVIDEO: "/default/unlockvideo",  //解锁视频
-  GETVIDEO: "/default/getvideo"  //获取视频解锁状态
+  GETVIDEO: "/default/getvideo",  //获取视频解锁状态
+  RESEND : "/default/resend"  //补发红包
 }
 
 const isAPi= 0;     //是否使用模拟数据
@@ -608,7 +609,7 @@ function getVideo(callback) {
   console.log(paramater)
 
   if (isAPi) {
-    var res = { "code": 0, "message": "suc" }
+    var res = { "code": 0, "message": "suc", "vid": "e0354z3cqjp" }
     // 失败的例子
     // var res = { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
     callback(res)
@@ -619,6 +620,27 @@ function getVideo(callback) {
   })
 }
 
+function resend(callback) {
+  var paramater = getStorage();
+  if (!paramater.loginData) {
+    login(function () {
+      resend(callback)
+    })
+    return
+  }
+  console.log(paramater)
+
+  if (isAPi) {
+    var res = { "code": 0, "message": "suc", "flag": 1, 'package': 'asda', 'timeStamp': 1234, 'nonceStr': 12312, 'paySign': 'asd',"award_id":123}
+    // 失败的例子
+    // var res = { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+    callback(res)
+    return false
+  }
+  request(URL + SERVICE.RESEND, paramater, function (res) {
+    callback(res.data)
+  })
+}
 /**
  * 初始化
  */
@@ -648,5 +670,6 @@ module.exports = {
   checkTime: checkTime,
   updateLottery: updateLottery,
   unlockVideo: unlockVideo,
-  getVideo: getVideo
+  getVideo: getVideo,
+  resend: resend
 }

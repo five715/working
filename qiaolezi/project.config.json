@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 12,
 			"list": [
 				{
 					"id": -1,
@@ -123,6 +123,13 @@
 					"name": "定制成功",
 					"pathName": "pages/game/custom",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "试听",
+					"pathName": "pages/game/trial",
+					"query": "select=1&style=2&text=不许动手,只许动心",
 					"scene": null
 				}
 			]

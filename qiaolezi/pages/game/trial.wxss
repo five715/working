@@ -1,0 +1,40 @@
+.music .title{position: absolute; top: 51rpx; left: 127rpx; width: 489rpx; height: 81rpx;}
+
+
+.music .hint_text_view{position: fixed; top: 0;left: 0;width: 750rpx; height: 1500rpx; z-index: 9;background: rgba(0,0,0,0.57)}
+.music .hint_text_view .hint_text{position: absolute; top: 300rpx; left: 25.5rpx; width: 684rpx; height: 471rpx;}
+.music .hint_text_view text{position: absolute; top: 239rpx; left: 185rpx; width: 390rpx; font-size: 30rpx; color: #933323; text-align: center;}
+.music .hint_text_view .btn{position: absolute; top: 371rpx; left: 281rpx; width: 170rpx; height: 58rpx;}
+.music .hint_text_view .close{position: absolute; top: 0rpx; right: 0rpx; width: 80rpx; height: 80rpx;}
+
+.music .timer_boxes{position: absolute; top: 95rpx; left: 17rpx; width:164rpx; height:119rpx;}
+.music .timer_boxes_a{animation: size 0.5s infinite alternate;}
+
+@keyframes size{
+  0%{transform: scale(1)}
+  100%{transform: scale(1.05)}
+}
+
+.music .timer text{position: absolute; top: 115rpx; width: 95.5%; text-align: center; font-size: 37rpx; color: #fff;}
+.music .line{position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
+
+
+.music .per_bg{position: absolute;  background: #fff;overflow: hidden;}
+.music .per_bg_1{top: 0;left: 0; width: 100%; height: 6rpx;}
+.music .per_bg_2{top:0; right: 0; width: 6rpx; height: 100%;}
+.music .per_bg_3{bottom: 0;left: 0; width: 100% ;height: 6rpx;transform: rotate(180deg)}
+.music .per_bg_4{top: 0;left: 0; width: 6rpx; height: 100%;transform: rotate(180deg)}
+.music .per{position: absolute; top: 0;left: 0; width: 100%; height: 100%; background: #47290f;}
+
+
+
+.music .beats{position: absolute; top: 151rpx; left: 83rpx; width: 721rpx; height: 942rpx;}
+.music .audio{width: 195rpx; height: 305rpx; display: inline-block;position: relative;}
+.music .scroll{position: absolute; top: 335rpx; left: 674rpx; width: 30rpx; height: 474rpx;}
+.music .scroll .boxes{height: 580rpx;}
+.music .scroll .duan{position: absolute; top: 0%;left: 0;width: 30rpx; height: 106rpx; }
+
+.music .music_btn_right{position: absolute; top: 1102rpx; left: 216rpx; width: 318rpx; height: 103rpx;}
+
+.music .lock .mack{position: absolute; top: 0;left: 0;width: 100%; height: 100%;background: rgba(0,0,0,0.7)}
+

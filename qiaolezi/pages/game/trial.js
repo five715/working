@@ -4,23 +4,23 @@ var mta = require("../../utils/mta_analysis.js")
 Page({
   data: {
     sounds: [
-      { music: 1, src: "beats1", color: "red", bt: 1, name: "mua",mta:"15" },
+      { music: 1, src: "beats1", color: "red", bt: 1, name: "mua", mta: "15" },
       { music: 1, src: "beats2", color: "red", bt: 1, name: "海豚", mta: "16" },
-      { music: 1, src: "beats3", color: "red", bt: 1, name: "心跳", mta: "17"},
+      { music: 1, src: "beats3", color: "red", bt: 1, name: "心跳", mta: "17" },
       { music: 1, src: "beats4", color: "red", bt: 1, name: "画眉鸟", mta: "18" },
-      { music: 2, src: "timer", color: "red", bt: 1, name: "时间"},
+      { music: 2, src: "timer", color: "red", bt: 1, name: "时间" },
       { music: 1, src: "beats5", color: "red", bt: 1, name: "风铃", mta: "19" },
       { music: 1, src: "beats6", color: "red", bt: 1, name: "小猫叫", mta: "20" },
-      { music: 1, src: "beats7", color: "red", bt: 1, name: "honey", mta: "21"},
-      { music: 1, src: "beats8", color: "red", bt: 1, name: "踢踏舞", mta: "22"},
+      { music: 1, src: "beats7", color: "red", bt: 1, name: "honey", mta: "21" },
+      { music: 1, src: "beats8", color: "red", bt: 1, name: "踢踏舞", mta: "22" },
       { music: 3, src: "beats_no_1", color: "red", bt: 0, name: "敬请期待" },
       { music: 3, src: "beats_no_2", color: "red", bt: 0, name: "敬请期待" },
       { music: 3, src: "beats_no_3", color: "red", bt: 0, name: "敬请期待" }
     ],
     audios: {},
-    style:null,
-    text:"",
-    select:0,
+    style: null,
+    text: "",
+    select: 0,
     bgTimer: 20000,
     isStart: false, //是否开始记录
     isAdvance: false, //是否预创作
@@ -29,8 +29,8 @@ Page({
     timer: null, //定时器
     arr: [], //记录数据
     arrInit: [], //人声数据
-    bgSrc:"",
-    per:0,
+    bgSrc: "",
+    per: 0,
     isCancel: false, //是否可以取消
     scrollHeight: 942,
     scrollPer: 0,
@@ -39,7 +39,8 @@ Page({
     popup: false,
     hintText: ["提交成功!"],
     hintNav: "",
-    pagePosition: 'fixed'
+    pagePosition: 'fixed',
+    url:""
   },
   onbtnHintMusic: popup.onbtnHintMusic,
   onClose: popup.onClose,
@@ -63,7 +64,7 @@ Page({
         confirmText: '是',
         success(res) {
           if (res.confirm) {
-            app.api.unlock(function(data) {
+            app.api.unlock(function (data) {
               console.log(data, obj[type - 1].bt = 1)
               wx.showModal({
                 title: '解锁成功！快去Mix你的炫彩音乐吧~',
@@ -80,98 +81,16 @@ Page({
       })
       return false;
     }
-    if (!_this.data.isStart) return false;
 
     var target = e.currentTarget;
-    // console.log(e,target)
     var dataset = target.dataset;
     var audio = _this.data.audios[target.id];
-    // console.log(e,_this.data.sounds[dataset.i],dataset.i);
-
-    if(_this.data.arr.length == 6){
-      _this.setData({
-        popup:"hint",
-        hintText: ["音效最多可以选择4个哦~ (>▽<)"]
-      })
-      return false
-    }
-    if (obj[dataset.i].color == "red") {
-      obj[dataset.i].color = "#000";
-      audio.src = dataset.src;
-      // console.log(audio)
-      // audio.play();
-      audio.stop()
-      setTimeout(function () {
-        audio.play()
-      }, 70)
-      // mta
-      var mtaId = obj[dataset.i].mta
-      console.log(obj[dataset.i].name,mtaId)
-      mta.Event.stat(mtaId, {})
-      // mtaEnd
-    } else {
-      if (!_this.data.isCancel) return false
-      obj[dataset.i].color = "red"
-      audio.stop()
-    }
-    _this.setData({
-      sounds: obj
-    })
-    // console.log(audio);
-    if (_this.data.isStart) {
-      var o = {}
-      o.id = e.target.id
-      if (obj[dataset.i].color == "red") {
-        o.e = new Date().getTime() - _this.timeDate;
-        for (var i = 0; i < _this.data.arr.length; i++) {
-          if (_this.data.arr[i].id == o.id) _this.data.arr.splice(i, 1)
-        }
-        console.log(_this.data.arr)
-      } else {
-        o.t = new Date().getTime() - _this.timeDate;
-        _this.data.arr.push(o)
-      }
-      console.log(_this.data.arr)
-    }
-  },
-  onStart() {
-    var _this = this;
-    _this.funcStop();
-    setTimeout(function(){
-      _this.data.audios.bg.play()
-    },70)
-    this.setData({
-      isStart: true,
-      arr:_this.data.arrInit
-    }, function() {
-      _this.timeDate = new Date().getTime();
-      _this.data.timer = setInterval(function() {
-        var t = new Date().getTime() - _this.timeDate
-        _this.onForAudio(t, _this.data.arr)
-        _this.setData({
-          time: parseInt(t/1000),
-          per : t / _this.data.bgTimer*100
-        })
-      }, 100)
-    })
-  },
-  onEnd() {
-    var _this = this;
-    _this.data.arr.forEach((arr) => {
-      arr.s = false
-    })
-    console.log(_this.data.arr)
-    _this.funcStop(1)
-    _this.setData({
-      time: 0,
-      per: 0,
-      isStart: false
-    })
-    app.globalData.content = `${JSON.stringify(_this.data.arr).replace(/"/g, "'")}&${_this.data.bgSrc}&${_this.data.select}`
-    console.log(app.globalData.content)
-    wx.navigateTo({
-      url: `/pages/game/custom?content=${app.globalData.content}`
-    })
+    console.log(e, _this.data.sounds[dataset.i], audio);
+    audio.src = dataset.src;
+    audio.stop()
+    setTimeout(function () {
+      audio.play()
+    }, 70)
   },
   funcStop(bol) {
     console.log("停止")
@@ -191,74 +110,22 @@ Page({
       })
     }
   },
-  onPlay() {
-    var _this = this;
-    var arr = _this.data.arr
-
-    if (_this.data.isPlay) return
-    _this.data.isPlay = true
-    _this.setData({
-      isPlay: true
-    })
-
-    arr.forEach((arr) => {
-      arr.s = false
-    })
-    _this.data.audios.bg.play()
-    var obj = _this.data.sounds
-    _this.timeDate = new Date().getTime();
-    _this.data.timer = setInterval(function() {
-      var t = new Date().getTime() - _this.timeDate
-      _this.onForAudio(t, arr)
-      _this.setData({
-        t: t
-      })
-    }, 100)
-  },
-  onForAudio(t, arrs) {
-    var a = t;
-    var _this = this;
-    var obj = _this.data.sounds
-    if (t >= _this.data.bgTimer) {
-      // _this.timeDate = new Date().getTime();
-      _this.data.audios.bg.stop()
-      // _this.setData({
-      //   isStart:false
-      // })
-      _this.funcStop();
-      // _this.data.audios.bg.play()
-      // arrs.forEach((arr) => {
-      //   arr.s = false
-      // })
-      return false;
-    } else {
-      // _this.data.audios.bg.play()
-    }
-    arrs.forEach((arr) => {
-      if (t >= arr.t && !arr.s) {
-        console.log(a, t, arr)
-        _this.data.audios[arr.id].stop()
-        setTimeout(function(){
-          _this.data.audios[arr.id].play()
-        },70)
-        obj.forEach((o)=>{
-          if(o.src == arr.id) o.color == "#000"
-        })
-        // obj[arr.id.split("beats")[1]].color = '#000';
-        arr.s = true
-      }
-    })
-    _this.setData({
-      sounds: obj
-    })
-  },
-  onUnload(){
+  onUnload() {
     this.funcStop()
   },
+  onBegin() {
+    var _this = this
+    var url = ''
+    _this.funcStop()
+    console.log(_this.data.url)
+    wx.navigateTo({
+      url: `/pages/game/music?${_this.data.url}`
+    })
+  },
   onLoad: function (e) {
-    console.log(e)
     mta.Page.init()
     var _this = this;
+    for (var i in e) _this.data.url += `${i}=${e[i]}&`
     _this.setPageHeight();
     wx.getSystemInfo({
       //获取系统信息成功，将系统窗口的宽高赋给页面的宽高
@@ -268,14 +135,14 @@ Page({
       }
     });
     var _t = 2000
-    if(e.style == 4) if(e.select == 3 || e.select == 5) _t = 0
+    if (e.style == 4) if (e.select == 3 || e.select == 5) _t = 0
     var id = `voice_${e.select}_${e.style}`
-    _this.data.arrInit = [{ id: id, t: _t, s: false }, { id: id, t: _t+10000, s: false }]
+    _this.data.arrInit = [{ id: id, t: _t, s: false }, { id: id, t: _t + 10000, s: false }]
     _this.data.arr = _this.data.arrInit
     _this.data.audios[id] = wx.createInnerAudioContext()
     _this.data.audios[id].src = `${app.globalData.soundsUrl}/${id}.mp3`
 
-    
+
     _this.data.audios["bg"] = wx.createInnerAudioContext()
     _this.data.audios.bg.src = `${app.globalData.soundsUrl}/bgMusic_${e.style}.mp3`
 
@@ -303,10 +170,10 @@ Page({
 
 
     _this.setData({
-      style:e.style,
+      style: e.style,
       text: e.text,
       select: e.select,
-      bgSrc:_this.data.audios.bg.src
+      bgSrc: _this.data.audios.bg.src
     })
 
     wx.createSelectorQuery().select('#beats').boundingClientRect(function (rect) {
@@ -314,7 +181,7 @@ Page({
         scrollHeight: rect.height
       })
     }).exec()
-    _this.onStart()
+
   },
   bindscroll(e) {
     var _this = this
