@@ -22,7 +22,8 @@ const SERVICE = {
   CHECKTIME: "/default/checktime",  //校验是否到时间提示弹层
   UPDATELOTTERY : "/default/updatelottery",  //红包领取成功后
   UNLOCKVIDEO: "/default/unlockvideo",  //解锁视频
-  GETVIDEO: "/default/getvideo"  //获取视频解锁状态
+  GETVIDEO: "/default/getvideo",  //获取视频解锁状态
+  RESEND : "/default/resend"  //补发红包
 }
 
 const isAPi= 0;     //是否使用模拟数据
@@ -337,7 +338,7 @@ function getUserInfo(callback){
     var res = {
       "code": 0, "message": "suc", "score": 123, "head": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKl06gDibQ7aOxHd47M5C35QS9YK5TDK5L5LdRQZgqACTJIrugp7PcGiazrT0urPkcK80CGJCw1r7SA/132" , "nick": "five",
       "data": [
-        { "award_id": "xx", "award_code": "xxxxx111111", "award_name": "爱奇艺VIP", "award_time": "20190223", "fcode": "321654", "fpwd": "654987"},
+        { "award_id": "xx", "award_code": "xxxxx111111", "award_name": "爱奇艺VIP", "award_time": "20190223"},
         { "award_id": "xx", "award_code": "2204", "award_name": "oppo手机一部", "award_time": "20190223", "isinfo": 1 }, 
         { "award_id": "xx", "award_code": "222222xxxxx", "award_name": "爱奇艺VIP", "award_time": "20190223" },
         { "award_id": "xx", "award_code": "333333xxxxx", "award_name": "爱奇艺VIP", "award_time": "20190223" },
@@ -608,7 +609,7 @@ function getVideo(callback) {
   console.log(paramater)
 
   if (isAPi) {
-    var res = { "code": 0, "message": "suc" }
+    var res = { "code": 0, "message": "suc", "vid": "e0354z3cqjp" }
     // 失败的例子
     // var res = { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
     callback(res)
@@ -619,6 +620,27 @@ function getVideo(callback) {
   })
 }
 
+function resend(callback) {
+  var paramater = getStorage();
+  if (!paramater.loginData) {
+    login(function () {
+      resend(callback)
+    })
+    return
+  }
+  console.log(paramater)
+
+  if (isAPi) {
+    var res = { "code": 0, "message": "suc", "flag": 1, 'package': 'asda', 'timeStamp': 1234, 'nonceStr': 12312, 'paySign': 'asd',"award_id":123}
+    // 失败的例子
+    // var res = { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
+    callback(res)
+    return false
+  }
+  request(URL + SERVICE.RESEND, paramater, function (res) {
+    callback(res.data)
+  })
+}
 /**
  * 初始化
  */
@@ -648,5 +670,6 @@ module.exports = {
   checkTime: checkTime,
   updateLottery: updateLottery,
   unlockVideo: unlockVideo,
-  getVideo: getVideo
+  getVideo: getVideo,
+  resend: resend
 }

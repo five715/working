@@ -4,18 +4,18 @@ var mta = require("../../utils/mta_analysis.js")
 Page({
   data: {
     sounds: [
-      { music: 1, src: "beats1", color: "red", bt: 1, name: "mua", mta: "15" },
-      { music: 1, src: "beats2", color: "red", bt: 1, name: "海豚", mta: "16" },
-      { music: 1, src: "beats3", color: "red", bt: 1, name: "心跳", mta: "17" },
-      { music: 1, src: "beats4", color: "red", bt: 1, name: "画眉鸟", mta: "18" },
-      { music: 2, src: "timer", color: "red", bt: 1, name: "时间" },
-      { music: 1, src: "beats5", color: "red", bt: 1, name: "风铃", mta: "19" },
-      { music: 1, src: "beats6", color: "red", bt: 1, name: "小猫叫", mta: "20" },
-      { music: 1, src: "beats7", color: "red", bt: 1, name: "honey", mta: "21" },
-      { music: 1, src: "beats8", color: "red", bt: 1, name: "踢踏舞", mta: "22" },
-      { music: 3, src: "beats_no_1", color: "red", bt: 0, name: "敬请期待" },
-      { music: 3, src: "beats_no_2", color: "red", bt: 0, name: "敬请期待" },
-      { music: 3, src: "beats_no_3", color: "red", bt: 0, name: "敬请期待" }
+      { music: 1, src: "beats1", color: "red", bt: 0, name: "mua", mta: "15", mSrc:"beats11" },
+      { music: 1, src: "beats2", color: "red", bt: 1, name: "海豚", mta: "16", mSrc: "beats12" },
+      { music: 1, src: "beats3", color: "red", bt: 1, name: "心跳", mta: "17", mSrc: "beats13" },
+      { music: 1, src: "beats4", color: "red", bt: 1, name: "画眉鸟", mta: "18", mSrc: "beats4"},
+      { music: 2, src: "timer", color: "red", bt: 1, name: "时间", mSrc: ""},
+      { music: 1, src: "beats5", color: "red", bt: 1, name: "风铃", mta: "19", mSrc: "beats5" },
+      { music: 1, src: "beats6", color: "red", bt: 1, name: "小猫叫", mta: "20", mSrc: "beats6" },
+      { music: 1, src: "beats7", color: "red", bt: 1, name: "honey", mta: "21", mSrc: "beats7"},
+      { music: 1, src: "beats8", color: "red", bt: 1, name: "踢踏舞", mta: "22", mSrc: "beats8"},
+      { music: 1, src: "beats9", color: "red", bt: 1, name: "小猫叫", mta: "20", mSrc: "beats1"},
+      { music: 1, src: "beats10", color: "red", bt: 1, name: "honey", mta: "21", mSrc: "beats2"}, 
+      { music: 1, src: "beats11", color: "red", bt: 1, name: "踢踏舞", mta: "22", mSrc: "beats3"},
     ],
     audios: {},
     style: null,
@@ -49,13 +49,13 @@ Page({
     var _this = this;
     var sounds = _this.data.sounds
     for (var i = 0; i < sounds.length; i++) {
-      _this.data.audios["beats" + i] = wx.createInnerAudioContext()
+      _this.data.audios[sounds[i].mSrc] = wx.createInnerAudioContext()
     }
   },
   onAudio(e) {
     var _this = this;
     var obj = _this.data.sounds;
-    // console.log(e,obj,_this.data.arr)
+    console.log(e, e.currentTarget.dataset.bt)
     if (e.currentTarget.dataset.bt == 0) {
       var type = e.currentTarget.dataset.i + 1
       wx.showModal({
@@ -86,11 +86,25 @@ Page({
     var dataset = target.dataset;
     var audio = _this.data.audios[target.id];
     console.log(e, _this.data.sounds[dataset.i], audio);
-    audio.src = dataset.src;
-    audio.stop()
-    setTimeout(function () {
-      audio.play()
-    }, 70)
+    if (obj[dataset.i].color == "red") {
+      obj[dataset.i].color = "#000";
+      audio.src = dataset.src;
+      // console.log(audio)
+      // audio.play();
+      audio.stop()
+      audio.onStop(function(){
+        obj[dataset.i].color = "red";
+        _this.setData({
+          sounds: obj
+        })
+      })
+      setTimeout(function () {
+        audio.play()
+      }, 70)
+    }
+    _this.setData({
+      sounds: obj
+    })
   },
   funcStop(bol) {
     console.log("停止")
@@ -103,12 +117,17 @@ Page({
     })
     for (var audio in audios) {
       audios[audio].stop();
+      audios[audio].offStop()
       // console.log(audio.split("sounds"),audio)
-      if (audio != "bg" && audio.indexOf("voice") == -1 && bol) _this.data.sounds[audio.split("beats")[1]].color = "red";
-      _this.setData({
-        sounds: _this.data.sounds
-      })
+      // if (audio != "bg" && audio.indexOf("voice") == -1 && bol) _this.data.sounds[audio.split("beats")[1]].color = "red";
     }
+    _this.data.sounds.forEach((s)=>{
+      console.log(s.color = "red")
+    })
+    // console.log(_this.data.sounds)
+    _this.setData({
+      sounds: _this.data.sounds
+    })
   },
   onUnload() {
     this.funcStop()
@@ -116,7 +135,7 @@ Page({
   onBegin() {
     var _this = this
     var url = ''
-    _this.funcStop()
+    _this.funcStop(1)
     console.log(_this.data.url)
     wx.navigateTo({
       url: `/pages/game/music?${_this.data.url}`

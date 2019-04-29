@@ -4,18 +4,18 @@ var mta = require("../../utils/mta_analysis.js")
 Page({
   data: {
     sounds: [
-      { music: 1, src: "beats1", color: "red", bt: 1, name: "mua",mta:"15" },
-      { music: 1, src: "beats2", color: "red", bt: 1, name: "海豚", mta: "16" },
-      { music: 1, src: "beats3", color: "red", bt: 1, name: "心跳", mta: "17"},
-      { music: 1, src: "beats4", color: "red", bt: 1, name: "画眉鸟", mta: "18" },
-      { music: 2, src: "timer", color: "red", bt: 1, name: "时间"},
-      { music: 1, src: "beats5", color: "red", bt: 1, name: "风铃", mta: "19" },
-      { music: 1, src: "beats6", color: "red", bt: 1, name: "小猫叫", mta: "20" },
-      { music: 1, src: "beats7", color: "red", bt: 1, name: "honey", mta: "21"},
-      { music: 1, src: "beats8", color: "red", bt: 1, name: "踢踏舞", mta: "22"},
-      { music: 3, src: "beats_no_1", color: "red", bt: 0, name: "敬请期待" },
-      { music: 3, src: "beats_no_2", color: "red", bt: 0, name: "敬请期待" },
-      { music: 3, src: "beats_no_3", color: "red", bt: 0, name: "敬请期待" }
+      { music: 1, src: "beats1", color: "red", bt: 0, name: "mua", mta: "15", mSrc: "beats11" },
+      { music: 1, src: "beats2", color: "red", bt: 0, name: "海豚", mta: "16", mSrc: "beats12" },
+      { music: 1, src: "beats3", color: "red", bt: 0, name: "心跳", mta: "17", mSrc: "beats13" },
+      { music: 1, src: "beats4", color: "red", bt: 1, name: "画眉鸟", mta: "18", mSrc: "beats4" },
+      { music: 2, src: "timer", color: "red", bt: 1, name: "时间", mSrc: "" },
+      { music: 1, src: "beats5", color: "red", bt: 1, name: "风铃", mta: "19", mSrc: "beats5" },
+      { music: 1, src: "beats6", color: "red", bt: 1, name: "小猫叫", mta: "20", mSrc: "beats6" },
+      { music: 1, src: "beats7", color: "red", bt: 1, name: "honey", mta: "21", mSrc: "beats7" },
+      { music: 1, src: "beats8", color: "red", bt: 1, name: "踢踏舞", mta: "22", mSrc: "beats8" },
+      { music: 1, src: "beats9", color: "red", bt: 1, name: "小猫叫", mta: "20", mSrc: "beats1" },
+      { music: 1, src: "beats10", color: "red", bt: 1, name: "honey", mta: "21", mSrc: "beats2" },
+      { music: 1, src: "beats11", color: "red", bt: 1, name: "踢踏舞", mta: "22", mSrc: "beats3" },
     ],
     audios: {},
     style:null,
@@ -48,7 +48,7 @@ Page({
     var _this = this;
     var sounds = _this.data.sounds
     for (var i = 0; i < sounds.length; i++) {
-      _this.data.audios["beats" + i] = wx.createInnerAudioContext()
+      _this.data.audios[sounds[i].mSrc] = wx.createInnerAudioContext()
     }
   },
   onAudio(e) {
@@ -86,7 +86,7 @@ Page({
     // console.log(e,target)
     var dataset = target.dataset;
     var audio = _this.data.audios[target.id];
-    // console.log(e,_this.data.sounds[dataset.i],dataset.i);
+    console.log(_this.data.audios,target.id);
 
     if(_this.data.arr.length == 6){
       _this.setData({
@@ -137,7 +137,9 @@ Page({
   onStart() {
     var _this = this;
     _this.funcStop();
-    _this.data.audios.bg.play()
+    setTimeout(function(){
+      _this.data.audios.bg.play()
+    },70)
     this.setData({
       isStart: true,
       arr:_this.data.arrInit
@@ -170,6 +172,7 @@ Page({
     wx.navigateTo({
       url: `/pages/game/custom?content=${app.globalData.content}`
     })
+    return false
   },
   funcStop(bol) {
     console.log("停止")
@@ -183,11 +186,14 @@ Page({
     for (var audio in audios) {
       audios[audio].stop();
       // console.log(audio.split("sounds"),audio)
-      if (audio != "bg" && audio.indexOf("voice") == -1 && bol) _this.data.sounds[audio.split("beats")[1]].color = "red";
-      _this.setData({
-        sounds: _this.data.sounds
-      })
+      // if (audio != "bg" && audio.indexOf("voice") == -1 && bol) _this.data.sounds[audio.split("beats")[1]].color = "red";
     }
+    _this.data.sounds.forEach((s) => {
+      console.log(s.color = "red")
+    })
+    _this.setData({
+      sounds: _this.data.sounds
+    })
   },
   onPlay() {
     var _this = this;
@@ -254,6 +260,7 @@ Page({
     this.funcStop()
   },
   onLoad: function (e) {
+    console.log(e)
     mta.Page.init()
     var _this = this;
     _this.setPageHeight();
@@ -311,7 +318,7 @@ Page({
         scrollHeight: rect.height
       })
     }).exec()
-
+    _this.onStart()
   },
   bindscroll(e) {
     var _this = this

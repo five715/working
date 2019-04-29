@@ -6,7 +6,7 @@ function onGuide(e) {
   })
 }
 function onClose(e) {
-  console.log(e)
+  // console.log(e)
   var _this = this;
   if (_this.data.popup == 'guide') {
     _this.setData({
@@ -14,7 +14,7 @@ function onClose(e) {
     })
   } else {
     _this.setData({
-      popup: false
+      popup: false,
     })
   }
 }

@@ -7,14 +7,17 @@ Page({
     style:1,
     text:"",
     sounds: [
-      { src: "beats1", color: "red", bt: 1, name: "风铃" },
-      { src: "beats2", color: "red", bt: 1, name: "海豚" },
-      { src: "beats3", color: "red", bt: 1, name: "心跳" },
-      { src: "beats4", color: "red", bt: 1, name: "画眉鸟" },
-      { src: "beats5", color: "red", bt: 1, name: "“波”" },
-      { src: "beats6", color: "red", bt: 1, name: "小猫叫" },
-      { src: "beats7", color: "red", bt: 1, name: "爱你" },
-      { src: "beats8", color: "red", bt: 1, name: "踢踏舞" }
+      { music: 1, src: "beats1", color: "red", bt: 0, name: "mua", mta: "15", mSrc: "beats11" },
+      { music: 1, src: "beats2", color: "red", bt: 1, name: "海豚", mta: "16", mSrc: "beats12" },
+      { music: 1, src: "beats3", color: "red", bt: 1, name: "心跳", mta: "17", mSrc: "beats13" },
+      { music: 1, src: "beats4", color: "red", bt: 1, name: "画眉鸟", mta: "18", mSrc: "beats4" },
+      { music: 1, src: "beats5", color: "red", bt: 1, name: "风铃", mta: "19", mSrc: "beats5" },
+      { music: 1, src: "beats6", color: "red", bt: 1, name: "小猫叫", mta: "20", mSrc: "beats6" },
+      { music: 1, src: "beats7", color: "red", bt: 1, name: "honey", mta: "21", mSrc: "beats7" },
+      { music: 1, src: "beats8", color: "red", bt: 1, name: "踢踏舞", mta: "22", mSrc: "beats8" },
+      { music: 1, src: "beats9", color: "red", bt: 1, name: "小猫叫", mta: "20", mSrc: "beats1" },
+      { music: 1, src: "beats10", color: "red", bt: 1, name: "honey", mta: "21", mSrc: "beats2" },
+      { music: 1, src: "beats11", color: "red", bt: 1, name: "踢踏舞", mta: "22", mSrc: "beats3" },
     ],
     selects:["我不但可爱,我还可爱你了", "我咬你的时候,你也要对我笑", "我跟你除了恋爱真没什么好谈的", "爱我是真心话,凶我是大冒险", "你的牙印,一定是爱我的小标记", "不许动手,只许动心"],
     audios: {},
@@ -182,7 +185,11 @@ Page({
       var src = array[1]
       con.forEach((c)=>{
         _this.data.audios[c.id] = wx.createInnerAudioContext();
-        _this.data.audios[c.id].src = `${app.globalData.soundsUrl}/${c.id}.mp3`
+        if (c.id == "beats13" || c.id == "beats12" || c.id == "beats11") {
+          _this.data.audios[c.id].src = `/sounds/${c.id}.mp3`
+        } else {
+          _this.data.audios[c.id].src = `${app.globalData.soundsUrl}/${c.id}.mp3`
+        }
       })
       console.log(con, src, array)
 
