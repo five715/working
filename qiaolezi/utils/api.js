@@ -51,7 +51,7 @@ function request(url, data, success, fail) {
  * 登录
  */
 function login(callback) {
-  console.log(getStorage());
+  // console.log(getStorage());
   wx.login({
     success: (res) => {
       var code = res.code
@@ -580,7 +580,7 @@ function unlockVideo(callback) {
   console.log(paramater)
 
   if(isAPi){
-    var res = { "code": 0, "message": "suc" }
+    var res = { "code": 0, "message": "suc", 'score': 6541 }
     // 失败的例子
     // var res= { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
     callback(res)
@@ -602,7 +602,7 @@ function getVideo(callback) {
   console.log(paramater)
 
   if (isAPi) {
-    var res = { "code": 0, "message": "suc", "vid": "e0354z3cqjp" }
+    var res = { "code": 0, "message": "suc", "vid": "e0354z3cqjp"}
     // 失败的例子
     // var res = { "code": -1, "message": "\u975e\u6cd5\u8bf7\u6c42" }
     callback(res)

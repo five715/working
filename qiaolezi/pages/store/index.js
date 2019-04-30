@@ -121,10 +121,12 @@ Page({
         console.log(data)
         if(data.code == 0){
           objs[_this.id].isUnlock = true
+          userInfo.score = data.score
           _this.setData({
             popup: 'hint',
             hintText: ['积分已扣除，请等待视频解锁'],
-            redeems: objs
+            redeems: objs,
+            userInfo:userInfo
           })
         } else {
           var arr = []

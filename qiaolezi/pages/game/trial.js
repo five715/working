@@ -36,7 +36,6 @@ Page({
     var _this = this;
     var sounds = _this.data.sounds
     for (var i = 0; i < sounds.length; i++) {
-      console.log(sounds[i].mSrc)
       _this.data.audios[sounds[i].mSrc] = wx.createInnerAudioContext()
     }
   },
@@ -56,13 +55,20 @@ Page({
     var target = e.currentTarget;
     var dataset = target.dataset;
     var audio = _this.data.audios[target.id];
-    console.log(e, target, audio);
+    // console.log(e, target, audio);
     if (obj[dataset.i].color == "red") {
       obj[dataset.i].color = "#000";
       audio.src = dataset.src;
       audio.i = dataset.i;
-      console.log(audio)
+      // console.log(audio)
       audio.stop()
+
+      // mta
+      var mtaId = obj[dataset.i].tMta
+      console.log(obj[dataset.i].name, mtaId)
+      mta.Event.stat(mtaId, {})
+      // mtaEnd
+
       setTimeout(function () {
         audio.play()
         audio.onStop(function () {
