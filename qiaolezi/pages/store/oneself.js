@@ -104,6 +104,17 @@ Page({
         break;
     }
   },
+  onAiqiyi(e) {
+    var _this = this;
+    console.log(e)
+    var fcode = e.currentTarget.dataset.fcode,
+      fpwd = e.currentTarget.dataset.fpwd,
+      name = e.currentTarget.dataset.name
+    _this.setData({
+      popup: "oneseifHint",
+      hintText: [``, `${name}`, `账户名:${fcode}`, `密码:${fpwd}`]
+    })
+  },
   onShareAppMessage: function () {
     return {
       title: app.globalData.shareTitle[0],

@@ -1,5 +1,5 @@
 <view class='store pageBg' style="position:{{pagePosition}}">
-  <image class='boxes' src='/images/store_bg.jpg'></image>
+  <image class='boxes' src='{{imagesUrl}}/store_bg.jpg'></image>
   <!-- 个人资料 -->
   <view class='oneself'>
     <image class='boxes' src='{{imagesUrl}}/store_oneself_bg.png'></image>
@@ -12,7 +12,7 @@
     <image class='boxes' src='{{imagesUrl}}/store_redeem_bg.png'></image>
     <scroll-view id="redeem" scroll-y bindscroll="bindscroll" data-id="redeem">
       <view wx:for="{{redeems}}" wx:key="" wx:for-index="i" class='bag bag_{{item.src}}' bindtap='onReddem' data-id="{{i}}">
-        <image class='boxes' src='{{item.src>3?"/images":imagesUrl}}/store_redeem_bag_{{item.src}}.png'></image>
+        <image class='boxes' src='{{imagesUrl}}/store_redeem_bag_{{item.src}}.png'></image>
         <text class='textScore'>{{item.score}}心跳</text>
         <text wx:if="{{item.src!=4}}" class='textSurplus'>(还剩{{item.surplus}}个)</text>
       </view>
@@ -27,7 +27,7 @@
     <view class='prize prize_{{i+1}} {{item.state}}'  wx:for='{{prizes}}' wx:key='' wx:for-index='i' >
       <image class='boxes bg n' src='{{imagesUrl}}/store_luckZone_bg_no.png'></image>
       <image class='boxes bg {{item.state=="yes"?"block":"none"}}' src='{{imagesUrl}}/store_luckZone_bg_yes.png'></image>
-      <image class='boxes bg' src='{{i==1||i==3?"/images":imagesUrl}}/store_luckZone_{{item.prize}}.png'></image>
+      <image class='boxes bg' src='{{imagesUrl}}/store_luckZone_{{item.prize}}.png'></image>
     </view>
     <image class='prize' bindtap='onBtnLuck' src='{{imagesUrl}}/store_luckZone_play.png'></image>
   </view>

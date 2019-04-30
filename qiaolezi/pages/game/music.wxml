@@ -1,9 +1,9 @@
 <view class='music pageBg' wx:if="{{!isAdvance}}" style="position:{{pagePosition}}">
-  <image class='boxes' src='/images/music_bg.jpg'></image>
+  <image class='boxes' src='{{imagesUrl}}/music_bg.jpg'></image>
   <image class='title' src='{{imagesUrl}}/music_title.png'></image>
   <view wx:if="{{!isStart}}" class='hint_text_view none'>
     <view class='hint_text'>
-      <image class='boxes' src='/images/music_hint.png'></image>
+      <image class='boxes' src='{{imagesUrl}}/music_hint.png'></image>
       <text>点击开始，音乐即刻播放，
         请于20秒内添加喜欢音效，
         MIX炫彩情歌！</text>
@@ -13,8 +13,8 @@
   </view>
   <scroll-view id="beats" class='beats' scroll-y bindscroll="bindscroll">
     <block  wx:for="{{sounds}}" wx:key="" wx:for-index="i">
-      <image wx:if="{{item.music == 1}}" src="/images/trial_{{item.src}}_{{item.color=='red'?'no':'yes'}}.png" class="audio {{item.src}} {{item.bt==1?'':'lock'}} {{item.color}}" bindtap='onAudio' style="color:{{item.color}}" id="{{item.mSrc}}" data-i="{{i}}" data-src="{{i<3 ?'/sounds' :soundsUrl}}/{{item.mSrc}}.mp3" data-bt="{{item.bt}}">{{item.name}}
-      <image class='mackImage' wx:if="{{i<3}}"src='/images/trial_{{item.src}}_lock.png'></image>
+      <image wx:if="{{item.music == 1}}" src="{{i==0?'/images':imagesUrl}}/trial_{{item.src}}_{{item.color=='red'?'no':'yes'}}.png" class="audio {{item.src}} {{item.bt==1?'':'lock'}} {{item.color}}" bindtap='onAudio' style="color:{{item.color}}" id="{{item.mSrc}}" data-i="{{i}}" data-src="{{soundsUrl}}/{{item.mSrc}}.mp3" data-bt="{{item.bt}}">{{item.name}}
+      <image class='mackImage' wx:if="{{i<3}}"src='{{imagesUrl}}/trial_{{item.src}}_lock.png'></image>
       <view wx:else class='mack'></view>
       </image>
       <view wx:elif="{{item.music == 2}}"class='audio timer'>

@@ -1,14 +1,14 @@
 <view class='music pageBg' wx:if="{{!isAdvance}}" style="position:{{pagePosition}}">
-  <image class='boxes' src='/images/music_bg.jpg'></image>
-  <image class='title' src='/images/trial_title.png'></image>
+  <image class='boxes' src='{{imagesUrl}}/music_bg.jpg'></image>
+  <image class='title' src='{{imagesUrl}}/trial_title.png'></image>
   <scroll-view id="beats" class='beats' scroll-y bindscroll="bindscroll">
     <block  wx:for="{{sounds}}" wx:key="" wx:for-index="i">
-      <image wx:if="{{item.music == 1}}" src="/images/trial_{{item.src}}_{{item.color=='red'?'no':'yes'}}.png" class="audio {{item.src}} {{item.bt==1?'':'lock'}} {{item.color}}" bindtap='onAudio' style="color:{{item.color}}" id="{{item.src}}" data-i="{{i}}" data-src="{{i<3 ?'/sounds/' :soundsUrl}}/{{item.mSrc}}.mp3" data-bt="{{item.bt}}">{{item.name}}
-      <image class='mackImage' wx:if="{{i<3}}"src='/images/trial_{{item.src}}_lock.png'></image>
+      <image wx:if="{{item.music == 1}}" src="{{i==0?'/images':imagesUrl}}/trial_{{item.src}}_{{item.color=='red'?'no':'yes'}}.png" class="audio {{item.src}} {{item.bt==1?'':'lock'}} {{item.color}}" bindtap='onAudio' style="color:{{item.color}}" id="{{item.mSrc}}" data-i="{{i}}" data-src="{{soundsUrl}}/{{item.mSrc}}.mp3" data-bt="{{item.bt}}">{{item.name}}
+      <image class='mackImage' wx:if="{{i<3}}"src='{{imagesUrl}}/trial_{{item.src}}_lock.png'></image>
       <view wx:else class='mack'></view>
       </image>
       <view wx:elif="{{item.music == 2}}"class='audio timer'>
-        <image class='boxes' src='/images/trial_beats_timer.png'></image>
+        <image class='boxes' src='{{imagesUrl}}/trial_beats_timer.png'></image>
       </view>
       <image wx:elif="{{item.music == 3}}" src="{{imagesUrl}}/music_{{item.src}}.png" class="audio {{item.src}}"></image>
     </block>
@@ -17,6 +17,6 @@
     <image class='boxes' src='{{imagesUrl}}/music_chang.png'></image>
     <image class='duan' style='top:{{scrollPer}}%' src='{{imagesUrl}}/music_duan.png'></image>
   </view>
-  <image class='music_btn_right' bindtap='onBegin' src='/images/trial_btn_right.png'></image>
+  <image class='music_btn_right' bindtap='onBegin' src='{{imagesUrl}}/trial_btn_right.png'></image>
 </view>
 <include src="/template/popup.wxml"/>

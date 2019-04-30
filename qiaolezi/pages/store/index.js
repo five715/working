@@ -15,7 +15,7 @@ Page({
       { src: 4, score: 20, surplus: 1, isUnlock: false },
       // { src: 5, score: 0, surplus: 0 },
       { src: 6, score: 500, surplus: 0, type: 4, name: "Angelababy",code:"babyphoto" },
-      { src: 7, score: 800, surplus: 0, type: 5, name: "王子异签名照",code:"wzyphoto" }
+      { src: 7, score: 500, surplus: 0, type: 5, name: "王子异签名照",code:"wzyphoto" }
     ],
     prizes: [
       { prize: "vip", state: "yes", ret: 3 },
@@ -90,7 +90,7 @@ Page({
         }else{
           _this.setData({
             popup: 'hintBtn',
-            hintText: ['解锁视频需要消耗50心跳，', '是否确定消耗？']
+            hintText: [`解锁视频需要消耗${objs[_this.id].score}心跳，`, '是否确定消耗？']
           })
         }
       })

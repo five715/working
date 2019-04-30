@@ -144,10 +144,10 @@
   </view>
   <!-- 活动规则 -->
   <view wx:if="{{popup == 'rule'}}" class='popup_rule'>
-    <image class='boxes' src='/images/popup_rule_boxes.png'></image>
-    <image class='product' src='/images/popup_product.png'></image>
+    <image class='boxes' src='{{imagesUrl}}/popup_rule_boxes.png'></image>
+    <image class='product' src='{{imagesUrl}}/popup_product.png'></image>
     <scroll-view id="rule"  scroll-y data-id="rule" scroll-top="{{scrollT.rule}}" scroll-with-animation="true">
-      <image class='con' id="ruleC" src='/images/popup_rule_con.png'></image>
+      <image class='con' id="ruleC" src='{{imagesUrl}}/popup_rule_con.png'></image>
     </scroll-view>
     <!-- <view class='scroll'>
       <image class='boxes' src="{{imagesUrl}}/popup_rule_chang.png"></image>
@@ -167,5 +167,13 @@
       <txv-video vid="{{vid}}" playerid="txv1"></txv-video>
     </view>
     <image class='close' bindtap='onClose' src='{{imagesUrl}}/popup_close.png'></image>
+  </view>
+  <!-- 爱奇艺弹窗 -->
+  <view wx:if="{{popup == 'oneseifHint'}}" class='popup_hint'>
+    <image class='boxes' src='{{imagesUrl}}/popup_hint.png'></image>
+    <view class="text" >
+      <text wx:for="{{hintText}}" wx:key="">{{item}}</text>
+    </view>
+    <image class='close' bindtap='onClose' src='{{imagesUrl}}/ioc_close.png'></image>
   </view>
 </view>

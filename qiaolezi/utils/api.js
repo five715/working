@@ -252,14 +252,7 @@ function unlock(callback,type){
     return false
   }
   request(URL + SERVICE.UNLOCK, paramater, function (res) {
-    if (res.data.code == 0) {
-      callback(res.data)
-    }else if(res.data.code == -1){
-      wx.showModal({
-        title: '解锁失败，心跳值还不够(ಥ﹏ಥ)',
-        showCancel: false
-      })
-    }
+    callback(res.data)
   })
 }
 

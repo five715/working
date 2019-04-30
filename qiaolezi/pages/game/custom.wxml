@@ -1,5 +1,5 @@
 <view class="advance pageBg" style="position:{{pagePosition}}">
-  <image class='boxes' src='/images/advance_bg.jpg'></image>
+  <image class='boxes' src='{{imagesUrl}}/advance_bg.jpg'></image>
   <image class='tit' src='{{imagesUrl}}/advance_tit.png'></image>
   <!-- <image class='play' src='{{imagesUrl}}/advance_play_{{style}}.png' bindtap='onPlay'></image> -->
   

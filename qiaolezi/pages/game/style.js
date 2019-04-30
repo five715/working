@@ -135,7 +135,9 @@ Page({
 
 
     console.log(_this.data.arrInit,_this.data.select, app.globalData.style)
-    this.onPlay(app.globalData.style)
+    setTimeout(function(){
+      _this.onPlay(app.globalData.style)
+    },70)
   },
   onPlay(style) {
     var _this = this;

@@ -27,6 +27,20 @@ App({
     imagesUrl: `${cdnUrl}/images`,
     videoUrl: `${cdnUrl}/video`,
     shareTitle: ["MIX的炫彩音乐 唱给你听～", "说不出的话唱给你听(* /ω＼*)"],  //首页,回流页
-    shareImg: ["/images/share.jpg", "/images/share.jpg"]//首页,回流页
+    shareImg: ["/images/share.jpg", "/images/share.jpg"],//首页,回流页
+    sounds: [
+      { music: 1, src: "beats1", color: "red", bt: 0, name: "mua", mta: "15", mSrc: "beats11" },
+      { music: 1, src: "beats2", color: "red", bt: 1, name: "海豚", mta: "16", mSrc: "beats12" },
+      { music: 1, src: "beats3", color: "red", bt: 1, name: "心跳", mta: "17", mSrc: "beats13" },
+      { music: 1, src: "beats4", color: "red", bt: 1, name: "画眉鸟", mta: "18", mSrc: "beats4" },
+      { music: 2, src: "timer", color: "red", bt: 1, name: "时间", mSrc: "" },
+      { music: 1, src: "beats5", color: "red", bt: 1, name: "风铃", mta: "19", mSrc: "beats5" },
+      { music: 1, src: "beats6", color: "red", bt: 1, name: "小猫叫", mta: "20", mSrc: "beats6" },
+      { music: 1, src: "beats7", color: "red", bt: 1, name: "honey", mta: "21", mSrc: "beats7" },
+      { music: 1, src: "beats8", color: "red", bt: 1, name: "踢踏舞", mta: "22", mSrc: "beats8" },
+      { music: 1, src: "beats9", color: "red", bt: 1, name: "小猫叫", mta: "20", mSrc: "beats1" },
+      { music: 1, src: "beats10", color: "red", bt: 1, name: "honey", mta: "21", mSrc: "beats2" },
+      { music: 1, src: "beats11", color: "red", bt: 1, name: "踢踏舞", mta: "22", mSrc: "beats3" },
+    ]
   }
 })
