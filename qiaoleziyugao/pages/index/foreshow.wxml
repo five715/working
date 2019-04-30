@@ -40,4 +40,5 @@
   <button bindtap='onBtn'>https://qiaolezi.act.qq.com/e/c/code/5</button>
   <button bindtap='onBtn'>https://qiaolezi.act.qq.com/e/c/code/8888888888888</button>
   <button bindtap='onBtn'>https://qiaolezi.act.qq.com/e/c/code/</button>
+  <button bindtap='onBtn'>https://qiaolezi.act.qq.com/e/c/code/6</button>
 </view> -->

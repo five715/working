@@ -20,6 +20,7 @@ Page({
     // const scene = "https://qiaolezi.act.qq.com/e/c/code/4";      //线下
     // const scene = "https://qiaolezi.act.qq.com/e/c/code/XXXXXXXYYYYYY";    //脆筒
     // const scene = "https://qiaolezi.act.qq.com/e/c/code/"    //棒签
+    // const scene = "https://qiaolezi.act.qq.com/e/c/code/6"
     if (!scene || scene == 'undefined') {
       //小程序码进入
       console.log("直接进入07")
@@ -46,7 +47,10 @@ Page({
     }else if(code<=5 && code >0){
       //指定五个地址
       console.log(`0${code}`)
-      mta.Event.stat(`0${code}`,{})
+      mta.Event.stat(`0${code}`, {})
+    }else if(code == 6){
+      console.log(code,"08")
+      mta.Event.stat(`08`, {})
     } else {
       //小程序码进入
       console.log("07")
