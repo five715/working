@@ -8,14 +8,15 @@ Page({
     isLuck:true,
     luck:"",
     userInfo:"",
+    videoScore:"1000",
     redeems: [
       { src: 1, score: 300, surplus: 0, type: 3, name: "爱奇艺季卡" ,code:"aqiyiji"},
       { src: 2, score: 100, surplus: 0, type: 2, name: "爱奇艺月卡",code:"aqiyimonth" },
       { src: 3, score: 50, surplus: 0, type: 1, name: "爱奇艺7天卡", code: "aqiyi" },
-      // { src: 4, score: 50, surplus: 0, isUnlock: false },
+      // { src: 4, score: 20, surplus: 1, isUnlock: false },
       // { src: 5, score: 0, surplus: 0 },
-      { src: 6, score: 500, surplus: 0, type: 4, name: "Angelababy",code:"babyphoto" }
-      // { src: 6, score: 800, surplus: 0, type: 5, name: "王子异签名照",code:"wzyphoto" }
+      { src: 6, score: 500, surplus: 0, type: 4, name: "Angelababy",code:"babyphoto" },
+      { src: 7, score: 500, surplus: 0, type: 5, name: "王子异",code:"wzyphoto" }
     ],
     prizes: [
       { prize: "vip", state: "yes", ret: 3 },
@@ -35,7 +36,8 @@ Page({
     hintText: [],
     idCard: ["", ""],
     scrollT: {},
-    pagePosition: 'fixed'
+    pagePosition: 'fixed',
+    vid:""
   },
   onBtnRule: nav.onBtnRule,
   onBtnHome: nav.onBtnHome,
@@ -52,22 +54,58 @@ Page({
     var _this =this;
     var objs = _this.data.redeems
     _this.id = e.currentTarget.dataset.id
-    console.log(objs, _this.id, objs[_this.id].surplus)
-    if (objs[_this.id].surplus <= 0) {
+    if (objs[_this.id].surplus && objs[_this.id].surplus <= 0) {
       _this.setData({
         popup: 'hint',
         hintText: ["哎呀，你来晚啦，本周奖品已兑换完了，下周早点来呀~"]
       })
       return false
     }
-
-    var title = [`确定要消耗${objs[_this.id].score}心跳兑换吗？`]
-    if (objs[_this.id].src == 4) title = ['解锁视频需要消耗50心跳，', '是否确定消耗？']
-    if (objs[_this.id].src == 6) title = [`巧乐兹代言人${objs[_this.id].name}签名`, `照，多款签名照片随机发放！`, `确定要消耗${objs[_this.id].score}心跳兑换吗？`]
-    _this.setData({
-      popup:'hintBtn',
-      hintText: title
-    })
+    if(objs[_this.id].src == 4){
+      app.api.getVideo(function (data) {
+        console.log(data)
+        if (data.code == 0) {
+          if (!data.vid) {
+            //前端提示弹层
+            _this.setData({
+              popup: 'hint',
+              hintText: ['恭喜丸子女孩们，视频解锁成功！巧乐兹正在马不停蹄更新中，请明日来观看炫酷王子异！'],
+            })
+          } else {
+            // 播放视频
+            _this.setData({
+              vid: data.vid,
+              popup:"video"
+            })
+          }
+          // var objs = _this.data.redeems
+          // objs.forEach((o) => {
+          //   if (o.src == 4) {
+          //     o.isUnlock = data.code == 0 ? true : false
+          //     o.surplus = data.code == 0 ? 0 : 1
+          //   }
+          // })
+          // _this.setData({
+          //   redeems: objs
+          // })
+        }else{
+          _this.setData({
+            popup: 'hintBtn',
+            hintText: [`解锁视频需要消耗${objs[_this.id].score}心跳，是否确定消耗？解锁视频一共需要十万积分，还差${_this.data.userInfo.videoscore}积分完成视频解锁`]
+          })
+        }
+      })
+    } else if (objs[_this.id].src == 6 || objs[_this.id].src == 7) {
+      _this.setData({
+        popup: 'hintBtn',
+        hintText: [`巧乐兹代言人${objs[_this.id].name}签名照,`, `多款签名照片随机发放！`, `确定要消耗${objs[_this.id].score}心跳兑换吗？`]
+      })
+    }else{
+      _this.setData({
+        popup:'hintBtn',
+        hintText: [`确定要消耗${objs[_this.id].score}心跳兑换吗？`]
+      })
+    }
   },
   onBtnHintYes(e) {
     var _this = this;
@@ -84,10 +122,22 @@ Page({
         console.log(data)
         if(data.code == 0){
           objs[_this.id].isUnlock = true
+          userInfo.score = data.score
+          userInfo.videoscore = 10000
+          userInfo.videoscore = data.videoscore
+         
           _this.setData({
             popup: 'hint',
-            hintText: ['视频解锁成功', '请于次日再来观看'],
-            redeems: objs
+            hintText: ['积分已扣除，请等待视频解锁'],
+            redeems: objs,
+            userInfo:userInfo
+          })
+        } else {
+          var arr = []
+          arr.push(data.message)
+          _this.setData({
+            popup: 'hint',
+            hintText: arr
           })
         }
       })
@@ -257,18 +307,6 @@ Page({
     var _this =this;
     _this.setPageHeight();
     _this.onUserInfo();
-    // app.api.getVideo(function(data){
-    //   console.log(data) 
-    //   var objs = _this.data.redeems
-    //   objs.forEach((o)=>{
-    //     if (o.src == 4) {
-    //       o.isUnlock = data.code == 0 ? true : false
-    //     }
-    //   })
-    //   _this.setData({
-    //     redeems:objs
-    //   })
-    // })
   },
   onUserInfo(){
     var _this =this
